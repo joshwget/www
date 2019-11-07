@@ -8,16 +8,24 @@ references:
 jobs:
   build:
     docker:
-      - image: cibuilds/hugo:0.55.5
+      - image: circleci/node
     steps:
       - *attach_workspace
       - checkout
-      - run: hugo
-      - run: mv public /tmp/workspace
+      - restore_cache:
+        keys:
+          - yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn install --frozen-lockfile
+      - save_cache:
+        key: yarn-packages-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.cache/yarn
+      - run: yarn build && yarn export
+      - run: mv out /tmp/workspace
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
-            - public
+            - out
 
   deploy:
     docker:
@@ -25,7 +33,7 @@ jobs:
     steps:
       - *attach_workspace
       - run: sudo pip install awscli
-      - run: aws s3 sync /tmp/workspace/public s3://oogi.deviceplane.com/ --delete
+      - run: aws s3 sync /tmp/workspace/out s3://oogi.deviceplane.com/ --delete
       - run: aws cloudfront create-invalidation --distribution-id E2KFV7IQT7GKT3 --paths "/*"
 
 workflows:
