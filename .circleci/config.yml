@@ -13,13 +13,13 @@ jobs:
       - *attach_workspace
       - checkout
       - restore_cache:
-        keys:
-          - yarn-packages-{{ checksum "yarn.lock" }}
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn install --frozen-lockfile
       - save_cache:
-        key: yarn-packages-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.cache/yarn
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
       - run: yarn build && yarn export
       - run: mv out /tmp/workspace
       - persist_to_workspace:
