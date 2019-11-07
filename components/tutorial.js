@@ -5,7 +5,7 @@ const Tutorial = ({}) => (
 
       <div>
         <button className="selected">Register</button>
-        <button>Manage</button>
+        <button>Deploy</button>
         <button>Monitor</button>
         <button>Access</button>
       </div>
