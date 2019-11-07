@@ -5,11 +5,9 @@ const Hero = ({}) => (
 
       <div className="content">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          Update, monitor, and access remote devices and servers with ease.
+          Let us handle the hard infrastructure problems around managing remote
+          hardware so you focus on your business.
         </p>
       </div>
 
