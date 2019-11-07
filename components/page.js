@@ -17,6 +17,7 @@ const Page = ({ children }) => (
       html {
         height: 100%;
         font-size: 16px;
+        scroll-behavior: smooth;
       }
 
       body {
@@ -57,7 +58,6 @@ const Page = ({ children }) => (
       h4 {
         font-size: 1.2rem;
         margin: 0;
-        font-family: 'Exo 2', var(--font-family);
       }
 
       .page {

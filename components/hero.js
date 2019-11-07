@@ -14,7 +14,7 @@ const Hero = ({}) => (
       </div>
 
       <div className="buttons">
-        <a href="#hardware" className="learn-more">
+        <a href="#features" className="learn-more">
           Learn more
         </a>
 
@@ -39,6 +39,7 @@ const Hero = ({}) => (
       .hero {
         color: var(--white);
         background: var(--black);
+        padding: 3rem 0 0 0;
       }
 
       h1 {

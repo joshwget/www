@@ -4,7 +4,7 @@ const Tutorial = ({}) => (
       <h2>How it works</h2>
 
       <div>
-        <button>Register</button>
+        <button className="selected">Register</button>
         <button>Manage</button>
         <button>Monitor</button>
         <button>Access</button>
@@ -60,10 +60,17 @@ const Tutorial = ({}) => (
         color: var(--white);
         font-weight: 700;
         font-size: 1rem;
+        padding: 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
       }
 
       p {
         text-align: center;
+      }
+
+      .selected {
+        background-color: var(--blue);
       }
     `}</style>
   </div>

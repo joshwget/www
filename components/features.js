@@ -1,5 +1,5 @@
 const Features = ({}) => (
-  <section>
+  <section id="features">
     <h2>Powerful features</h2>
 
     <div className="row">

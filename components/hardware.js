@@ -1,5 +1,5 @@
 const Hardware = ({}) => (
-  <section className="hardware">
+  <section>
     <h2>Support for a variety of hardware</h2>
 
     <style jsx>{`

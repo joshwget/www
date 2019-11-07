@@ -22,10 +22,8 @@ const Nav = () => (
         </div>
         <ul>
           {links.map(({ key, href, label }) => (
-            <li key={key}>
-              <a className="link" href={href}>
-                {label}
-              </a>
+            <li key={key} className="link">
+              <a href={href}>{label}</a>
             </li>
           ))}
         </ul>
@@ -71,11 +69,11 @@ const Nav = () => (
         font-size: 1rem;
         font-weight: 400;
         margin: 0 0.5rem;
-        opacity: 0.9;
         transition: opacity 250ms;
+        padding-bottom: 2px;
       }
       .link:hover {
-        opacity: 1;
+        border-bottom: 1px solid var(--white);
       }
       .name {
         font-size: 1.5rem;
@@ -86,24 +84,22 @@ const Nav = () => (
       .login {
         margin-right: 1.5rem;
         font-weight: 600;
-        opacity: 0.9;
-        transition: opacity 250ms;
+        transition: color 250ms;
       }
       .login:hover {
-        opacity: 1;
+        color: var(--blue);
       }
       .signup {
-        border: 2px solid var(--white);
-        //background-color: var(--white);
+        background-color: var(--white);
         border-radius: 4px;
         padding: 0.7rem 1.4rem;
-        color: var(--white);
+        color: var(--black);
         font-weight: 600;
-        transition: border-color 150ms;
+        transition: color 150ms;
       }
 
       .signup:hover {
-        border-color: var(--blue);
+        color: var(--blue);
       }
       .left {
         display: flex;
