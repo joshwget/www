@@ -7,7 +7,7 @@ const Pricing = ({}) => (
     <div className="options">
       <div className="border">
         <div className="container">
-          <span className="label">Free</span>
+          <span className="label">Developer</span>
 
           <ul>
             <li>10 Devices</li>
