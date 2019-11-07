@@ -4,70 +4,56 @@ const Features = ({}) => (
 
     <div className="row">
       <div className="container">
-        <h4>Container orchestration</h4>
+        <h4>Advanced deployment functionality</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
 
       <div className="container">
-        <h4>Container orchestration</h4>
+        <h4>SSH access</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          Access your device via SSH even when not on the same network.
+          Flexible policies allow you enable and and disable this feature
+          from the device for security reasons.
         </p>
       </div>
 
       <div className="container">
-        <h4>Container orchestration</h4>
+        <h4>Monitoring</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          Seamlessly collect host and application metrics from your
+          devices without the need for additional agents. Integrates
+          with popular monitoring tools including Datadog and Prometheus.
         </p>
       </div>
     </div>
 
     <div className="row">
       <div className="container">
-        <h4>Container orchestration</h4>
+        <h4>Logging</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          Logs are most useful when not siloed to the originating device.
+          Deviceplane gathers logs from your devices, stores them, and
+          then optionally forwards them to your preferred logging tool.
         </p>
       </div>
 
       <div className="container">
-        <h4>Container orchestration</h4>
+        <h4>Access control</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          Fine-grained roles and policies allow you to control exactly
+          how your devices should be accessed.
         </p>
       </div>
 
       <div className="container">
-        <h4>Container orchestration</h4>
+        <h4>Robust API</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse.
+          All of the functionality in Deviceplane is exposed by an easy
+          to use API making it simple to programmatically interact with
+          your devices.
         </p>
       </div>
     </div>
