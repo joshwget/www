@@ -51,7 +51,6 @@ const Pricing = ({}) => (
         padding-bottom: 0;
       }
       h2 {
-        font-size: 3rem;
         margin: 0 0 2rem 0;
       }
       .pricing {
@@ -63,7 +62,7 @@ const Pricing = ({}) => (
 
       .label {
         font-size: 1.1rem;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 1.5rem;
       }
 

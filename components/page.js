@@ -43,7 +43,7 @@ const Page = ({ children }) => (
       }
 
       h2 {
-        font-size: 2rem;
+        font-size: 2.6rem;
         margin: 0;
       }
 

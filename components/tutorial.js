@@ -43,13 +43,13 @@ const Tutorial = ({}) => (
       .video {
         background: white;
         border-radius: 6px;
-        width: 30rem;
-        height: 20rem;
+        width: 22.5rem;
+        height: 15rem;
         margin-right: 4rem;
       }
 
       .content {
-        max-width: 26rem;
+        max-width: 24rem;
       }
 
       button {
@@ -59,14 +59,10 @@ const Tutorial = ({}) => (
         border: none;
         color: var(--white);
         font-weight: 700;
-        font-size: 1rem;
+        font-size: 16px;
         padding: 0.8rem;
         border-radius: 6px;
         cursor: pointer;
-      }
-
-      p {
-        text-align: center;
       }
 
       .selected {

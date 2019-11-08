@@ -1,33 +1,31 @@
 const Info = ({}) => (
   <section className="info">
     <div className="container">
-      <h3>Developer focused</h3>
+      <h4>Developer focused</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam.
       </p>
       <div className="link">
-        <a href="/documentation">View documentation</a>
-        <div className="arrow">→</div>
+        <a href="/documentation">Documentation</a>
       </div>
     </div>
 
     <div className="container">
-      <h3>Open source</h3>
+      <h4>Open source</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam.
       </p>
       <div className="link">
-        <a href="/docs/security">Join us</a>
-        <div className="arrow">→</div>
+        <a href="/docs/security">Source code</a>
       </div>
     </div>
 
     <div className="container">
-      <h3>Security concious</h3>
+      <h4>Security concious</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -35,7 +33,6 @@ const Info = ({}) => (
       </p>
       <div className="link">
         <a href="/docs/security">Learn more</a>
-        <div className="arrow">→</div>
       </div>
     </div>
 
@@ -51,9 +48,17 @@ const Info = ({}) => (
         justify-content: center;
       }
 
+      h4 {
+        margin: 0 0 1.5rem 0;
+      }
+
       .container {
         max-width: 20rem;
         margin: 2rem 2rem;
+        background-color: var(--black);
+        border-radius: 6px;
+        padding: 1.5rem;
+        color: var(--white);
       }
 
       .row {
@@ -63,30 +68,43 @@ const Info = ({}) => (
       a {
         text-decoration: none;
         font-weight: 700;
-        font-size: 1rem;
-        color: var(--blue);
+        font-size: 12px;
+        color: var(--white);
+        text-transform: uppercase;
+        transition: color 150ms;
       }
 
       .link {
         cursor: pointer;
         display: inline-flex;
         align-items: center;
+        padding: 0.4rem 0.8rem;
+        background-color: var(--blue);
+        border-radius: 3px;
+        transition: background-color 150ms;
       }
 
-      .arrow {
-        color: var(--blue);
-        margin-left: 0.4rem;
-        font-weight: 700;
+      .link:hover {
+        background-color: var(--white);
       }
 
-      .link:hover .arrow {
-        animation-name: shift;
-        animation-duration: 1.2s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-fill-mode: forwards;
-        animation-direction: alternate;
+      .link:hover a {
+        color: var(--black);
       }
+
+      // .arrow {
+      //   margin-left: 0.4rem;
+      //   font-weight: 700;
+      // }
+
+      // .link:hover .arrow {
+      //   animation-name: shift;
+      //   animation-duration: 1.2s;
+      //   animation-timing-function: ease-in-out;
+      //   animation-iteration-count: infinite;
+      //   animation-fill-mode: forwards;
+      //   animation-direction: alternate;
+      // }
     `}</style>
   </section>
 );
