@@ -49,7 +49,7 @@ const UseCases = ({}) => (
       }
 
       .row {
-        margin: 2rem 0 0 0;
+        margin: 3rem 0 0 0;
         display: flex;
         align-items: flex-end;
       }

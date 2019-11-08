@@ -1,5 +1,5 @@
 const Pricing = ({}) => (
-  <section className="pricing">
+  <section>
     <h2>Select your plan</h2>
 
     <div className="bg" />
@@ -49,11 +49,6 @@ const Pricing = ({}) => (
         align-items: center;
         position: relative;
         padding-bottom: 0;
-      }
-      h2 {
-        margin: 0 0 2rem 0;
-      }
-      .pricing {
       }
 
       .options {

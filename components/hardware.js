@@ -27,7 +27,7 @@ const Hardware = ({}) => (
       .row {
         display: flex;
         justify-content: center;
-        margin: 2rem 0 0 0;
+        margin: 3rem 0 0 0;
       }
 
       .container {
