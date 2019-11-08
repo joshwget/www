@@ -1,75 +1,108 @@
-const Tutorial = ({}) => (
-  <div className="tutorial">
-    <section>
-      <h2>How it works</h2>
+const descriptions = {
+  register: `REGISTER Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse.`,
+  deploy: `DEPLOY Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse.`,
+  monitor: `MONITOR Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse.`,
+  access: `ACCESS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat. Duis aute irure dolor in
+  reprehenderit in voluptate velit esse.`
+};
 
-      <div>
-        <button className="selected">Register</button>
-        <button>Deploy</button>
-        <button>Monitor</button>
-        <button>Access</button>
-      </div>
+const Tutorial = ({}) => {
+  const [selection, setSelection] = React.useState('register');
 
-      <div className="row">
-        <div className="video"></div>
+  return (
+    <div className="tutorial">
+      <section>
+        <h2>How it works</h2>
 
-        <div className="content">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse.
-          </p>
+        <div>
+          {Object.keys(descriptions).map(key => (
+            <button
+              key={key}
+              className={selection === key ? 'selected' : ''}
+              onClick={() => setSelection(key)}
+            >
+              {key}
+            </button>
+          ))}
         </div>
-      </div>
-    </section>
-    <style jsx>{`
-      section {
-        align-items: center;
-      }
 
-      .tutorial {
-        background: var(--black);
-        color: var(--white);
-      }
+        <div className="row">
+          <div className="video"></div>
 
-      .row {
-        display: flex;
-        align-items: center;
-        margin-top: 1rem;
-      }
+          <div className="content">
+            <p>{descriptions[selection]}</p>
+          </div>
+        </div>
+      </section>
+      <style jsx>{`
+        section {
+          align-items: center;
+        }
 
-      .video {
-        background: white;
-        border-radius: 6px;
-        width: 22.5rem;
-        height: 15rem;
-        margin-right: 4rem;
-      }
+        .tutorial {
+          background: var(--black);
+          color: var(--white);
+        }
 
-      .content {
-        max-width: 24rem;
-      }
+        .row {
+          display: flex;
+          align-items: center;
+          margin-top: 1rem;
+        }
 
-      button {
-        margin: 2rem;
-        appearance: none;
-        background: none;
-        border: none;
-        color: var(--white);
-        font-weight: 700;
-        font-size: 16px;
-        padding: 0.8rem;
-        border-radius: 6px;
-        cursor: pointer;
-      }
+        .video {
+          background: white;
+          border-radius: 6px;
+          width: 22.5rem;
+          height: 15rem;
+          margin-right: 4rem;
+        }
 
-      .selected {
-        background-color: var(--blue);
-      }
-    `}</style>
-  </div>
-);
+        .content {
+          max-width: 24rem;
+        }
+
+        button {
+          margin: 2rem;
+          appearance: none;
+          background: none;
+          border: none;
+          color: var(--white);
+          font-weight: 700;
+          font-size: 16px;
+          padding: 0.8rem;
+          border-radius: 6px;
+          cursor: pointer;
+          text-transform: capitalize;
+        }
+
+        button:active,
+        button:focus {
+          outline: none;
+        }
+
+        .selected {
+          cursor: default;
+          background-color: var(--blue);
+        }
+      `}</style>
+    </div>
+  );
+};
 
 export default Tutorial;

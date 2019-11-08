@@ -14,12 +14,13 @@ const Nav = () => (
   <nav>
     <div className="container">
       <div className="left">
-        <div className="logo">
-          <img src="/logo-white.svg" />
-          <Link href="/">
+        <Link href="/">
+          <div className="logo">
+            <img src="/logo-white.svg" />
+
             <a className="name">deviceplane</a>
-          </Link>
-        </div>
+          </div>
+        </Link>
         <ul>
           {links.map(({ key, href, label }) => (
             <li key={key} className="link">
@@ -80,7 +81,6 @@ const Nav = () => (
       .name {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-right: 2rem;
         font-family: 'Exo 2', var(--font-family);
       }
       .login {
@@ -110,6 +110,8 @@ const Nav = () => (
       .logo {
         display: flex;
         align-items: center;
+        cursor: pointer;
+        margin-right: 2rem;
       }
       img {
         width: 48px;
