@@ -71,9 +71,11 @@ const Nav = () => (
         margin: 0 0.5rem;
         transition: opacity 250ms;
         padding-bottom: 2px;
+        border-bottom: 2px solid var(--black);
+        transition: border-color 100ms;
       }
       .link:hover {
-        border-bottom: 1px solid var(--white);
+        border-color: var(--blue);
       }
       .name {
         font-size: 1.5rem;

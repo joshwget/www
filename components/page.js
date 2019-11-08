@@ -34,25 +34,22 @@ const Page = ({ children }) => (
         margin: 0 auto;
         max-width: var(--page-width);
         width: 100%;
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
       }
 
       h1 {
         font-size: 3rem;
         margin: 0;
-        font-family: 'Exo 2', var(--font-family);
       }
 
       h2 {
         font-size: 2rem;
         margin: 0;
-        font-family: 'Exo 2', var(--font-family);
       }
 
       h3 {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         margin: 0 0 1rem 0;
-        font-family: 'Exo 2', var(--font-family);
       }
 
       h4 {

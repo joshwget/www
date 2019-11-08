@@ -5,15 +5,15 @@ const Hero = ({}) => (
 
       <div className="content">
         <p>
-          Update, monitor, and access remote devices and servers with ease.
-          Let us handle the hard infrastructure problems around managing remote
+          Update, monitor, and access remote devices and servers with ease. Let
+          us handle the hard infrastructure problems around managing remote
           hardware so you focus on your business.
         </p>
       </div>
 
       <div className="buttons">
         <a href="#features" className="learn-more">
-          Learn more
+          Request a demo
         </a>
 
         <button>

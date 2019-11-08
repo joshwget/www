@@ -5,12 +5,23 @@ const Info = ({}) => (
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse.
+        veniam.
       </p>
       <div className="link">
         <a href="/documentation">View documentation</a>
+        <div className="arrow">→</div>
+      </div>
+    </div>
+
+    <div className="container">
+      <h3>Open source</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam.
+      </p>
+      <div className="link">
+        <a href="/docs/security">Join us</a>
         <div className="arrow">→</div>
       </div>
     </div>
@@ -20,14 +31,14 @@ const Info = ({}) => (
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse.
+        veniam.
       </p>
-      {/* <div className="link">
-        <a href="/blog/2">Further reading &nbsp;&nbsp;→</a>
-      </div> */}
+      <div className="link">
+        <a href="/docs/security">Learn more</a>
+        <div className="arrow">→</div>
+      </div>
     </div>
+
     <style jsx>{`
       @keyframes shift {
         50% {
@@ -41,8 +52,12 @@ const Info = ({}) => (
       }
 
       .container {
-        max-width: 24rem;
-        margin: 2rem 4rem;
+        max-width: 20rem;
+        margin: 2rem 2rem;
+      }
+
+      .row {
+        display: flex;
       }
 
       a {
@@ -53,13 +68,14 @@ const Info = ({}) => (
       }
 
       .link {
-        display: flex;
+        cursor: pointer;
+        display: inline-flex;
         align-items: center;
       }
 
       .arrow {
         color: var(--blue);
-        margin-left: 0.5rem;
+        margin-left: 0.4rem;
         font-weight: 700;
       }
 

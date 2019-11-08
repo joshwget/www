@@ -1,6 +1,6 @@
 const Pricing = ({}) => (
   <section className="pricing">
-    <h2>Ready to get started?</h2>
+    <h2>Select your plan</h2>
 
     <div className="bg" />
 
@@ -13,6 +13,19 @@ const Pricing = ({}) => (
             <li>10 Devices</li>
             <li>250MB Log limit</li>
             <li></li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border">
+        <div className="container">
+          <span className="label">Team</span>
+
+          <ul>
+            <li>Unlimited devices</li>
+            <li>Unlimited logging</li>
+            <li>Dedicated support</li>
+            <li>Custom solutions</li>
           </ul>
         </div>
       </div>
@@ -100,7 +113,7 @@ const Pricing = ({}) => (
         z-index: 3;
         height: 17.5rem;
         width: 14rem;
-        margin: 4rem 3.5rem;
+        margin: 4rem 2rem;
         background: var(--white);
         border-radius: 8px;
       }
