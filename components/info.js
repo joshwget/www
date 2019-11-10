@@ -20,7 +20,7 @@ const Info = ({}) => (
         veniam.
       </p>
       <div className="link">
-        <a href="/docs/security">Source code</a>
+        <a href="https://github.com/deviceplane/deviceplane">Source code</a>
       </div>
     </div>
 
