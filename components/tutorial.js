@@ -2,11 +2,10 @@ const descriptions = {
   register: `Register devices with a single command. Our agent is under 10MB,
   consumes minimal resources, and runs as a container. We support any device
   running Linux regardless of distribution, architecture, and hardware.`,
-  deploy: `DEPLOY Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse.`,
+  deploy: `Package your applications as containers and then let us deploy
+  and manage those containers to your devices. Start with manual
+  deployments through the web console or CLI and then progress to setting
+  up automated git-based deployment workflows.`,
   monitor: `MONITOR Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
   ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
