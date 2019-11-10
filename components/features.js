@@ -34,9 +34,9 @@ const Features = ({}) => (
       <div className="container">
         <h4>Logging</h4>
         <p>
-          Logs are most useful when not siloed to the originating device.
-          Deviceplane gathers logs from your devices, stores them, and
-          then optionally forwards them to your preferred logging tool.
+          Logs are most useful when not siloed to their originating device.
+          We gather logs from your devices, store them, and
+          then optionally forward them to your preferred logging tool.
         </p>
       </div>
 
@@ -51,9 +51,9 @@ const Features = ({}) => (
       <div className="container">
         <h4>Robust API</h4>
         <p>
-          All of the functionality in Deviceplane is exposed by an easy
-          to use API making it simple to programmatically interact with
-          your devices.
+          All of our functionality is exposed by an easy to use API
+          making it simple to programmatically interact with your
+          devices.
         </p>
       </div>
     </div>
