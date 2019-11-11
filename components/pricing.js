@@ -23,7 +23,7 @@ const Pricing = ({}) => (
 
           <ul>
             <li>$250 per month base</li>
-            <li>Base includes 50 devices</li>
+            <li>50 devices included</li>
             <li>5 seats included</li>
           </ul>
         </div>
