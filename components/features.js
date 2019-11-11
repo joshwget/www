@@ -4,7 +4,7 @@ const Features = ({}) => (
 
     <div className="row">
       <div className="container">
-        <h4>Advanced deployment functionality</h4>
+        <h4>Remote updates</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -49,7 +49,7 @@ const Features = ({}) => (
       </div>
 
       <div className="container">
-        <h4>Robust API</h4>
+        <h4>Developer API</h4>
         <p>
           All of our functionality is exposed by an easy to use API
           making it simple to programmatically interact with your
