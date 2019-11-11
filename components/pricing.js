@@ -10,9 +10,9 @@ const Pricing = ({}) => (
           <span className="label">Developer</span>
 
           <ul>
-            <li>10 Devices</li>
-            <li>250MB Log limit</li>
-            <li></li>
+            <li>Free</li>
+            <li>Up to 25 devices</li>
+            <li>Single user</li>
           </ul>
         </div>
       </div>
@@ -22,10 +22,9 @@ const Pricing = ({}) => (
           <span className="label">Team</span>
 
           <ul>
-            <li>Unlimited devices</li>
-            <li>Unlimited logging</li>
-            <li>Dedicated support</li>
-            <li>Custom solutions</li>
+            <li>$250 per month base</li>
+            <li>Base includes 50 devices</li>
+            <li>5 seats included</li>
           </ul>
         </div>
       </div>
@@ -35,8 +34,8 @@ const Pricing = ({}) => (
           <span className="label">Enterprise</span>
 
           <ul>
-            <li>Unlimited devices</li>
-            <li>Unlimited logging</li>
+            <li>Custom pricing</li>
+            <li>Unlimited seats</li>
             <li>Dedicated support</li>
             <li>Custom solutions</li>
           </ul>
