@@ -6,8 +6,9 @@ const Features = ({}) => (
       <div className="container">
         <h4>Remote updates</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Deploy reliably and with confidence. We make it easy to ship
+          new updates gradually, test out versions on a small subset of
+          devices, and rollback when things don't go as expected.
         </p>
       </div>
 
