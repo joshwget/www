@@ -21,8 +21,8 @@ const list = [
   },
   {
     href: '/docs/deploying/scheduling',
-    title: 'Quick start',
-    indent: true
+    title: 'Scheduling',
+    nested: true
   },
   {
     href: '/docs/managing',
@@ -35,7 +35,7 @@ const list = [
   {
     href: '/docs/iam/custom-roles',
     title: 'Custom roles',
-    indent: true
+    nested: true
   },
   {
     href: '/docs/device-api',
@@ -61,8 +61,8 @@ const Docs = ({ title, children }) => {
       <div className="container">
         <div className="sidebar">
           <ul>
-            {list.map(({ href, title, indent }) => (
-              <li className={indent ? 'indent' : ''}>
+            {list.map(({ href, title, nested }) => (
+              <li className={nested ? 'nested' : ''}>
                 <Link href={href}>
                   <a className={href === pathname ? 'selected' : ''}>{title}</a>
                 </Link>

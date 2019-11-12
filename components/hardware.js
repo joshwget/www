@@ -4,8 +4,8 @@ const Hardware = ({}) => (
 
     <div className="row">
       <div className="container">
-        <img src="/iot-gateway.svg" height={100} />
-        <span>IoT gateways</span>
+        <img src="/single-board-computer.svg" height={100} />
+        <span>Single-board computers</span>
       </div>
 
       <div className="container">
@@ -14,8 +14,8 @@ const Hardware = ({}) => (
       </div>
 
       <div className="container">
-        <img src="/single-board-computer.svg" height={100} />
-        <span>Single-board computers</span>
+        <img src="/iot-gateway.svg" height={100} />
+        <span>IoT gateways</span>
       </div>
     </div>
 

@@ -1,39 +1,47 @@
 const Info = ({}) => (
   <section>
     <div className="container">
-      <img src="/code.svg" width={36} height={36} />
-      <h4>Developer focused</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam.
-      </p>
+      <div>
+        <img src="/code.svg" width={32} height={32} />
+        <h4>Developer focused</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </p>
+      </div>
+
       <div className="link">
         <a href="/documentation">Explore the docs</a>
       </div>
     </div>
 
     <div className="container">
-      <img src="/github.svg" width={36} height={36} />
-      <h4>Open source</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam.
-      </p>
+      <div>
+        <img src="/github.svg" width={32} height={32} />
+        <h4>Open source</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </p>
+      </div>
+
       <div className="link">
-        <a href="https://github.com/deviceplane">View Source Code</a>
+        <a href="https://github.com/deviceplane/deviceplane">Source code</a>
       </div>
     </div>
 
     <div className="container">
-      <img src="/lock.svg" width={36} height={36} />
-      <h4>Security concious</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam.
-      </p>
+      <div>
+        <img src="/lock.svg" width={32} height={32} />
+        <h4>Security conscious</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam.
+        </p>
+      </div>
 
       <div className="link">
         <a href="/docs/security">Learn more</a>

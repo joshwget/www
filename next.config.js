@@ -3,12 +3,15 @@ const withMDX = require('@next/mdx')({
 });
 
 module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'md', 'mdx']
-  // exportPathMap: function() {
-  //   return {
-  //     '/': { page: '/' },
-  //     '/docs': { page: '/docs' },
-  //     '/docs/get-started': { page: '/docs/get-started' }
-  //   };
-  // }
+  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  exportPathMap: function() {
+    return {
+      '/': { page: '/' },
+      '/careers': { page: '/careers' },
+      '/legal': { page: '/legal' },
+      '/press': { page: '/press' },
+      '/docs': { page: '/docs/quick-start' },
+      '/docs/quick-start': { page: '/docs/quick-start' }
+    };
+  }
 });

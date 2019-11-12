@@ -1,35 +1,29 @@
 const content = [
   {
     title: 'register',
-    body: `REGISTER Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in
-    reprehenderit in voluptate velit esse.`
+    body: `Register devices with a single command. Our agent is under 10MB,
+    consumes minimal resources, and runs as a container. We support any device
+    running Linux regardless of distribution, architecture, and hardware.`
   },
   {
     title: 'deploy',
-    body: `DEPLOY Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in
-    reprehenderit in voluptate velit esse.`
+    body: `Package your applications as containers and then let us deploy
+    and manage those containers to your devices. Start with manual
+    deployments through the web console or CLI and then progress to setting
+    up automated git-based deployment workflows.`
   },
   {
     title: 'monitor',
-    body: `MONITOR Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in
-    reprehenderit in voluptate velit esse.`
+    body: `Instrument your applications to expose the metrics most critical for
+    your business. We then handle metric collection, enrichment, and
+    propagation to the metrics tooling of your choice. From there setup
+    dashboards, visualizations, and alerts to make sure your devices and
+    applications are operating as expected.`
   },
   {
     title: 'access',
-    body: `ACCESS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in
-    reprehenderit in voluptate velit esse.`
+    body: `Directly access your devices via SSH when required. Run one-off
+    or recurring scripts on one device or a group of devices.`
   }
 ];
 
@@ -68,6 +62,7 @@ const Tutorial = ({}) => {
         .tutorial {
           background: var(--black);
           color: var(--white);
+          min-height: 24rem;
         }
 
         .container {
