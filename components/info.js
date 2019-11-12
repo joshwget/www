@@ -25,7 +25,7 @@ const Info = ({}) => (
     </div>
 
     <div className="container">
-      <h4>Security concious</h4>
+      <h4>Security conscious</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
