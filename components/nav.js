@@ -25,9 +25,7 @@ const Nav = () => {
               </Link>
             </li>
             <li className="link">
-              <Link href="mailto:support@deviceplane.com">
-                <a>Support</a>
-              </Link>
+              <a href="mailto:support@deviceplane.com">Support</a>
             </li>
           </ul>
         </div>

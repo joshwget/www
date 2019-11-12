@@ -13,6 +13,13 @@ import Pricing from '../components/pricing';
 import Intercom from '../components/intercom';
 import Footer from '../components/footer';
 
+const Airtable = require('airtable');
+
+const AIRTABLE_API_KEY = 'keyvMb5jgtdYuRC51';
+const AIRTABLE_BASE = 'appaIkb10kjtFpWgx';
+
+const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(AIRTABLE_BASE);
+
 const Home = () => (
   <Page>
     <Head />
@@ -20,7 +27,7 @@ const Home = () => (
     <Nav />
 
     <main>
-      <Hero />
+      <Hero airtable={base} />
 
       <Hardware />
 

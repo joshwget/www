@@ -1,9 +1,9 @@
 import Logo from './logo';
 
 const links = [
-  { href: '/documentation', label: 'Documentation' },
+  { href: '/docs', label: 'Documentation' },
   //{ href: '/blog', label: 'Blog' },
-  { href: '/support', label: 'Support' },
+  { href: 'mailto:support@deviceplane.com', label: 'Support' },
   { href: '/careers', label: 'Careers' },
   //{ href: '/press', label: 'Press' },
   { href: '/legal', label: 'Legal & Privacy' }

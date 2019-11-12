@@ -107,8 +107,8 @@ const Docs = ({ title, children }) => {
           .content {
             display: flex;
             flex-direction: column;
-            background-color: var(--white);
-            //background-color: var(--black);
+            background-color: rgba(255, 255, 255, 0.9);
+            // background-color: var(--black);
             //color: var(--white);
             border-radius: 4px;
             padding: 2rem;

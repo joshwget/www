@@ -6,7 +6,7 @@ const plans = [
   },
   {
     name: 'Team',
-    features: ['50 devices', '5 seats'],
+    features: ['50 devices', '3 seats'],
     price: '$250/month base'
   },
   {
@@ -118,7 +118,8 @@ const Pricing = ({}) => (
       }
       .price {
         font-weight: 700;
-        padding: 1rem 0 0.5rem 0;
+        padding: 1rem 0.25rem 0.5rem 0.25rem;
+        text-align: center;
       }
       .bg {
         position: absolute;
