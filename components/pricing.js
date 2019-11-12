@@ -1,18 +1,17 @@
 const plans = [
   {
     name: 'Developer',
-    features: ['10 devices', 'Single user'],
+    features: ['Up to 25 devices', 'Single user'],
     price: 'Free'
   },
   {
     name: 'Team',
-    features: ['50 devices', '5 seats included'],
-    price: '$250/month'
+    features: ['50 devices included', '5 seats included'],
+    price: '$250/month base'
   },
   {
     name: 'Enterprise',
     features: [
-      'Unlimited devices',
       'Unlimited seats',
       'Dedicated support',
       'Tailored solutions'
