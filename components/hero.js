@@ -40,7 +40,7 @@ const Hero = ({}) => (
 
       section {
         position: relative;
-        padding: 6rem 1rem 10rem 1rem;
+        padding: 6rem 2rem 10rem 2rem;
         color: var(--white);
       }
 
@@ -114,7 +114,7 @@ const Hero = ({}) => (
         background: none;
         font-weight: 600;
         font-size: 1rem;
-        color: var(--secondary);
+        color: var(--white);
         cursor: pointer;
         transition: opacity 150ms;
         align-items: center;
@@ -142,6 +142,26 @@ const Hero = ({}) => (
         top: 0;
         left: 0;
         position: absolute;
+      }
+
+      @media screen and (max-width: 600px) {
+        section {
+          padding: 4rem 2rem 8rem 2rem;
+        }
+        .demo {
+          display: flex;
+          flex-direction: column;
+        }
+        .demo input {
+          box-sizing: border-box;
+          width: 100%;
+        }
+        .demo button {
+          align-self: stretch;
+          justify-content: center;
+          margin: 0.5rem 0 0 0;
+          padding: 0.8rem 1.25rem;
+        }
       }
     `}</style>
   </div>

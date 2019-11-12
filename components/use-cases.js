@@ -31,10 +31,11 @@ const UseCases = ({}) => (
 
     <style jsx>{`
       section {
+        padding: 0rem 1rem 3rem 1rem;
       }
 
       span {
-        //text-transform: uppercase;
+        text-transform: uppercase;
         font-weight: 700;
         font-size: 14px;
         margin-top: 0.5rem;

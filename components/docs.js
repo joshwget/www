@@ -100,31 +100,32 @@ const Docs = ({ title, children }) => {
             margin: 0 auto;
             max-width: var(--page-width);
             width: 100%;
-            padding: 1rem 1rem 4rem 1rem;
+            padding: 2rem;
             display: flex;
           }
 
           .content {
-            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
             background-color: var(--white);
+            //background-color: var(--black);
+            //color: var(--white);
             border-radius: 4px;
-            width: 139rem;
+            padding: 2rem;
+            max-width: 139rem;
           }
 
           .sidebar {
             color: var(--white);
-            width: 38rem;
+            min-width: 13.5rem;
           }
 
           ul {
-            padding: 0;
+            padding: 0.5rem 0 0 0rem;
             margin: 0;
             list-style-type: none;
             display: flex;
             flex-direction: column;
-          }
-
-          li {
           }
 
           li:not(:last-child) {
@@ -150,6 +151,15 @@ const Docs = ({ title, children }) => {
 
           .sidebar .nested {
             padding-left: 1rem;
+          }
+
+          :global(footer) {
+          }
+
+          @media screen and (max-width: 700px) {
+            .sidebar {
+              min-width: 11.5rem;
+            }
           }
         `}
       </style>

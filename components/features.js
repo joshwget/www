@@ -113,7 +113,7 @@ const Features = () => (
         display: none;
       }
 
-      @media screen and (max-width: 960px) {
+      @media screen and (max-width: 900px) {
         .desktop {
           display: none;
         }

@@ -6,7 +6,7 @@ const Nav = () => {
   const { pathname } = useRouter();
 
   return (
-    <nav id="nav">
+    <nav>
       <div className="container desktop">
         <div className="left">
           <Link href="/">
@@ -60,7 +60,7 @@ const Nav = () => {
         .container {
           width: 100%;
           max-width: var(--page-width);
-          padding: 2rem 1rem;
+          padding: 2rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -146,9 +146,9 @@ const Nav = () => {
           height: 64px;
         }
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 700px) {
           .logo {
-            margin-right: 1rem;
+            margin-right: 0.5rem;
           }
           .name {
             display: none;

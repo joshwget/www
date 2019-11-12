@@ -27,7 +27,8 @@ const Page = ({ children }) => (
           margin: 0;
           min-height: 100%;
           font-family: var(--font-family);
-          font-smoothing: antialiased;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
         }
 
         button {
@@ -37,6 +38,16 @@ const Page = ({ children }) => (
         input,
         input::placeholder {
           font-family: var(--font-family);
+        }
+      `}
+    </style>
+
+    <style jsx>
+      {`
+        .page {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
         }
       `}
     </style>

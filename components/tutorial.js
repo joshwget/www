@@ -1,19 +1,19 @@
 const content = [
   {
-    title: 'register',
+    title: 'Register',
     body: `Register devices with a single command. Our agent is under 10MB,
     consumes minimal resources, and runs as a container. We support any device
     running Linux regardless of distribution, architecture, and hardware.`
   },
   {
-    title: 'deploy',
+    title: 'Deploy',
     body: `Package your applications as containers and then let us deploy
     and manage those containers to your devices. Start with manual
     deployments through the web console or CLI and then progress to setting
     up automated git-based deployment workflows.`
   },
   {
-    title: 'monitor',
+    title: 'Monitor',
     body: `Instrument your applications to expose the metrics most critical for
     your business. We then handle metric collection, enrichment, and
     propagation to the metrics tooling of your choice. From there setup
@@ -21,7 +21,7 @@ const content = [
     applications are operating as expected.`
   },
   {
-    title: 'access',
+    title: 'Access',
     body: `Directly access your devices via SSH when required. Run one-off
     or recurring scripts on one device or a group of devices.`
   }
@@ -85,23 +85,22 @@ const Tutorial = ({}) => {
 
         .buttons {
           position: absolute;
-          display: flex;
-          flex-direction: column;
           left: -10rem;
+          display: block;
         }
 
         button {
+          display: block;
           padding: 0 0 0.25rem 0;
           appearance: none;
           background: none;
           border: none;
           color: var(--white);
           font-weight: 500;
-          font-size: 0.85rem;
+          font-size: 1rem;
           cursor: pointer;
-          text-transform: uppercase;
           border-bottom: 2px solid var(--black);
-          transition: opacity 150ms, color 150ms, border-color 150ms;
+          transition: color 150ms, border-color 150ms;
         }
 
         button:not(:last-child) {
@@ -109,7 +108,7 @@ const Tutorial = ({}) => {
         }
 
         button:hover:not(.selected) {
-          opacity: 0.8;
+          border-color: var(--secondary);
         }
 
         button:active,
@@ -117,29 +116,31 @@ const Tutorial = ({}) => {
           outline: none;
         }
 
-        .buttons {
-          display: flex;
-        }
-
-        .button-container {
-          display: flex;
-        }
-
         .selected {
           cursor: default;
           color: var(--secondary);
-          border-color: var(--secondary);
         }
 
-        @media screen and (max-width: 960px) {
-          .buttons {
+        @media screen and (max-width: 900px) {
+          .container {
             flex-direction: column;
+            align-items: center;
           }
-          .video {
-            margin: 0 0 2rem 0;
+          .buttons {
+            position: static;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+          button {
+            margin: 0 2rem 2rem 2rem !important;
+          }
+          .tutorial {
+            min-height: 29rem;
           }
           .content {
-            text-align: center;
+            padding: 2rem;
+            max-width: 22rem;
           }
         }
 

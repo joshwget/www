@@ -13,7 +13,7 @@ const Info = ({}) => (
 
       <div className="link">
         <a href="/documentation">
-          Explore the docs <div className="arrow">→</div>
+          View documentation <div className="arrow">→</div>
         </a>
       </div>
     </div>
@@ -91,10 +91,12 @@ const Info = ({}) => (
         color: var(--secondary);
         transition: color 150ms;
         display: inline-flex;
+        align-items: center;
       }
 
       .arrow {
         margin-left: 0.5rem;
+        font-size: 1.5rem;
       }
 
       .link {
@@ -114,15 +116,20 @@ const Info = ({}) => (
         }
       }
 
-      @media screen and (max-width: 760px) {
+      @media screen and (max-width: 900px) {
         section {
           align-items: center;
           justify-content: unset;
           flex-direction: column;
         }
 
-        .container:not(:last-child) {
-          margin-bottom: 3rem;
+        .container {
+          max-width: 28rem;
+          margin: 2rem 0;
+        }
+
+        .container:last-child {
+          margin-bottom: 0;
         }
       }
     `}</style>

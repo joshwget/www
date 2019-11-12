@@ -5,7 +5,7 @@ const links = [
   //{ href: '/blog', label: 'Blog' },
   { href: '/support', label: 'Support' },
   { href: '/careers', label: 'Careers' },
-  { href: '/press', label: 'Press' },
+  //{ href: '/press', label: 'Press' },
   { href: '/legal', label: 'Legal & Privacy' }
 ].map(link => {
   link.key = `footer-link-${link.href}-${link.label}`;
@@ -16,7 +16,7 @@ const Footer = () => (
   <footer>
     <div className="container">
       <div className="logo">
-        <a href="#nav">
+        <a href="/">
           <Logo width={36} height={36} />
         </a>
       </div>
@@ -34,27 +34,21 @@ const Footer = () => (
       </nav>
     </div>
 
-    {/* <div className="bottom">
-      <span className="copyright">deviceplane © 2019</span>
-    </div> */}
-
     <style jsx>{`
       footer {
         background: var(--black);
         color: var(--white);
-        display: flex;
-        flex-direction: column;
-        padding: 0 1rem 4rem 1rem;
-        position: relative;
+        margin-top: auto;
       }
 
       .container {
-        width: 100%;
-        margin: 0 auto;
         max-width: var(--page-width);
         display: flex;
+        align-self: stretch;
         flex-direction: column;
         align-items: center;
+        padding: 2rem 0 4rem 0;
+        margin: 0 auto;
       }
 
       ul {
@@ -70,16 +64,13 @@ const Footer = () => (
 
       .link {
         color: var(--white);
-        opacity: 0.7;
+        opacity: 0.8;
         text-decoration: none;
         transition: opacity 250ms;
       }
 
       .link:hover {
         opacity: 1;
-      }
-
-      .logo :global(svg) {
       }
 
       .bottom {
@@ -105,6 +96,21 @@ const Footer = () => (
       }
       .logo:hover :global(polygon) {
         fill: var(--secondary);
+      }
+
+      @media screen and (max-width: 600px) {
+        .container {
+          padding: 4rem 2rem;
+          align-items: flex-start;
+        }
+
+        ul {
+          flex-direction: column;
+        }
+
+        li {
+          margin: 0.5rem 0;
+        }
       }
     `}</style>
   </footer>

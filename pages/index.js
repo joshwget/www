@@ -46,7 +46,6 @@ const Home = () => (
           flex-direction: column;
           margin: 0 auto;
           max-width: var(--page-width);
-          width: 100%;
           padding: 3rem 1rem;
         }
 
@@ -69,7 +68,7 @@ const Home = () => (
         }
 
         h4 {
-          font-size: 1.2rem;
+          font-size: 1.4rem;
           margin: 0;
         }
       `}
