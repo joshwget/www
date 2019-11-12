@@ -5,9 +5,9 @@ const Info = ({}) => (
         <img src="/code.svg" width={32} height={32} />
         <h4>Developer focused</h4>
         <p>
-          Deploying to remote devices should be as easy as deploying to
-          the cloud. We're building modern and accessible tooling so
-          developers can spend less time learning and more time shipping.
+          Deploying to remote devices should be as easy as deploying to the
+          cloud. We're building modern and accessible tooling so developers can
+          spend less time learning and more time shipping.
         </p>
       </div>
 
@@ -76,6 +76,8 @@ const Info = ({}) => (
         border-radius: 6px;
         padding: 2rem;
         color: var(--white);
+        display: flex;
+        flex-direction: column;
         justify-content: space-between;
       }
 
