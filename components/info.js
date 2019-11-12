@@ -23,6 +23,7 @@ const Info = ({}) => (
         <img src="/github.svg" width={32} height={32} />
         <h4>Open source</h4>
         <p>
+          Developer infrastructure is inherently best when open source.
           Everything we build can be found on our GitHub and is distributed
           under a permissive open source license.
         </p>
