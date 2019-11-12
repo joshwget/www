@@ -7,20 +7,19 @@ const content = [
   },
   {
     title: 'SSH access',
-    body: `Access your device via SSH even when not on the same network.
-    Flexible policies allow you enable and and disable this feature
+    body: `Access your device via SSH even when it's not on the same network.
+    Flexible policies allow you to enable and disable this feature
     from the device for security reasons.`
   },
   {
     title: 'Monitoring',
     body: `Seamlessly collect host and application metrics from your
-    devices without the need for additional agents. Integrates
+    devices without the need for additional agents. Integrate
     with popular monitoring tools including Datadog and Prometheus.`
   },
   {
     title: 'Logging',
-    body: `Logs are most useful when not siloed to their originating device.
-    We gather logs from your devices, store them, and
+    body: `Gather logs from your devices, store them, and
     then optionally forward them to your preferred logging tool.`
   },
   {
