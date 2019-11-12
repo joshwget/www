@@ -11,11 +11,8 @@ const descriptions = {
   propagation to the metrics tooling of your choice. From there setup
   dashboards, visualizations, and alerts to make sure your devices and
   applications are operating as expected.`,
-  access: `ACCESS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse.`
+  access: `Directly access your devices via SSH when required. Run one-off or
+  recurring commands on one or more devices.`
 };
 
 const Tutorial = ({}) => {
