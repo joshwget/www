@@ -7,7 +7,7 @@ const Hero = ({}) => (
         <p>
           Update, monitor, and access remote devices and servers with ease. Let
           us handle the hard infrastructure problems around managing remote
-          hardware so you focus on your business.
+          hardware so you stay focused on your business.
         </p>
       </div>
 

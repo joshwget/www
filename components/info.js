@@ -23,6 +23,7 @@ const Info = ({}) => (
         <img src="/github.svg" width={32} height={32} />
         <h4>Open source</h4>
         <p>
+          Developer infrastructure is inherently best when open source.
           Everything we build can be found on our GitHub and is distributed
           under a permissive open source license.
         </p>
@@ -40,9 +41,10 @@ const Info = ({}) => (
         <img src="/lock.svg" width={32} height={32} />
         <h4>Security conscious</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
+          We follow the best security practices across all of our systems
+          to ensure your devices are secure. By using us you'll gain access
+          to a variety of security features and controls that you didn't
+          have before.
         </p>
       </div>
 
