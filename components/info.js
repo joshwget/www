@@ -5,9 +5,9 @@ const Info = ({}) => (
         <img src="/code.svg" width={32} height={32} />
         <h4>Developer focused</h4>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
+          Deploying to remote devices should be as easy as deploying to
+          the cloud. We're building modern and accessible tooling so
+          developers can spend less time learning and more time shipping.
         </p>
       </div>
 
