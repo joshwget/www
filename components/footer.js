@@ -99,6 +99,13 @@ const Footer = () => (
         margin-bottom: 2rem;
         cursor: pointer;
       }
+
+      .logo:hover :global(polyline) {
+        stroke: var(--secondary);
+      }
+      .logo:hover :global(polygon) {
+        fill: var(--secondary);
+      }
     `}</style>
   </footer>
 );

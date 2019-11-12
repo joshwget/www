@@ -71,7 +71,6 @@ const Info = ({}) => (
         border-radius: 6px;
         padding: 2rem;
         color: var(--white);
-        box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.3);
         justify-content: space-between;
       }
 
@@ -83,7 +82,7 @@ const Info = ({}) => (
         text-decoration: none;
         font-weight: 500;
         font-size: 0.8rem;
-        color: var(--white);
+        color: var(--black);
         text-transform: uppercase;
         transition: color 150ms;
       }
@@ -94,16 +93,12 @@ const Info = ({}) => (
         padding: 0.4rem 0.8rem;
         background-color: var(--primary);
         border-radius: 4px;
-        transition: background-color 150ms, color 150ms;
+        transition: opacity 150ms;
+        margin-top: 1rem;
       }
 
       .link:hover {
-        background-color: var(--secondary);
-        color: var(--black);
-      }
-
-      .link:hover a {
-        color: var(--black);
+        opacity: 0.9;
       }
 
       @media screen and (max-width: 1200px) {
@@ -123,20 +118,6 @@ const Info = ({}) => (
           margin-bottom: 3rem;
         }
       }
-
-      // .arrow {
-      //   margin-left: 0.4rem;
-      //   font-weight: 700;
-      // }
-
-      // .link:hover .arrow {
-      //   animation-name: shift;
-      //   animation-duration: 1.2s;
-      //   animation-timing-function: ease-in-out;
-      //   animation-iteration-count: infinite;
-      //   animation-fill-mode: forwards;
-      //   animation-direction: alternate;
-      // }
     `}</style>
   </section>
 );

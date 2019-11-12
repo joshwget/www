@@ -136,17 +136,16 @@ const Docs = ({ title, children }) => {
             text-decoration: none;
             color: var(--white);
             padding: 0 0 2px 0;
-            transition: border-color 150ms;
+            transition: border-color 150ms, color 150ms;
             border-bottom: 2px solid var(--black);
           }
 
-          .sidebar a:hover,
-          .sidebar a.selected {
+          .sidebar a:not(.selected):hover {
             border-color: var(--secondary);
           }
 
           .sidebar a.selected {
-            cursor: default;
+            color: var(--secondary);
           }
 
           .sidebar .nested {

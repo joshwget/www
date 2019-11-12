@@ -62,7 +62,7 @@ const Tutorial = ({}) => {
         .tutorial {
           background: var(--black);
           color: var(--white);
-          min-height: 24rem;
+          min-height: 26rem;
         }
 
         .container {
@@ -76,7 +76,7 @@ const Tutorial = ({}) => {
           max-width: 24rem;
           border: 2px solid var(--secondary);
           border-radius: 4px;
-          padding: 2rem;
+          padding: 3rem;
         }
 
         .content p {

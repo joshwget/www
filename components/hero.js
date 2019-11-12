@@ -84,7 +84,7 @@ const Hero = ({}) => (
       }
 
       .demo button {
-        color: var(--white);
+        color: var(--black);
         background: var(--primary);
         text-transform: uppercase;
         font-size: 0.85rem;
@@ -97,7 +97,7 @@ const Hero = ({}) => (
       }
 
       .demo button:hover {
-        opacity: 0.8;
+        opacity: 0.9;
         //transform: translateY(-4px);
         // animation-name: hover;
         // animation-duration: 600ms;
@@ -115,14 +115,14 @@ const Hero = ({}) => (
         background: none;
         font-weight: 600;
         font-size: 1rem;
-        color: var(--white);
+        color: var(--secondary);
         cursor: pointer;
-        transition: color 150ms;
+        transition: opacity 150ms;
         align-items: center;
       }
 
       button:hover {
-        color: var(--secondary);
+        opacity: 0.9;
       }
 
       button:hover .arrow {

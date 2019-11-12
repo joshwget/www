@@ -10,7 +10,7 @@ const Page = ({ children }) => (
 
           --black: #000;
           --white: #fff;
-          --primary: #543bff;
+          --primary: #3ae8b0; //#543bff;
           --secondary: #3ae8b0;
 
           --page-width: 1080px;
