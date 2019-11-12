@@ -6,11 +6,12 @@ const descriptions = {
   and manage those containers to your devices. Start with manual
   deployments through the web console or CLI and then progress to setting
   up automated git-based deployment workflows.`,
-  monitor: `MONITOR Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  aliquip ex ea commodo consequat. Duis aute irure dolor in
-  reprehenderit in voluptate velit esse.`,
+  monitor: `Analyze logs across all of your applications and devices.
+  Instrument your applications to expose the metrics most critical for
+  your business. We then handle metric collection, enrichment, and
+  propagation to the metrics tooling of your choice. From there setup
+  dashboards, visualizations, and alerts to make sure your devices and
+  applications are operating as expected.`,
   access: `ACCESS Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
   ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
