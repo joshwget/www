@@ -60,9 +60,7 @@ const Pricing = ({}) => (
       }
 
       .label {
-        font-size: 0.9rem;
-        font-weight: 700;
-        text-transform: uppercase;
+        font-weight: 500;
         text-align: center;
         display: flex;
         align-items: center;

@@ -104,8 +104,6 @@ const Nav = () => {
         .login {
           margin-right: 2rem;
           font-weight: 500;
-          text-transform: uppercase;
-          font-size: 0.85rem;
           transition: opacity 200ms;
         }
         .login:hover {
@@ -114,12 +112,10 @@ const Nav = () => {
         .signup {
           background-color: var(--secondary);
           border-radius: 4px;
-          padding: 0.75rem 1.25rem;
+          padding: 0.6rem 1.25rem;
           color: var(--black);
           font-weight: 500;
           transition: opacity 150ms;
-          text-transform: uppercase;
-          font-size: 0.85rem;
         }
 
         .signup:hover {

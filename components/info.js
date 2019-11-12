@@ -12,7 +12,9 @@ const Info = ({}) => (
       </div>
 
       <div className="link">
-        <a href="/documentation">Explore the docs</a>
+        <a href="/documentation">
+          Explore the docs <div className="arrow">→</div>
+        </a>
       </div>
     </div>
 
@@ -28,7 +30,9 @@ const Info = ({}) => (
       </div>
 
       <div className="link">
-        <a href="https://github.com/deviceplane/deviceplane">Source code</a>
+        <a href="https://github.com/deviceplane/deviceplane">
+          Source code <div className="arrow">→</div>
+        </a>
       </div>
     </div>
 
@@ -44,7 +48,9 @@ const Info = ({}) => (
       </div>
 
       <div className="link">
-        <a href="/docs/security">Learn more</a>
+        <a href="/docs/security">
+          Learn more <div className="arrow">→</div>
+        </a>
       </div>
     </div>
 
@@ -81,19 +87,19 @@ const Info = ({}) => (
       a {
         text-decoration: none;
         font-weight: 500;
-        font-size: 0.8rem;
-        color: var(--black);
-        text-transform: uppercase;
+        color: var(--secondary);
         transition: color 150ms;
+        display: inline-flex;
+      }
+
+      .arrow {
+        margin-left: 0.5rem;
       }
 
       .link {
         display: inline-flex;
         cursor: pointer;
-        padding: 0.4rem 0.8rem;
-        background-color: var(--primary);
         border-radius: 4px;
-        transition: opacity 150ms;
         margin-top: 1rem;
       }
 

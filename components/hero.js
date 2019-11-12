@@ -76,6 +76,7 @@ const Hero = ({}) => (
         outline: none;
         font-size: 1rem;
         color: var(--black);
+        width: 15rem;
       }
 
       .demo input::placeholder {
@@ -86,13 +87,11 @@ const Hero = ({}) => (
       .demo button {
         color: var(--black);
         background: var(--primary);
-        text-transform: uppercase;
-        font-size: 0.85rem;
         font-weight: 500;
         cursor: pointer;
         transition: opacity 150ms;
         margin-left: 0.5rem;
-        padding: 0.75rem 1.25rem;
+        padding: 0.6rem 1.25rem;
         border-radius: 4px;
       }
 
