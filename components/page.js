@@ -1,65 +1,45 @@
 const Page = ({ children }) => (
   <div className="page">
     {children}
-    <style global jsx>{`
-      :root {
-        --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-          'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-          'Helvetica Neue', sans-serif;
 
-        --black: #000;
-        --white: #fff;
-        --blue: #194cfa;
+    <style global jsx>
+      {`
+        :root {
+          --font-family: 'Rubik', -apple-system, 'Roboto', 'Helvetica Neue',
+            'Arial', sans-serif;
 
-        --page-width: 1080px;
-      }
+          --black: #000;
+          --white: #fff;
+          --primary: #543bff;
+          --secondary: #3ae8b0;
 
-      html {
-        height: 100%;
-        font-size: 16px;
-        scroll-behavior: smooth;
-      }
+          --page-width: 1080px;
+        }
 
-      body {
-        padding: 0;
-        margin: 0;
-        min-height: 100%;
-        font-family: var(--font-family);
-        font-smoothing: antialiased;
-      }
+        html {
+          height: 100%;
+          font-size: 16px;
+          scroll-behavior: smooth;
+        }
 
-      section {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        max-width: var(--page-width);
-        width: 100%;
-        padding: 3rem 1rem;
-      }
+        body {
+          padding: 0;
+          margin: 0;
+          min-height: 100%;
+          font-family: var(--font-family);
+          font-smoothing: antialiased;
+        }
 
-      h1 {
-        font-size: 3rem;
-        margin: 0;
-      }
+        button {
+          font-family: var(--font-family);
+        }
 
-      h2 {
-        font-size: 2.6rem;
-        margin: 0;
-      }
-
-      h3 {
-        font-size: 1.4rem;
-        margin: 0 0 1rem 0;
-      }
-
-      h4 {
-        font-size: 1.2rem;
-        margin: 0;
-      }
-
-      .page {
-      }
-    `}</style>
+        input,
+        input::placeholder {
+          font-family: var(--font-family);
+        }
+      `}
+    </style>
   </div>
 );
 

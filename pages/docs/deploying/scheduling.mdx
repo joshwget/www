@@ -1,0 +1,75 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Scheduling">
+
+# Scheduling
+
+By default, an application will run on all devices in a project. To run the application on only a subset of devices, a scheduling rule needs to be set on the application.
+
+Scheduling rules use boolean expressions to evaluate the labels on a device and whether or not to deploy onto that device.
+
+## Example:
+
+Imagine that you have a project that has 2 different device types. You have servers and Raspberry Pis in the same project, but you want to deploy different applications onto the server versus the Raspberry Pis.
+
+### Labeling your Devices
+
+After adding your devices into the project, you'll need to label each one to group the types of devices.
+
+#### Labeling your Server devices
+
+1. From the list of devices, select the device that is one of the servers.
+2. Select the device to get the details of the device.
+3. Add a device label, i.e. `type=server`.
+4. Repeat this for all devices that are servers.
+
+#### Labeling your Raspberry Pi devices
+
+1. From the list of devices, select the device that is one of the Raspberry Pis.
+2. Select the device to get the details of the device.
+3. Add a device label, i.e. `type=rpi`.
+4. Repeat this for all devices that are Raspberry Pis.
+
+### Deploying Applications
+
+Next, we'll add an application for each device type. When you add an application, you'll want to set up your scheduling rules before you deploy the first release of the application.
+
+### Creating your application for your servers
+
+1. Create a new application.
+2. Add a scheduling rule, i.e. `type == 'server'`. This scheduling rule will only deploy the application to any device that has the `device=server` label on it. Note: The single quotes are required for the value of the rule.
+3. Create the first release of the application.
+4. The release will only be deployed to any devices that have the `device=server`.
+
+### Creating your application for your servers
+
+1. Create a new application.
+2. Add a scheduling rule, i.e. `type == 'rpi'`. This scheduling rule will only deploy the application to any device that has the `device=rpi` label on it. Note: The single quotes are required for the value of the rule.
+3. Create the first release of the application.
+4. The release will only be deployed to any devices that have the `device=rpi`.
+
+### Deploying new releases
+
+Now that the devices are split by device type, you can add releases to your application, which will always be released only to the device with the matching labels.
+
+### Adding more devices
+
+As you add more devices into the project, the application will only be deployed onto devices that have the corresponding label. With these scheduling rules, you have control over which subset of devices the application will run on.
+
+## Boolean Expression Reference
+
+The earlier example showed a simple scenario where only one device label was considered. However, there are many other scenarios that can be managed through scheduling rules.
+
+By combining specific device labels and scheduling rules, you can have various applications that will deploy to a subset of devices. Refer to the table below on how to use different types of scheduling rules.
+
+**Note: The value in the scheduling rule must always be in single quotes for it to be evaluated correctly.**
+
+| Schedule Rule                                              | Description                                                                                           |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `key1 == 'value1'`                                         | Deploy on every device that has a matching label, `key1=value1`.                                      |
+| `key2 != 'value2'`                                         | Deploy on every device that does not have a matching label, `key2=value2`.                            |
+| `key1 == 'value1' && key2 == 'value2'`                     | Deploy on every device that has both labels, `key1=value1` **AND** `key2=value2`, on it.              |
+| <code>key1 == 'value1' &#124;&#124; key2 == 'value'</code> | Deploy on every device that has either label, `key1=value1` **OR** `key2=value2` on it.               |
+| `key1 == 'value1' && key2 != 'value2'`                     | Deploy on every device that has a label, `key1=value1`, AND does **not** have a label, `key2=value2`. |
+
+</Docs>

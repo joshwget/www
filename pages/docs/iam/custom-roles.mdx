@@ -1,0 +1,60 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Custom Roles">
+
+# Custom Roles
+
+There are three default roles packaged within each project. You can create your own custom roles for other use cases that require only specific levels of access to Device Plane. These custom roles can be used to determine the level of access of resources for either members or service accounts.
+
+For each resource type, you can provide access with the default actions (i.e. `admin`, `write`, or `read`). Those actions are an umbrella to individual actions for the resource.
+
+## Example Custom Roles
+
+### Access to only deploy releases
+
+```
+rules:
+- resources:
+  - 'release'
+  actions:
+  - CreateRelease
+```
+
+### Access to view and deploy applications
+
+```
+rules:
+- resources:
+  - 'application'
+  actions:
+  - read, write
+```
+
+## Resource and Action Reference
+
+Besides using the default roles, you may want to create your own custom roles, using the reference table, you would select what resources to provide access to and the action level. For the action, you can either use a parent action (`read`, `write`, `admin`) or an individual action.
+
+| Resource               | Parent Action | Individual Action                                                            |
+| ---------------------- | ------------- | ---------------------------------------------------------------------------- |
+| project                | read          | GetProject                                                                   |
+| project                | admin         | UpdateProject <br /> DeleteProject                                           |
+| registrationtoken      | write         | CreateDeviceRegistrationToken                                                |
+| device                 | read          | GetDevice <br /> ListDevices                                                 |
+| device                 | write         | UpdateDevice <br /> DeleteDevice <br /> SSH                                  |
+| devicelabel            | read          | GetDeviceLabel <br /> ListDeviceLabels                                       |
+| devicelabel            | write         | SetDeviceLabel <br /> DeleteDeviceLabel                                      |
+| application            | read          | GetApplication <br /> ListApplications                                       |
+| application            | write         | CreateApplication <br /> UpdateApplication <br /> DeleteApplication          |
+| release                | read          | GetRelease <br /> ListReleases                                               |
+| release                | write         | CreateRelease                                                                |
+| role                   | read          | GetRole <br /> ListRoles                                                     |
+| role                   | admin         | CreateRole <br /> UpdateRole <br /> DeleteRole                               |
+| membership             | read          | GetMembership <br /> ListMembershipsByProject                                |
+| membership             | admin         | CreateMembership <br /> DeleteMembership                                     |
+| membershiprolebindings | read          | GetMembershipRoleBindings <br /> ListMembershipRoleBindings                  |
+| membershiprolebindings | admin         | CreateMembershipRoleBinding <br /> DeleteMembershipRoleBinding               |
+| serviceaccount         | read          | GetServiceAccount <br /> ListServiceAccounts                                 |
+| serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
+| serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
+
+</Docs>

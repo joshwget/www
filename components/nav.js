@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 
 const links = [
-  { href: '/documentation', label: 'Documentation' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/docs', label: 'Documentation' },
+  //{ href: '/blog', label: 'Blog' },
   { href: '/support', label: 'Support' }
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`;
@@ -11,8 +11,8 @@ const links = [
 });
 
 const Nav = () => (
-  <nav>
-    <div className="container">
+  <nav id="nav">
+    <div className="container desktop">
       <div className="left">
         <Link href="/">
           <div className="logo">
@@ -31,11 +31,21 @@ const Nav = () => (
       </div>
       <div className="right">
         <a href="/login" className="login">
-          Login
+          Log in
         </a>
         <a href="/signup" className="signup">
           Sign up
         </a>
+      </div>
+    </div>
+
+    <div className="container mobile">
+      <div className="left">
+        <Link href="/">
+          <div className="logo">
+            <img src="/logo-white.svg" />
+          </div>
+        </Link>
       </div>
     </div>
 
@@ -68,40 +78,43 @@ const Nav = () => (
       }
       .link {
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 500;
         margin: 0 0.5rem;
         transition: opacity 250ms;
         padding-bottom: 2px;
         border-bottom: 2px solid var(--black);
-        transition: border-color 100ms;
+        transition: border-color 150ms;
       }
       .link:hover {
-        border-color: var(--blue);
+        border-color: var(--secondary);
       }
       .name {
         font-size: 1.5rem;
-        font-weight: 700;
-        font-family: 'Exo 2', var(--font-family);
+        font-weight: 300;
       }
       .login {
-        margin-right: 1.5rem;
-        font-weight: 600;
-        transition: color 250ms;
+        margin-right: 2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        transition: opacity 200ms;
       }
       .login:hover {
-        color: var(--blue);
+        opacity: 0.8;
       }
       .signup {
-        background-color: var(--white);
+        background-color: var(--secondary);
         border-radius: 4px;
-        padding: 0.7rem 1.4rem;
+        padding: 0.75rem 1.25rem;
         color: var(--black);
-        font-weight: 600;
-        transition: color 150ms;
+        font-weight: 500;
+        transition: opacity 150ms;
+        text-transform: uppercase;
+        font-size: 0.85rem;
       }
 
       .signup:hover {
-        color: var(--blue);
+        opacity: 0.8;
       }
       .left {
         display: flex;
@@ -116,6 +129,37 @@ const Nav = () => (
       img {
         width: 48px;
         height: 48px;
+      }
+
+      .mobile {
+        padding: 1rem;
+        display: none;
+      }
+
+      .mobile img {
+        width: 64px;
+        height: 64px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .logo {
+          margin-right: 1rem;
+        }
+        .name {
+          display: none;
+        }
+        .container {
+          padding: 1rem;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .mobile {
+          display: flex;
+        }
+        .desktop {
+          display: none;
+        }
       }
     `}</style>
   </nav>

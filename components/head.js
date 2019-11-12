@@ -5,9 +5,9 @@ const Head = ({ title }) => (
     <title>{title ? `${title} - deviceplane` : 'deviceplane'}</title>
     <link rel="icon" href="/favicon.ico" />
     <link
-      href={`https://fonts.googleapis.com/css?family=Exo+2&display=swap`}
+      href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap"
       rel="stylesheet"
-    ></link>
+    />
   </NextHead>
 );
 

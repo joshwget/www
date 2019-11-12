@@ -12,15 +12,19 @@ const Hero = ({}) => (
       </div>
 
       <div className="buttons">
-        <a href="#features" className="learn-more">
-          Request a demo
-        </a>
+        <form>
+          <div className="demo">
+            <input required type="email" placeholder="Email address" />
+            <button>Request a demo</button>
+          </div>
+        </form>
 
         <button>
           Chat with us now <div className="arrow">→</div>
         </button>
       </div>
     </section>
+
     <style jsx>{`
       @keyframes hover {
         100% {
@@ -34,14 +38,19 @@ const Hero = ({}) => (
         }
       }
 
-      .hero {
+      section {
+        position: relative;
+        padding: 6rem 1rem 10rem 1rem;
         color: var(--white);
-        background: var(--black);
-        padding: 3rem 0 0 0;
       }
 
       h1 {
         margin: 0 0 1rem 0;
+      }
+
+      .hero {
+        position: relative;
+        background: black;
       }
 
       .content {
@@ -49,26 +58,46 @@ const Hero = ({}) => (
       }
 
       .buttons {
-        display: flex;
-        align-items: center;
         margin-top: 1rem;
       }
 
-      .learn-more {
-        color: var(--white);
-        background: var(--blue);
-        text-decoration: none;
-        border-radius: 6px;
-        padding: 1rem 1.5rem;
-        margin-right: 2rem;
-        font-weight: 500;
-        //transition: transform 300ms;
-        transition: background-color 150ms, color 150ms;
+      .demo {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        //background-color: var(--primary);
+        border-radius: 4px;
       }
 
-      .learn-more:hover {
-        background-color: var(--white);
+      .demo input {
+        padding: 0.625rem;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        font-size: 1rem;
         color: var(--black);
+      }
+
+      .demo input::placeholder {
+        font-size: 1rem;
+        color: var(--black);
+      }
+
+      .demo button {
+        color: var(--white);
+        background: var(--primary);
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 150ms;
+        margin-left: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 4px;
+      }
+
+      .demo button:hover {
+        opacity: 0.8;
         //transform: translateY(-4px);
         // animation-name: hover;
         // animation-duration: 600ms;
@@ -77,6 +106,8 @@ const Hero = ({}) => (
       }
 
       button {
+        padding: 0;
+        margin: 0;
         display: flex;
         appearance: none;
         border: none;
@@ -86,11 +117,12 @@ const Hero = ({}) => (
         font-size: 1rem;
         color: var(--white);
         cursor: pointer;
-        transition: opacity 150ms;
+        transition: color 150ms;
+        align-items: center;
       }
 
       button:hover {
-        opacity: 1;
+        color: var(--secondary);
       }
 
       button:hover .arrow {
@@ -104,6 +136,13 @@ const Hero = ({}) => (
 
       .arrow {
         margin-left: 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      .bg {
+        top: 0;
+        left: 0;
+        position: absolute;
       }
     `}</style>
   </div>

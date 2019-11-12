@@ -10,6 +10,7 @@ import Tutorial from '../components/tutorial';
 import UseCases from '../components/use-cases';
 import Info from '../components/info';
 import Pricing from '../components/pricing';
+import Intercom from '../components/intercom';
 import Footer from '../components/footer';
 
 const Home = () => (
@@ -23,11 +24,11 @@ const Home = () => (
 
       <Hardware />
 
+      <UseCases />
+
       <Features />
 
       <Tutorial />
-
-      <UseCases />
 
       <Info />
 
@@ -35,6 +36,44 @@ const Home = () => (
     </main>
 
     <Footer />
+
+    <Intercom />
+
+    <style global jsx>
+      {`
+        section {
+          display: flex;
+          flex-direction: column;
+          margin: 0 auto;
+          max-width: var(--page-width);
+          width: 100%;
+          padding: 3rem 1rem;
+        }
+
+        h1 {
+          font-size: 3rem;
+          margin: 0;
+          font-weight: 500;
+        }
+
+        h2 {
+          font-size: 2.8rem;
+          margin: 0;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        h3 {
+          font-size: 1.4rem;
+          margin: 0 0 1rem 0;
+        }
+
+        h4 {
+          font-size: 1.2rem;
+          margin: 0;
+        }
+      `}
+    </style>
   </Page>
 );
 

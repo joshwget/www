@@ -1,0 +1,31 @@
+import Docs from '../../components/docs';
+
+<Docs title="IAM">
+
+# IAM
+
+The IAM (Identity and Access Management) section manages members, service accounts, and roles in a project.
+
+## Members
+
+The members section manages which users have access to this project. Users can be added to a project and then given one or more roles. These roles define the scope of what a user can do inside the project.
+
+## Service Accounts
+
+The service accounts section manages which service accounts are available within a project, which roles are tied to them, and their associated access keys. Service accounts are designed to be used for scripted or programmatic interaction with Device Plane. For example, a service account could be setup for the purpose of deploying to Device Plane from your CI system. Service accounts can use either the CLI or interact with the API directly.
+
+Once created a service account can be given one or more roles. These roles define the scope of what a user can do inside the project.
+
+Service accounts can have one or more access keys. The value of the access key is shown only once when it's first created. Access keys can be deleted if they compromised or no longer being used.
+
+## Roles
+
+The roles section manages the roles available within a project. A role contains a specification that defines the set of actions that can be taken for specific resources.
+
+When projects are created three default roles are created.
+
+- `read-all` - Access to get and list all resources but no access to actions that change or delete resources.
+- `write-all` - Access to get and list all resources and access to actions that change or delete most resources. Does not grant access to manage members, service accounts, or roles.
+- `admin-all` - Access to get, list, and delete all resources.
+
+</Docs>

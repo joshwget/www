@@ -1,6 +1,7 @@
 const Info = ({}) => (
-  <section className="info">
+  <section>
     <div className="container">
+      <img src="/code.svg" width={36} height={36} />
       <h4>Developer focused</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -8,11 +9,12 @@ const Info = ({}) => (
         veniam.
       </p>
       <div className="link">
-        <a href="/documentation">Documentation</a>
+        <a href="/documentation">Explore the docs</a>
       </div>
     </div>
 
     <div className="container">
+      <img src="/github.svg" width={36} height={36} />
       <h4>Open source</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -20,17 +22,19 @@ const Info = ({}) => (
         veniam.
       </p>
       <div className="link">
-        <a href="/docs/security">Source code</a>
+        <a href="https://github.com/deviceplane">View Source Code</a>
       </div>
     </div>
 
     <div className="container">
+      <img src="/lock.svg" width={36} height={36} />
       <h4>Security concious</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam.
       </p>
+
       <div className="link">
         <a href="/docs/security">Learn more</a>
       </div>
@@ -49,16 +53,18 @@ const Info = ({}) => (
       }
 
       h4 {
-        margin: 0 0 1.5rem 0;
+        margin: 1rem 0;
       }
 
       .container {
         max-width: 20rem;
-        margin: 2rem 2rem;
+        margin: 0 2rem;
         background-color: var(--black);
         border-radius: 6px;
-        padding: 1.5rem;
+        padding: 2rem;
         color: var(--white);
+        box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.3);
+        justify-content: space-between;
       }
 
       .row {
@@ -67,29 +73,47 @@ const Info = ({}) => (
 
       a {
         text-decoration: none;
-        font-weight: 700;
-        font-size: 12px;
+        font-weight: 500;
+        font-size: 0.8rem;
         color: var(--white);
         text-transform: uppercase;
         transition: color 150ms;
       }
 
       .link {
-        cursor: pointer;
         display: inline-flex;
-        align-items: center;
+        cursor: pointer;
         padding: 0.4rem 0.8rem;
-        background-color: var(--blue);
-        border-radius: 3px;
-        transition: background-color 150ms;
+        background-color: var(--primary);
+        border-radius: 4px;
+        transition: background-color 150ms, color 150ms;
       }
 
       .link:hover {
-        background-color: var(--white);
+        background-color: var(--secondary);
+        color: var(--black);
       }
 
       .link:hover a {
         color: var(--black);
+      }
+
+      @media screen and (max-width: 1200px) {
+        .container {
+          margin: 0 1rem;
+        }
+      }
+
+      @media screen and (max-width: 760px) {
+        section {
+          align-items: center;
+          justify-content: unset;
+          flex-direction: column;
+        }
+
+        .container:not(:last-child) {
+          margin-bottom: 3rem;
+        }
       }
 
       // .arrow {

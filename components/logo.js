@@ -1,4 +1,4 @@
-const Logo = ({ width = 48, height = 48, hover }) => (
+const Logo = ({ width = 48, height = 48 }) => (
   <svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"

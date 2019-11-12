@@ -1,6 +1,6 @@
 const UseCases = ({}) => (
   <section>
-    <h2>The best choice for any industry</h2>
+    <h2>in any industry</h2>
 
     <div className="row">
       <div className="container">
@@ -14,7 +14,7 @@ const UseCases = ({}) => (
       </div>
 
       <div className="container">
-        <img src="/robotics.svg" height={120} />
+        <img src="/robotics.svg" height={140} />
         <span>Robotics</span>
       </div>
 
@@ -31,11 +31,10 @@ const UseCases = ({}) => (
 
     <style jsx>{`
       section {
-        align-items: center;
       }
 
       span {
-        text-transform: uppercase;
+        //text-transform: uppercase;
         font-weight: 700;
         font-size: 14px;
         margin-top: 0.5rem;
@@ -45,13 +44,14 @@ const UseCases = ({}) => (
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 3rem;
+        margin: 0 5rem;
       }
 
       .row {
         margin: 3rem 0 0 0;
         display: flex;
         align-items: flex-end;
+        overflow: hidden;
       }
     `}</style>
   </section>

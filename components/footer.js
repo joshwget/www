@@ -2,7 +2,7 @@ import Logo from './logo';
 
 const links = [
   { href: '/documentation', label: 'Documentation' },
-  { href: '/blog', label: 'Blog' },
+  //{ href: '/blog', label: 'Blog' },
   { href: '/support', label: 'Support' },
   { href: '/careers', label: 'Careers' },
   { href: '/press', label: 'Press' },
@@ -16,7 +16,9 @@ const Footer = () => (
   <footer>
     <div className="container">
       <div className="logo">
-        <Logo width={64} height={64} hover />
+        <a href="#nav">
+          <Logo width={36} height={36} />
+        </a>
       </div>
 
       <nav>
@@ -32,9 +34,9 @@ const Footer = () => (
       </nav>
     </div>
 
-    <div className="bottom">
+    {/* <div className="bottom">
       <span className="copyright">deviceplane © 2019</span>
-    </div>
+    </div> */}
 
     <style jsx>{`
       footer {
@@ -42,7 +44,7 @@ const Footer = () => (
         color: var(--white);
         display: flex;
         flex-direction: column;
-        padding: 0 1rem 2rem 1rem;
+        padding: 0 1rem 4rem 1rem;
         position: relative;
       }
 
@@ -66,33 +68,35 @@ const Footer = () => (
         margin: 0 1rem;
       }
 
-      a {
+      .link {
         color: var(--white);
         opacity: 0.7;
         text-decoration: none;
         transition: opacity 250ms;
       }
 
-      a:hover {
+      .link:hover {
         opacity: 1;
       }
 
+      .logo :global(svg) {
+      }
+
       .bottom {
-        margin: 0 auto;
-        width: 100%;
         padding: 1rem;
-        max-width: var(--page-width);
+        display: flex;
+        justify-content: center;
       }
 
       .copyright {
         color: var(--white);
-        opacity: 0.4;
+        opacity: 0.3;
         margin-top: 3rem;
         font-size: 10px;
       }
 
       .logo {
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
         cursor: pointer;
       }
     `}</style>

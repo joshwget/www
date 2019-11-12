@@ -1,0 +1,49 @@
+import Docs from '../../components/docs';
+
+<Docs title="Quick Start">
+
+# Quick Start
+
+This quick start guide will teach you how to provision a device and then deploy to it. Specifically this guide will cover the following.
+
+1. Creating a project
+2. Provisioning a device
+3. Creating an application
+4. Creating an initial release
+
+The only prerequisite is having access to a device ready to be managed by Device Plane and running a recent version of Docker.
+
+## Creating a project
+
+A project is our way of organizing your devices. Within each project, you can specify which users are allowed access to the project who can deploy applications.
+
+From the homepage of the Device Plane app click on "Create Project". Enter a project name and then click on submit.
+
+## Provisioning a device
+
+Now that we have an empty project, our next step is to add a device. From the "Devices" page click on "Add Device". A unique Docker command will be generated. Running this command on your device will download our agent image and then start the agent as a new container.
+
+Once the agent is successfully running you should see your device on the "Devices" page.
+
+## Creating an application
+
+An application is a set of services (container specifications) that are created and updated together. Go to the "Applications" tab and click on "Create Application". Enter "quickstart" as the application name and then click on submit.
+
+Once your application is created you'll be brought to its overview page. Both the scheduling rule and current config sections will be empty. Not having a scheduling rule set means that the services in this application will be deployed to all devices in your project. We'll create an initial config in the next step.
+
+## Creating an initial release
+
+Changes to applications are tracked in releases. This allows you to see the history of your application and revert to older versions. Our application currently does not currently have a release, so let's create one.
+
+Clicking on "Create New Release" will bring you to a YAML editor which expects an application config to entered. For the purpose of this quickstart you can use the following config which contains a single service running an nginx server. Click on submit after entering this config.
+
+```yaml
+quickstart:
+  image: nginx
+  ports:
+    - 80:80
+```
+
+You'll be brought back to the application overview page. At the bottom you'll now see a release with a device count of 0. Once the nginx image is pulled on your device and the container started you'll see the device count raise to 1. After this you should be able to run `curl localhost` on your device and see the standard nginx output.
+
+</Docs>
