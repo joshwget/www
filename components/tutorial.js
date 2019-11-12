@@ -11,8 +11,8 @@ const descriptions = {
   propagation to the metrics tooling of your choice. From there setup
   dashboards, visualizations, and alerts to make sure your devices and
   applications are operating as expected.`,
-  access: `Directly access your devices via SSH when required. Run one-off or
-  recurring commands on one or more devices.`
+  access: `Directly access your devices via SSH when required. Run one-off
+  or recurring scripts on one device or a group of devices.`
 };
 
 const Tutorial = ({}) => {
