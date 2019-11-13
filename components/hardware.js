@@ -42,6 +42,26 @@ const Hardware = ({}) => (
         font-weight: 900;
         font-size: 0.85rem;
         margin-top: 0.5rem;
+        text-align: center;
+      }
+
+      @media screen and (max-width: 700px) {
+        .container {
+          margin: 0 2rem;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .row {
+          flex-direction: column;
+          justify-content: unset;
+        }
+        .container {
+          margin: 0;
+        }
+        .container:not(:last-child) {
+          margin-bottom: 3rem;
+        }
       }
     `}</style>
   </section>

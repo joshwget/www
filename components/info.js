@@ -1,4 +1,6 @@
-const Info = ({}) => (
+import Link from 'next/link';
+
+const Info = () => (
   <section>
     <div className="container">
       <div>
@@ -12,9 +14,11 @@ const Info = ({}) => (
       </div>
 
       <div className="link">
-        <a href="/documentation">
-          View documentation <div className="arrow">→</div>
-        </a>
+        <Link href="/docs">
+          <a>
+            View documentation <div className="arrow">→</div>
+          </a>
+        </Link>
       </div>
     </div>
 
@@ -30,9 +34,11 @@ const Info = ({}) => (
       </div>
 
       <div className="link">
-        <a href="https://github.com/deviceplane/deviceplane">
-          Source code <div className="arrow">→</div>
-        </a>
+        <Link href="https://github.com/deviceplane/deviceplane">
+          <a>
+            Source code <div className="arrow">→</div>
+          </a>
+        </Link>
       </div>
     </div>
 
@@ -41,18 +47,17 @@ const Info = ({}) => (
         <img src="/lock.svg" width={32} height={32} />
         <h4>Security conscious</h4>
         <p>
-          We follow the best security practices across all of our systems
-          to ensure your devices are secure. By using us you'll gain access
-          to a variety of security features and controls that you didn't
-          have before.
+          We follow the best security practices across all of our systems to
+          ensure your devices are secure. By using us you'll gain access to a
+          variety of security features and controls that you didn't have before.
         </p>
       </div>
 
-      <div className="link">
+      {/* <div className="link">
         <a href="/docs/security">
           Learn more <div className="arrow">→</div>
         </a>
-      </div>
+      </div> */}
     </div>
 
     <style jsx>{`

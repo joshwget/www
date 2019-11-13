@@ -37,15 +37,28 @@ const Tutorial = ({}) => {
 
         <div className="container">
           <div className="buttons">
-            {content.map(({ title }, i) => (
-              <button
-                key={title}
-                className={selection === i ? 'selected' : ''}
-                onClick={() => setSelection(i)}
-              >
-                {title}
-              </button>
-            ))}
+            <div className="row">
+              {content.slice(0, 2).map(({ title }, i) => (
+                <button
+                  key={title}
+                  className={selection === i ? 'selected' : ''}
+                  onClick={() => setSelection(i)}
+                >
+                  {title}
+                </button>
+              ))}
+            </div>
+            <div className="row">
+              {content.slice(2, 4).map(({ title }, i) => (
+                <button
+                  key={title}
+                  className={selection === i + 2 ? 'selected' : ''}
+                  onClick={() => setSelection(i + 2)}
+                >
+                  {title}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="content">
@@ -73,6 +86,7 @@ const Tutorial = ({}) => {
         }
 
         .content {
+          display: flex;
           max-width: 24rem;
           border: 2px solid var(--secondary);
           border-radius: 4px;
@@ -103,7 +117,7 @@ const Tutorial = ({}) => {
           transition: color 150ms, border-color 150ms;
         }
 
-        button:not(:last-child) {
+        button {
           margin-bottom: 1rem;
         }
 
@@ -125,6 +139,7 @@ const Tutorial = ({}) => {
           .container {
             flex-direction: column;
             align-items: center;
+            justify-content: unset;
           }
           .buttons {
             position: static;
@@ -142,12 +157,28 @@ const Tutorial = ({}) => {
             padding: 2rem;
             max-width: 22rem;
           }
+          .row {
+            display: flex;
+            flex-direction: row;
+          }
+        }
+
+        @media screen and (max-width: 600px) {
+          .container {
+            padding: 0 1rem;
+          }
+          .row {
+            flex-direction: column;
+          }
+          button {
+            margin: 0 1rem 1rem 1rem !important;
+          }
+          .content {
+            max-width: unset;
+          }
         }
 
         @media screen and (max-width: 480px) {
-          h2 {
-            margin-bottom: 2rem;
-          }
           button {
             margin: 1.5rem 2rem;
           }

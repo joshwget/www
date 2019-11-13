@@ -27,13 +27,13 @@
 <circle cx="51.1506" cy="157.899" r="2.22393" fill="white"/>
 <circle cx="43.3669" cy="157.899" r="2.22393" fill="white"/>
 <circle cx="35.5831" cy="157.899" r="2.22393" fill="white"/>
-<rect x="26.6874" y="115.645" width="2.22393" height="8.89571" fill="#543BFF"/>
-<rect x="31.1353" y="115.645" width="2.22393" height="8.89571" fill="#543BFF"/>
-<rect x="35.5831" y="115.645" width="2.22393" height="8.89571" fill="#543BFF"/>
-<rect x="42.2549" y="117.868" width="1.11196" height="4.44786" transform="rotate(-90 42.2549 117.868)" fill="#543BFF"/>
-<rect x="48.9266" y="117.868" width="1.11196" height="2.22393" transform="rotate(-90 48.9266 117.868)" fill="#543BFF"/>
-<rect x="42.2549" y="121.204" width="2.22393" height="8.89571" transform="rotate(-90 42.2549 121.204)" fill="#543BFF"/>
-<rect x="42.2549" y="124.54" width="1.11196" height="2.22393" transform="rotate(-90 42.2549 124.54)" fill="#543BFF"/>
-<rect x="45.5908" y="124.54" width="1.11196" height="2.22393" transform="rotate(-90 45.5908 124.54)" fill="#543BFF"/>
-<rect x="48.9266" y="124.54" width="1.11196" height="2.22393" transform="rotate(-90 48.9266 124.54)" fill="#543BFF"/>
+<rect x="26.6874" y="115.645" width="2.22393" height="8.89571" fill="#3ae8b0"/>
+<rect x="31.1353" y="115.645" width="2.22393" height="8.89571" fill="#3ae8b0"/>
+<rect x="35.5831" y="115.645" width="2.22393" height="8.89571" fill="#3ae8b0"/>
+<rect x="42.2549" y="117.868" width="1.11196" height="4.44786" transform="rotate(-90 42.2549 117.868)" fill="#3ae8b0"/>
+<rect x="48.9266" y="117.868" width="1.11196" height="2.22393" transform="rotate(-90 48.9266 117.868)" fill="#3ae8b0"/>
+<rect x="42.2549" y="121.204" width="2.22393" height="8.89571" transform="rotate(-90 42.2549 121.204)" fill="#3ae8b0"/>
+<rect x="42.2549" y="124.54" width="1.11196" height="2.22393" transform="rotate(-90 42.2549 124.54)" fill="#3ae8b0"/>
+<rect x="45.5908" y="124.54" width="1.11196" height="2.22393" transform="rotate(-90 45.5908 124.54)" fill="#3ae8b0"/>
+<rect x="48.9266" y="124.54" width="1.11196" height="2.22393" transform="rotate(-90 48.9266 124.54)" fill="#3ae8b0"/>
 </svg>

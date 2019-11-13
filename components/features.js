@@ -129,6 +129,7 @@ const Features = () => (
           flex-direction: column;
         }
         .container {
+          max-width: unset;
           margin: 1rem;
         }
         .tablet {
