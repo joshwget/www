@@ -66,6 +66,8 @@ const Hero = ({ airtable }) => {
         </div>
       </section>
 
+      <div className="bg-left" />
+      <div className="bg-right" />
       <style jsx>{`
         @keyframes hover {
           100% {
@@ -81,8 +83,8 @@ const Hero = ({ airtable }) => {
 
         section {
           position: relative;
-          padding: 6rem 2rem 10rem 2rem;
           color: var(--white);
+          height: 24rem;
         }
 
         h1 {
@@ -92,6 +94,9 @@ const Hero = ({ airtable }) => {
         .hero {
           position: relative;
           background: black;
+        }
+
+        .bg-triangle {
         }
 
         .content {
@@ -151,7 +156,7 @@ const Hero = ({ airtable }) => {
           border: none;
           outline: none;
           background: none;
-          font-weight: 600;
+          font-weight: 500;
           font-size: 1rem;
           color: var(--secondary);
           cursor: pointer;

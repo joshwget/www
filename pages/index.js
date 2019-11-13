@@ -56,7 +56,7 @@ const Home = () => (
           flex-direction: column;
           margin: 0 auto;
           max-width: var(--page-width);
-          padding: 3rem 1rem;
+          padding: 3rem 2rem;
         }
 
         h1 {

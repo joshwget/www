@@ -77,10 +77,10 @@ const Pricing = ({}) => (
         flex-direction: column;
         height: 16rem;
         width: 11rem;
-        transition: transform 500ms, border-color 100ms;
+        transition: transform 400ms, border-color 100ms;
       }
       .container:hover {
-        transform: translateY(-1.6rem);
+        transform: translateY(-1.4rem);
         border-color: var(--secondary) !important;
       }
       .container:hover .label {
