@@ -78,7 +78,6 @@ const Pricing = ({}) => (
         height: 16rem;
         width: 11rem;
         transition: transform 500ms, border-color 100ms;
-        cursor: pointer;
       }
       .container:hover {
         transform: translateY(-1.6rem);
