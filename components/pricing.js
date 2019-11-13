@@ -12,7 +12,8 @@ const plans = [
   {
     name: 'Enterprise',
     features: ['Unlimited seats', 'Dedicated support', 'Custom solutions'],
-    price: 'Custom pricing'
+    price: 'Custom pricing',
+    icon: '/enterprise.svg'
   }
 ];
 
@@ -24,10 +25,13 @@ const Pricing = ({}) => (
       <h2>Flexible pricing</h2>
 
       <div className="plans">
-        {plans.map(({ name, features, price }) => (
+        {plans.map(({ name, features, price, icon = '/enterprise.svg' }) => (
           <div className="border" key={name}>
             <div className="container">
-              <div className="label">{name}</div>
+              <div className="label">
+                {/* <img src={icon} /> */}
+                <span>{name}</span>
+              </div>
 
               <div className="content">
                 <ul>
@@ -58,15 +62,19 @@ const Pricing = ({}) => (
         font-weight: 500;
         text-align: center;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        height: 2.5rem;
+        padding: 0.25rem 0;
         color: var(--white);
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         background-color: var(--black);
         transition: background-color 50ms, color 50ms, border-color 50ms;
         border-bottom: 8px solid var(--black);
+      }
+      .label img {
+        margin-bottom: 0.25rem;
+        width: 1.5rem;
       }
       .container {
         background: var(--white);
@@ -80,7 +88,7 @@ const Pricing = ({}) => (
         transition: transform 400ms, border-color 100ms;
       }
       .container:hover {
-        transform: translateY(-1.4rem);
+        transform: translateY(-1.2rem);
         border-color: var(--secondary) !important;
       }
       .container:hover .label {
@@ -134,7 +142,6 @@ const Pricing = ({}) => (
         width: 100vw;
         bottom: 0;
       }
-
       ul {
         padding: 0;
         display: flex;
@@ -189,34 +196,28 @@ const Pricing = ({}) => (
         h2 {
           margin: 0 0 3rem 0;
         }
-
         .plans {
           flex-direction: column;
         }
-
         .border {
           height: auto;
           margin: 1rem 0;
           width: 12.5rem;
           border-radius: 0;
         }
-
         .container {
           height: auto;
           width: 10rem;
           transform: unset !important;
         }
-
         .border:last-child {
           height: 16rem;
           border-bottom-right-radius: 4px;
           border-bottom-left-radius: 4px;
         }
-
         .border:last-child .container {
           height: 14rem;
         }
-
         .bg {
           height: 25rem;
           background: linear-gradient(

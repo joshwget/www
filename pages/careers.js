@@ -50,7 +50,6 @@ const Careers = () => (
             <div className="posting">
               <div className="header">
                 <div className="title">{title}</div>
-
                 <a
                   rel="noopener noreferrer"
                   target="_blank"
@@ -78,7 +77,7 @@ const Careers = () => (
         }
 
         h1 {
-          margin: 0;
+          margin: 0 0 3rem 0;
           font-size: 3rem;
         }
       `}
@@ -93,8 +92,11 @@ const Careers = () => (
         }
 
         .posting {
-          margin: 4rem 0;
           max-width: 36rem;
+        }
+
+        .posting:not(:last-child) {
+          margin-bottom: 4rem;
         }
 
         .header {

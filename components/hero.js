@@ -203,7 +203,7 @@ const Hero = ({ airtable }) => {
 
         @media screen and (max-width: 600px) {
           section {
-            padding: 4rem 2rem 8rem 2rem;
+            padding: 4rem 2rem 10rem 2rem;
           }
           .demo-container {
             height: 6rem;

@@ -71,7 +71,7 @@ const Legal = ({ children }) => {
             margin-top: 1rem;
           }
           .content :global(ol) {
-            padding: 1rem;
+            padding: 1rem 0 1rem 1.5rem;
           }
           .content :global(h2) {
             font-size: 2rem;

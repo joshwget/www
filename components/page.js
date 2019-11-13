@@ -25,7 +25,7 @@ const Page = ({ children }) => (
         body {
           padding: 0;
           margin: 0;
-          min-height: 100%;
+          height: 100%;
           overflow-x: hidden;
           font-family: var(--font-family);
           -webkit-font-smoothing: antialiased;
@@ -40,6 +40,10 @@ const Page = ({ children }) => (
         input::placeholder {
           font-family: var(--font-family);
         }
+
+        #__next {
+          height: 100%;
+        }
       `}
     </style>
 
@@ -48,7 +52,7 @@ const Page = ({ children }) => (
         .page {
           display: flex;
           flex-direction: column;
-          height: 100vh;
+          min-height: 100%;
         }
       `}
     </style>

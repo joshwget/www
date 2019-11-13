@@ -59,32 +59,36 @@ const Docs = ({ title, children }) => {
       <Nav />
 
       <div className="container">
-        <div className="sidebar">
-          <ul>
-            <li>
-              <Link href="/docs/quick-start">
-                <a
-                  className={
-                    pathname === '/docs/quick-start' || pathname === '/docs'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  Quick start
-                </a>
-              </Link>
-            </li>
-            {list.slice(1, list.length).map(({ href, title, nested }) => (
-              <li key={href} className={nested ? 'nested' : ''}>
-                <Link href={href}>
-                  <a className={href === pathname ? 'selected' : ''}>{title}</a>
+        <div className="content">
+          <div className="sidebar">
+            <ul>
+              <li>
+                <Link href="/docs/quick-start">
+                  <a
+                    className={
+                      pathname === '/docs/quick-start' || pathname === '/docs'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    Quick start
+                  </a>
                 </Link>
               </li>
-            ))}
-          </ul>
-        </div>
+              {list.slice(1, list.length).map(({ href, title, nested }) => (
+                <li key={href} className={nested ? 'nested' : ''}>
+                  <Link href={href}>
+                    <a className={href === pathname ? 'selected' : ''}>
+                      {title}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="content">{children}</div>
+          <div className="children">{children}</div>
+        </div>
       </div>
 
       <Footer />
@@ -108,20 +112,25 @@ const Docs = ({ title, children }) => {
             text-align: unset;
           }
           .container :global(ol) {
-            padding: 1rem;
+            padding: 1rem 0 1rem 1.5rem;
+            margin: 0;
           }
           .container :global(li:not(:last-child)) {
             margin-bottom: 0.5rem;
           }
 
           .container {
+            flex: 1;
+          }
+
+          .content {
             display: flex;
             padding: 2rem;
             max-width: var(--page-width);
             margin: 0 auto;
           }
 
-          .content {
+          .children {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 4px;
             padding: 1.5rem 2rem;
@@ -182,7 +191,7 @@ const Docs = ({ title, children }) => {
             .mobile {
               display: flex;
             }
-            .content {
+            .children {
               padding: 0;
             }
             :global(html) {

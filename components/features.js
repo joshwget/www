@@ -58,8 +58,8 @@ const Container = ({ title, body, icon }) => (
         }
 
         .icon {
-          width: 2.75rem;
-          height: 2.75rem;
+          width: 2.25rem;
+          height: 2.25rem;
           border-radius: 4px;
           margin-bottom: 1rem;
           background: black;
@@ -69,8 +69,8 @@ const Container = ({ title, body, icon }) => (
         }
 
         img {
-          width: 1.25rem;
-          height: 1.25rem;
+          width: 1rem;
+          height: 1rem;
         }
 
         @media screen and (max-width: 480px) {
