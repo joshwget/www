@@ -134,7 +134,7 @@ const Docs = ({ title, children }) => {
           }
 
           ul {
-            padding: 0.5rem 0 0 0rem;
+            padding: 0;
             margin: 0;
             list-style-type: none;
             display: flex;
@@ -188,8 +188,6 @@ const Docs = ({ title, children }) => {
             :global(html) {
               background-color: white;
             }
-          }
-          @media screen and (max-width: 480px) {
           }
         `}
       </style>

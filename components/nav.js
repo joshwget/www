@@ -347,9 +347,6 @@ const Nav = () => {
             padding: 1rem 2rem;
           }
         }
-
-        @media screen and (max-width: 480px) {
-        }
       `}</style>
     </nav>
   );
