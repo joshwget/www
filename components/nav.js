@@ -77,6 +77,7 @@ const Overlay = ({ show, pathname }) => (
           animation: slideDown 150ms;
           animation-fill-mode: forwards;
           transform: translateY(-100%);
+          z-index: 1;
         }
 
         .container {
@@ -176,6 +177,8 @@ const Nav = () => {
         </div>
       </div>
 
+      <Overlay show={overlay} pathname={pathname} />
+
       <div className="mobile">
         <div className="container">
           <div className="left">
@@ -194,8 +197,6 @@ const Nav = () => {
             </button>
           </div>
         </div>
-
-        <Overlay show={overlay} pathname={pathname} />
       </div>
 
       <style jsx>{`
@@ -289,10 +290,11 @@ const Nav = () => {
         }
 
         .mobile {
+          position: relative;
           display: none;
-          width: 100%;
+          flex: 1;
           background-color: var(--black);
-          z-index: 1;
+          z-index: 2;
         }
 
         .mobile button {
