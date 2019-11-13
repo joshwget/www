@@ -295,6 +295,7 @@ const Nav = () => {
           flex: 1;
           background-color: var(--black);
           z-index: 2;
+          height: 5rem;
         }
 
         .mobile button {
