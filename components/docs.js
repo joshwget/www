@@ -81,43 +81,43 @@ const Docs = ({ title, children }) => {
           html {
             background-color: var(--black);
           }
-
-          h1 {
-            margin: 0;
-            font-size: 3rem;
-          }
-
-          h2 {
-            margin: 3rem 0 0 0;
-            text-align: unset;
-          }
         `}
       </style>
 
       <style jsx>
         {`
+          .container :global(h1) {
+            margin: 0;
+            font-size: 3rem;
+          }
+          .container :global(h2) {
+            margin: 3rem 0 0 0;
+            text-align: unset;
+          }
+          .container :global(ol) {
+            padding: 1rem;
+          }
+          .container :global(li:not(:last-child)) {
+            margin-bottom: 0.5rem;
+          }
+
           .container {
-            margin: 0 auto;
-            max-width: var(--page-width);
-            width: 100%;
-            padding: 2rem;
             display: flex;
+            padding: 2rem;
+            max-width: var(--page-width);
+            margin: 0 auto;
           }
 
           .content {
-            display: flex;
-            flex-direction: column;
             background-color: rgba(255, 255, 255, 0.9);
-            // background-color: var(--black);
-            //color: var(--white);
             border-radius: 4px;
-            padding: 2rem;
-            max-width: 139rem;
+            padding: 1.5rem 2rem;
+            overflow: hidden;
           }
 
           .sidebar {
             color: var(--white);
-            min-width: 13.5rem;
+            min-width: 10rem;
           }
 
           ul {
@@ -153,13 +153,30 @@ const Docs = ({ title, children }) => {
             padding-left: 1rem;
           }
 
-          :global(footer) {
+          :global(code) {
+            white-space: pre-wrap !important;
           }
 
           @media screen and (max-width: 700px) {
             .sidebar {
               min-width: 11.5rem;
             }
+          }
+          @media screen and (max-width: 600px) {
+            .sidebar {
+              display: none;
+            }
+            .mobile {
+              display: flex;
+            }
+            .content {
+              padding: 0;
+            }
+            :global(html) {
+              background-color: white;
+            }
+          }
+          @media screen and (max-width: 480px) {
           }
         `}
       </style>

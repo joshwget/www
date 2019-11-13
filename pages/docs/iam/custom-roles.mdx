@@ -34,6 +34,8 @@ rules:
 
 Besides using the default roles, you may want to create your own custom roles, using the reference table, you would select what resources to provide access to and the action level. For the action, you can either use a parent action (`read`, `write`, `admin`) or an individual action.
 
+<div className="table-container">
+
 | Resource               | Parent Action | Individual Action                                                            |
 | ---------------------- | ------------- | ---------------------------------------------------------------------------- |
 | project                | read          | GetProject                                                                   |
@@ -56,5 +58,22 @@ Besides using the default roles, you may want to create your own custom roles, u
 | serviceaccount         | read          | GetServiceAccount <br /> ListServiceAccounts                                 |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
+
+</div>
+
+<style jsx>
+  {`
+    .table-container {
+      position: relative;
+      overflow: scroll;
+      height: 58rem;
+      margin-top: 1rem;
+    }
+    .table-container table {
+      position: absolute;
+      white-space: nowrap;
+    }
+  `}
+</style>
 
 </Docs>

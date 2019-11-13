@@ -24,11 +24,15 @@ The most common use case of using the CLI is to deploy a new release for your ap
 
 If a single application is constantly being updated, Device Plane recommends setting up environment variables so the project and application do not have to be passed in as same options in the command.
 
+<div className="table-container">
+
 | Environment Variable       | Value                              | Description                                                  |
 | -------------------------- | ---------------------------------- | ------------------------------------------------------------ |
 | `$DEVICEPLANE_ACCESS_KEY`  | User or Service Account Access Key | Access Key to access the project/application                 |
 | `$DEVICEPLANE_PROJECT`     | Project ID or Name                 | Define which project your application is in                  |
 | `$DEVICEPLANE_APPLICATION` | Application ID or Name             | Define which application you want to deploy a new release to |
+
+</div>
 
 ```
 # Set environment variables for access key, project and application
@@ -93,5 +97,20 @@ DEVICEPLANE_APPLICATION=<APPLICATION_ID_OR_NAME>
 
 $ deviceplane edit
 ```
+
+<style jsx>
+  {`
+    .table-container {
+      position: relative;
+      overflow: scroll;
+      height: 7rem;
+      margin: 1rem 0;
+    }
+    .table-container table {
+      position: absolute;
+      white-space: nowrap;
+    }
+  `}
+</style>
 
 </Docs>

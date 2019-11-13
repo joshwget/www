@@ -1,10 +1,12 @@
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
 
     setEmail('');
+    setSubmitted(true);
 
     airtable('Emails').create(
       [
@@ -38,18 +40,25 @@ const Hero = ({ airtable }) => {
         </div>
 
         <div className="buttons">
-          <form onSubmit={handleSubmit}>
-            <div className="demo">
-              <input
-                required
-                type="email"
-                placeholder="Email address"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-              <button>Request a demo</button>
+          <div className="demo-container">
+            <div className="success">
+              <span>
+                Thanks for your interest, we'll reach out as soon as we can.
+              </span>
             </div>
-          </form>
+            <form onSubmit={handleSubmit}>
+              <div className="demo">
+                <input
+                  required
+                  type="email"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                />
+                <button>Request a demo</button>
+              </div>
+            </form>
+          </div>
 
           <button>
             Chat with us now <div className="arrow">→</div>
@@ -93,11 +102,14 @@ const Hero = ({ airtable }) => {
           margin-top: 1rem;
         }
 
-        .demo {
-          display: inline-flex;
-          align-items: center;
+        .demo-container {
+          height: 3rem;
           margin-bottom: 2rem;
-          //background-color: var(--primary);
+        }
+
+        .demo {
+          display: ${submitted ? 'none' : 'inline-flex'};
+          align-items: center;
           border-radius: 4px;
         }
 
@@ -174,6 +186,19 @@ const Hero = ({ airtable }) => {
           top: 0;
           left: 0;
           position: absolute;
+        }
+
+        .success {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2rem;
+          padding: 0 1.5rem;
+          height: 3rem;
+          border: 2px solid var(--secondary);
+          border-radius: 4px;
+          color: var(--secondary);
+          font-weight: 500;
+          display: ${submitted ? 'inline-flex' : 'none'};
         }
 
         @media screen and (max-width: 600px) {

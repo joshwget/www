@@ -26,6 +26,7 @@ const Page = ({ children }) => (
           padding: 0;
           margin: 0;
           min-height: 100%;
+          overflow-x: hidden;
           font-family: var(--font-family);
           -webkit-font-smoothing: antialiased;
           text-rendering: optimizeLegibility;

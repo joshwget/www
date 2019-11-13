@@ -59,7 +59,7 @@ const Footer = () => (
 
       li {
         display: flex;
-        margin: 0 1rem;
+        margin: 0 0.5rem;
       }
 
       .link {
@@ -67,6 +67,7 @@ const Footer = () => (
         opacity: 0.8;
         text-decoration: none;
         transition: opacity 250ms;
+        font-size: 0.85rem;
       }
 
       .link:hover {
