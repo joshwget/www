@@ -153,7 +153,7 @@ const Hero = ({ airtable }) => {
           background: none;
           font-weight: 600;
           font-size: 1rem;
-          color: var(--white);
+          color: var(--secondary);
           cursor: pointer;
           transition: opacity 150ms;
           align-items: center;
