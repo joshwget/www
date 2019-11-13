@@ -10,6 +10,7 @@ import Tutorial from '../components/tutorial';
 import UseCases from '../components/use-cases';
 import Info from '../components/info';
 import Pricing from '../components/pricing';
+import CTA from '../components/cta';
 import Intercom from '../components/intercom';
 import Footer from '../components/footer';
 
@@ -40,6 +41,8 @@ const Home = () => (
       <Info />
 
       <Pricing />
+
+      <CTA />
     </main>
 
     <Footer />

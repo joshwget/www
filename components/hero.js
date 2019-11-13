@@ -60,7 +60,7 @@ const Hero = ({ airtable }) => {
             </form>
           </div>
 
-          <button>
+          <button onClick={() => window.Intercom('show')}>
             Chat with us now <div className="arrow">→</div>
           </button>
         </div>

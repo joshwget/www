@@ -62,7 +62,7 @@ const Docs = ({ title, children }) => {
         <div className="sidebar">
           <ul>
             {list.map(({ href, title, nested }) => (
-              <li className={nested ? 'nested' : ''}>
+              <li key={href} className={nested ? 'nested' : ''}>
                 <Link href={href}>
                   <a className={href === pathname ? 'selected' : ''}>{title}</a>
                 </Link>

@@ -34,11 +34,9 @@ const Info = () => (
       </div>
 
       <div className="link">
-        <Link href="https://github.com/deviceplane/deviceplane">
-          <a>
-            Source code <div className="arrow">→</div>
-          </a>
-        </Link>
+        <a href="https://github.com/deviceplane/deviceplane">
+          Source code <div className="arrow">→</div>
+        </a>
       </div>
     </div>
 
@@ -63,7 +61,7 @@ const Info = () => (
     <style jsx>{`
       @keyframes shift {
         50% {
-          transform: translateX(4px);
+          transform: translateX(6px);
         }
       }
 
@@ -115,6 +113,15 @@ const Info = () => (
 
       .link:hover {
         opacity: 0.9;
+      }
+
+      .link:hover .arrow {
+        animation-name: shift;
+        animation-duration: 1.2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
       }
 
       @media screen and (max-width: 1200px) {

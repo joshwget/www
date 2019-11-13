@@ -21,14 +21,13 @@ const Pricing = ({}) => (
     <div className="bg" />
 
     <section>
-      <h2>Select your plan</h2>
+      <h2>Flexible pricing</h2>
 
       <div className="plans">
         {plans.map(({ name, features, price }) => (
           <div className="border" key={name}>
             <div className="container">
               <div className="label">{name}</div>
-              <span className="price">{price}</span>
 
               <div className="content">
                 <ul>
@@ -37,6 +36,8 @@ const Pricing = ({}) => (
                   ))}
                 </ul>
               </div>
+
+              <span className="price">{price}</span>
             </div>
           </div>
         ))}
@@ -48,7 +49,7 @@ const Pricing = ({}) => (
         align-items: center;
       }
       h2 {
-        margin: 0 0 2rem 0;
+        margin: 0 0 1rem 0;
       }
       .plans {
         display: flex;
@@ -62,6 +63,7 @@ const Pricing = ({}) => (
         width: 100%;
         height: 2.5rem;
         color: var(--white);
+        font-size: 1.25rem;
         background-color: var(--black);
         transition: background-color 50ms, color 50ms, border-color 50ms;
         border-bottom: 8px solid var(--black);
@@ -73,7 +75,6 @@ const Pricing = ({}) => (
         border-radius: 6px;
         display: flex;
         flex-direction: column;
-        align-items: center;
         height: 16rem;
         width: 11rem;
         transition: transform 500ms, border-color 100ms;
@@ -102,7 +103,6 @@ const Pricing = ({}) => (
         display: flex;
         flex-direction: column;
         flex: 1;
-        align-items: center;
         justify-content: space-between;
       }
       .border {
@@ -120,6 +120,7 @@ const Pricing = ({}) => (
         font-weight: 700;
         padding: 1rem 0.25rem 0.5rem 0.25rem;
         text-align: center;
+        margin: 0 auto;
       }
       .bg {
         position: absolute;
@@ -139,12 +140,14 @@ const Pricing = ({}) => (
         padding: 0;
         display: flex;
         flex-direction: column;
+        padding: 0 1rem;
         align-items: center;
       }
       li {
         display: flex;
         font-weight: 500;
         font-size: 14px;
+        text-align: center;
       }
       li:not(:last-child) {
         margin-bottom: 1rem;

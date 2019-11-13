@@ -1,33 +1,40 @@
+import Link from 'next/link';
+
 import Logo from './logo';
 
 const links = [
   { href: '/docs', label: 'Documentation' },
   //{ href: '/blog', label: 'Blog' },
-  { href: 'mailto:support@deviceplane.com', label: 'Support' },
+  { mailto: 'support@deviceplane.com', label: 'Support' },
   { href: '/careers', label: 'Careers' },
   //{ href: '/press', label: 'Press' },
   { href: '/legal', label: 'Legal & Privacy' }
-].map(link => {
-  link.key = `footer-link-${link.href}-${link.label}`;
-  return link;
-});
+];
 
 const Footer = () => (
   <footer>
     <div className="container">
       <div className="logo">
-        <a href="/">
-          <Logo width={36} height={36} />
-        </a>
+        <Link href="/">
+          <a>
+            <Logo width={36} height={36} />
+          </a>
+        </Link>
       </div>
 
       <nav>
         <ul>
-          {links.map(({ key, href, label }) => (
-            <li key={key}>
-              <a className="link" href={href}>
-                {label}
-              </a>
+          {links.map(({ href, label, mailto }) => (
+            <li key={label}>
+              {mailto ? (
+                <a href={`mailto:${mailto}`} className="link">
+                  {label}
+                </a>
+              ) : (
+                <Link href={href}>
+                  <a className="link">{label}</a>
+                </Link>
+              )}
             </li>
           ))}
         </ul>

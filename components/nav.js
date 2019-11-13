@@ -6,13 +6,16 @@ const Overlay = ({ show, pathname }) => (
   <div className="overlay">
     <div className="container">
       <div className="row">
-        <Link href="https://cloud.deviceplane.com/login">
-          <a className="mobile-login">Log in</a>
-        </Link>
+        <a className="mobile-login" href="https://cloud.deviceplane.com/login">
+          Log in
+        </a>
 
-        <Link href="https://cloud.deviceplane.com/register">
-          <a className="mobile-signup">Sign up</a>
-        </Link>
+        <a
+          className="mobile-signup"
+          href="https://cloud.deviceplane.com/register"
+        >
+          Sign up
+        </a>
       </div>
 
       <ul>
@@ -164,12 +167,12 @@ const Nav = () => {
           </ul>
         </div>
         <div className="right">
-          <Link href="https://cloud.deviceplane.com/login">
-            <a className="login">Log in</a>
-          </Link>
-          <Link href="https://cloud.deviceplane.com/register">
-            <a className="signup">Sign up</a>
-          </Link>
+          <a href="https://cloud.deviceplane.com/login" className="login">
+            Log in
+          </a>
+          <a href="https://cloud.deviceplane.com/register" className="signup">
+            Sign up
+          </a>
         </div>
       </div>
 
