@@ -31,7 +31,7 @@ const Home = () => (
 
       <Hardware />
 
-      <UseCases />
+      {/* <UseCases /> */}
 
       <Features />
 

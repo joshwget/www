@@ -79,8 +79,8 @@ const Careers = () => (
       {`
         .container {
           max-width: var(--page-width);
-          width: 100%;
           margin: 0 auto;
+          padding: 0 2rem;
         }
 
         .posting {

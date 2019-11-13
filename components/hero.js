@@ -141,11 +141,6 @@ const Hero = ({ airtable }) => {
 
         .demo button:hover {
           opacity: 0.9;
-          //transform: translateY(-4px);
-          // animation-name: hover;
-          // animation-duration: 600ms;
-          // animation-timing-function: ease-in-out;
-          // animation-fill-mode: forwards;
         }
 
         button {
@@ -205,9 +200,15 @@ const Hero = ({ airtable }) => {
           section {
             padding: 4rem 2rem 8rem 2rem;
           }
+          .demo-container {
+            height: 6rem;
+          }
           .demo {
-            display: flex;
+            display: ${submitted ? 'none' : 'flex'};
             flex-direction: column;
+          }
+          .success {
+            height: 5rem;
           }
           .demo input {
             box-sizing: border-box;
