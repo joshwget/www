@@ -7,48 +7,30 @@ import Footer from '../components/footer';
 
 const postings = [
   {
-    title: 'Software Engineer',
+    title: 'Developer Advocate',
     location: 'San Francisco, CA',
     body: (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-    )
-  },
-  {
-    title: 'Software Engineer',
-    location: 'San Francisco, CA',
-    body: (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
-    )
-  },
-  {
-    title: 'Software Engineer',
-    location: 'San Francisco, CA',
-    body: (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </p>
+      <>
+        <p>
+          Our goal is to make Deviceplane the de facto way to manage all remote
+          hardware and devices. The path to get there requires deep engagement
+          with a massive community of developers — both to maximize adoption of
+          Deviceplane, and to make sure we're building the product that fits
+          their requirements and sparks joy.
+        </p>
+        <p>
+          As a developer advocate, you’ll spread adoption of Deviceplane by both
+          by developing content (sample apps, video tutorials, documentation,
+          etc.) as well as building communities (establishing meetups, attending
+          developer conferences to give talks, etc.). Ideally, you have
+          experience giving talks at conferences, have previously written blog
+          posts, and deeply understand developer communities.
+        </p>
+        <p>
+          If you’re passionate about connecting with developers, telling
+          stories, and sharing your learnings with the world, please reach out!
+        </p>
+      </>
     )
   }
 ];
