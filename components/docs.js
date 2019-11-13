@@ -61,7 +61,20 @@ const Docs = ({ title, children }) => {
       <div className="container">
         <div className="sidebar">
           <ul>
-            {list.map(({ href, title, nested }) => (
+            <li>
+              <Link href="/docs/quick-start">
+                <a
+                  className={
+                    pathname === '/docs/quick-start' || pathname === '/docs'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  Quick start
+                </a>
+              </Link>
+            </li>
+            {list.slice(1, list.length).map(({ href, title, nested }) => (
               <li key={href} className={nested ? 'nested' : ''}>
                 <Link href={href}>
                   <a className={href === pathname ? 'selected' : ''}>{title}</a>

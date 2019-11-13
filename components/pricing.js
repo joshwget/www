@@ -187,6 +187,10 @@ const Pricing = ({}) => (
         }
       }
       @media screen and (max-width: 600px) {
+        h2 {
+          margin: 0 0 3rem 0;
+        }
+
         .plans {
           flex-direction: column;
         }

@@ -4,8 +4,9 @@ const Head = ({ title }) => (
   <NextHead>
     <title>{title ? `${title} | Deviceplane` : 'Deviceplane'}</title>
 
+    <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
+    <meta http-equiv="Content-Language" content="en" />
     <meta
       name="description"
       content="Update, monitor, and access remote devices and servers with ease. Let us handle the hard infrastructure problems around managing remote hardware so you stay focused on your business."
