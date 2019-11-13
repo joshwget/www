@@ -90,7 +90,7 @@ const Features = () => (
     <style jsx>{`
       section {
         align-items: center;
-        padding: 1rem;
+        padding: 3rem 1rem 1rem 1rem;
       }
 
       h2 {
