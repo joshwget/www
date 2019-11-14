@@ -38,8 +38,8 @@ const list = [
     nested: true
   },
   {
-    href: '/docs/device-api',
-    title: 'Device API'
+    href: '/docs/device-variables',
+    title: 'Device Variables'
   },
   {
     href: '/docs/cli',
