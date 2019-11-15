@@ -219,6 +219,9 @@ const Docs = ({ title, children }) => {
               display: flex;
             }
             .children {
+              background: var(--white);
+            }
+            .children {
               padding: 0;
             }
             :global(html) {
