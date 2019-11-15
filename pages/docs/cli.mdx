@@ -35,7 +35,7 @@ If a single application is constantly being updated, Deviceplane recommends sett
 
 </Table>
 
-```shell
+```
 # Set environment variables for access key, project and application
 
 $ printenv
@@ -50,7 +50,7 @@ $ deviceplane deploy <CONFIG_YML>
 
 If you don't want to set environment variables, the project and application can always be passed as the options for each command. Whenever these options are passed in a command, it overrides any environment variables so that the option passed in is used.
 
-```shell
+```
 # Set only the access key as an environment variable
 
 $ printenv
@@ -92,7 +92,7 @@ An easy way to update an existing release is to edit it using the CLI. Similar t
 
 When running `deviceplane edit`, the CLI pulls up the current config of the application into an editor. After the config is saved and exited, it is **automatically deployed** into the application.
 
-```shell
+```
 # Environment variables are set for access key, project and application
 
 $ printenv
