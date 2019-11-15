@@ -11,13 +11,13 @@ An application is comprised of multiple Docker containers, i.e. services. For ea
 
 The current config is the latest release of an application. The config is a list of services that will be deployed onto any device that is added to the project as long as it matches the scheduling rules.
 
-The format of how to list out services is similar to how Docker Compose v1 files are. You only need to list out the services and the directives in it. Most Docker Compose v1 and v2 fields will work as expected in Device Plane, but there are some specific fields that will behave differently in Device Plane.
+The format of how to list out services is similar to how Docker Compose v1 files are. You only need to list out the services and the directives in it. Most Docker Compose v1 and v2 fields will work as expected in Deviceplane, but there are some specific fields that will behave differently in Deviceplane.
 
 <Table height="7rem">
 
-| Compose Directive | Difference in Device Plane                                                                          |
+| Compose Directive | Difference in Deviceplane                                                                          |
 | ----------------- | --------------------------------------------------------------------------------------------------- |
-| `volumes`         | **Only** bind mount volumes will work in Device Plane. Any other type of volumes are not supported. |
+| `volumes`         | **Only** bind mount volumes will work in Deviceplane. Any other type of volumes are not supported. |
 
 </Table>
 
@@ -34,6 +34,6 @@ service2:
 
 ## Releases
 
-Whenever you want to deploy new services or update existing services on your devices, you will create a new release for the application. When creating a new release, Device Plane will display the currently deployed config, which can be directly edited. When you submit your new release, it will automatically update your application so any `online` devices will automatically be updated to the latest release.
+Whenever you want to deploy new services or update existing services on your devices, you will create a new release for the application. When creating a new release, Deviceplane will display the currently deployed config, which can be directly edited. When you submit your new release, it will automatically update your application so any `online` devices will automatically be updated to the latest release.
 
 </Docs>
