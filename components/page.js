@@ -14,6 +14,8 @@ const Page = ({ children }) => (
           --secondary: #3ae8b0;
 
           --page-width: 1080px;
+
+          --radius: 4px;
         }
 
         html {

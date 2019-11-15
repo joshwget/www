@@ -36,7 +36,7 @@ const CTA = ({}) => (
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 4px;
+        border-radius: var(--radius);
         margin: 0 1rem;
         width: 20rem;
         transition: opacity 150ms;
@@ -52,7 +52,7 @@ const CTA = ({}) => (
         color: var(--white);
         font-size: 1rem;
         font-weight: 500;
-        border-radius: 4px;
+        border-radius: var(--radius);
         margin: 0 1rem;
         width: 20rem;
         cursor: pointer;

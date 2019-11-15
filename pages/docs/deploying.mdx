@@ -1,4 +1,5 @@
 import Docs from '../../components/docs';
+import Table from '../../components/table';
 
 <Docs title="Deploying">
 
@@ -10,11 +11,15 @@ An application is comprised of multiple Docker containers, i.e. services. For ea
 
 The current config is the latest release of an application. The config is a list of services that will be deployed onto any device that is added to the project as long as it matches the scheduling rules.
 
-The format of how to list out services is similar to how [Docker Compose]() v1 files are. You only need to list out the services and the directives in it. Most Docker Compose v1 and v2 fields will work as expected in Device Plane, but there are some specific fields that will behave differently in Device Plane.
+The format of how to list out services is similar to how Docker Compose v1 files are. You only need to list out the services and the directives in it. Most Docker Compose v1 and v2 fields will work as expected in Device Plane, but there are some specific fields that will behave differently in Device Plane.
+
+<Table height="7rem">
 
 | Compose Directive | Difference in Device Plane                                                                          |
 | ----------------- | --------------------------------------------------------------------------------------------------- |
 | `volumes`         | **Only** bind mount volumes will work in Device Plane. Any other type of volumes are not supported. |
+
+</Table>
 
 ### Example Config
 

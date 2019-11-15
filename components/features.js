@@ -24,7 +24,7 @@ const content = [
     title: 'Logging',
     body: `Gather logs from your devices, store them, and
     then optionally forward them to your preferred logging tool.`,
-    icon: '/log.svg'
+    icon: '/logging.svg'
   },
   {
     title: 'Access control',
@@ -44,7 +44,7 @@ const content = [
 const Container = ({ title, body, icon }) => (
   <div className="container" key={title}>
     <div className="icon">
-      <img src={icon} />
+      <img src={icon} alt={`${title} icon`} />
     </div>
     <h4>{title}</h4>
     <p>{body}</p>
@@ -60,7 +60,7 @@ const Container = ({ title, body, icon }) => (
         .icon {
           width: 2.25rem;
           height: 2.25rem;
-          border-radius: 4px;
+          border-radius: var(--radius);
           margin-bottom: 1rem;
           background: black;
           display: flex;

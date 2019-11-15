@@ -1,4 +1,5 @@
 import Docs from '../../components/docs';
+import Table from '../../components/table';
 
 <Docs title="CLI">
 
@@ -24,7 +25,7 @@ The most common use case of using the CLI is to deploy a new release for your ap
 
 If a single application is constantly being updated, Device Plane recommends setting up environment variables so the project and application do not have to be passed in as same options in the command.
 
-<div className="table-container">
+<Table height="13rem">
 
 | Environment Variable       | Value                              | Description                                                  |
 | -------------------------- | ---------------------------------- | ------------------------------------------------------------ |
@@ -32,10 +33,11 @@ If a single application is constantly being updated, Device Plane recommends set
 | `$DEVICEPLANE_PROJECT`     | Project ID or Name                 | Define which project your application is in                  |
 | `$DEVICEPLANE_APPLICATION` | Application ID or Name             | Define which application you want to deploy a new release to |
 
-</div>
+</Table>
 
-```
+```shell
 # Set environment variables for access key, project and application
+
 $ printenv
 DEVICEPLANE_ACCESS_KEY=<ACCESS_KEY>
 DEVICEPLANE_PROJECT=<PROJECT_ID_OR_NAME>
@@ -48,14 +50,16 @@ $ deviceplane deploy <CONFIG_YML>
 
 If you don't want to set environment variables, the project and application can always be passed as the options for each command. Whenever these options are passed in a command, it overrides any environment variables so that the option passed in is used.
 
-```
+```shell
 # Set only the access key as an environment variable
+
 $ printenv
 DEVICEPLANE_ACCESS_KEY=<ACCESS_KEY>
 
 # Deploy by specifying the project and application in the command
 
-$ deviceplane deploy --project <PROJECT_ID_OR_NAME> --application <APPLICATION_ID_OR_NAME> <CONFIG_YML>
+$ deviceplane deploy --project <PROJECT_ID_OR_NAME> --application
+  <APPLICATION_ID_OR_NAME> <CONFIG_YML>
 ```
 
 ### Environment Interpolation
@@ -88,8 +92,9 @@ An easy way to update an existing release is to edit it using the CLI. Similar t
 
 When running `deviceplane edit`, the CLI pulls up the current config of the application into an editor. After the config is saved and exited, it is **automatically deployed** into the application.
 
-```
+```shell
 # Environment variables are set for access key, project and application
+
 $ printenv
 DEVICEPLANE_ACCESS_KEY=<ACCESS_KEY>
 DEVICEPLANE_PROJECT=<PROJECT_ID_OR_NAME>
@@ -97,20 +102,5 @@ DEVICEPLANE_APPLICATION=<APPLICATION_ID_OR_NAME>
 
 $ deviceplane edit
 ```
-
-<style jsx>
-  {`
-    .table-container {
-      position: relative;
-      overflow: scroll;
-      height: 7rem;
-      margin: 1rem 0;
-    }
-    .table-container table {
-      position: absolute;
-      white-space: nowrap;
-    }
-  `}
-</style>
 
 </Docs>

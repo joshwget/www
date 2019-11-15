@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import Page from './page';
 import Head from './head';
 import Nav from './nav';
+import Highlight from './highlight';
 import Footer from './footer';
 
 const list = [
@@ -50,8 +51,6 @@ const list = [
 const Docs = ({ title, children }) => {
   const { pathname } = useRouter();
 
-  console.log(pathname);
-
   return (
     <Page>
       <Head title={title ? `${title} | Docs` : 'Documentation'} />
@@ -87,7 +86,9 @@ const Docs = ({ title, children }) => {
             </ul>
           </div>
 
-          <div className="children">{children}</div>
+          <Highlight>
+            <div className="children">{children}</div>
+          </Highlight>
         </div>
       </div>
 
@@ -118,6 +119,36 @@ const Docs = ({ title, children }) => {
           .container :global(li:not(:last-child)) {
             margin-bottom: 0.5rem;
           }
+          .container :global(pre) {
+            padding: 1.5rem;
+            background: var(--black);
+            border-radius: var(--radius);
+            color: var(--primary);
+            margin: 1.5rem 0;
+            white-space: pre-wrap;
+          }
+          .container :global(pre > code) {
+            color: var(--primary);
+          }
+          .container :global(code) {
+            background: #fff;
+            color: var(--black);
+            padding: 0rem 0.2rem;
+            border-radius: var(--radius);
+            white-space: pre-wrap;
+          }
+          .children :global(a) {
+            color: var(--black);
+            font-weight: 500;
+            text-decoration: none;
+          }
+          .children :global(blockquote) {
+            border: 2px solid var(--primary);
+            margin: 0;
+            padding: 0 1rem;
+            font-weight: 500;
+            border-radius: var(--radius);
+          }
 
           .container {
             flex: 1;
@@ -131,8 +162,8 @@ const Docs = ({ title, children }) => {
           }
 
           .children {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 4px;
+            background-color: #eeeeef;
+            border-radius: var(--radius);
             padding: 1.5rem 2rem;
             overflow: hidden;
           }
@@ -173,10 +204,6 @@ const Docs = ({ title, children }) => {
 
           .sidebar .nested {
             padding-left: 1rem;
-          }
-
-          :global(code) {
-            white-space: pre-wrap !important;
           }
 
           @media screen and (max-width: 700px) {

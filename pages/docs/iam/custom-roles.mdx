@@ -1,4 +1,5 @@
 import Docs from '../../../components/docs';
+import Table from '../../../components/table';
 
 <Docs title="Custom Roles">
 
@@ -12,29 +13,29 @@ For each resource type, you can provide access with the default actions (i.e. `a
 
 ### Access to only deploy releases
 
-```
+```yaml
 rules:
-- resources:
-  - 'release'
-  actions:
-  - CreateRelease
+  - resources:
+      - 'release'
+    actions:
+      - CreateRelease
 ```
 
 ### Access to view and deploy applications
 
-```
+```yaml
 rules:
-- resources:
-  - 'application'
-  actions:
-  - read, write
+  - resources:
+      - 'application'
+    actions:
+      - read, write
 ```
 
 ## Resource and Action Reference
 
 Besides using the default roles, you may want to create your own custom roles, using the reference table, you would select what resources to provide access to and the action level. For the action, you can either use a parent action (`read`, `write`, `admin`) or an individual action.
 
-<div className="table-container">
+<Table height="70rem">
 
 | Resource               | Parent Action | Individual Action                                                            |
 | ---------------------- | ------------- | ---------------------------------------------------------------------------- |
@@ -59,21 +60,6 @@ Besides using the default roles, you may want to create your own custom roles, u
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
 
-</div>
-
-<style jsx>
-  {`
-    .table-container {
-      position: relative;
-      overflow: scroll;
-      height: 58rem;
-      margin-top: 1rem;
-    }
-    .table-container table {
-      position: absolute;
-      white-space: nowrap;
-    }
-  `}
-</style>
+</Table>
 
 </Docs>

@@ -4,17 +4,21 @@ const Hardware = ({}) => (
 
     <div className="row">
       <div className="container">
-        <img src="/single-board-computer.svg" height={110} />
+        <img
+          src="/single-board-computer.svg"
+          height={110}
+          alt="Single-board computer"
+        />
         <span>Single-board computers</span>
       </div>
 
       <div className="container">
-        <img src="/servers.svg" height={110} />
+        <img src="/servers.svg" height={110} alt="Edge servers" />
         <span>Edge servers</span>
       </div>
 
       <div className="container">
-        <img src="/iot-gateway.svg" height={120} />
+        <img src="/iot-gateway.svg" height={120} alt="IoT gateways" />
         <span>IoT gateways</span>
       </div>
     </div>

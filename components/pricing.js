@@ -2,12 +2,14 @@ const plans = [
   {
     name: 'Developer',
     features: ['Up to 25 devices', 'Single user'],
-    price: 'Free'
+    price: 'Free',
+    icon: '/developer.svg'
   },
   {
     name: 'Team',
     features: ['50 devices', '3 seats'],
-    price: '$250/month base'
+    price: '$250/month base',
+    icon: '/team.svg'
   },
   {
     name: 'Enterprise',
@@ -28,9 +30,9 @@ const Pricing = ({}) => (
         {plans.map(({ name, features, price, icon = '/enterprise.svg' }) => (
           <div className="border" key={name}>
             <div className="container">
-              <div className="label">
+              <div className="top">
                 {/* <img src={icon} /> */}
-                <span>{name}</span>
+                <span className="title">{name}</span>
               </div>
 
               <div className="content">
@@ -58,23 +60,26 @@ const Pricing = ({}) => (
       .plans {
         display: flex;
       }
-      .label {
-        font-weight: 500;
+      .top {
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 0.25rem 0;
-        color: var(--white);
-        font-size: 1.2rem;
         background-color: var(--black);
         transition: background-color 50ms, color 50ms, border-color 50ms;
         border-bottom: 8px solid var(--black);
+        color: var(--white);
       }
-      .label img {
-        margin-bottom: 0.25rem;
-        width: 1.5rem;
+      .top img {
+        height: 1.5rem;
+      }
+      .title {
+        font-weight: 700;
+        font-size: 1.2rem;
+        text-align: center;
+        //margin: 1rem 0 0 0;
       }
       .container {
         background: var(--white);
@@ -91,7 +96,7 @@ const Pricing = ({}) => (
         transform: translateY(-1.2rem);
         border-color: var(--secondary) !important;
       }
-      .container:hover .label {
+      .container:hover .top {
         background-color: var(--secondary) !important;
         color: var(--black) !important;
         border-color: var(--secondary) !important;
@@ -99,7 +104,7 @@ const Pricing = ({}) => (
       .border:last-child .container {
         border-color: var(--black);
       }
-      .border:last-child .label {
+      .border:last-child .top {
         border-color: var(--black);
         background-color: var(--black);
       }
@@ -125,9 +130,8 @@ const Pricing = ({}) => (
       }
       .price {
         font-weight: 700;
-        padding: 1rem 0.25rem 0.5rem 0.25rem;
+        padding: 0.25rem 0.25rem 0.5rem 0.25rem;
         text-align: center;
-        margin: 0 auto;
       }
       .bg {
         position: absolute;
@@ -143,7 +147,6 @@ const Pricing = ({}) => (
         bottom: 0;
       }
       ul {
-        padding: 0;
         display: flex;
         flex-direction: column;
         padding: 0 1rem;
@@ -156,7 +159,7 @@ const Pricing = ({}) => (
         text-align: center;
       }
       li:not(:last-child) {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
       .tablet {
         display: none;

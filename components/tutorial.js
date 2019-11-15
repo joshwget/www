@@ -89,7 +89,7 @@ const Tutorial = ({}) => {
           display: flex;
           max-width: 24rem;
           border: 2px solid var(--secondary);
-          border-radius: 4px;
+          border-radius: var(--radius);
           padding: 3rem;
         }
 

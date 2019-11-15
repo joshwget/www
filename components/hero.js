@@ -29,45 +29,47 @@ const Hero = ({ airtable }) => {
   return (
     <div className="hero">
       <section>
-        <h1>Manage your devices at the edge</h1>
+        <img alt="Black triangle background" className="bg" src="/bg.svg" />
 
-        <div className="content">
-          <p>
-            Update, monitor, and access remote devices and servers with ease.
-            Let us handle the hard infrastructure problems around managing
-            remote hardware so you stay focused on your business.
-          </p>
-        </div>
+        <div className="container">
+          <h1>Manage your devices at the edge</h1>
 
-        <div className="buttons">
-          <div className="demo-container">
-            <div className="success">
-              <span>
-                Thanks for your interest, we'll reach out as soon as we can.
-              </span>
-            </div>
-            <form onSubmit={handleSubmit}>
-              <div className="demo">
-                <input
-                  required
-                  type="email"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                />
-                <button>Request a demo</button>
-              </div>
-            </form>
+          <div className="content">
+            <p>
+              Update, monitor, and access remote devices and servers with ease.
+              Let us handle the hard infrastructure problems around managing
+              remote hardware so you stay focused on your business.
+            </p>
           </div>
 
-          <button onClick={() => window.Intercom('show')}>
-            Chat with us now <div className="arrow">→</div>
-          </button>
+          <div className="buttons">
+            <div className="demo-container">
+              <div className="success">
+                <span>
+                  Thanks for your interest, we'll reach out as soon as we can.
+                </span>
+              </div>
+              <form onSubmit={handleSubmit}>
+                <div className="demo">
+                  <input
+                    required
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                  <button>Request a demo</button>
+                </div>
+              </form>
+            </div>
+
+            <button onClick={() => window.Intercom('show')}>
+              Chat with us now <div className="arrow">→</div>
+            </button>
+          </div>
         </div>
       </section>
 
-      <div className="bg-left" />
-      <div className="bg-right" />
       <style jsx>{`
         @keyframes hover {
           100% {
@@ -84,19 +86,21 @@ const Hero = ({ airtable }) => {
         section {
           position: relative;
           color: var(--white);
-          height: 24rem;
+          height: 34rem;
         }
 
         h1 {
           margin: 0 0 1rem 0;
         }
 
-        .hero {
-          position: relative;
-          background: black;
+        .bg {
+          position: absolute;
+          left: -68rem; //-46.25rem;
+          top: 0rem;
         }
 
-        .bg-triangle {
+        .container {
+          position: relative;
         }
 
         .content {
@@ -115,12 +119,12 @@ const Hero = ({ airtable }) => {
         .demo {
           display: ${submitted ? 'none' : 'inline-flex'};
           align-items: center;
-          border-radius: 4px;
+          border-radius: var(--radius);
         }
 
         .demo input {
           padding: 0.625rem;
-          border-radius: 4px;
+          border-radius: var(--radius);
           border: none;
           outline: none;
           font-size: 1rem;
@@ -141,7 +145,7 @@ const Hero = ({ airtable }) => {
           transition: opacity 150ms;
           margin-left: 0.5rem;
           padding: 0.6rem 1.25rem;
-          border-radius: 4px;
+          border-radius: var(--radius);
         }
 
         .demo button:hover {
@@ -182,12 +186,6 @@ const Hero = ({ airtable }) => {
           font-size: 1.5rem;
         }
 
-        .bg {
-          top: 0;
-          left: 0;
-          position: absolute;
-        }
-
         .success {
           display: flex;
           align-items: center;
@@ -195,7 +193,7 @@ const Hero = ({ airtable }) => {
           padding: 0 1.5rem;
           height: 3rem;
           border: 2px solid var(--secondary);
-          border-radius: 4px;
+          border-radius: var(--radius);
           color: var(--secondary);
           font-weight: 500;
           display: ${submitted ? 'inline-flex' : 'none'};

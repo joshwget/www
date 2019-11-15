@@ -101,7 +101,7 @@ const Overlay = ({ show, pathname }) => (
           align-items: center;
           font-size: 1rem;
           font-weight: 500;
-          border-radius: 4px;
+          border-radius: var(--radius);
         }
 
         .mobile-login {
@@ -264,7 +264,7 @@ const Nav = () => {
         }
         .signup {
           background-color: var(--secondary);
-          border-radius: 4px;
+          border-radius: var(--radius);
           padding: 0.6rem 1.25rem;
           color: var(--black);
           font-weight: 500;

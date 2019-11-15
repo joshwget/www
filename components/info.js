@@ -107,7 +107,7 @@ const Info = () => (
       .link {
         display: inline-flex;
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: var(--radius);
         margin-top: 1rem;
       }
 

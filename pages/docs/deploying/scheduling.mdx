@@ -1,4 +1,5 @@
 import Docs from '../../../components/docs';
+import Table from '../../../components/table';
 
 <Docs title="Scheduling">
 
@@ -64,12 +65,16 @@ By combining specific device labels and scheduling rules, you can have various a
 
 **Note: The value in the scheduling rule must always be in single quotes for it to be evaluated correctly.**
 
-| Schedule Rule                                              | Description                                                                                           |
-| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `key1 == 'value1'`                                         | Deploy on every device that has a matching label, `key1=value1`.                                      |
-| `key2 != 'value2'`                                         | Deploy on every device that does not have a matching label, `key2=value2`.                            |
-| `key1 == 'value1' && key2 == 'value2'`                     | Deploy on every device that has both labels, `key1=value1` **AND** `key2=value2`, on it.              |
-| <code>key1 == 'value1' &#124;&#124; key2 == 'value'</code> | Deploy on every device that has either label, `key1=value1` **OR** `key2=value2` on it.               |
-| `key1 == 'value1' && key2 != 'value2'`                     | Deploy on every device that has a label, `key1=value1`, AND does **not** have a label, `key2=value2`. |
+<Table height="27rem">
+
+| Schedule Rule                                   | Description                                                                                           |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `key1 == 'value1'`                              | Deploy on every device that has a matching label, `key1=value1`.                                      |
+| `key2 != 'value2'`                              | Deploy on every device that does not have a matching label, `key2=value2`.                            |
+| `key1 == 'value1' && key2 == 'value2'`          | Deploy on every device that has both labels, `key1=value1` **AND** `key2=value2`, on it.              |
+| `key1 == 'value1' &#124;&#124; key2 == 'value'` | Deploy on every device that has either label, `key1=value1` **OR** `key2=value2` on it.               |
+| `key1 == 'value1' && key2 != 'value2'`          | Deploy on every device that has a label, `key1=value1`, AND does **not** have a label, `key2=value2`. |
+
+</Table>
 
 </Docs>
