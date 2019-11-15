@@ -95,7 +95,7 @@ const Hero = ({ airtable }) => {
 
         .bg {
           position: absolute;
-          left: -68rem; //-46.25rem;
+          left: -68rem;
           top: 0rem;
         }
 
@@ -201,7 +201,11 @@ const Hero = ({ airtable }) => {
 
         @media screen and (max-width: 600px) {
           section {
-            padding: 4rem 2rem 10rem 2rem;
+            height: 40rem;
+          }
+          .bg {
+            height: 43rem;
+            left: -86rem;
           }
           .demo-container {
             height: 6rem;

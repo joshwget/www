@@ -38,7 +38,12 @@ const Pricing = ({}) => (
               <div className="content">
                 <ul>
                   {features.map(feature => (
-                    <li key={feature}>{feature}</li>
+                    <li key={feature}>
+                      <div className="check">
+                        <img src="/check.svg" />
+                      </div>
+                      <span>{feature}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -79,17 +84,16 @@ const Pricing = ({}) => (
         font-weight: 700;
         font-size: 1.2rem;
         text-align: center;
-        //margin: 1rem 0 0 0;
       }
       .container {
         background: var(--white);
-        border: 7px solid var(--black);
+        border: 6px solid var(--black);
         color: var(--black);
-        border-radius: 6px;
+        border-radius: var(--radius);
         display: flex;
         flex-direction: column;
         height: 16rem;
-        width: 11rem;
+        width: 12rem;
         transition: transform 400ms, border-color 100ms;
       }
       .container:hover {
@@ -123,14 +127,14 @@ const Pricing = ({}) => (
         position: relative;
         z-index: 3;
         height: 18rem;
-        width: 13.5rem;
+        width: 14.5rem;
         margin: 4rem 2rem;
         background: var(--white);
-        border-radius: 8px;
+        border-radius: var(--radius);
       }
       .price {
         font-weight: 700;
-        padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+        padding: 0.5rem 0.25rem;
         text-align: center;
       }
       .bg {
@@ -149,17 +153,27 @@ const Pricing = ({}) => (
       ul {
         display: flex;
         flex-direction: column;
-        padding: 0 1rem;
-        align-items: center;
+        padding: 0 0.5rem;
       }
       li {
         display: flex;
         font-weight: 500;
-        font-size: 14px;
-        text-align: center;
       }
       li:not(:last-child) {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .check img {
+        width: 1.25rem;
+      }
+      .check {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--black);
+        border-radius: 50%;
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.5rem;
       }
       .tablet {
         display: none;
@@ -181,12 +195,12 @@ const Pricing = ({}) => (
           height: 24rem;
         }
         .container {
-          height: 14rem;
+          height: 15.5rem;
         }
         .border {
           margin: 2rem 0;
           border-radius: 0;
-          height: 15.5rem;
+          height: 17.5rem;
         }
         .border:first-child {
           border-bottom-left-radius: 4px;
@@ -205,12 +219,12 @@ const Pricing = ({}) => (
         .border {
           height: auto;
           margin: 1rem 0;
-          width: 12.5rem;
+          width: 15.5rem;
           border-radius: 0;
         }
         .container {
           height: auto;
-          width: 10rem;
+          width: 13rem;
           transform: unset !important;
         }
         .border:last-child {

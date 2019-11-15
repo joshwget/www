@@ -78,7 +78,7 @@ const Info = () => (
         max-width: 20rem;
         margin: 0 2rem;
         background-color: var(--black);
-        border-radius: 6px;
+        border-radius: var(--radius);
         padding: 2rem;
         color: var(--white);
         display: flex;
