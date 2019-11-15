@@ -10,7 +10,7 @@ SSH is available through both the UI and CLI. To use SSH in the UI nagivate to t
 
 To SSH via the CLI run the following command. The project and device need to be defined to pick the device to SSH into.
 
-```shell
+```
 $ deviceplane ssh --project <PROJECT_ID_OR_NAME> --device <DEVICE_ID_OR_NAME>
 ```
 
@@ -20,7 +20,7 @@ Beyond spawning interactive shells SSH can also be used to remotely execute comm
 
 To run commands via the CLI append the command you wish to run to the SSH command from above. For example, suppose we wanted to run `cat /etc/os-release` to see details on what Linux distribution a device is running.
 
-```shell
+```
 $ deviceplane ssh --project <PROJECT_ID_OR_NAME> --device <DEVICE_ID> cat /etc/os-release
 PRETTY_NAME="Raspbian GNU/Linux 9 (stretch)"
 NAME="Raspbian GNU/Linux"
