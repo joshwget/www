@@ -127,7 +127,7 @@ const Pricing = ({}) => (
         position: relative;
         z-index: 3;
         height: 18rem;
-        width: 14.5rem;
+        width: 15rem;
         margin: 4rem 2rem;
         background: var(--white);
         border-radius: var(--radius);
@@ -186,27 +186,33 @@ const Pricing = ({}) => (
           width: 9.5rem;
         }
         .border {
-          width: 12rem;
-          margin: 4rem 1.5rem;
+          width: 12.5rem;
+          margin: 4rem 1.25rem;
         }
       }
       @media screen and (max-width: 700px) {
-        .bg {
-          height: 24rem;
-        }
         .container {
           height: 15.5rem;
         }
         .border {
+          width: 12rem;
           margin: 2rem 0;
           border-radius: 0;
           height: 17.5rem;
         }
         .border:first-child {
-          border-bottom-left-radius: 4px;
+          border-bottom-left-radius: var(--radius);
         }
         .border:last-child {
-          border-bottom-right-radius: 4px;
+          border-bottom-right-radius: var(--radius);
+        }
+        .bg {
+          height: 28rem;
+          background: linear-gradient(
+            165deg,
+            transparent calc(50% - 1px),
+            rgb(0, 0, 0) 50%
+          );
         }
       }
       @media screen and (max-width: 600px) {
