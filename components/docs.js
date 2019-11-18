@@ -26,8 +26,13 @@ export const routes = [
     nested: true
   },
   {
-    href: '/docs/managing',
+    href: '/docs/managing/ssh-access',
     title: 'Managing'
+  },
+  {
+    href: '/docs/managing/ssh-access',
+    title: 'SSH access',
+    nested: true
   },
   {
     href: '/docs/managing/device-labels',
