@@ -100,10 +100,10 @@ const Footer = () => (
       }
 
       .logo:hover :global(polyline) {
-        stroke: var(--secondary);
+        stroke: var(--primary);
       }
       .logo:hover :global(polygon) {
-        fill: var(--secondary);
+        fill: var(--primary);
       }
 
       @media screen and (max-width: 600px) {

@@ -88,7 +88,7 @@ const Tutorial = ({}) => {
         .content {
           display: flex;
           max-width: 24rem;
-          border: 2px solid var(--secondary);
+          border: 2px solid var(--primary);
           border-radius: var(--radius);
           padding: 3rem;
         }
@@ -122,7 +122,7 @@ const Tutorial = ({}) => {
         }
 
         button:hover:not(.selected) {
-          border-color: var(--secondary);
+          border-color: var(--primary);
         }
 
         button:active,
@@ -132,7 +132,7 @@ const Tutorial = ({}) => {
 
         .selected {
           cursor: default;
-          color: var(--secondary);
+          color: var(--primary);
         }
 
         @media screen and (max-width: 900px) {

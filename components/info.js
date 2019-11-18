@@ -93,7 +93,7 @@ const Info = () => (
       a {
         text-decoration: none;
         font-weight: 500;
-        color: var(--secondary);
+        color: var(--primary);
         transition: color 150ms;
         display: inline-flex;
         align-items: center;

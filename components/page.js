@@ -11,7 +11,6 @@ const Page = ({ children }) => (
           --black: #000;
           --white: #fff;
           --primary: #3ae8b0;
-          --secondary: #3ae8b0;
 
           --page-width: 1080px;
 

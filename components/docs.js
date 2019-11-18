@@ -7,7 +7,7 @@ import Nav from './nav';
 import Highlight from './highlight';
 import Footer from './footer';
 
-const list = [
+export const routes = [
   {
     href: '/docs/quick-start',
     title: 'Quick start'
@@ -74,7 +74,7 @@ const Docs = ({ title, children }) => {
                   </a>
                 </Link>
               </li>
-              {list.slice(1, list.length).map(({ href, title, nested }) => (
+              {routes.slice(1, routes.length).map(({ href, title, nested }) => (
                 <li key={href} className={nested ? 'nested' : ''}>
                   <Link href={href}>
                     <a className={href === pathname ? 'selected' : ''}>
@@ -195,11 +195,11 @@ const Docs = ({ title, children }) => {
           }
 
           .sidebar a:not(.selected):hover {
-            border-color: var(--secondary);
+            border-color: var(--primary);
           }
 
           .sidebar a.selected {
-            color: var(--secondary);
+            color: var(--primary);
           }
 
           .sidebar .nested {

@@ -162,7 +162,7 @@ const Hero = ({ airtable }) => {
           background: none;
           font-weight: 500;
           font-size: 1rem;
-          color: var(--secondary);
+          color: var(--primary);
           cursor: pointer;
           transition: opacity 150ms;
           align-items: center;
@@ -192,9 +192,9 @@ const Hero = ({ airtable }) => {
           margin-bottom: 2rem;
           padding: 0 1.5rem;
           height: 3rem;
-          border: 2px solid var(--secondary);
+          border: 2px solid var(--primary);
           border-radius: var(--radius);
-          color: var(--secondary);
+          color: var(--primary);
           font-weight: 500;
           display: ${submitted ? 'inline-flex' : 'none'};
         }

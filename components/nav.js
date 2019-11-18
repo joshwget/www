@@ -2,7 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const Overlay = ({ show, pathname }) => (
+import { routes as docRoutes } from './docs';
+
+const MobileNav = ({ show, pathname }) => (
   <div className="overlay">
     <div className="container">
       <div className="row">
@@ -21,11 +23,36 @@ const Overlay = ({ show, pathname }) => (
       <ul>
         <li>
           <Link href="/docs">
-            <a className={pathname.includes('/docs') ? 'selected' : ''}>
-              Documentation
-            </a>
+            <a>Documentation</a>
           </Link>
         </li>
+        <div className="docs">
+          <li className="doc-route">
+            <Link href="/docs/quick-start">
+              <a
+                className={
+                  pathname === '/docs/quick-start' || pathname === '/docs'
+                    ? 'selected'
+                    : ''
+                }
+              >
+                Quick start
+              </a>
+            </Link>
+          </li>
+          {docRoutes
+            .slice(1, docRoutes.length)
+            .map(({ href, title, nested }) => (
+              <li
+                key={href}
+                className={nested ? 'doc-route nested' : 'doc-route'}
+              >
+                <Link href={href}>
+                  <a className={href === pathname ? 'selected' : ''}>{title}</a>
+                </Link>
+              </li>
+            ))}
+        </div>
         <li>
           <a href="mailto:support@deviceplane.com">Support</a>
         </li>
@@ -112,8 +139,8 @@ const Overlay = ({ show, pathname }) => (
 
         .mobile-signup {
           color: var(--black);
-          background-color: var(--secondary);
-          border: 2px solid var(--secondary);
+          background-color: var(--primary);
+          border: 2px solid var(--primary);
         }
 
         ul {
@@ -128,11 +155,24 @@ const Overlay = ({ show, pathname }) => (
         }
 
         li a.selected {
-          border-color: var(--secondary);
+          border-color: var(--primary);
         }
 
         li:not(:last-child) {
           margin-bottom: 1.25rem;
+        }
+
+        .docs {
+          border-left: 2px solid var(--primary);
+          margin-bottom: 1rem;
+        }
+
+        .doc-route {
+          margin-left: 1rem;
+        }
+
+        .doc-route.nested {
+          margin-left: 2rem;
         }
       `}
     </style>
@@ -177,7 +217,7 @@ const Nav = () => {
         </div>
       </div>
 
-      <Overlay show={overlay} pathname={pathname} />
+      <MobileNav show={overlay} pathname={pathname} />
 
       <div className="mobile">
         <div className="container">
@@ -244,10 +284,10 @@ const Nav = () => {
           transition: border-color 150ms, color 150ms;
         }
         .link a:not(.selected):hover {
-          border-color: var(--secondary);
+          border-color: var(--primary);
         }
         .link a.selected {
-          color: var(--secondary);
+          color: var(--primary);
         }
 
         .name {
@@ -263,7 +303,7 @@ const Nav = () => {
           opacity: 0.9;
         }
         .signup {
-          background-color: var(--secondary);
+          background-color: var(--primary);
           border-radius: var(--radius);
           padding: 0.6rem 1.25rem;
           color: var(--black);

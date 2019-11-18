@@ -109,7 +109,7 @@ const Careers = () => (
         .header a {
           text-decoration: none;
           transition: opacity 150ms;
-          color: var(--secondary);
+          color: var(--primary);
           font-weight: 500;
         }
 

@@ -78,7 +78,7 @@ const Legal = ({ children }) => {
           }
           .container :global(a) {
             text-decoration: none;
-            color: var(--secondary);
+            color: var(--primary);
             font-weight: 500;
           }
           ul {
@@ -92,7 +92,7 @@ const Legal = ({ children }) => {
             border-bottom: 2px solid var(--black);
           }
           li a:not(.selected):hover {
-            border-color: var(--secondary);
+            border-color: var(--primary);
           }
           li a:not(.selected) {
             color: var(--white);

@@ -30,7 +30,7 @@ const CTA = ({}) => (
       a {
         text-decoration: none;
         color: var(--black);
-        background-color: var(--secondary);
+        background-color: var(--primary);
         height: 3rem;
         font-weight: 500;
         display: flex;

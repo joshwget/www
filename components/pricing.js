@@ -98,12 +98,12 @@ const Pricing = ({}) => (
       }
       .container:hover {
         transform: translateY(-1.2rem);
-        border-color: var(--secondary) !important;
+        border-color: var(--primary) !important;
       }
       .container:hover .top {
-        background-color: var(--secondary) !important;
+        background-color: var(--primary) !important;
         color: var(--black) !important;
-        border-color: var(--secondary) !important;
+        border-color: var(--primary) !important;
       }
       .border:last-child .container {
         border-color: var(--black);
