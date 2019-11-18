@@ -30,6 +30,11 @@ export const routes = [
     title: 'Managing'
   },
   {
+    href: '/docs/managing/device-labels',
+    title: 'Device labels',
+    nested: true
+  },
+  {
     href: '/docs/iam',
     title: 'IAM'
   },
