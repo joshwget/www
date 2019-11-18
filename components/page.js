@@ -10,7 +10,7 @@ const Page = ({ children }) => (
 
           --black: #000;
           --white: #fff;
-          --primary: #3ae8b0; //#543bff;
+          --primary: #3ae8b0;
           --secondary: #3ae8b0;
 
           --page-width: 1080px;
@@ -45,6 +45,7 @@ const Page = ({ children }) => (
 
         #__next {
           height: 100%;
+          overflow-x: hidden;
         }
       `}
     </style>

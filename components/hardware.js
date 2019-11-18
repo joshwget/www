@@ -13,13 +13,18 @@ const Hardware = ({}) => (
       </div>
 
       <div className="container">
+        <img src="/iot-gateway.svg" height={120} alt="IoT gateways" />
+        <span>IoT gateways</span>
+      </div>
+
+      <div className="container">
         <img src="/servers.svg" height={110} alt="Edge servers" />
         <span>Edge servers</span>
       </div>
 
       <div className="container">
-        <img src="/iot-gateway.svg" height={120} alt="IoT gateways" />
-        <span>IoT gateways</span>
+        <img src="/drones.svg" height={160} alt="Drones" />
+        <span>Drones</span>
       </div>
     </div>
 
