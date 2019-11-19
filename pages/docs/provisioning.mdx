@@ -8,12 +8,4 @@ import Docs from '../../components/docs';
 
 Adding a device is as easy as running a Docker container. The Docker container launched onto each device is an agent container that is used to talk back to Deviceplane. For each device that you want to add, a unique device registration ID must be used as part of the Docker command. Click on the Add Device button to grab a unique Docker command for the device. If you are looking to add more than one device at a time, you’ll need to re-generate a new command to obtain a unique token for each device.
 
-## Device labels
-
-Each device can have labels associated with it, which are key value pairs. These labels can be used to group devices to control the deployment of your application. Scheduling rules are used to determine if an application should be deployed by comparing what labels are on or not on a device.
-
-Click on the + to add a new label. After entering the key and value, make sure you click on the save icon to save the label. If the key and value are still displaying textboxes, then they have not been saved.
-
-Once a label is created, you can only edit the value of the label. If you want to update the key, you will need to remove the label and re-add it to the device.
-
 </Docs>
