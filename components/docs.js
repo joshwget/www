@@ -109,6 +109,10 @@ const Docs = ({ title, children }) => {
           html {
             background-color: var(--black);
           }
+
+          .prism-code .token-line:last-child {
+            display: none;
+          }
         `}
       </style>
 
@@ -136,6 +140,7 @@ const Docs = ({ title, children }) => {
             color: var(--primary);
             margin: 1.5rem 0;
             white-space: pre-wrap;
+            word-break: break-word;
           }
           .container :global(pre > code) {
             color: var(--primary);

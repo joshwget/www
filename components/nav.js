@@ -4,180 +4,194 @@ import { useRouter } from 'next/router';
 
 import { routes as docRoutes } from './docs';
 
-const MobileNav = ({ show, pathname }) => (
-  <div className="overlay">
-    <div className="container">
-      <div className="row">
-        <a className="mobile-login" href="https://cloud.deviceplane.com/login">
-          Log in
-        </a>
+const MobileNav = ({ show, pathname }) => {
+  const [expand, setExpand] = React.useState(pathname.includes('/docs'));
 
-        <a
-          className="mobile-signup"
-          href="https://cloud.deviceplane.com/register"
-        >
-          Sign up
-        </a>
-      </div>
+  return (
+    <div className="overlay">
+      <div className="container">
+        <div className="row">
+          <a
+            className="mobile-login"
+            href="https://cloud.deviceplane.com/login"
+          >
+            Log in
+          </a>
 
-      <ul>
-        <li>
-          <Link href="/docs">
-            <a>Documentation</a>
-          </Link>
-        </li>
-        <div className="docs">
-          <li className="doc-route">
-            <Link href="/docs/quick-start">
-              <a
-                className={
-                  pathname === '/docs/quick-start' || pathname === '/docs'
-                    ? 'selected'
-                    : ''
-                }
-              >
-                Quick start
+          <a
+            className="mobile-signup"
+            href="https://cloud.deviceplane.com/register"
+          >
+            Sign up
+          </a>
+        </div>
+
+        <ul>
+          <li>
+            <Link href="/docs">
+              <div className="expander" onClick={() => setExpand(!expand)}>
+                <a>Documentation</a>
+                <img className="caret" src="/caret.svg" />
+              </div>
+            </Link>
+          </li>
+          <div className="docs">
+            <li className="doc-route">
+              <Link href="/docs/quick-start">
+                <a
+                  className={
+                    pathname === '/docs/quick-start' || pathname === '/docs'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  Quick start
+                </a>
+              </Link>
+            </li>
+            {docRoutes
+              .slice(1, docRoutes.length)
+              .map(({ href, title, nested }) => (
+                <li
+                  key={href}
+                  className={nested ? 'doc-route nested' : 'doc-route'}
+                >
+                  <Link href={href}>
+                    <a className={href === pathname ? 'selected' : ''}>
+                      {title}
+                    </a>
+                  </Link>
+                </li>
+              ))}
+          </div>
+          <li>
+            <a href="mailto:support@deviceplane.com">Support</a>
+          </li>
+          <li>
+            <Link href="/careers">
+              <a className={pathname.includes('/careers') ? 'selected' : ''}>
+                Careers
               </a>
             </Link>
           </li>
-          {docRoutes
-            .slice(1, docRoutes.length)
-            .map(({ href, title, nested }) => (
-              <li
-                key={href}
-                className={nested ? 'doc-route nested' : 'doc-route'}
-              >
-                <Link href={href}>
-                  <a className={href === pathname ? 'selected' : ''}>{title}</a>
-                </Link>
-              </li>
-            ))}
-        </div>
-        <li>
-          <a href="mailto:support@deviceplane.com">Support</a>
-        </li>
-        <li>
-          <Link href="/careers">
-            <a className={pathname.includes('/careers') ? 'selected' : ''}>
-              Careers
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/legal">
-            <a className={pathname.includes('/legal') ? 'selected' : ''}>
-              Legal & Privacy
-            </a>
-          </Link>
-        </li>
-      </ul>
+          <li>
+            <Link href="/legal">
+              <a className={pathname.includes('/legal') ? 'selected' : ''}>
+                Legal & Privacy
+              </a>
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <style jsx>
+        {`
+          @keyframes slideDown {
+            100% {
+              transform: translateY(0);
+            }
+          }
+          @keyframes fadeIn {
+            100% {
+              opacity: 1;
+            }
+          }
+
+          a {
+            text-decoration: none;
+            color: var(--white);
+          }
+          .overlay {
+            display: ${show ? 'block' : 'none'};
+            box-sizing: border-box;
+            position: absolute;
+            top: 5rem;
+            left: 0;
+            width: 100%;
+            height: 45rem;
+            min-height: 100%;
+            padding: 1rem 2rem;
+            background-color: var(--black);
+            // animation: slideDown 150ms;
+            // animation-fill-mode: forwards;
+            // transform: translateY(-100%);
+            z-index: 1;
+          }
+          .container {
+            // opacity: 0;
+            // animation: fadeIn 100ms;
+            // animation-delay: 125ms;
+            // animation-fill-mode: forwards;
+          }
+          .row {
+            display: flex;
+            margin-bottom: 2rem;
+          }
+          .mobile-login,
+          .mobile-signup {
+            display: flex;
+            flex: 1;
+            height: 2.5rem;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: var(--radius);
+          }
+          .mobile-login {
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-right: 1rem;
+          }
+          .mobile-signup {
+            color: var(--black);
+            background-color: var(--primary);
+            border: 2px solid var(--primary);
+          }
+          ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+          }
+          li a {
+            border-bottom: 2px solid var(--black);
+          }
+          li a.selected {
+            border-color: var(--primary);
+          }
+          li:not(:last-child) {
+            margin-bottom: 1.25rem;
+          }
+          .docs {
+            border-left: 2px solid var(--primary);
+            margin-bottom: 1.25rem;
+            display: ${expand ? 'block' : 'none'};
+            user-select: none;
+          }
+          .doc-route {
+            margin-left: 1rem;
+          }
+          .doc-route.nested {
+            margin-left: 2rem;
+          }
+          .expander {
+            display: flex;
+            align-items: start;
+          }
+          .expander a {
+            color: ${expand ? 'var(--primary)' : 'var(--white)'};
+          }
+          .caret {
+            width: 0.8rem;
+            margin-left: 0.5rem;
+            transform: rotate(${expand ? 0 : -90}deg);
+            padding-top: 0.25rem;
+          }
+        `}
+      </style>
     </div>
-
-    <style jsx>
-      {`
-        @keyframes slideDown {
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes fadeIn {
-          100% {
-            opacity: 1;
-          }
-        }
-
-        a {
-          text-decoration: none;
-          color: var(--white);
-        }
-
-        .overlay {
-          display: ${show ? 'block' : 'none'};
-          box-sizing: border-box;
-          position: absolute;
-          top: 5rem;
-          left: 0;
-          height: 100vh;
-          width: 100%;
-          padding: 1rem 2rem;
-          background-color: var(--black);
-          animation: slideDown 150ms;
-          animation-fill-mode: forwards;
-          transform: translateY(-100%);
-          z-index: 1;
-        }
-
-        .container {
-          opacity: 0;
-          animation: fadeIn 100ms;
-          animation-delay: 125ms;
-          animation-fill-mode: forwards;
-        }
-
-        .row {
-          display: flex;
-          margin-bottom: 2rem;
-        }
-
-        .mobile-login,
-        .mobile-signup {
-          display: flex;
-          flex: 1;
-          height: 2.5rem;
-          justify-content: center;
-          align-items: center;
-          font-size: 1rem;
-          font-weight: 500;
-          border-radius: var(--radius);
-        }
-
-        .mobile-login {
-          color: var(--white);
-          border: 2px solid var(--white);
-          margin-right: 1rem;
-        }
-
-        .mobile-signup {
-          color: var(--black);
-          background-color: var(--primary);
-          border: 2px solid var(--primary);
-        }
-
-        ul {
-          margin: 0;
-          padding: 0;
-          list-style-type: none;
-        }
-
-        li a {
-          padding-bottom: 0.25rem;
-          border-bottom: 2px solid var(--black);
-        }
-
-        li a.selected {
-          border-color: var(--primary);
-        }
-
-        li:not(:last-child) {
-          margin-bottom: 1.25rem;
-        }
-
-        .docs {
-          border-left: 2px solid var(--primary);
-          margin-bottom: 1rem;
-        }
-
-        .doc-route {
-          margin-left: 1rem;
-        }
-
-        .doc-route.nested {
-          margin-left: 2rem;
-        }
-      `}
-    </style>
-  </div>
-);
+  );
+};
 
 const Nav = () => {
   const [overlay, setOverlay] = React.useState(false);

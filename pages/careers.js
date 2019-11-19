@@ -77,7 +77,7 @@ const Careers = () => (
         }
 
         h1 {
-          margin: 0 0 3rem 0;
+          margin: 0 0 2rem 0;
           font-size: 3rem;
         }
       `}
@@ -88,7 +88,7 @@ const Careers = () => (
         .container {
           max-width: var(--page-width);
           margin: 0 auto;
-          padding: 0 2rem;
+          padding: 1rem 2rem;
         }
 
         .posting {

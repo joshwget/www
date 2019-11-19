@@ -103,7 +103,7 @@ const Legal = ({ children }) => {
           .container {
             max-width: var(--page-width);
             margin: 0 auto;
-            padding: 0 2rem 2rem 2rem;
+            padding: 1rem 2rem;
             overflow: hidden;
           }
           .content {

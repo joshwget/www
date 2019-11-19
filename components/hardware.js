@@ -3,28 +3,32 @@ const Hardware = ({}) => (
     <h2>Support for a variety of hardware</h2>
 
     <div className="row">
-      <div className="container">
-        <img
-          src="/single-board-computer.svg"
-          height={110}
-          alt="Single-board computer"
-        />
-        <span>Single-board computers</span>
+      <div className="group">
+        <div className="container">
+          <img
+            src="/single-board-computer.svg"
+            height={90}
+            alt="Single-board computer"
+          />
+          <span>Single-board computers</span>
+        </div>
+
+        <div className="container">
+          <img src="/iot-gateway.svg" height={100} alt="IoT gateways" />
+          <span>IoT gateways</span>
+        </div>
       </div>
 
-      <div className="container">
-        <img src="/iot-gateway.svg" height={120} alt="IoT gateways" />
-        <span>IoT gateways</span>
-      </div>
+      <div className="group">
+        <div className="container">
+          <img src="/servers.svg" height={90} alt="Edge servers" />
+          <span>Edge servers</span>
+        </div>
 
-      <div className="container">
-        <img src="/servers.svg" height={110} alt="Edge servers" />
-        <span>Edge servers</span>
-      </div>
-
-      <div className="container">
-        <img src="/drones.svg" height={160} alt="Drones" />
-        <span>Drones</span>
+        <div className="container">
+          <img src="/drones.svg" height={140} alt="Drones" />
+          <span>Drones</span>
+        </div>
       </div>
     </div>
 
@@ -38,17 +42,15 @@ const Hardware = ({}) => (
         justify-content: center;
         align-items: flex-end;
         align-self: stretch;
-        margin: 3rem 0 0 0;
+        margin: 2rem 0 0 0;
       }
 
       .container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 0 3.25rem;
+        margin: 0 3rem;
         position: relative;
-        width: 100%;
-        max-width: 14rem;
         justify-content: space-between;
       }
 
@@ -57,30 +59,46 @@ const Hardware = ({}) => (
         font-weight: 900;
         font-size: 0.85rem;
         text-align: center;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         height: 2rem;
       }
 
-      @media screen and (max-width: 700px) {
-        .container {
-          margin: 0 2rem;
-        }
+      .group {
+        display: flex;
+        align-items: baseline;
       }
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 850px) {
         .row {
           flex-direction: column;
           justify-content: unset;
           align-items: center;
         }
+        .group {
+          justify-content: center;
+        }
+        .group:last-child {
+          margin-top: 3rem;
+        }
         .container {
-          margin: 0;
+          flex: 0 0 12rem;
         }
-        span {
-          bottom: -2rem;
+      }
+      @media screen and (max-width: 600px) {
+        .container {
+          margin: 0 2rem;
         }
-        .container:not(:last-child) {
-          margin-bottom: 3rem;
+      }
+      @media screen and (max-width: 480px) {
+        .group {
+          flex-direction: column;
+          align-items: center;
+          justify-content: unset;
+          margin: 0 !important;
+        }
+        .container {
+          flex: unset;
+          margin: 1.5rem 0;
         }
       }
     `}</style>

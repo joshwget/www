@@ -149,6 +149,9 @@ const Features = () => (
       }
 
       @media screen and (max-width: 480px) {
+        section {
+          padding: 3rem 1rem 2rem 1rem;
+        }
         .desktop {
           display: block;
         }
