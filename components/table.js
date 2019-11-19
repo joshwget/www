@@ -5,7 +5,8 @@ const Table = ({ children, height }) => (
     <style jsx>{`
       .container {
         position: relative;
-        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: scroll;
         height: ${height};
         margin-top: 1rem;
       }
@@ -14,7 +15,7 @@ const Table = ({ children, height }) => (
       }
       .container :global(table) {
         position: absolute;
-        white-space: nowrap;
+        white-space: pre-wrap;
       }
       .container :global(tr) {
         height: 3rem;
@@ -22,10 +23,10 @@ const Table = ({ children, height }) => (
       }
       .container :global(th) {
         text-align: left;
-        padding: 0 1rem 0 0;
+        padding: 0.5rem 1rem 0.5rem 0;
       }
       .container :global(td) {
-        padding: 0 1rem 0 0;
+        padding: 0.5rem 1rem 0.5rem 0;
       }
     `}</style>
   </div>
