@@ -37,7 +37,7 @@ const postings = [
 
 const Careers = () => (
   <Page>
-    <Head />
+    <Head title="Careers" />
 
     <Nav />
 

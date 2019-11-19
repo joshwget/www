@@ -26,7 +26,7 @@ export const routes = [
     nested: true
   },
   {
-    href: '/docs/managing/ssh-access',
+    href: '/docs/managing',
     title: 'Managing'
   },
   {

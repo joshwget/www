@@ -11,7 +11,6 @@ import UseCases from '../components/use-cases';
 import Info from '../components/info';
 import Pricing from '../components/pricing';
 import CTA from '../components/cta';
-import Intercom from '../components/intercom';
 import Footer from '../components/footer';
 
 const Airtable = require('airtable');
@@ -46,8 +45,6 @@ const Home = () => (
     </main>
 
     <Footer />
-
-    <Intercom />
 
     <style global jsx>
       {`

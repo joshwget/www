@@ -12,7 +12,7 @@ const Legal = ({ children }) => {
 
   return (
     <Page>
-      <Head />
+      <Head title="Legal & Privacy" />
 
       <Nav />
 
