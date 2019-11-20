@@ -28,12 +28,10 @@ const MobileNav = ({ show, pathname }) => {
 
         <ul>
           <li>
-            <Link href="/docs">
-              <div className="expander" onClick={() => setExpand(!expand)}>
-                <a>Documentation</a>
-                <img className="caret" src="/caret.svg" />
-              </div>
-            </Link>
+            <div className="expander" onClick={() => setExpand(!expand)}>
+              <a>Documentation</a>
+              <img className="caret" src="/caret.svg" />
+            </div>
           </li>
           <div className="docs">
             <li className="doc-route">
@@ -112,16 +110,7 @@ const MobileNav = ({ show, pathname }) => {
             min-height: 100%;
             padding: 1rem 2rem;
             background-color: var(--black);
-            // animation: slideDown 150ms;
-            // animation-fill-mode: forwards;
-            // transform: translateY(-100%);
             z-index: 1;
-          }
-          .container {
-            // opacity: 0;
-            // animation: fadeIn 100ms;
-            // animation-delay: 125ms;
-            // animation-fill-mode: forwards;
           }
           .row {
             display: flex;

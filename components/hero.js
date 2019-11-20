@@ -204,8 +204,8 @@ const Hero = ({ airtable }) => {
             height: 40rem;
           }
           .bg {
-            height: 43rem;
-            left: -86rem;
+            height: 45rem;
+            left: -88rem;
           }
           .demo-container {
             height: 6rem;

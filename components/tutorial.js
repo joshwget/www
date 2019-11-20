@@ -36,14 +36,27 @@ const Tutorial = () => {
         <h2>How it works</h2>
 
         <div className="buttons">
-          {content.map(({ title }, i) => (
-            <button
-              className={i === selection ? 'selected' : ''}
-              onClick={() => setSelection(i)}
-            >
-              {title}
-            </button>
-          ))}
+          <div className="group">
+            {content.slice(0, 2).map(({ title }, i) => (
+              <button
+                className={i === selection ? 'selected' : ''}
+                onClick={() => setSelection(i)}
+              >
+                {title}
+              </button>
+            ))}
+          </div>
+
+          <div className="group">
+            {content.slice(2, 4).map(({ title }, i) => (
+              <button
+                className={i + 2 === selection ? 'selected' : ''}
+                onClick={() => setSelection(i + 2)}
+              >
+                {title}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="container">
@@ -75,7 +88,7 @@ const Tutorial = () => {
           margin: 0 2rem;
           background: #000;
           border: 1px solid var(--primary);
-          max-width: 26rem;
+          max-width: 25rem;
         }
 
         p {
@@ -85,10 +98,7 @@ const Tutorial = () => {
 
         .group {
           display: flex;
-        }
-
-        .group:first-of-type {
-          margin-bottom: 4rem;
+          justify-content: center;
         }
 
         .buttons {
@@ -122,27 +132,21 @@ const Tutorial = () => {
           cursor: auto;
         }
 
-        @media screen and (max-width: 900px) {
-          .container {
-            margin: 0 2rem;
-          }
-
-          .group:first-child {
-            margin-bottom: 4rem;
-          }
-        }
-
         @media screen and (max-width: 700px) {
-          .group {
+          .buttons {
             flex-direction: column;
-            margin: 0 !important;
+            align-items: center;
+            justify-content: unset;
           }
-          .container {
-            margin: 2rem 0;
+          .group {
+            margin-bottom: 2rem;
           }
-        }
-
-        @media screen and (max-width: 480px) {
+          .group:last-child {
+            margin-bottom: 1rem;
+          }
+          button {
+            margin: 0 1rem;
+          }
         }
       `}</style>
     </div>
