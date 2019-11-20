@@ -222,7 +222,7 @@ const Hero = ({ airtable }) => {
             width: 100%;
           }
           .demo-container {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
           }
           .demo button,
           button {
