@@ -90,6 +90,9 @@ const Hardware = ({}) => (
         }
       }
       @media screen and (max-width: 480px) {
+        section {
+          padding-top: 6rem;
+        }
         .group {
           flex-direction: column;
           align-items: center;

@@ -156,6 +156,7 @@ const Features = () => (
         }
         .row {
           flex-direction: column;
+          margin: 0 !important;
         }
         .tablet {
           display: none;
