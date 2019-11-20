@@ -26,7 +26,7 @@ export const routes = [
     nested: true
   },
   {
-    href: '/docs/managing',
+    href: '/docs/managing/ssh-access',
     title: 'Managing'
   },
   {
@@ -85,7 +85,7 @@ const Docs = ({ title, children }) => {
                 </Link>
               </li>
               {routes.slice(1, routes.length).map(({ href, title, nested }) => (
-                <li key={href} className={nested ? 'nested' : ''}>
+                <li key={title} className={nested ? 'nested' : ''}>
                   <Link href={href}>
                     <a className={href === pathname ? 'selected' : ''}>
                       {title}
