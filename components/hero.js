@@ -159,6 +159,7 @@ const Hero = ({ airtable }) => {
           font-size: 1rem;
           appearance: none;
           outline: none;
+          border: none;
           background: #fff;
           color: var(--black);
           border-radius: 4px;
