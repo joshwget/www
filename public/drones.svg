@@ -6,9 +6,9 @@
 <rect x="181" y="330" width="55" height="11" rx="4" fill="#000"/>
 <rect x="198" y="341" width="20" height="8" fill="#000"/>
 <circle cx="208" cy="366" r="17.5" stroke="#000" stroke-width="5"/>
-<circle cx="208" cy="366" r="5.5" fill="#66d9ef" stroke="#000"/>
+<circle cx="208" cy="366" r="5.5" fill="#57e3ff" stroke="#000"/>
 <circle cx="208" cy="366" r="10" stroke="#000" stroke-width="2"/>
-<circle cx="104" cy="276" r="5" fill="#66d9ef"/>
+<circle cx="104" cy="276" r="5" fill="#57e3ff"/>
 <rect x="184" y="288" width="4" height="24" rx="2" fill="white"/>
 <rect x="198" y="288" width="4" height="24" rx="2" fill="white"/>
 <rect x="212" y="288" width="4" height="24" rx="2" fill="white"/>
@@ -18,7 +18,7 @@
 <rect x="46" y="230" width="8" height="5" fill="#000"/>
 <path d="M376.576 224.788C376.576 230.746 371.958 230 366 230C360.042 230 355 230.746 355 224.788C355 218.83 359.83 214 365.788 214C371.746 214 376.576 218.83 376.576 224.788Z" fill="#000"/>
 <rect x="362" y="230" width="8" height="5" fill="#000"/>
-<rect x="200" y="242" width="16" height="3" rx="1" fill="#66d9ef"/>
+<rect x="200" y="242" width="16" height="3" rx="1" fill="#57e3ff"/>
 <rect x="65" y="289" width="18" height="12" fill="#000"/>
 <rect x="333" y="289" width="18" height="12" fill="#000"/>
 <path d="M146.315 324.6L156.716 331.883L122.301 381.032L112 374L146.315 324.6Z" fill="#000"/>
@@ -50,9 +50,9 @@
 <rect x="308.967" y="119.324" width="26.4423" height="5.28846" rx="2.64423" transform="rotate(-45 308.967 119.324)" fill="#000"/>
 <rect x="318.485" y="117.285" width="9.61539" height="3.84615" transform="rotate(-45 318.485 117.285)" fill="#000"/>
 <circle cx="330.384" cy="122.384" r="7.11539" transform="rotate(-45 330.384 122.384)" stroke="#000" stroke-width="5"/>
-<circle cx="330.384" cy="122.384" r="2.90385" transform="rotate(-45 330.384 122.384)" fill="#66d9ef" stroke="#000"/>
+<circle cx="330.384" cy="122.384" r="2.90385" transform="rotate(-45 330.384 122.384)" fill="#57e3ff" stroke="#000"/>
 <circle cx="330.384" cy="122.384" r="4.28846" transform="rotate(-45 330.384 122.384)" stroke="#000" stroke-width="2"/>
-<circle cx="264.433" cy="127.143" r="2.40385" transform="rotate(-45 264.433 127.143)" fill="#66d9ef"/>
+<circle cx="264.433" cy="127.143" r="2.40385" transform="rotate(-45 264.433 127.143)" fill="#57e3ff"/>
 <rect x="295.708" y="104.026" width="1.92308" height="11.5385" rx="0.961538" transform="rotate(-45 295.708 104.026)" fill="white"/>
 <rect x="300.468" y="99.267" width="1.92308" height="11.5385" rx="0.961538" transform="rotate(-45 300.468 99.267)" fill="white"/>
 <rect x="305.227" y="94.5076" width="1.92308" height="11.5385" rx="0.961538" transform="rotate(-45 305.227 94.5076)" fill="white"/>
@@ -62,7 +62,7 @@
 <rect x="229.077" y="131.223" width="3.84615" height="2.40385" transform="rotate(-45 229.077 131.223)" fill="#000"/>
 <path d="M339.687 17.0698C341.712 19.0953 339.888 20.4116 337.863 22.4371C335.837 24.4626 334.377 26.4303 332.352 24.4048C330.326 22.3793 330.326 19.0953 332.352 17.0698C334.377 15.0443 337.661 15.0443 339.687 17.0698Z" fill="#000"/>
 <rect x="336.503" y="23.7969" width="3.84615" height="2.40385" transform="rotate(-45 336.503 23.7969)" fill="#000"/>
-<rect x="285.51" y="82.9491" width="7.69231" height="1.44231" rx="0.721154" transform="rotate(-45 285.51 82.9491)" fill="#66d9ef"/>
+<rect x="285.51" y="82.9491" width="7.69231" height="1.44231" rx="0.721154" transform="rotate(-45 285.51 82.9491)" fill="#57e3ff"/>
 <rect x="255.594" y="144.821" width="8.65385" height="5.76923" transform="rotate(-45 255.594 144.821)" fill="#000"/>
 <rect x="346.702" y="53.7129" width="8.65385" height="5.76923" transform="rotate(-45 346.702 53.7129)" fill="#000"/>
 <path d="M295.339 129.28L301.351 128.22L306.36 156.628L300.468 157.739L295.339 129.28Z" fill="#000"/>
@@ -94,9 +94,9 @@
 <rect x="82.0074" y="82.66" width="13.2212" height="2.64423" rx="1.32212" transform="rotate(25 82.0074 82.66)" fill="#000"/>
 <rect x="84.5936" y="86.7836" width="4.80769" height="1.92308" transform="rotate(25 84.5936 86.7836)" fill="#000"/>
 <circle cx="84.2324" cy="93.246" r="2.5" transform="rotate(25 84.2324 93.246)" stroke="#000" stroke-width="4.61539"/>
-<circle cx="84.2325" cy="93.2461" r="1.70192" transform="rotate(25 84.2325 93.2461)" fill="#66d9ef" stroke="#000"/>
+<circle cx="84.2325" cy="93.2461" r="1.70192" transform="rotate(25 84.2325 93.2461)" fill="#57e3ff" stroke="#000"/>
 <circle cx="84.2325" cy="93.2459" r="1.64423" transform="rotate(25 84.2325 93.2459)" stroke="#000" stroke-width="2"/>
-<circle cx="70.7178" cy="63.073" r="1.20192" transform="rotate(25 70.7178 63.073)" fill="#66d9ef"/>
+<circle cx="70.7178" cy="63.073" r="1.20192" transform="rotate(25 70.7178 63.073)" fill="#57e3ff"/>
 <rect x="86.9279" y="73.8146" width="0.961538" height="5.76923" rx="0.480769" transform="rotate(25 86.9279 73.8146)" fill="white"/>
 <rect x="89.9779" y="75.2368" width="0.961538" height="5.76923" rx="0.480769" transform="rotate(25 89.9779 75.2368)" fill="white"/>
 <rect x="93.028" y="76.6591" width="0.961538" height="5.76923" rx="0.480769" transform="rotate(25 93.028 76.6591)" fill="white"/>
@@ -106,7 +106,7 @@
 <rect x="62.7551" y="47.1589" width="1.92308" height="1.20192" transform="rotate(25 62.7551 47.1589)" fill="#000"/>
 <path d="M135.305 79.6071C134.699 80.9052 133.769 80.2734 132.471 79.6681C131.173 79.0628 129.999 78.7132 130.604 77.4151C131.209 76.1171 132.752 75.5555 134.05 76.1608C135.348 76.7661 135.91 78.3091 135.305 79.6071Z" fill="#000"/>
 <rect x="131.6" y="79.2617" width="1.92308" height="1.20192" transform="rotate(25 131.6 79.2617)" fill="#000"/>
-<rect x="95.0868" y="65.4183" width="3.84615" height="0.721154" rx="0.360577" transform="rotate(25 95.0868 65.4183)" fill="#66d9ef"/>
+<rect x="95.0868" y="65.4183" width="3.84615" height="0.721154" rx="0.360577" transform="rotate(25 95.0868 65.4183)" fill="#57e3ff"/>
 <rect x="60.9006" y="61.9431" width="4.32692" height="2.88462" transform="rotate(25 60.9006 61.9431)" fill="#000"/>
 <rect x="119.288" y="89.1694" width="4.32692" height="2.88462" transform="rotate(25 119.288 89.1694)" fill="#000"/>
 <path d="M74.9994 77.9598L76.5255 80.6032L64.0348 87.8148L62.5049 85.2362L74.9994 77.9598Z" fill="#000"/>
