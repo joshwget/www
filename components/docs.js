@@ -161,7 +161,6 @@ const Docs = ({ title, children }) => {
           .children :global(a) {
             color: var(--black);
             font-weight: 500;
-            text-decoration: none;
           }
           .children :global(blockquote) {
             border: 2px solid var(--primary);
