@@ -87,7 +87,13 @@ const Docs = ({ title, children }) => {
               {routes.slice(1, routes.length).map(({ href, title, nested }) => (
                 <li key={title} className={nested ? 'nested' : ''}>
                   <Link href={href}>
-                    <a className={href === pathname ? 'selected' : ''}>
+                    <a
+                      className={
+                        title !== 'Managing' && href === pathname
+                          ? 'selected'
+                          : ''
+                      }
+                    >
                       {title}
                     </a>
                   </Link>
