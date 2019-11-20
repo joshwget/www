@@ -221,7 +221,12 @@ const Hero = ({ airtable }) => {
             box-sizing: border-box;
             width: 100%;
           }
-          .demo button {
+          .demo-container {
+            margin-bottom: 1rem;
+          }
+          .demo button,
+          button {
+            width: 100%;
             align-self: stretch;
             justify-content: center;
             margin: 0.5rem 0 0 0;

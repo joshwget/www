@@ -90,31 +90,29 @@ const CTA = ({}) => (
         opacity: 0.8;
       }
 
-      @media screen and (max-width: 700px) {
-        .row {
-          flex-direction: column-reverse;
-          justify-content: unset;
-          align-items: center;
+      @media screen and (max-width: 900px) {
+        section {
+          flex-direction: column;
         }
-
-        a,
-        button {
-          width: 28rem;
-          margin: 1rem 0;
+        h2 {
+          text-align: center;
+          margin: 0 0 2rem 0;
+        }
+        .row {
+          flex-direction: row-reverse;
         }
       }
 
       @media screen and (max-width: 600px) {
-        section {
-          padding-top: 3rem;
+        .row {
+          flex-direction: column;
         }
-      }
-
-      @media screen and (max-width: 480px) {
-        a,
+        a {
+          width: 100%;
+        }
         button {
-          width: unset;
-          align-self: stretch;
+          width: 100%;
+          margin: 1.5rem 0;
         }
       }
     `}</style>
