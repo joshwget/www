@@ -35,6 +35,7 @@ const Hardware = ({}) => (
     <style jsx>{`
       section {
         align-items: center;
+        padding-top: 2rem;
       }
 
       .row {
@@ -42,7 +43,6 @@ const Hardware = ({}) => (
         justify-content: center;
         align-items: flex-end;
         align-self: stretch;
-        margin: 2rem 0 0 0;
       }
 
       .container {

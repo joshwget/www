@@ -1,5 +1,5 @@
 <svg width="125" height="118" viewBox="0 0 125 118" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1.47058" width="117.647" height="117.647" rx="4" fill="black"/>
+<rect x="1.47058" width="117.647" height="117.647" rx="4" fill="#000"/>
 <circle cx="11.7644" cy="10.2937" r="2.94118" fill="white"/>
 <circle cx="108.824" cy="107.352" r="2.94118" fill="white"/>
 <circle cx="11.7644" cy="107.352" r="2.94118" fill="white"/>
@@ -26,10 +26,10 @@
 <circle cx="82.3514" cy="8.82215" r="1.47059" fill="white"/>
 <circle cx="73.5282" cy="13.2343" r="1.47059" fill="white"/>
 <circle cx="77.9398" cy="13.2343" r="1.47059" fill="white"/>
-<rect x="99.0293" y="26.9707" width="25.4706" height="16.6471" rx="1.5" fill="white" stroke="black"/>
-<rect x="104.412" y="32.3535" width="7.35295" height="1.47059" rx="0.735295" fill="black"/>
-<rect x="104.412" y="36.7656" width="7.35295" height="1.47059" rx="0.735295" fill="black"/>
-<rect x="1" y="48.0576" width="6.82354" height="20.0588" rx="1" fill="white" stroke="black" stroke-width="2"/>
+<rect x="99.0293" y="26.9707" width="25.4706" height="16.6471" rx="1.5" fill="white" stroke="#000"/>
+<rect x="104.412" y="32.3535" width="7.35295" height="1.47059" rx="0.735295" fill="#000"/>
+<rect x="104.412" y="36.7656" width="7.35295" height="1.47059" rx="0.735295" fill="#000"/>
+<rect x="1" y="48.0576" width="6.82354" height="20.0588" rx="1" fill="white" stroke="#000" stroke-width="2"/>
 <rect x="5.88293" y="36.7637" width="7.35295" height="41.1765" rx="1" fill="white"/>
 <rect x="11.7659" y="36.7637" width="5.88236" height="1.47059" fill="white"/>
 <rect x="11.7659" y="49.998" width="5.88236" height="1.47059" fill="white"/>
@@ -46,7 +46,7 @@
 <mask id="path-45-inside-1" fill="white">
 <rect x="47.0605" y="44.1191" width="25" height="25" rx="2"/>
 </mask>
-<rect x="47.0605" y="44.1191" width="25" height="25" rx="2" fill="#3ae8b0" stroke="white" stroke-width="8" mask="url(#path-45-inside-1)"/>
+<rect x="47.0605" y="44.1191" width="25" height="25" rx="2" fill="#66d9ef" stroke="white" stroke-width="8" mask="url(#path-45-inside-1)"/>
 <rect x="51.4722" y="42.6484" width="1.47059" height="1.47059" fill="white"/>
 <rect x="66.178" y="42.6475" width="1.47059" height="1.47059" fill="white"/>
 <rect x="63.2368" y="42.6475" width="1.47059" height="1.47059" fill="white"/>
@@ -72,27 +72,27 @@
 <rect x="45.5901" y="58.8252" width="1.47059" height="1.47059" transform="rotate(-90 45.5901 58.8252)" fill="white"/>
 <rect x="45.5901" y="61.7656" width="1.47059" height="1.47059" transform="rotate(-90 45.5901 61.7656)" fill="white"/>
 <rect x="25" y="97.0596" width="50" height="5.88236" rx="0.5" fill="white"/>
-<rect x="26.4705" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="52.9402" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="57.3534" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="61.7659" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="70.5881" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="66.1766" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="48.5294" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="44.1169" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="39.7062" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="35.2937" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="30.8829" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
+<rect x="26.4705" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="52.9402" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="57.3534" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="61.7659" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="70.5881" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="66.1766" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="48.5294" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="44.1169" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="39.7062" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="35.2937" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="30.8829" y="98.5293" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
 <rect x="25" y="104.412" width="50" height="5.88236" rx="0.5" fill="white"/>
-<rect x="26.4705" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="52.9402" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="57.3534" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="61.7659" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="70.5881" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="66.1766" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="48.5294" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="44.1169" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="39.7062" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="35.2937" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
-<rect x="30.8829" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="black"/>
+<rect x="26.4705" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="52.9402" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="57.3534" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="61.7659" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="70.5881" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="66.1766" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="48.5294" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="44.1169" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="39.7062" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="35.2937" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
+<rect x="30.8829" y="105.883" width="2.94118" height="2.94118" rx="0.5" fill="#000"/>
 </svg>

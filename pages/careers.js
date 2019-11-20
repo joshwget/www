@@ -45,6 +45,16 @@ const Careers = () => (
       <div className="container">
         <h1>Careers</h1>
 
+        {/* <div className="intro">
+          <p>
+            Our goal is to make Deviceplane the de facto way to manage all
+            remote hardware and devices. The path to get there requires deep
+            engagement with a massive community of developers — both to maximize
+            adoption of Deviceplane, and to make sure we're building the product
+            that fits their requirements and sparks joy.
+          </p>
+        </div> */}
+
         <div className="content">
           {postings.map(({ title, location, body }) => (
             <div className="posting">
@@ -73,12 +83,16 @@ const Careers = () => (
       {`
         html {
           color: var(--white);
-          background-color: var(--black);
+          background-color: var(--black) !important;
         }
 
         h1 {
           margin: 0 0 2rem 0;
-          font-size: 3rem;
+          font-size: 48px;
+        }
+
+        p {
+          color: rgba(255, 255, 255, 0.9);
         }
       `}
     </style>
@@ -93,6 +107,14 @@ const Careers = () => (
 
         .posting {
           max-width: 36rem;
+          border: 1px solid var(--primary);
+          padding: 2rem;
+          border-radius: 8px;
+        }
+
+        .intro {
+          max-width: 38rem;
+          margin-bottom: 2rem;
         }
 
         .posting:not(:last-child) {
@@ -103,7 +125,6 @@ const Careers = () => (
           display: flex;
           align-self: stretch;
           justify-content: space-between;
-          align-items: flex-end;
         }
 
         .header a {

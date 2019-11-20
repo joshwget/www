@@ -1,60 +1,86 @@
 const CTA = ({}) => (
   <div className="cta">
     <section>
-      <h2>Get started for free today</h2>
+      <h2>Ready to get started?</h2>
 
       <div className="row">
-        <button onClick={() => window.Intercom('show')}>Chat with us</button>
+        <a href="https://cloud.deviceplane.com/register">Start now</a>
 
-        <a href="https://cloud.deviceplane.com/register">Sign up</a>
+        <button onClick={() => window.Intercom('show')}>
+          Chat with us <img src="/arrow.svg" className="arrow" />
+        </button>
       </div>
     </section>
     <style jsx>{`
+      @keyframes shift {
+        50% {
+          transform: translateX(6px);
+        }
+      }
+
       .cta {
-        background-color: var(--black);
+        background-color: #000;
         color: var(--white);
       }
 
       section {
-        padding-top: 0;
+        flex-direction: row;
         align-items: center;
+        justify-content: space-between;
+      }
+
+      h2 {
+        text-align: left;
+        margin: 0;
       }
 
       .row {
         display: flex;
         justify-content: center;
-        margin-top: 2rem;
         align-self: stretch;
+        align-items: center;
+      }
+
+      button:hover .arrow {
+        animation-name: shift;
+        animation-duration: 1.2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
+      }
+
+      .arrow {
+        width: 1rem;
+        margin-left: 0.75rem;
       }
 
       a {
         text-decoration: none;
         color: var(--black);
         background-color: var(--primary);
-        height: 3rem;
-        font-weight: 500;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: var(--radius);
         margin: 0 1rem;
-        width: 20rem;
         transition: opacity 150ms;
+        width: 14rem;
+        height: 3rem;
       }
 
       button {
+        width: 14rem;
         height: 3rem;
+        padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: none;
-        border: 2px solid var(--white);
-        color: var(--white);
+        background: var(--white);
+        color: var(--black);
         font-size: 1rem;
-        font-weight: 500;
         border-radius: var(--radius);
         margin: 0 1rem;
-        width: 20rem;
         cursor: pointer;
         transition: opacity 150ms;
       }

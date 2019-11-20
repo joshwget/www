@@ -16,7 +16,8 @@ const Info = () => (
       <div className="link">
         <Link href="/docs">
           <a>
-            View documentation <div className="arrow">→</div>
+            View documentation{' '}
+            <img src="/arrow.svg" alt="Arrow" className="arrow" />
           </a>
         </Link>
       </div>
@@ -35,7 +36,7 @@ const Info = () => (
 
       <div className="link">
         <a href="https://github.com/deviceplane/deviceplane">
-          Source code <div className="arrow">→</div>
+          Source code <img src="/arrow.svg" alt="Arrow" className="arrow" />
         </a>
       </div>
     </div>
@@ -53,7 +54,7 @@ const Info = () => (
 
       {/* <div className="link">
         <a href="/docs/security">
-          Learn more <div className="arrow">→</div>
+          Learn more  <img src="/arrow.svg" alt="Arrow" className="arrow" />
         </a>
       </div> */}
     </div>
@@ -67,7 +68,11 @@ const Info = () => (
 
       section {
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.9);
       }
 
       h4 {
@@ -75,11 +80,10 @@ const Info = () => (
       }
 
       .container {
-        max-width: 20rem;
-        margin: 0 2rem;
+        max-width: 16rem;
         background-color: var(--black);
-        border-radius: var(--radius);
-        padding: 2rem;
+        border-radius: 8px;
+        padding: 1.5rem;
         color: var(--white);
         display: flex;
         flex-direction: column;
@@ -92,8 +96,10 @@ const Info = () => (
 
       a {
         text-decoration: none;
-        font-weight: 500;
-        color: var(--primary);
+        color: var(--black);
+        background: #fff;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
         transition: color 150ms;
         display: inline-flex;
         align-items: center;
@@ -102,6 +108,7 @@ const Info = () => (
       .arrow {
         margin-left: 0.5rem;
         font-size: 1.5rem;
+        width: 1rem;
       }
 
       .link {
@@ -122,12 +129,6 @@ const Info = () => (
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         animation-direction: alternate;
-      }
-
-      @media screen and (max-width: 1200px) {
-        .container {
-          margin: 0 1rem;
-        }
       }
 
       @media screen and (max-width: 900px) {

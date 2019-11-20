@@ -17,7 +17,7 @@ const Footer = () => (
       <div className="logo">
         <Link href="/">
           <a>
-            <Logo width={36} height={36} />
+            <Logo width={40} height={40} />
           </a>
         </Link>
       </div>
@@ -39,11 +39,13 @@ const Footer = () => (
           ))}
         </ul>
       </nav>
+
+      <span className="copyright">© Deviceplane</span>
     </div>
 
     <style jsx>{`
       footer {
-        background: var(--black);
+        background: #000;
         color: var(--white);
         margin-top: auto;
       }
@@ -54,7 +56,7 @@ const Footer = () => (
         align-self: stretch;
         flex-direction: column;
         align-items: center;
-        padding: 3rem 0;
+        padding: 3rem 0 2rem 0;
         margin: 0 auto;
       }
 
@@ -74,7 +76,7 @@ const Footer = () => (
         opacity: 0.8;
         text-decoration: none;
         transition: opacity 250ms;
-        font-size: 0.85rem;
+        font-size: 14px;
       }
 
       .link:hover {
@@ -89,7 +91,7 @@ const Footer = () => (
 
       .copyright {
         color: var(--white);
-        opacity: 0.3;
+        opacity: 0.4;
         margin-top: 3rem;
         font-size: 10px;
       }

@@ -53,29 +53,27 @@ const Home = () => (
           flex-direction: column;
           margin: 0 auto;
           max-width: var(--page-width);
-          padding: 3rem 2rem;
+          padding: 4rem 2rem;
         }
 
         h1 {
-          font-size: 3rem;
+          font-size: 48px;
           margin: 0;
-          font-weight: 500;
         }
 
         h2 {
-          font-size: 2.8rem;
-          margin: 0;
+          font-size: 42px;
+          margin: 0 0 2rem 0;
           text-align: center;
-          font-weight: 600;
         }
 
         h3 {
-          font-size: 1.4rem;
+          font-size: 22px;
           margin: 0 0 1rem 0;
         }
 
         h4 {
-          font-size: 1.4rem;
+          font-size: 22px;
           margin: 0;
         }
       `}

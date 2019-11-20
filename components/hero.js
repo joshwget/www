@@ -64,7 +64,7 @@ const Hero = ({ airtable }) => {
             </div>
 
             <button onClick={() => window.Intercom('show')}>
-              Chat with us now <div className="arrow">→</div>
+              Chat with us <img src="/arrow.svg" className="arrow" />
             </button>
           </div>
         </div>
@@ -113,7 +113,7 @@ const Hero = ({ airtable }) => {
 
         .demo-container {
           height: 3rem;
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
         }
 
         .demo {
@@ -123,29 +123,30 @@ const Hero = ({ airtable }) => {
         }
 
         .demo input {
-          padding: 0.625rem;
+          padding: 0.6rem;
           border-radius: var(--radius);
-          border: none;
+          border: 1px solid #fff;
           outline: none;
           font-size: 1rem;
-          color: var(--black);
+          color: var(--white);
           width: 16.5rem;
+          background: #000;
         }
 
-        .demo input::placeholder {
+        input::placeholder {
           font-size: 1rem;
-          color: var(--black);
+          color: rgba(255, 255, 255, 0.9);
         }
 
         .demo button {
-          color: var(--black);
-          background: var(--primary);
-          font-weight: 500;
+          background-color: var(--primary);
+          color: #000;
           cursor: pointer;
-          transition: opacity 150ms;
           margin-left: 0.5rem;
-          padding: 0.6rem 1.25rem;
+          padding: 0.7rem 1rem;
           border-radius: var(--radius);
+          border: none;
+          transition: opacity 150ms;
         }
 
         .demo button:hover {
@@ -153,16 +154,15 @@ const Hero = ({ airtable }) => {
         }
 
         button {
-          padding: 0;
           margin: 0;
           display: flex;
-          appearance: none;
-          border: none;
-          outline: none;
-          background: none;
-          font-weight: 500;
           font-size: 1rem;
-          color: var(--primary);
+          appearance: none;
+          outline: none;
+          background: #fff;
+          color: var(--black);
+          border-radius: 4px;
+          padding: 0.7rem 1rem;
           cursor: pointer;
           transition: opacity 150ms;
           align-items: center;
@@ -182,8 +182,8 @@ const Hero = ({ airtable }) => {
         }
 
         .arrow {
-          margin-left: 0.5rem;
-          font-size: 1.5rem;
+          width: 1rem;
+          margin-left: 0.75rem;
         }
 
         .success {

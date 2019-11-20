@@ -263,37 +263,35 @@ const Nav = () => {
           display: flex;
           justify-content: center;
           background-color: var(--black);
+          color: var(--white);
         }
         .container {
           max-width: var(--page-width);
-          padding: 2rem;
+          padding: 2rem 2rem;
           display: flex;
           flex: 1;
           justify-content: space-between;
           align-items: center;
         }
         ul {
-          margin: 6px 0 0 0;
+          margin: 0;
           padding: 0;
           display: flex;
-          align-items: center;
         }
         li {
           display: flex;
         }
         a {
-          color: var(--white);
           text-decoration: none;
           user-select: none;
         }
 
         .link {
-          font-size: 1rem;
-          font-weight: 500;
           margin: 0 1rem;
         }
         .link a {
-          padding-bottom: 2px;
+          color: var(--white);
+          padding-bottom: 4px;
           border-bottom: 2px solid var(--black);
           transition: border-color 150ms, color 150ms;
         }
@@ -305,12 +303,13 @@ const Nav = () => {
         }
 
         .name {
-          font-size: 1.5rem;
+          font-size: 28px;
           font-weight: 300;
+          margin-right: 1rem;
         }
         .login {
           margin-right: 2rem;
-          font-weight: 500;
+          color: var(--white);
           transition: opacity 200ms;
         }
         .login:hover {
@@ -319,16 +318,16 @@ const Nav = () => {
         .signup {
           background-color: var(--primary);
           border-radius: var(--radius);
-          padding: 0.6rem 1.25rem;
-          color: var(--black);
-          font-weight: 500;
-          transition: opacity 150ms;
+          padding: 0.7rem 1rem;
+          color: #000;
+          transition: opacity 200ms;
         }
 
         .signup:hover {
           opacity: 0.9;
         }
-        .left {
+        .left,
+        .right {
           display: flex;
           align-items: center;
         }
@@ -337,6 +336,7 @@ const Nav = () => {
           align-items: center;
           cursor: pointer;
           margin-right: 1rem;
+          margin-bottom: 0.55rem;
         }
         img {
           width: 3rem;

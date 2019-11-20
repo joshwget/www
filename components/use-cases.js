@@ -1,6 +1,6 @@
 const UseCases = () => (
   <section>
-    <h2>in any industry</h2>
+    <h2>Ready for any industry</h2>
 
     <div className="desktop row">
       <div className="group">
@@ -78,7 +78,6 @@ const UseCases = () => (
         margin: 0 3rem;
       }
       .row {
-        margin: 2rem 0 0 0;
         display: flex;
         align-items: baseline;
         justify-content: center;

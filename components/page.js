@@ -10,11 +10,21 @@ const Page = ({ children }) => (
 
           --black: #000;
           --white: #fff;
-          --primary: #3ae8b0;
+          --primary: #57e3ff; //#00ccc5; //#00abc2;
+          --secondary: #57e3ff; //#00ccc5; //#00abc2;
 
           --page-width: 1080px;
 
           --radius: 4px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-weight: 500;
         }
 
         html {
@@ -28,9 +38,14 @@ const Page = ({ children }) => (
           margin: 0;
           height: 100%;
           overflow-x: hidden;
+          font-weight: 400;
           font-family: var(--font-family);
           -webkit-font-smoothing: antialiased;
           text-rendering: optimizeLegibility;
+        }
+
+        p {
+          line-height: 1.4em;
         }
 
         button {
@@ -39,6 +54,7 @@ const Page = ({ children }) => (
 
         input,
         input::placeholder {
+          color: var(--black);
           font-family: var(--font-family);
         }
 

@@ -141,7 +141,7 @@ const Docs = ({ title, children }) => {
           }
           .container :global(pre) {
             padding: 1.5rem;
-            background: var(--black);
+            background: #000;
             border-radius: var(--radius);
             color: var(--primary);
             margin: 1.5rem 0;
@@ -182,10 +182,11 @@ const Docs = ({ title, children }) => {
           }
 
           .children {
-            background-color: #eeeeef;
             border-radius: var(--radius);
-            padding: 1.5rem 2rem;
+            padding: 1.5rem;
             overflow: hidden;
+            color: var(--black);
+            background: rgba(255, 255, 255, 0.9);
           }
 
           .sidebar {

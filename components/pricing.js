@@ -24,7 +24,7 @@ const Pricing = ({}) => (
     <div className="bg" />
 
     <section>
-      <h2>Flexible pricing</h2>
+      <h2>Flexible plans that scale</h2>
 
       <div className="plans">
         {plans.map(({ name, features, price, icon = '/enterprise.svg' }) => (
@@ -71,46 +71,37 @@ const Pricing = ({}) => (
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 0.25rem 0;
-        background-color: var(--black);
-        transition: background-color 50ms, color 50ms, border-color 50ms;
-        border-bottom: 8px solid var(--black);
-        color: var(--white);
+        padding: 0.5rem 0;
       }
       .top img {
         height: 1.5rem;
       }
       .title {
-        font-weight: 700;
-        font-size: 1.2rem;
+        font-size: 22px;
+        font-weight: 500;
         text-align: center;
+        color: var(--white);
       }
       .container {
-        background: var(--white);
-        border: 6px solid var(--black);
-        color: var(--black);
-        border-radius: var(--radius);
+        background: #000;
+        color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        padding: 0.5rem;
         display: flex;
         flex-direction: column;
         height: 16rem;
         width: 12rem;
-        transition: transform 400ms, border-color 100ms;
+        transition: transform 300ms;
       }
       .container:hover {
         transform: translateY(-1.2rem);
-        border-color: var(--primary) !important;
       }
-      .container:hover .top {
-        background-color: var(--primary) !important;
-        color: var(--black) !important;
-        border-color: var(--primary) !important;
+      .container:hover .title {
+        color: var(--primary);
       }
-      .border:last-child .container {
-        border-color: var(--black);
-      }
-      .border:last-child .top {
-        border-color: var(--black);
-        background-color: var(--black);
+      .container:hover .price {
+        color: var(--primary);
+        border-color: var(--primary);
       }
       .pricing {
         position: relative;
@@ -130,12 +121,15 @@ const Pricing = ({}) => (
         width: 15rem;
         margin: 4rem 2rem;
         background: var(--white);
-        border-radius: var(--radius);
+        border-radius: 8px;
       }
       .price {
-        font-weight: 700;
         padding: 0.5rem 0.25rem;
         text-align: center;
+        border: 1px solid var(--white);
+        border-radius: 4px;
+        margin: 0.5rem;
+        transition: border-color 200ms, color 200ms;
       }
       .bg {
         position: absolute;
@@ -145,7 +139,7 @@ const Pricing = ({}) => (
         background: linear-gradient(
           173deg,
           transparent calc(50% - 1px),
-          rgb(0, 0, 0) 50%
+          #000 50%
         );
         width: 100vw;
         bottom: 0;
@@ -157,22 +151,22 @@ const Pricing = ({}) => (
       }
       li {
         display: flex;
-        font-weight: 500;
       }
       li:not(:last-child) {
         margin-bottom: 1rem;
       }
       .check img {
-        width: 1.25rem;
+        width: 20px;
+        height: 20px;
       }
       .check {
+        flex: 0 0 22px;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--black);
+        background-color: var(--primary);
         border-radius: 50%;
-        width: 1.25rem;
-        height: 1.25rem;
+        height: 22px;
         margin-right: 0.5rem;
       }
       .tablet {
@@ -183,22 +177,19 @@ const Pricing = ({}) => (
           padding: 0;
         }
         .container {
-          width: 9.5rem;
+          width: 10rem;
+          height: 17.5rem;
         }
         .border {
           width: 12.5rem;
+          height: 19rem;
           margin: 4rem 1.25rem;
         }
       }
       @media screen and (max-width: 700px) {
-        .container {
-          height: 15.5rem;
-        }
         .border {
-          width: 12rem;
           margin: 2rem 0;
           border-radius: 0;
-          height: 17.5rem;
         }
         .border:first-child {
           border-bottom-left-radius: var(--radius);
@@ -211,7 +202,7 @@ const Pricing = ({}) => (
           background: linear-gradient(
             165deg,
             transparent calc(50% - 1px),
-            rgb(0, 0, 0) 50%
+            #000 50%
           );
         }
       }
@@ -246,7 +237,7 @@ const Pricing = ({}) => (
           background: linear-gradient(
             150deg,
             transparent calc(50% - 1px),
-            rgb(0, 0, 0) 50%
+            #000 50%
           );
         }
       }

@@ -43,9 +43,7 @@ const content = [
 
 const Container = ({ title, body, icon }) => (
   <div className="container" key={title}>
-    <div className="icon">
-      <img src={icon} alt={`${title} icon`} />
-    </div>
+    <img src={icon} alt={`${title} icon`} />
     <h4>{title}</h4>
     <p>{body}</p>
     <style jsx>
@@ -54,23 +52,12 @@ const Container = ({ title, body, icon }) => (
           display: flex;
           flex-direction: column;
           max-width: 18rem;
-          margin: 2rem;
-        }
-
-        .icon {
-          width: 2.25rem;
-          height: 2.25rem;
-          border-radius: var(--radius);
-          margin-bottom: 1rem;
-          background: black;
-          display: flex;
-          justify-content: center;
-          align-items: center;
         }
 
         img {
-          width: 1rem;
-          height: 1rem;
+          width: 32px;
+          height: 32px;
+          margin-bottom: 1rem;
         }
 
         @media screen and (max-width: 480px) {
@@ -124,15 +111,27 @@ const Features = () => (
     <style jsx>{`
       section {
         align-items: center;
-        padding: 3rem 1rem 1rem 1rem;
       }
 
-      h2 {
-        margin: 0 0 1rem 0;
+      .desktop {
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        flex: 1;
+      }
+
+      .row > :global(.container):not(:last-child) {
+        margin-right: 4rem;
       }
 
       .row {
         display: flex;
+        flex: 1;
+        justify-content: space-between;
+      }
+
+      .row:not(:last-child) {
+        margin-bottom: 3rem;
       }
 
       .tablet {

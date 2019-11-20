@@ -27,7 +27,7 @@ const content = [
   }
 ];
 
-const Tutorial = ({}) => {
+const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
@@ -35,153 +35,114 @@ const Tutorial = ({}) => {
       <section>
         <h2>How it works</h2>
 
-        <div className="container">
-          <div className="buttons">
-            <div className="row">
-              {content.slice(0, 2).map(({ title }, i) => (
-                <button
-                  key={title}
-                  className={selection === i ? 'selected' : ''}
-                  onClick={() => setSelection(i)}
-                >
-                  {title}
-                </button>
-              ))}
-            </div>
-            <div className="row">
-              {content.slice(2, 4).map(({ title }, i) => (
-                <button
-                  key={title}
-                  className={selection === i + 2 ? 'selected' : ''}
-                  onClick={() => setSelection(i + 2)}
-                >
-                  {title}
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="buttons">
+          {content.map(({ title }, i) => (
+            <button
+              className={i === selection ? 'selected' : ''}
+              onClick={() => setSelection(i)}
+            >
+              {title}
+            </button>
+          ))}
+        </div>
 
-          <div className="content">
-            <p>{content[selection].body}</p>
-          </div>
+        <div className="container">
+          <p>{content[selection].body}</p>
         </div>
       </section>
 
       <style jsx>{`
         section {
+          color: var(--white);
           align-items: center;
         }
 
         .tutorial {
+          min-height: 30rem;
           background: var(--black);
-          color: var(--white);
-          min-height: 26rem;
+        }
+
+        h4 {
+          transition: color 100ms;
+          color: var(--primary);
         }
 
         .container {
           display: flex;
-          margin-top: 2rem;
-          position: relative;
-          justify-content: center;
+          flex-direction: column;
+          border-radius: 8px;
+          padding: 2rem;
+          margin: 0 2rem;
+          background: #000;
+          border: 1px solid var(--primary);
+          max-width: 26rem;
         }
 
-        .content {
-          display: flex;
-          max-width: 24rem;
-          border: 2px solid var(--primary);
-          border-radius: var(--radius);
-          padding: 3rem;
-        }
-
-        .content p {
+        p {
           margin: 0;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .group {
+          display: flex;
+        }
+
+        .group:first-of-type {
+          margin-bottom: 4rem;
         }
 
         .buttons {
-          position: absolute;
-          left: -10rem;
-          display: block;
+          display: flex;
+          margin-bottom: 1.5rem;
+          justify-content: center;
         }
 
         button {
-          display: block;
-          padding: 0 0 0.25rem 0;
+          flex: 0 0 6rem;
           appearance: none;
-          background: none;
-          border: none;
-          color: var(--white);
-          font-weight: 500;
-          font-size: 1rem;
-          cursor: pointer;
-          border-bottom: 2px solid var(--black);
-          transition: color 150ms, border-color 150ms;
-        }
-
-        button {
-          margin-bottom: 1rem;
-        }
-
-        button:hover:not(.selected) {
-          border-color: var(--primary);
-        }
-
-        button:active,
-        button:focus {
           outline: none;
+          border: 1px solid var(--primary);
+          background: none;
+          color: var(--white);
+          padding: 0.6rem 1rem;
+          font-size: 1rem;
+          border-radius: var(--radius);
+          margin: 0 1rem;
+          transition: color 200ms;
+          cursor: pointer;
+        }
+
+        button:not(.selected):hover {
+          color: var(--primary);
         }
 
         .selected {
-          cursor: default;
-          color: var(--primary);
+          background: var(--primary);
+          color: var(--black);
+          cursor: auto;
         }
 
         @media screen and (max-width: 900px) {
           .container {
-            flex-direction: column;
-            align-items: center;
-            justify-content: unset;
+            margin: 0 2rem;
           }
-          .buttons {
-            position: static;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-          }
-          button {
-            margin: 0 2rem 2rem 2rem !important;
-          }
-          .tutorial {
-            min-height: 29rem;
-          }
-          .content {
-            padding: 2rem;
-            max-width: 22rem;
-          }
-          .row {
-            display: flex;
-            flex-direction: row;
+
+          .group:first-child {
+            margin-bottom: 4rem;
           }
         }
 
-        @media screen and (max-width: 600px) {
-          .container {
-            padding: 0 1rem;
-          }
-          .row {
+        @media screen and (max-width: 700px) {
+          .group {
             flex-direction: column;
+            margin: 0 !important;
           }
-          button {
-            margin: 0 1rem 1rem 1rem !important;
-          }
-          .content {
-            max-width: unset;
+          .container {
+            margin: 2rem 0;
           }
         }
 
         @media screen and (max-width: 480px) {
-          button {
-            margin: 1.5rem 2rem;
-          }
         }
       `}</style>
     </div>

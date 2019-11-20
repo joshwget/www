@@ -52,7 +52,7 @@ const Legal = ({ children }) => {
       <style global jsx>
         {`
           html {
-            color: var(--white);
+            color: rgba(255, 255, 255, 0.9);
             background-color: var(--black);
           }
         `}
@@ -60,6 +60,10 @@ const Legal = ({ children }) => {
 
       <style jsx>
         {`
+          .container :global(h1, h2, h3, h4, h5, h6) {
+            color: var(--white) !important;
+          }
+
           .container :global(h1) {
             font-size: 3rem;
             margin: 0;
