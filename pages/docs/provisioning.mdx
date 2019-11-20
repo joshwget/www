@@ -8,4 +8,50 @@ import Docs from '../../components/docs';
 
 Adding a device is as easy as running a Docker container. The Docker container launched onto each device is an agent container that is used to talk back to Deviceplane. For each device that you want to add, a unique device registration ID must be used as part of the Docker command. Click on the Add Device button to grab a unique Docker command for the device. If you are looking to add more than one device at a time, you’ll need to re-generate a new command to obtain a unique token for each device.
 
+## Registration Tokens
+
+Registration tokens are used to authenticate the registration of devices and are required anytime you're trying to add a new device. By default every new project will get a "default" registration token. This is the token that is used when adding a device through the "Add Device" button on the "Devices" page.
+
+A registration token can have a "maximum device registrations" set. This is an optional positive integer that represents the total number of times a registration token can be used. Registration with this token will no longer be possible once the maximum is reached. The "default" registration token does not have a maximum set which means it can be used an unlimited number of times. The maximum of a registration token can be updated anytime. More information on this feature and its security implications can be found in the "Security" section below.
+
+For many basic use cases and security requirements using the default registration should be sufficient. There are two main use cases for creating and using registration tokens other than the default registration token.
+
+1. Labels - Labels can be attached to registration tokens which are then automatically added to provisioned devices.
+2. Security - The default security token can be reused to register an unlimited number of devices. This means that if a bad actor were to discover this token then they'd be able to register any number of devices in your project.
+
+These two use cases are documented more below.
+
+### Labels
+
+> It's helpful to have knowledge of [device labels](/docs/managing/device-labels) and [scheduling rules](/docs/deploying/scheduling) before reading this documentation.
+
+To best explain how to use registration token labels, let's consider a user who has multiple "types" of devices in their project and applications that are set to run on only one type of device. Device labels and scheduling rules are used to accomplish this. Specifically suppose they have the following two devices and applications.
+
+Device 1, with label `type=type1`
+Device 2, with label `type=type2`
+
+Application 1, with a schedule rule set to only run on devices with label `type= type1`
+Application 2, with a schedule rule set to only run on devices with label `type=type2`
+
+These are the results of this setup.
+
+ - Device 1 will run only Application 1
+ - Device 2 will only run Application 2
+ - If a third device (Device 3) were to be added to this project then it would have _neither_ application until a type label is added to the device
+
+In most cases having to manually add labels to a device after it's registered is impractical. Instead you can create two registration tokens, one for registering devices of type 1 and one for registering devices of type 2. To do this add the label `type=type1` to the first registration token and label `type=type2` to the second registration token. Use the approriate registration token when registering a device of a certain type.
+
+### Security
+
+Registration tokens can be used to improve security in cases where devices are physically compromised by a bad actor. Imagine a scenario where you're using the default registration token and then a bad actor gets access to this token through a device. This bad actor will then be able to register any number of devices in your project.
+
+There are two ways registration tokens could be used to address this threat.
+
+1. Limit the number of max registrations for all of the registration tokens you're using. Select a high number you're unlikely to hit in a short time frame. This number can be raised at a later point in time. Be careful not to hit this limit as once a device registration token hits the maximum it can no longer be used to register new devices.
+2. Generate a new registration tokens for _each_ new anticipated device registration.
+
+Using a registration token with no limit on registrations is the most convenient option. Option (1) is slightly more inconvenient, and option (2) is the most inconvenient. Choose between these options depending on your specific security requirements. If you trust the people or organizations who have physical access to your devices then not setting limits on your registration tokens is likely safe. In cases where you aren't as trusting of the owners of your physical devices (perhaps a consumer product) then option (2) is a better choice.
+
+Having a separate registration token per device has the added security benefit of making them revokable. If you use the same registration token for multiple of your devices (before registration occurs) then revoking this token will prevent registration of multiple devices and not just one.
+
 </Docs>
