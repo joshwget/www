@@ -68,7 +68,7 @@ const Footer = () => (
 
       li {
         display: flex;
-        margin: 0 0.5rem;
+        margin: 0 1rem;
       }
 
       .link {

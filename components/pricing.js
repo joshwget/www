@@ -94,10 +94,14 @@ const Pricing = ({}) => (
         transition: transform 300ms;
       }
       .container:hover {
+        color: var(--primary);
         transform: translateY(-1.2rem);
       }
       .container:hover .title {
         color: var(--primary);
+      }
+      .container:hover .check {
+        background-color: var(--white);
       }
       .container:hover .price {
         color: var(--primary);
@@ -129,7 +133,8 @@ const Pricing = ({}) => (
         border: 1px solid var(--white);
         border-radius: 4px;
         margin: 0.5rem;
-        transition: border-color 200ms, color 200ms;
+        font-weight: 500;
+        transition: border-color 200ms;
       }
       .bg {
         position: absolute;
@@ -168,6 +173,7 @@ const Pricing = ({}) => (
         border-radius: 50%;
         height: 22px;
         margin-right: 0.5rem;
+        transition: background-color 200ms;
       }
       .tablet {
         display: none;
@@ -215,9 +221,12 @@ const Pricing = ({}) => (
         }
         .border {
           height: auto;
-          margin: 1rem 0;
+          margin: 0 0 2rem 0;
           width: 15.5rem;
           border-radius: 0;
+        }
+        .border:last-child {
+          margin: 0;
         }
         .container {
           height: auto;

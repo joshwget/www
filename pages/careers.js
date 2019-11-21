@@ -124,18 +124,19 @@ const Careers = () => (
         .header {
           display: flex;
           align-self: stretch;
+          align-items: flex-start;
           justify-content: space-between;
         }
 
         .header a {
           text-decoration: none;
-          transition: opacity 150ms;
+          transition: color 200ms;
           color: var(--primary);
           font-weight: 500;
         }
 
         .header a:hover {
-          opacity: 0.8;
+          color: var(--white);
         }
 
         .title {

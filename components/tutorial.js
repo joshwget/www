@@ -35,7 +35,18 @@ const Tutorial = () => {
       <section>
         <h2>How it works</h2>
 
-        <div className="buttons">
+        <div className="desktop buttons">
+          {content.map(({ title }, i) => (
+            <button
+              className={i === selection ? 'selected' : ''}
+              onClick={() => setSelection(i)}
+            >
+              {title}
+            </button>
+          ))}
+        </div>
+
+        <div className="tablet buttons">
           <div className="group">
             {content.slice(0, 2).map(({ title }, i) => (
               <button
@@ -71,7 +82,7 @@ const Tutorial = () => {
         }
 
         .tutorial {
-          min-height: 30rem;
+          min-height: 32rem;
           background: var(--black);
         }
 
@@ -98,41 +109,60 @@ const Tutorial = () => {
 
         .group {
           display: flex;
-          justify-content: center;
+          flex: 1;
         }
 
         .buttons {
           display: flex;
-          margin-bottom: 1.5rem;
-          justify-content: center;
+          justify-content: space-between;
+          width: 29rem;
+          margin-bottom: 1rem;
+        }
+
+        .tablet {
+          display: none;
         }
 
         button {
-          flex: 0 0 6rem;
+          max-width: 5.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           appearance: none;
           outline: none;
           border: 1px solid var(--primary);
           background: none;
-          color: var(--white);
-          padding: 0.6rem 1rem;
+          color: var(--primary);
+          padding: 0.7rem 1rem;
           font-size: 1rem;
+          font-weight: 500;
           border-radius: var(--radius);
-          margin: 0 1rem;
-          transition: color 200ms;
+          transition: color 200ms, border-color 200ms;
           cursor: pointer;
         }
 
         button:not(.selected):hover {
-          color: var(--primary);
+          color: var(--white);
+          border-color: var(--white);
         }
 
         .selected {
-          background: var(--primary);
+          background: var(--white);
           color: var(--black);
+          border-color: var(--white);
           cursor: auto;
         }
 
         @media screen and (max-width: 700px) {
+          .tutorial {
+            min-height: unset;
+          }
+          .tablet {
+            display: flex;
+          }
+          .desktop {
+            display: none;
+          }
           .buttons {
             flex-direction: column;
             align-items: center;

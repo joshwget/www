@@ -1,3 +1,5 @@
+import Arrow from './icons/arrow';
+
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
@@ -49,40 +51,36 @@ const Hero = ({ airtable }) => {
                   Thanks for your interest, we'll reach out as soon as we can.
                 </span>
               </div>
-              <form onSubmit={handleSubmit}>
-                <div className="demo">
-                  <input
-                    required
-                    type="email"
-                    placeholder="Email address"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                  />
-                  <button>Request a demo</button>
-                </div>
+              <form onSubmit={handleSubmit} className="demo">
+                <input
+                  required
+                  type="email"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                />
+                <button className="request">Request a demo</button>
               </form>
             </div>
 
-            <button onClick={() => window.Intercom('show')}>
-              Chat with us <img src="/arrow.svg" className="arrow" />
-            </button>
+            <div>
+              <button className="chat" onClick={() => window.Intercom('show')}>
+                Chat with us
+                <div className="arrow">
+                  <Arrow />
+                </div>
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       <style jsx>{`
-        @keyframes hover {
-          100% {
-            transform: translateY(-4px);
-          }
-        }
-
         @keyframes shift {
           50% {
-            transform: translateX(6px);
+            transform: translateX(5px);
           }
         }
-
         section {
           position: relative;
           color: var(--white);
@@ -107,6 +105,10 @@ const Hero = ({ airtable }) => {
           max-width: 30rem;
         }
 
+        p {
+          color: rgba(255, 255, 255, 0.9);
+        }
+
         .buttons {
           margin-top: 1rem;
         }
@@ -114,6 +116,7 @@ const Hero = ({ airtable }) => {
         .demo-container {
           height: 3rem;
           margin-bottom: 1rem;
+          display: inline-flex;
         }
 
         .demo {
@@ -138,42 +141,44 @@ const Hero = ({ airtable }) => {
           color: rgba(255, 255, 255, 0.9);
         }
 
-        .demo button {
-          background-color: var(--primary);
-          color: #000;
-          cursor: pointer;
+        .request {
+          background: var(--primary);
+          color: var(--black);
           margin-left: 0.5rem;
-          padding: 0.7rem 1rem;
-          border-radius: var(--radius);
-          border: none;
-          transition: opacity 150ms;
+          border: 1px solid var(--primary);
         }
 
-        .demo button:hover {
-          opacity: 0.9;
+        .request:hover {
+          background-color: var(--black);
+          color: var(--primary);
         }
 
         button {
-          margin: 0;
-          display: flex;
-          font-size: 1rem;
           appearance: none;
           outline: none;
-          border: none;
-          background: #fff;
-          color: var(--black);
-          border-radius: 4px;
-          padding: 0.7rem 1rem;
+          margin: 0;
+          font-size: 1rem;
           cursor: pointer;
-          transition: opacity 150ms;
+          font-weight: 500;
+          padding: 11px 1rem;
+          border-radius: var(--radius);
+          transition: background-color 200ms, color 200ms;
+        }
+
+        .chat {
+          display: flex;
+          background: var(--white);
+          color: var(--black);
+          border: 1px solid var(--white);
           align-items: center;
         }
 
-        button:hover {
-          opacity: 0.9;
+        .chat:hover {
+          color: var(--white);
+          background-color: var(--black);
         }
 
-        button:hover .arrow {
+        .chat:hover .arrow {
           animation-name: shift;
           animation-duration: 1.2s;
           animation-timing-function: ease-in-out;
@@ -181,10 +186,18 @@ const Hero = ({ airtable }) => {
           animation-fill-mode: forwards;
           animation-direction: alternate;
         }
+        .chat:hover :global(svg) {
+          fill: var(--white);
+        }
 
         .arrow {
-          width: 1rem;
+          display: flex;
           margin-left: 0.75rem;
+        }
+
+        .arrow :global(svg) {
+          fill: var(--black);
+          transition: fill 200ms;
         }
 
         .success {
@@ -214,6 +227,7 @@ const Hero = ({ airtable }) => {
           .demo {
             display: ${submitted ? 'none' : 'flex'};
             flex-direction: column;
+            flex: 1;
           }
           .success {
             height: 5rem;
@@ -224,13 +238,16 @@ const Hero = ({ airtable }) => {
           }
           .demo-container {
             margin-bottom: 1.5rem;
+            width: 100%;
+          }
+          .demo button {
+            margin: 0.5rem 0 0 0;
           }
           .demo button,
           button {
             width: 100%;
             align-self: stretch;
             justify-content: center;
-            margin: 0.5rem 0 0 0;
             padding: 0.8rem 1.25rem;
           }
         }

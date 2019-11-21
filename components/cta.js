@@ -1,3 +1,5 @@
+import Arrow from './icons/arrow';
+
 const CTA = ({}) => (
   <div className="cta">
     <section>
@@ -7,14 +9,17 @@ const CTA = ({}) => (
         <a href="https://cloud.deviceplane.com/register">Start now</a>
 
         <button onClick={() => window.Intercom('show')}>
-          Chat with us <img src="/arrow.svg" className="arrow" />
+          Chat with us{' '}
+          <div className="arrow">
+            <Arrow />
+          </div>
         </button>
       </div>
     </section>
     <style jsx>{`
       @keyframes shift {
         50% {
-          transform: translateX(6px);
+          transform: translateX(5px);
         }
       }
 
@@ -51,7 +56,7 @@ const CTA = ({}) => (
       }
 
       .arrow {
-        width: 1rem;
+        display: flex;
         margin-left: 0.75rem;
       }
 
@@ -63,10 +68,16 @@ const CTA = ({}) => (
         justify-content: center;
         align-items: center;
         border-radius: var(--radius);
+        border: 1px solid var(--primary);
         margin: 0 1rem;
-        transition: opacity 150ms;
+        transition: color 200ms, background-color 200ms;
         width: 14rem;
         height: 3rem;
+        font-weight: 500;
+      }
+      a:hover {
+        color: var(--primary);
+        background-color: var(--black);
       }
 
       button {
@@ -79,16 +90,25 @@ const CTA = ({}) => (
         background: var(--white);
         color: var(--black);
         font-size: 1rem;
+        border: 1px solid var(--white);
         border-radius: var(--radius);
         margin: 0 1rem;
         cursor: pointer;
-        transition: opacity 150ms;
+        font-weight: 500;
+        transition: background-color 200ms, color: 200ms;
+      }
+      button:hover {
+        color: var(--white);
+        background-color: var(--black);
+      }
+      button:hover :global(svg) {
+        fill: var(--white);
       }
 
-      a:hover,
-      button:hover {
-        opacity: 0.8;
+      button :global(svg) {
+        transition: fill 200ms;
       }
+
 
       @media screen and (max-width: 900px) {
         section {

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import Arrow from './icons/arrow';
+
 const Info = () => (
   <section>
     <div className="container">
@@ -16,8 +18,10 @@ const Info = () => (
       <div className="link">
         <Link href="/docs">
           <a>
-            View documentation{' '}
-            <img src="/arrow.svg" alt="Arrow" className="arrow" />
+            View documentation
+            <div className="arrow">
+              <Arrow />
+            </div>
           </a>
         </Link>
       </div>
@@ -36,7 +40,10 @@ const Info = () => (
 
       <div className="link">
         <a href="https://github.com/deviceplane/deviceplane">
-          Source code <img src="/arrow.svg" alt="Arrow" className="arrow" />
+          Source code
+          <div className="arrow">
+            <Arrow />
+          </div>
         </a>
       </div>
     </div>
@@ -52,17 +59,17 @@ const Info = () => (
         </p>
       </div>
 
-      {/* <div className="link">
+      {/*
         <a href="/docs/security">
-          Learn more  <img src="/arrow.svg" alt="Arrow" className="arrow" />
+          Learn more  <Arrow />
         </a>
-      </div> */}
+      */}
     </div>
 
     <style jsx>{`
       @keyframes shift {
         50% {
-          transform: translateX(6px);
+          transform: translateX(5px);
         }
       }
 
@@ -90,45 +97,58 @@ const Info = () => (
         justify-content: space-between;
       }
 
+      .container:not(:last-child) {
+        margin-right: 2rem;
+      }
+
       .row {
         display: flex;
       }
 
-      a {
-        text-decoration: none;
-        color: var(--black);
-        background: #fff;
-        border-radius: 4px;
-        padding: 0.5rem 1rem;
-        transition: color 150ms;
-        display: inline-flex;
-        align-items: center;
-      }
-
-      .arrow {
-        margin-left: 0.5rem;
-        font-size: 1.5rem;
-        width: 1rem;
-      }
-
       .link {
-        display: inline-flex;
+        display: flex;
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-weight: 500;
+        color: var(--black);
+        transition: background-color 200ms, border-color 200ms, color 200ms;
+        border-radius: var(--radius);
+        padding: 8px 1rem;
+        background: var(--white);
         cursor: pointer;
         border-radius: var(--radius);
+        border: 1px solid var(--white);
         margin-top: 1rem;
       }
-
-      .link:hover {
-        opacity: 0.9;
+      a:hover {
+        background-color: var(--black);
+        color: var(--white);
+        border-color: var(--white);
       }
-
-      .link:hover .arrow {
+      a:hover .arrow {
         animation-name: shift;
         animation-duration: 1.2s;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
         animation-fill-mode: forwards;
         animation-direction: alternate;
+      }
+
+      a:hover :global(svg) {
+        fill: var(--white);
+      }
+
+      .arrow {
+        display: flex;
+        margin-left: 0.5rem;
+      }
+
+      .arrow :global(svg) {
+        transition: fill 200ms;
       }
 
       @media screen and (max-width: 900px) {
@@ -140,11 +160,11 @@ const Info = () => (
 
         .container {
           max-width: 28rem;
-          margin: 2rem 0;
+          margin: 2rem 0 !important;
         }
 
         .container:last-child {
-          margin-bottom: 0;
+          margin-bottom: 0 !important;
         }
       }
     `}</style>

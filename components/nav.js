@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { routes as docRoutes } from './docs';
+import Arrow from './icons/arrow';
 
 const MobileNav = ({ show, pathname }) => {
   const [expand, setExpand] = React.useState(pathname.includes('/docs'));
@@ -11,17 +12,14 @@ const MobileNav = ({ show, pathname }) => {
     <div className="overlay">
       <div className="container">
         <div className="row">
-          <a
-            className="mobile-login"
-            href="https://cloud.deviceplane.com/login"
-          >
-            Log in
+          <a className="login" href="https://cloud.deviceplane.com/login">
+            <span>Log in</span>
+            <div className="arrow">
+              <Arrow />
+            </div>
           </a>
 
-          <a
-            className="mobile-signup"
-            href="https://cloud.deviceplane.com/register"
-          >
+          <a className="signup" href="https://cloud.deviceplane.com/register">
             Sign up
           </a>
         </div>
@@ -116,8 +114,8 @@ const MobileNav = ({ show, pathname }) => {
             display: flex;
             margin-bottom: 2rem;
           }
-          .mobile-login,
-          .mobile-signup {
+          .login,
+          .signup {
             display: flex;
             flex: 1;
             height: 2.5rem;
@@ -127,15 +125,22 @@ const MobileNav = ({ show, pathname }) => {
             font-weight: 500;
             border-radius: var(--radius);
           }
-          .mobile-login {
+          .login {
             color: var(--white);
-            border: 2px solid var(--white);
+            border: 1px solid var(--white);
             margin-right: 1rem;
           }
-          .mobile-signup {
+          .signup {
             color: var(--black);
             background-color: var(--primary);
             border: 2px solid var(--primary);
+          }
+          .arrow {
+            display: flex;
+            margin-left: 0.75rem;
+          }
+          .arrow :global(svg) {
+            fill: var(--white);
           }
           ul {
             margin: 0;
@@ -279,10 +284,12 @@ const Nav = () => {
           margin: 0 1rem;
         }
         .link a {
+          font-size: 18px;
           color: var(--white);
+          margin-top: 4px;
           padding-bottom: 4px;
           border-bottom: 2px solid var(--black);
-          transition: border-color 150ms, color 150ms;
+          transition: border-color 200ms, color 200ms;
         }
         .link a:not(.selected):hover {
           border-color: var(--primary);
@@ -297,23 +304,29 @@ const Nav = () => {
           margin-right: 1rem;
         }
         .login {
+          font-size: 18px;
+          margin-top: 4px;
+          padding-bottom: 4px;
           margin-right: 2rem;
           color: var(--white);
-          transition: opacity 200ms;
+          border-bottom: 2px solid var(--black);
+          transition: border-color 200ms;
         }
         .login:hover {
-          opacity: 0.9;
+          border-color: var(--primary);
         }
         .signup {
-          background-color: var(--primary);
+          background: var(--primary);
+          border: 1px solid var(--primary);
           border-radius: var(--radius);
-          padding: 0.7rem 1rem;
-          color: #000;
-          transition: opacity 200ms;
+          padding: 11px 1rem;
+          color: var(--black);
+          font-weight: 500;
+          transition: background 200ms, color 200ms;
         }
-
         .signup:hover {
-          opacity: 0.9;
+          background-color: var(--black);
+          color: var(--primary);
         }
         .left,
         .right {
@@ -366,7 +379,7 @@ const Nav = () => {
           width: 1.25rem;
         }
 
-        @media screen and (max-width: 700px) {
+        @media screen and (max-width: 760px) {
           .logo {
             margin-right: 0.5rem;
           }
