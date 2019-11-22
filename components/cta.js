@@ -95,7 +95,7 @@ const CTA = ({}) => (
         margin: 0 1rem;
         cursor: pointer;
         font-weight: 500;
-        transition: background-color 200ms, color: 200ms;
+        transition: background-color 200ms, color 200ms;
       }
       button:hover {
         color: var(--white);
@@ -108,7 +108,6 @@ const CTA = ({}) => (
       button :global(svg) {
         transition: fill 200ms;
       }
-
 
       @media screen and (max-width: 900px) {
         section {
