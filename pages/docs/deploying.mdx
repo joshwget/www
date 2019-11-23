@@ -5,35 +5,89 @@ import Table from '../../components/table';
 
 # Deploying
 
-An application is comprised of multiple Docker containers, i.e. services. For each application, you can decide which devices to schedule the application on, which services are part of the application and manage the different versions of the application.
+Deviceplane supports the deployment and updating of user applications packaged as Docker containers. Here is the specific terminology regarding deployments in Deviceplane.
 
-## Current Config
+ - A *service* defines the specification for a container that should be deployed.
+ - An *application* defines a group of related services that represent a logical "application" to a user.
+ - An *application config* is a file in Docker Compose format that defines all of the services in an application.
+ - A *release* is a new version of an application config that will be deployed to devices.
 
-The current config is the latest release of an application. The config is a list of services that will be deployed onto any device that is added to the project as long as it matches the scheduling rules.
+Applications can be created in the Deviceplane UI. When an application is first created it has no releases meaning no containers will be deployed as a result of the application. Containers will be deployed once an initial release is created.
 
-The format of how to list out services is similar to how Docker Compose v1 files are. You only need to list out the services and the directives in it. Most Docker Compose v1 and v2 fields will work as expected in Deviceplane, but there are some specific fields that will behave differently in Deviceplane.
+By default an application will run on _all_ devices in a project. To configure an application to run on a subset of devices set a [scheduling rule](/docs/deploying/scheduling).
 
-<Table height="7rem">
+## Application Configs
 
-| Compose Directive | Difference in Deviceplane                                                                          |
-| ----------------- | --------------------------------------------------------------------------------------------------- |
-| `volumes`         | **Only** bind mount volumes will work in Deviceplane. Any other type of volumes are not supported. |
+An application config is a file in Docker Compose format that defines all of the services in an application. Deviceplane specifically implements the [v1 format](https://docs.docker.com/compose/compose-file/compose-file-v1/) as it was the simplest version and the features from later versions do not apply to deploying in Deviceplane.
 
-</Table>
+Here is an example of a Deviceplane application config.
 
-### Example Config
-
-Here is a simple config example. Note how the services are listed directly, without the typical Docker Compose `version` or `services` sections.
-
-```yaml
+```
 service1:
   image: nginx
 service2:
-  image: busybox
+  image: ubuntu
+  command: [ sleep, infinity ]
 ```
 
-## Releases
+A comprehensive list of flags available can be found in the [Docker documentation](https://docs.docker.com/compose/compose-file/compose-file-v1/). All differences between Deviceplane application configs and Docker Compose are noted below.
 
-Whenever you want to deploy new services or update existing services on your devices, you will create a new release for the application. When creating a new release, Deviceplane will display the currently deployed config, which can be directly edited. When you submit your new release, it will automatically update your application so any `online` devices will automatically be updated to the latest release.
+| Compose Directive | Difference in Deviceplane                                                                          |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| `build`           | Not supported (only applicable for development purposes)                                           |
+| `dockerfile`      | Not supported (only applicable for development purposes)                                           |
+| `expose`          | Use ports instead                                                                                  |
+| `volumes`         | **Only** bind mount volumes will work in Deviceplane. Any other type of volumes are not supported. |
+
+## Releasing
+
+Releasing an application consists of setting a new application config. The changes reflected in this new version will then be deployed to all relevant devices. Let's walk through an example of releasing and explain the exact steps that will be taken by Deviceplane. The initial application config is a single service running nginx with image tag `1.16` and exposed on port 8080 on the host.
+
+```
+example:
+  image: nginx:1.16
+  ports:
+  - 8080:80
+```
+
+Then let's suppose we create a new release and update the application config to instead have the port bound to port 9090 on the host.
+
+```yaml
+example:
+  image: nginx:1.17
+  ports:
+  - 8080:80
+```
+
+Once this release is created the deployment process will begin to relevant devices. On each specific device the upgrade process will be performed as follows.
+
+1. The image for the new release is pulled to the device
+2. The previously running container with image `nginx:1.16` is stopped and then removed
+3. A new container is created with image `nginx:1.17`
+4. The new container is started
+
+### Releasing via the UI
+
+From the applications page, choose an individual application and then click the "Create New Release" button. You'll be brought to an editor where you can enter a new application config. Once submitted a new release will be created and the standard deployment procedure will begin.
+
+The online editor supports YAML highlighting and code folding on top-level YAML keys.
+
+Reverting to an old release (creating a new release based on the application config from an older release) is also possible via the UI. To do this click on an old release on the overview page for an application and then click "Revert to this Release".
+
+### Releasing via the CLI
+
+> View the [CLI documentation](/docs/cli) for information on how to setup and configure the CLI.
+
+There are two commands that can be used to deploy via the CLI: `deviceplane deploy` and `deviceplane edit`.
+
+#### deviceplane edit
+
+The `deviceplane edit` command opens the application config from the latest release in your system's default editor. Once open you can make whatever changes you'd like to the application config and then upon exiting the editor those changes will be submitted as a new release.
+
+This command is useful for rapidly updating application configs in development and staging environments.
+
+#### deviceplane deploy
+
+The `deviceplane deploy` command creates a new release from a local application config file. Popular naming conventions for this file include `deviceplane.yml`, `deviceplane-<application_name>.yml`, and `<application_name>.yml`.
 
 </Docs>
