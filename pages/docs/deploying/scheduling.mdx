@@ -5,13 +5,11 @@ import Table from '../../../components/table';
 
 # Scheduling
 
-By default, an application will run on all devices in a project. To run the application on only a subset of devices, a scheduling rule needs to be set on the application.
+By default, an application will run on all devices in a project. To run the application on only a subset of devices, a scheduling rule needs to be set. A scheduling rule is a collection of "filters" that restrict which devices an application should run on. Filters consist of multiple label conditions such as `canary=true` or `customer=stark-industries`.
 
-Scheduling rules use boolean expressions to evaluate the labels on a device and whether or not to deploy onto that device.
+## Example
 
-## Example:
-
-Imagine that you have a project that has 2 different device types. You have servers and Raspberry Pis in the same project, but you want to deploy different applications onto the server versus the Raspberry Pis.
+Imagine that you have a project that has 2 different device types: x86 servers, and Raspberry Pis. Different applications should run on the x86 servers versus the Raspberry Pis.
 
 ### Labeling your Devices
 
@@ -33,21 +31,21 @@ After adding your devices into the project, you'll need to label each one to gro
 
 ### Deploying Applications
 
-Next, we'll add an application for each device type. When you add an application, you'll want to set up your scheduling rules before you deploy the first release of the application.
+Next we'll add two applications: one designed to run on the servers and one designed to run on the Raspberry Pis. It makes sense to set a scheduling rule _before_ creating the first release of the application so that the containers will be scheduled to the correct devices as soon as they're first deployed.
 
 ### Creating your application for your servers
 
 1. Create a new application.
-2. Add a scheduling rule, i.e. `type == 'server'`. This scheduling rule will only deploy the application to any device that has the `device=server` label on it. Note: The single quotes are required for the value of the rule.
+2. Add a scheduling rule with a single filter containing the condition `type=server`. This scheduling rule will only deploy the application to any device that has the `type=server` label on it.
 3. Create the first release of the application.
-4. The release will only be deployed to any devices that have the `device=server`.
+4. The release will only be deployed to any devices that have the `type=server`.
 
 ### Creating your application for your servers
 
 1. Create a new application.
-2. Add a scheduling rule, i.e. `type == 'rpi'`. This scheduling rule will only deploy the application to any device that has the `device=rpi` label on it. Note: The single quotes are required for the value of the rule.
+2. Add a scheduling rule with a single filter containing the condition `type=rpi`. This scheduling rule will only deploy the application to any device that has the `type=rpi` label on it.
 3. Create the first release of the application.
-4. The release will only be deployed to any devices that have the `device=rpi`.
+4. The release will only be deployed to any devices that have the `type=rpi`.
 
 ### Deploying new releases
 
@@ -55,25 +53,50 @@ Now that the devices are split by device type, you can add releases to your appl
 
 ### Adding more devices
 
-As you add more devices into the project, the application will only be deployed onto devices that have the corresponding label. With these scheduling rules, you have control over which subset of devices the application will run on.
+As you add more devices into the project, the application will only be deployed onto devices that have the corresponding label. These labels could either be manually added after the device is registered or automatically added during registration by using [registration tokens](/docs/provisioning).
 
-## Boolean Expression Reference
+## Filters Reference
 
-The earlier example showed a simple scenario where only one device label was considered. However, there are many other scenarios that can be managed through scheduling rules.
+The earlier example showed a simple scenario where only one device label was considered. However, there are many other scenarios that can be managed through scheduling rules. In order to explain how scheduling rules could be used for these more complex scenarios let's first define some terminology.
 
-By combining specific device labels and scheduling rules, you can have various applications that will deploy to a subset of devices. Refer to the table below on how to use different types of scheduling rules.
+ - A *scheduling rule* is a set of filters that control which devices an application should be deployed to
+ - A *filter* is a set of conditions
+ - A *condition* is a statement about labels on a device such as `customer=stark-industries` or `customer!=stark-industries`.
 
-**Note: The value in the scheduling rule must always be in single quotes for it to be evaluated correctly.**
+To evaluate if a device meets the requirement of the scheduling rule, one of the conditions of each filter must be met. In other words, all the filters are joined together by an AND and all the conditions of a filter are joined together by an OR. Another way to think about this is that the scheduling rule is evaluated as follows.
 
-<Table height="27rem">
+```
+filter1 AND filter2 AND ...
+```
 
-| Schedule Rule                                   | Description                                                                                           |
-| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `key1 == 'value1'`                              | Deploy on every device that has a matching label, `key1=value1`.                                      |
-| `key2 != 'value2'`                              | Deploy on every device that does not have a matching label, `key2=value2`.                            |
-| `key1 == 'value1' && key2 == 'value2'`          | Deploy on every device that has both labels, `key1=value1` **AND** `key2=value2`, on it.              |
-| `key1 == 'value1' &#124;&#124; key2 == 'value'` | Deploy on every device that has either label, `key1=value1` **OR** `key2=value2` on it.               |
-| `key1 == 'value1' && key2 != 'value2'`          | Deploy on every device that has a label, `key1=value1`, AND does **not** have a label, `key2=value2`. |
+This expression could be expanded to the following since filters have multiple inner conditions.
+
+```
+(condition1 OR condition2 OR condition3 OR ...) AND (condition4 OR condition5 OR condition6 OR ...) AND ...
+```
+
+Some example evaluations are provided below. Suppose we have the following devices in our project.
+
+<Table height="20rem">
+
+| Devices      | Labels                                          |
+| ------------ | ----------------------------------------------- |
+| device1      | `customer=customer1`, `generation=3`             |
+| device2      | `customer=customer2`                             |
+| device3      | `customer=customer3`                             |
+| device4      | `customer=customer1`                             |
+| device5      | *No labels set* .                                |
+
+</Table>
+
+<Table height="20rem">
+
+| Schedule Rule                                                                                    | Matching device(s)           |
+| ------------------------------------------------------------------------------------------------ | ---------------------------- |
+| <b>filter1:</b> condition(`customer=customer1`)                                                  | device1, device4             |
+| <b>filter1:</b> condition(`customer=customer1`), condition(`customer=customer3`)                 | device1, device4, device3    |
+| <b>filter1:</b> condition(`customer!=customer1`)                                                 | device2, device3, device5    |
+| <b>filter1:</b> condition(`customer=customer1`) <br/><b>filter2:</b> condition(`generation=3`)   | device1                      |
 
 </Table>
 
