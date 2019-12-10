@@ -48,7 +48,7 @@ const UseCases = () => (
       <div className="group">
         <div className="container">
           <img src="/medicine.svg" height={110} />
-          <span>Medicine</span>
+          <span>Medical</span>
         </div>
 
         <div className="container">
@@ -64,10 +64,13 @@ const UseCases = () => (
     </div>
 
     <style jsx>{`
+      section {
+        color: white;
+      }
       span {
         text-transform: uppercase;
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 14px;
         margin-top: 1rem;
         text-align: center;
       }

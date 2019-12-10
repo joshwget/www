@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Page from '../components/page';
 import Head from '../components/head';
 import Nav from '../components/nav';
@@ -56,13 +55,20 @@ const Home = () => (
           padding: 4rem 2rem;
         }
 
+        h1,
+        h2,
+        h3,
+        h4 {
+          font-weight: 500;
+        }
+
         h1 {
           font-size: 48px;
           margin: 0;
         }
 
         h2 {
-          font-size: 42px;
+          font-size: 40px;
           margin: 0 0 2rem 0;
           text-align: center;
         }

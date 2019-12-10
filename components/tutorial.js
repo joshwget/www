@@ -31,12 +31,23 @@ const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <div className="tutorial">
-      <section>
-        <h2>How it works</h2>
+    <section>
+      <h2>How it works</h2>
 
-        <div className="desktop buttons">
-          {content.map(({ title }, i) => (
+      <div className="desktop buttons">
+        {content.map(({ title }, i) => (
+          <button
+            className={i === selection ? 'selected' : ''}
+            onClick={() => setSelection(i)}
+          >
+            {title}
+          </button>
+        ))}
+      </div>
+
+      <div className="tablet buttons">
+        <div className="group">
+          {content.slice(0, 2).map(({ title }, i) => (
             <button
               className={i === selection ? 'selected' : ''}
               onClick={() => setSelection(i)}
@@ -46,44 +57,27 @@ const Tutorial = () => {
           ))}
         </div>
 
-        <div className="tablet buttons">
-          <div className="group">
-            {content.slice(0, 2).map(({ title }, i) => (
-              <button
-                className={i === selection ? 'selected' : ''}
-                onClick={() => setSelection(i)}
-              >
-                {title}
-              </button>
-            ))}
-          </div>
-
-          <div className="group">
-            {content.slice(2, 4).map(({ title }, i) => (
-              <button
-                className={i + 2 === selection ? 'selected' : ''}
-                onClick={() => setSelection(i + 2)}
-              >
-                {title}
-              </button>
-            ))}
-          </div>
+        <div className="group">
+          {content.slice(2, 4).map(({ title }, i) => (
+            <button
+              className={i + 2 === selection ? 'selected' : ''}
+              onClick={() => setSelection(i + 2)}
+            >
+              {title}
+            </button>
+          ))}
         </div>
+      </div>
 
-        <div className="container">
-          <p>{content[selection].body}</p>
-        </div>
-      </section>
+      <div className="container">
+        <p>{content[selection].body}</p>
+      </div>
 
       <style jsx>{`
         section {
           color: var(--white);
           align-items: center;
-        }
-
-        .tutorial {
-          min-height: 32rem;
-          background: var(--black);
+          min-height: 21rem;
         }
 
         h4 {
@@ -179,7 +173,7 @@ const Tutorial = () => {
           }
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 

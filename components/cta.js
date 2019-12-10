@@ -29,14 +29,14 @@ const CTA = ({}) => (
       }
 
       section {
-        flex-direction: row;
+        padding-top: 0;
         align-items: center;
         justify-content: space-between;
       }
 
       h2 {
         text-align: left;
-        margin: 0;
+        margin: 0 0 2.5rem 0;
       }
 
       .row {

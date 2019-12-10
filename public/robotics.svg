@@ -6,18 +6,18 @@
 <circle cx="38.919" cy="62.2703" r="16.6795" fill="#000"/>
 <rect x="118.44" y="22.4775" width="13.3436" height="75.6999" transform="rotate(68.9014 118.44 22.4775)" fill="#000"/>
 <path d="M127.853 33.8311L144.313 31.1352L155.42 113.638L147.538 115.115L127.853 33.8311Z" fill="#000"/>
-<circle cx="38.919" cy="62.2698" r="5.55982" fill="white"/>
+<circle cx="38.919" cy="62.2698" r="5.55982" fill="rgba(255,255,255,.9)"/>
 <circle cx="132.196" cy="23.2229" r="16.6795" transform="rotate(34.9014 132.196 23.2229)" fill="#000"/>
-<circle cx="132.196" cy="23.2224" r="5.55982" transform="rotate(34.9014 132.196 23.2224)" fill="white"/>
-<circle cx="132.196" cy="23.2225" r="8.39571" transform="rotate(34.9014 132.196 23.2225)" stroke="white"/>
+<circle cx="132.196" cy="23.2224" r="5.55982" transform="rotate(34.9014 132.196 23.2224)" fill="rgba(255,255,255,.9)"/>
+<circle cx="132.196" cy="23.2225" r="8.39571" transform="rotate(34.9014 132.196 23.2225)" stroke="rgba(255,255,255,.9)"/>
 <rect width="4.44786" height="16.6795" transform="matrix(0.620645 0.784092 0.784092 -0.620645 135.537 130.254)" fill="#000"/>
 <rect x="141.785" y="130.98" width="10.0077" height="4.44786" transform="rotate(51.6367 141.785 130.98)" fill="#000"/>
-<circle cx="38.919" cy="62.2697" r="8.39571" stroke="white"/>
+<circle cx="38.919" cy="62.2697" r="8.39571" stroke="rgba(255,255,255,.9)"/>
 <circle cx="152.409" cy="120.549" r="8.33973" transform="rotate(20.9285 152.409 120.549)" fill="#000"/>
-<circle cx="152.091" cy="119.838" r="2.86535" transform="rotate(46.1201 152.091 119.838)" fill="white"/>
-<circle cx="152.088" cy="119.83" r="4.76436" transform="rotate(46.1201 152.088 119.83)" stroke="white" stroke-width="0.5"/>
+<circle cx="152.091" cy="119.838" r="2.86535" transform="rotate(46.1201 152.091 119.838)" fill="rgba(255,255,255,.9)"/>
+<circle cx="152.088" cy="119.83" r="4.76436" transform="rotate(46.1201 152.088 119.83)" stroke="rgba(255,255,255,.9)" stroke-width="0.5"/>
 <rect x="0.000244141" y="175.69" width="77.8375" height="11.1196" rx="2" fill="#000"/>
-<rect x="24.4635" y="113.42" width="28.9111" height="13.3436" rx="1" fill="white"/>
+<rect x="24.4635" y="113.42" width="28.9111" height="13.3436" rx="1" fill="rgba(255,255,255,.9)"/>
 <circle cx="21.1276" cy="116.756" r="1.11196" fill="#57e3ff"/>
 <circle cx="21.1276" cy="120.092" r="1.11196" fill="#57e3ff"/>
 <circle cx="21.1276" cy="123.428" r="1.11196" fill="#57e3ff"/>

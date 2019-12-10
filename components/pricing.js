@@ -94,18 +94,7 @@ const Pricing = ({}) => (
         transition: transform 300ms;
       }
       .container:hover {
-        color: var(--primary);
         transform: translateY(-1.2rem);
-      }
-      .container:hover .title {
-        color: var(--primary);
-      }
-      .container:hover .check {
-        background-color: var(--white);
-      }
-      .container:hover .price {
-        color: var(--primary);
-        border-color: var(--primary);
       }
       .pricing {
         position: relative;
@@ -124,7 +113,7 @@ const Pricing = ({}) => (
         height: 18rem;
         width: 15rem;
         margin: 4rem 2rem;
-        background: var(--white);
+        background: var(--bg);
         border-radius: 8px;
       }
       .price {
@@ -143,7 +132,7 @@ const Pricing = ({}) => (
         height: 30rem;
         background: linear-gradient(
           173deg,
-          transparent calc(50% - 1px),
+          var(--bg) calc(50% - 1px),
           #000 50%
         );
         width: 100vw;
@@ -156,13 +145,14 @@ const Pricing = ({}) => (
       }
       li {
         display: flex;
+        align-items: center;
       }
       li:not(:last-child) {
         margin-bottom: 1rem;
       }
       .check img {
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
       }
       .check {
         flex: 0 0 22px;
@@ -171,7 +161,7 @@ const Pricing = ({}) => (
         align-items: center;
         background-color: var(--primary);
         border-radius: 50%;
-        height: 22px;
+        height: 18px;
         margin-right: 0.5rem;
         transition: background-color 200ms;
       }
@@ -207,7 +197,7 @@ const Pricing = ({}) => (
           height: 28rem;
           background: linear-gradient(
             165deg,
-            transparent calc(50% - 1px),
+            var(--bg) calc(50% - 1px),
             #000 50%
           );
         }
@@ -245,7 +235,7 @@ const Pricing = ({}) => (
           height: 25rem;
           background: linear-gradient(
             150deg,
-            transparent calc(50% - 1px),
+            var(--bg) calc(50% - 1px),
             #000 50%
           );
         }

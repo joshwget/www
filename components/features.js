@@ -55,9 +55,13 @@ const Container = ({ title, body, icon }) => (
         }
 
         img {
-          width: 32px;
-          height: 32px;
+          width: 24px;
+          height: 24px;
           margin-bottom: 1rem;
+        }
+
+        p {
+          color: rgba(255, 255, 255, 0.8);
         }
 
         @media screen and (max-width: 480px) {
@@ -72,43 +76,49 @@ const Container = ({ title, body, icon }) => (
 );
 
 const Features = () => (
-  <section>
-    <h2>Powerful features</h2>
+  <div className="container">
+    <section>
+      <h2>Powerful features</h2>
 
-    <div className="desktop">
-      <div className="row">
-        {content.slice(0, 3).map(p => (
-          <Container {...p} key={p.title} />
-        ))}
+      <div className="desktop">
+        <div className="row">
+          {content.slice(0, 3).map(p => (
+            <Container {...p} key={p.title} />
+          ))}
+        </div>
+
+        <div className="row">
+          {content.slice(3, 6).map(p => (
+            <Container {...p} key={p.title} />
+          ))}
+        </div>
       </div>
 
-      <div className="row">
-        {content.slice(3, 6).map(p => (
-          <Container {...p} key={p.title} />
-        ))}
-      </div>
-    </div>
+      <div className="tablet">
+        <div className="row">
+          {content.slice(0, 2).map(p => (
+            <Container {...p} key={p.title} />
+          ))}
+        </div>
 
-    <div className="tablet">
-      <div className="row">
-        {content.slice(0, 2).map(p => (
-          <Container {...p} key={p.title} />
-        ))}
-      </div>
+        <div className="row">
+          {content.slice(2, 4).map(p => (
+            <Container {...p} key={p.title} />
+          ))}
+        </div>
 
-      <div className="row">
-        {content.slice(2, 4).map(p => (
-          <Container {...p} key={p.title} />
-        ))}
+        <div className="row">
+          {content.slice(4, 6).map(p => (
+            <Container {...p} key={p.title} />
+          ))}
+        </div>
       </div>
-
-      <div className="row">
-        {content.slice(4, 6).map(p => (
-          <Container {...p} key={p.title} />
-        ))}
-      </div>
-    </div>
+    </section>
     <style jsx>{`
+      .container {
+        background: var(--black);
+      }
+
       section {
         align-items: center;
       }
@@ -163,7 +173,7 @@ const Features = () => (
         }
       }
     `}</style>
-  </section>
+  </div>
 );
 
 export default Features;

@@ -256,9 +256,7 @@ const Docs = ({ title, children }) => {
             .children {
               background: var(--white);
             }
-            .children {
-              padding: 0;
-            }
+
             :global(html) {
               background-color: white;
             }

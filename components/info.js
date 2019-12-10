@@ -114,20 +114,19 @@ const Info = () => (
         align-items: center;
         text-decoration: none;
         font-weight: 500;
-        color: var(--black);
-        transition: background-color 200ms, border-color 200ms, color 200ms;
+        color: var(--primary);
+        transition: background-color 200ms, color 200ms;
         border-radius: var(--radius);
         padding: 8px 1rem;
-        background: var(--white);
+        background: transparent;
         cursor: pointer;
         border-radius: var(--radius);
-        border: 1px solid var(--white);
+        border: 1px solid var(--primary);
         margin-top: 1rem;
       }
       a:hover {
-        background-color: var(--black);
-        color: var(--white);
-        border-color: var(--white);
+        background-color: var(--primary);
+        color: var(--black);
       }
       a:hover .arrow {
         animation-name: shift;
@@ -139,7 +138,7 @@ const Info = () => (
       }
 
       a:hover :global(svg) {
-        fill: var(--white);
+        fill: var(--black);
       }
 
       .arrow {
@@ -148,6 +147,7 @@ const Info = () => (
       }
 
       .arrow :global(svg) {
+        fill: var(--primary);
         transition: fill 200ms;
       }
 

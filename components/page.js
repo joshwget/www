@@ -1,80 +1,97 @@
-const Page = ({ children }) => (
-  <div className="page">
-    {children}
+import React from 'react';
+import { useRouter } from 'next/router';
 
-    <style global jsx>
-      {`
-        :root {
-          --font-family: 'Rubik', -apple-system, 'Roboto', 'Helvetica Neue',
-            'Arial', sans-serif;
+const Page = ({ children }) => {
+  const router = useRouter();
 
-          --black: #000;
-          --white: #fff;
-          --primary: #57e3ff;
-          --secondary: #57e3ff;
+  React.useEffect(() => {
+    router.events.on('routeChangeComplete', () => {
+      window.scrollTo(0, 0);
+    });
+  });
 
-          --page-width: 1080px;
+  return (
+    <div className="page">
+      {children}
 
-          --radius: 4px;
-        }
+      <style global jsx>
+        {`
+          :root {
+            --font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
+              'Helvetica Neue', sans-serif;
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          font-weight: 500;
-        }
+            --black: #000;
+            --white: #fff;
+            --bg: lightslategray;
+            --primary: #57e3ff;
 
-        html {
-          height: 100%;
-          font-size: 16px;
-          scroll-behavior: smooth;
-        }
+            --page-width: 1080px;
 
-        body {
-          padding: 0;
-          margin: 0;
-          height: 100%;
-          overflow-x: hidden;
-          font-weight: 400;
-          font-family: var(--font-family);
-          -webkit-font-smoothing: antialiased;
-          text-rendering: optimizeLegibility;
-        }
+            --radius: 4px;
+          }
 
-        p {
-          line-height: 1.4em;
-        }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-weight: 500;
+          }
 
-        button {
-          font-family: var(--font-family);
-        }
+          html {
+            height: 100%;
+            font-size: 16px;
+            scroll-behavior: smooth;
+            background-color: slategray;
+            color: #fff;
+          }
 
-        input,
-        input::placeholder {
-          color: var(--black);
-          font-family: var(--font-family);
-        }
+          body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            overflow-x: hidden;
+            font-weight: 400;
+            font-family: var(--font-family);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+          }
 
-        #__next {
-          height: 100%;
-          overflow-x: hidden;
-        }
-      `}
-    </style>
+          p {
+            line-height: 1.4em;
+          }
 
-    <style jsx>
-      {`
-        .page {
-          display: flex;
-          flex-direction: column;
-          min-height: 100%;
-        }
-      `}
-    </style>
-  </div>
-);
+          button {
+            font-family: var(--font-family);
+            font-size: 14px;
+            font-weight: 500;
+          }
+
+          input,
+          input::placeholder {
+            color: var(--black);
+            font-family: var(--font-family);
+          }
+
+          #__next {
+            height: 100%;
+            overflow-x: hidden;
+          }
+        `}
+      </style>
+
+      <style jsx>
+        {`
+          .page {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+          }
+        `}
+      </style>
+    </div>
+  );
+};
 
 export default Page;

@@ -56,8 +56,8 @@ const Hardware = ({}) => (
 
       span {
         text-transform: uppercase;
-        font-weight: 900;
-        font-size: 0.85rem;
+        font-weight: 700;
+        font-size: 14px;
         text-align: center;
         margin-top: 1rem;
         height: 2rem;
