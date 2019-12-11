@@ -7,28 +7,41 @@ import Footer from '../components/footer';
 
 const postings = [
   {
+    title: 'Software Engineer',
+    location: 'San Francisco, CA',
+    body: (
+      <>
+        <p>
+          As a software engineer, you'll own projects both big and small and be
+          responsible for complete ownership and delivery of these projects. Our
+          philosophy is that all engineers should be both product-minded and
+          involved in product decisions day to day. This means that all engineers
+          will be responsible for everything from product design to technical
+          architecture and implementation.
+        </p>
+        <p>
+          If you're excited by open source, working on a highly technical
+          products, and tackling the hardest engineering problems then we'd
+          like to talk to you!
+        </p>
+      </>
+    )
+  },
+  {
     title: 'Developer Advocate',
     location: 'San Francisco, CA',
     body: (
       <>
         <p>
-          Our goal is to make Deviceplane the de facto way to manage all remote
-          hardware and devices. The path to get there requires deep engagement
-          with a massive community of developers — both to maximize adoption of
-          Deviceplane, and to make sure we're building the product that fits
-          their requirements and sparks joy.
+          As a developer advocate, you’ll spread awareness of Deviceplane
+          through a wide variety of online and in-person mediums including forums,
+          meetups, and conferences. You'll create content such as documentation,
+          sample applications, and video demos that serve to teach both how to use
+          Deviceplane and the technical details of its internals.
         </p>
         <p>
-          As a developer advocate, you’ll spread adoption of Deviceplane by both
-          by developing content (sample apps, video tutorials, documentation,
-          etc.) as well as building communities (establishing meetups, attending
-          developer conferences to give talks, etc.). Ideally, you have
-          experience giving talks at conferences, have previously written blog
-          posts, and deeply understand developer communities.
-        </p>
-        <p>
-          If you’re passionate about connecting with developers, telling
-          stories, and sharing your learnings with the world, please reach out!
+          If you’re excited by engaging with developers, telling stories, and
+          creating technical content, please reach out!
         </p>
       </>
     )
