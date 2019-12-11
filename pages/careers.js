@@ -35,7 +35,7 @@ const postings = [
         <p>
           As a developer advocate, you’ll spread awareness of Deviceplane
           through a wide variety of online and in-person mediums including forums,
-          meetups, and conferences. You'll create content such as documentation,
+          meetups, and conferences. You'll create content such as blog posts,
           sample applications, and video demos that serve to teach both how to use
           Deviceplane and the technical details of its internals.
         </p>
