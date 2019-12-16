@@ -1,4 +1,14 @@
 import Arrow from './icons/arrow';
+import {
+  Column,
+  Row,
+  Input,
+  Section,
+  Button,
+  Heading,
+  Paragraph,
+  Form
+} from './core';
 
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
@@ -29,51 +39,58 @@ const Hero = ({ airtable }) => {
   };
 
   return (
-    <div className="hero">
-      <section>
-        <img alt="Black triangle background" className="bg" src="/bg.svg" />
+    <Column
+      alignItems="center"
+      width="100%"
+      paddingBottom="200px"
+      position="relative"
+      overflow="hidden"
+    >
+      <img alt="Black triangle background" className="bg" src="/bg.svg" />
 
-        <div className="container">
-          <h1>Manage your devices at the edge</h1>
+      <Section alignItems="flex-start" position="relative" padding={0}>
+        <Column maxWidth={14} marginTop={6}>
+          <Heading maxWidth="625px">Manage your devices at the edge</Heading>
 
-          <div className="content">
-            <p>
-              Update, monitor, and access remote devices and servers with ease.
-              Let us handle the hard infrastructure problems around managing
-              remote hardware so you stay focused on your business.
-            </p>
-          </div>
+          <Paragraph maxWidth={12}>
+            Update, monitor, and access remote devices and servers with ease.
+            Let us handle the hard infrastructure problems around managing
+            remote hardware so you can stay focused on your business.
+          </Paragraph>
+        </Column>
 
-          <div className="buttons">
-            <div className="demo-container">
-              <div className="success">
-                <span>
-                  Thanks for your interest, we'll reach out as soon as we can.
-                </span>
-              </div>
-              <form onSubmit={handleSubmit} className="demo">
-                <input
+        <Column maxWidth="435px" width="100%">
+          <Column>
+            {/* <div>
+              <span>
+                Thanks for your interest, we'll reach out as soon as we can.
+              </span>
+            </div> */}
+            <Form onSubmit={handleSubmit}>
+              <Row>
+                <Input
                   required
                   type="email"
                   placeholder="Email address"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
-                <button className="request">Request a demo</button>
-              </form>
-            </div>
+                <Button title="Request a demo" marginLeft={1} />
+              </Row>
+            </Form>
+          </Column>
 
-            <div>
-              <button className="chat" onClick={() => window.Intercom('show')}>
-                Chat with us
-                <div className="arrow">
-                  <Arrow />
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+          <Row>
+            <Button
+              marginTop={5}
+              title="Chat with us"
+              variant="secondary"
+              onClick={() => window.Intercom('show')}
+              icon={<Arrow />}
+            />
+          </Row>
+        </Column>
+      </Section>
 
       <style jsx>{`
         @keyframes shift {
@@ -81,114 +98,24 @@ const Hero = ({ airtable }) => {
             transform: translateX(5px);
           }
         }
-        section {
-          position: relative;
-          color: var(--white);
-          height: 34rem;
-        }
-
-        h1 {
-          margin: 0 0 1rem 0;
-        }
 
         .bg {
           position: absolute;
-          left: -68rem;
-          top: 0rem;
+          top: 0;
+          right: -220px;
         }
 
-        .container {
-          position: relative;
-        }
-
-        .content {
-          max-width: 30rem;
-        }
-
-        p {
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .buttons {
-          margin-top: 1rem;
-        }
-
-        .demo-container {
-          height: 3rem;
-          margin-bottom: 1rem;
-          display: inline-flex;
-        }
-
-        .demo {
-          display: ${submitted ? 'none' : 'inline-flex'};
-          align-items: center;
-          border-radius: var(--radius);
-        }
-
-        .demo input {
-          padding: 0.6rem;
-          border-radius: var(--radius);
-          border: 1px solid #fff;
-          outline: none;
-          font-size: 1rem;
-          color: var(--white);
-          width: 16.5rem;
-          background: #000;
-        }
-
-        input::placeholder {
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .request {
-          background: var(--primary);
-          color: var(--black);
-          margin-left: 0.5rem;
-          border: 1px solid var(--primary);
-        }
-
-        .request:hover {
-          background-color: var(--black);
-          color: var(--primary);
-        }
-
-        button {
-          appearance: none;
-          outline: none;
-          margin: 0;
-          font-size: 1rem;
-          cursor: pointer;
-          font-weight: 500;
-          padding: 11px 1rem;
-          border-radius: var(--radius);
-          transition: background-color 200ms, color 200ms;
-        }
-
-        .chat {
-          display: flex;
-          background: var(--white);
-          color: var(--black);
-          border: 1px solid var(--white);
-          align-items: center;
-        }
-
-        .chat:hover {
-          color: var(--white);
-          background-color: var(--black);
-        }
-
-        .chat:hover .arrow {
-          animation-name: shift;
-          animation-duration: 1.2s;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
-          animation-fill-mode: forwards;
-          animation-direction: alternate;
-        }
-        .chat:hover :global(svg) {
-          fill: var(--white);
-        }
+        // .chat:hover .arrow {
+        //   animation-name: shift;
+        //   animation-duration: 1.2s;
+        //   animation-timing-function: ease-in-out;
+        //   animation-iteration-count: infinite;
+        //   animation-fill-mode: forwards;
+        //   animation-direction: alternate;
+        // }
+        // .chat:hover :global(svg) {
+        //   fill: var(--white);
+        // }
 
         .arrow {
           display: flex;
@@ -221,38 +148,13 @@ const Hero = ({ airtable }) => {
             height: 45rem;
             left: -88rem;
           }
-          .demo-container {
-            height: 6rem;
-          }
-          .demo {
-            display: ${submitted ? 'none' : 'flex'};
-            flex-direction: column;
-            flex: 1;
-          }
+
           .success {
             height: 5rem;
           }
-          .demo input {
-            box-sizing: border-box;
-            width: 100%;
-          }
-          .demo-container {
-            margin-bottom: 1.5rem;
-            width: 100%;
-          }
-          .demo button {
-            margin: 0.5rem 0 0 0;
-          }
-          .demo button,
-          button {
-            width: 100%;
-            align-self: stretch;
-            justify-content: center;
-            padding: 0.8rem 1.25rem;
-          }
         }
       `}</style>
-    </div>
+    </Column>
   );
 };
 

@@ -1,70 +1,101 @@
-import Link from 'next/link';
+import styled from 'styled-components';
 
+import {
+  Column,
+  Row,
+  Heading,
+  Section,
+  Badge,
+  Text,
+  Link,
+  Image,
+  Button,
+  Paragraph
+} from './core';
 import Arrow from './icons/arrow';
 
+const Container = styled(Column)`
+  &:not(:last-child) {
+    margin-right: 60px;
+  }
+`;
+Container.defaultProps = {
+  padding: 3,
+  borderRadius: 2,
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  textAlign: 'center',
+  width: '540px'
+};
+
+const Icon = styled(Column)`
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 12px;
+`;
+
 const Info = () => (
-  <section>
-    <div className="container">
-      <div>
-        <img src="/code.svg" width={32} height={32} />
-        <h4>Developer focused</h4>
-        <p>
-          Deploying to remote devices should be as easy as deploying to the
-          cloud. We're building modern and accessible tooling so developers can
-          spend less time learning and more time shipping.
-        </p>
-      </div>
+  <Section>
+    <Row marginBottom={10}>
+      <Container>
+        <Column alignItems="center">
+          <Icon>
+            <Image src="/code.svg" height="100%" />
+          </Icon>
+          <Link href="/docs" marginBottom={2}>
+            Documentation
+          </Link>
+          <Heading variant="tertiary">Developer focused</Heading>
+          <Paragraph>
+            Deploying to remote devices should be as easy as deploying to the
+            cloud. We're building modern and accessible tooling so developers
+            can spend less time learning and more time shipping.
+          </Paragraph>
+        </Column>
+      </Container>
 
-      <div className="link">
-        <Link href="/docs">
-          <a>
-            View documentation
-            <div className="arrow">
-              <Arrow />
-            </div>
-          </a>
-        </Link>
-      </div>
-    </div>
+      <Container>
+        <Column alignItems="center">
+          <Icon>
+            <Image src="/github.svg" height="100%" />
+          </Icon>
+          <Link
+            href="https://github.com/deviceplane/deviceplane"
+            marginBottom={2}
+          >
+            Source Code
+          </Link>
+          <Heading variant="tertiary">Open source</Heading>
+          <Paragraph>
+            Developer infrastructure is inherently best when open source.
+            Everything we build can be found on our GitHub and is distributed
+            under a permissive open source license.
+          </Paragraph>
+        </Column>
+      </Container>
+    </Row>
 
-    <div className="container">
-      <div>
-        <img src="/github.svg" width={32} height={32} />
-        <h4>Open source</h4>
-        <p>
-          Developer infrastructure is inherently best when open source.
-          Everything we build can be found on our GitHub and is distributed
-          under a permissive open source license.
-        </p>
-      </div>
-
-      <div className="link">
-        <a href="https://github.com/deviceplane/deviceplane">
-          Source code
-          <div className="arrow">
-            <Arrow />
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div className="container">
-      <div>
-        <img src="/lock.svg" width={32} height={32} />
-        <h4>Security conscious</h4>
-        <p>
+    <Container alignItems="center">
+      <Column alignItems="center">
+        <Icon>
+          <Image src="/lock.svg" height="100%" />
+        </Icon>
+        <Heading variant="tertiary">Security conscious</Heading>
+        <Paragraph>
           We follow the best security practices across all of our systems to
           ensure your devices are secure. By using us you'll gain access to a
           variety of security features and controls that you didn't have before.
-        </p>
-      </div>
+        </Paragraph>
+      </Column>
 
       {/*
         <a href="/docs/security">
           Learn more  <Arrow />
         </a>
       */}
-    </div>
+    </Container>
 
     <style jsx>{`
       @keyframes shift {
@@ -73,82 +104,8 @@ const Info = () => (
         }
       }
 
-      section {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      p {
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      h4 {
-        margin: 1rem 0;
-      }
-
-      .container {
-        max-width: 16rem;
-        background-color: var(--black);
-        border-radius: 8px;
-        padding: 1.5rem;
-        color: var(--white);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
       .container:not(:last-child) {
         margin-right: 2rem;
-      }
-
-      .row {
-        display: flex;
-      }
-
-      .link {
-        display: flex;
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        font-weight: 500;
-        color: var(--primary);
-        transition: background-color 200ms, color 200ms;
-        border-radius: var(--radius);
-        padding: 8px 1rem;
-        background: transparent;
-        cursor: pointer;
-        border-radius: var(--radius);
-        border: 1px solid var(--primary);
-        margin-top: 1rem;
-      }
-      a:hover {
-        background-color: var(--primary);
-        color: var(--black);
-      }
-      a:hover .arrow {
-        animation-name: shift;
-        animation-duration: 1.2s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-fill-mode: forwards;
-        animation-direction: alternate;
-      }
-
-      a:hover :global(svg) {
-        fill: var(--black);
-      }
-
-      .arrow {
-        display: flex;
-        margin-left: 0.5rem;
-      }
-
-      .arrow :global(svg) {
-        fill: var(--primary);
-        transition: fill 200ms;
       }
 
       @media screen and (max-width: 900px) {
@@ -168,7 +125,7 @@ const Info = () => (
         }
       }
     `}</style>
-  </section>
+  </Section>
 );
 
 export default Info;

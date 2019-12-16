@@ -1,7 +1,6 @@
 import React from 'react';
+import { Head } from 'next';
 
-import Page from '../components/page';
-import Head from '../components/head';
 import Nav from '../components/nav';
 import Footer from '../components/footer';
 
@@ -49,8 +48,10 @@ const postings = [
 ];
 
 const Careers = () => (
-  <Page>
-    <Head title="Careers" />
+  <>
+    <Head>
+      <title>Careers</title>
+    </Head>
 
     <Nav />
 
@@ -158,7 +159,7 @@ const Careers = () => (
         }
       `}
     </style>
-  </Page>
+  </>
 );
 
 export default Careers;

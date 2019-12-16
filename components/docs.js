@@ -1,8 +1,7 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import Page from './page';
-import Head from './head';
 import Nav from './nav';
 import Highlight from './highlight';
 import Footer from './footer';
@@ -76,8 +75,10 @@ const Docs = ({ title, children }) => {
   const { pathname } = useRouter();
 
   return (
-    <Page>
-      <Head title={title ? `${title} | Docs` : 'Documentation'} />
+    <>
+      <Head>
+        <title>{title ? `${title} | Docs` : 'Documentation'}</title>
+      </Head>
 
       <Nav />
 
@@ -263,7 +264,7 @@ const Docs = ({ title, children }) => {
           }
         `}
       </style>
-    </Page>
+    </>
   );
 };
 

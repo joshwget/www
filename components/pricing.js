@@ -1,172 +1,162 @@
+import styled from 'styled-components';
+
+import {
+  Column,
+  Row,
+  Heading,
+  Section,
+  Badge,
+  Text,
+  Image,
+  Link,
+  Button
+} from './core';
+
 const plans = [
   {
     name: 'Developer',
-    features: ['Up to 25 devices', 'Single user'],
+    features: ['25 device limit', 'Single user'],
     price: 'Free',
-    icon: '/developer.svg'
+    bottom: (
+      <Text marginTop="auto" color="grays.8">
+        Scales to a Team plan seamlessly as you grow.
+      </Text>
+    )
   },
   {
     name: 'Team',
-    features: ['50 devices', '3 seats'],
-    price: '$250/month base',
-    icon: '/team.svg'
+    features: ['50 devices included', '3 users included', 'Support'],
+    price: 'Starting at $250/month',
+    bottom: (
+      <Text marginTop="auto" color="grays.8">
+        Cost based on each additional device or user.
+      </Text>
+    )
   },
   {
     name: 'Enterprise',
-    features: ['Unlimited seats', 'Dedicated support', 'Custom solutions'],
-    price: 'Custom pricing',
-    icon: '/enterprise.svg'
+    features: [
+      'Custom solutions',
+      'Unlimited users',
+      'Dedicated support and onboarding'
+    ],
+    price: 'Custom Pricing',
+    bottom: (
+      <Button
+        title="Contact Sales"
+        href="mailto:sales@deviceplane.com"
+        paddingY="8px"
+        borderColor="primary"
+        marginTop="auto"
+      />
+    )
   }
 ];
 
+const Border = styled(Column)`
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  height: 340px;
+  width: 270px;
+`;
+Border.defaultProps = {
+  marginX: 6,
+  bg: 'pageBackground',
+  borderRadius: 2,
+  padding: 4
+};
+
+const Container = styled(Column)`
+  flex: 1;
+  align-self: stretch;
+  border-color: ${props => props.theme.colors.primary};
+`;
+Container.defaultProps = {
+  bg: 'black',
+  padding: 5,
+  borderRadius: 2,
+  border: 0,
+  borderColor: 'white'
+};
+
+const Check = styled.div`
+  flex: 0 0 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme.colors.primary};
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+`;
+
 const Pricing = ({}) => (
-  <div className="pricing">
+  <Column
+    position="relative"
+    width="100%"
+    alignItems="center"
+    overflow="hidden"
+  >
     <div className="bg" />
 
-    <section>
-      <h2>Flexible plans that scale</h2>
+    <Section position="relative">
+      <Heading variant="secondary">Flexible plans that scale</Heading>
 
-      <div className="plans">
-        {plans.map(({ name, features, price, icon = '/enterprise.svg' }) => (
-          <div className="border" key={name}>
-            <div className="container">
-              <div className="top">
+      <Row marginTop={9}>
+        {plans.map(({ name, features, price, bottom }) => (
+          <Border key={name}>
+            <Container>
+              <Column>
                 {/* <img src={icon} /> */}
-                <span className="title">{name}</span>
-              </div>
+                <Heading variant="tertiary" fontSize={4}>
+                  {name}
+                </Heading>
+                <Text marginTop={1} fontWeight={3} fontSize={1} color="grays.8">
+                  {price}
+                </Text>
+              </Column>
 
-              <div className="content">
+              <Column>
                 <ul>
                   {features.map(feature => (
                     <li key={feature}>
-                      <div className="check">
-                        <img src="/check.svg" />
-                      </div>
-                      <span>{feature}</span>
+                      <Check>
+                        <Image src="/check.svg" width={3} height={3} />
+                      </Check>
+                      <Text>{feature}</Text>
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <span className="price">{price}</span>
-            </div>
-          </div>
+              </Column>
+              {bottom}
+            </Container>
+          </Border>
         ))}
-      </div>
-    </section>
+      </Row>
+    </Section>
 
     <style jsx>{`
-      section {
-        align-items: center;
-      }
-      h2 {
-        margin: 0 0 1rem 0;
-      }
-      .plans {
-        display: flex;
-      }
-      .top {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 0;
-      }
-      .top img {
-        height: 1.5rem;
-      }
-      .title {
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-        color: var(--white);
-      }
-      .container {
-        background: #000;
-        color: rgba(255, 255, 255, 0.9);
-        border-radius: 8px;
-        padding: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        height: 16rem;
-        width: 12rem;
-        transition: transform 300ms;
-      }
-      .container:hover {
-        transform: translateY(-1.2rem);
-      }
-      .pricing {
-        position: relative;
-      }
-      .content {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        justify-content: space-between;
-      }
-      .border {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        z-index: 3;
-        height: 18rem;
-        width: 15rem;
-        margin: 4rem 2rem;
-        background: var(--bg);
-        border-radius: 8px;
-      }
-      .price {
-        padding: 0.5rem 0.25rem;
-        text-align: center;
-        border: 1px solid var(--white);
-        border-radius: 4px;
-        margin: 0.5rem;
-        font-weight: 500;
-        transition: border-color 200ms;
-      }
       .bg {
         position: absolute;
         z-index: 0;
         left: 0;
-        height: 30rem;
-        background: linear-gradient(
-          173deg,
-          var(--bg) calc(50% - 1px),
-          #000 50%
-        );
+        height: 450px;
+        background: linear-gradient(170deg, #141414 calc(50% - 1px), #000 50%);
         width: 100vw;
         bottom: 0;
       }
       ul {
         display: flex;
         flex-direction: column;
-        padding: 0 0.5rem;
+        padding: 0;
+        margin: 0;
       }
       li {
         display: flex;
         align-items: center;
-      }
-      li:not(:last-child) {
-        margin-bottom: 1rem;
-      }
-      .check img {
-        width: 18px;
-        height: 18px;
-      }
-      .check {
-        flex: 0 0 22px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--primary);
-        border-radius: 50%;
-        height: 18px;
-        margin-right: 0.5rem;
-        transition: background-color 200ms;
-      }
-      .tablet {
-        display: none;
+        margin-top: 1rem;
       }
       @media screen and (max-width: 900px) {
         .content {
@@ -241,7 +231,7 @@ const Pricing = ({}) => (
         }
       }
     `}</style>
-  </div>
+  </Column>
 );
 
 export default Pricing;

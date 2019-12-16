@@ -1,3 +1,7 @@
+import styled from 'styled-components';
+
+import { Section, Heading, Row, Column, Paragraph, Image } from './core';
+
 const content = [
   {
     title: 'Remote updates',
@@ -37,92 +41,57 @@ const content = [
     body: `All of our functionality is exposed by an easy to use API
     making it simple to programmatically interact with your
     devices.`,
-    icon: '/cog.svg'
+    icon: '/code.svg'
   }
 ];
 
+const Icon = styled(Column)`
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99px;
+  background: ${props => props.theme.colors.primary};
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+`;
+
 const Container = ({ title, body, icon }) => (
-  <div className="container" key={title}>
-    <img src={icon} alt={`${title} icon`} />
-    <h4>{title}</h4>
-    <p>{body}</p>
-    <style jsx>
-      {`
-        .container {
-          display: flex;
-          flex-direction: column;
-          max-width: 18rem;
-        }
-
-        img {
-          width: 24px;
-          height: 24px;
-          margin-bottom: 1rem;
-        }
-
-        p {
-          color: rgba(255, 255, 255, 0.8);
-        }
-
-        @media screen and (max-width: 480px) {
-          .container {
-            max-width: unset;
-            margin: 1rem;
-          }
-        }
-      `}
-    </style>
-  </div>
+  <Column maxWidth={12}>
+    <Icon>
+      <Image src={icon} alt={`${title} icon`} height="100%" />
+    </Icon>
+    <Heading variant="tertiary" fontSize={4}>
+      {title}
+    </Heading>
+    <Paragraph>{body}</Paragraph>
+  </Column>
 );
 
 const Features = () => (
-  <div className="container">
-    <section>
-      <h2>Powerful features</h2>
+  <Column flex={1} bg="black" alignSelf="stretch" alignItems="center">
+    <Section>
+      <Heading variant="secondary">Powerful features</Heading>
 
-      <div className="desktop">
-        <div className="row">
-          {content.slice(0, 3).map(p => (
-            <Container {...p} key={p.title} />
-          ))}
-        </div>
+      <Row marginTop={9} justifyContent="space-between" alignSelf="stretch">
+        {content.slice(0, 2).map(p => (
+          <Container {...p} key={p.title} />
+        ))}
+      </Row>
 
-        <div className="row">
-          {content.slice(3, 6).map(p => (
-            <Container {...p} key={p.title} />
-          ))}
-        </div>
-      </div>
+      <Row marginY={9} justifyContent="space-between" alignSelf="stretch">
+        {content.slice(2, 4).map(p => (
+          <Container {...p} key={p.title} />
+        ))}
+      </Row>
 
-      <div className="tablet">
-        <div className="row">
-          {content.slice(0, 2).map(p => (
-            <Container {...p} key={p.title} />
-          ))}
-        </div>
-
-        <div className="row">
-          {content.slice(2, 4).map(p => (
-            <Container {...p} key={p.title} />
-          ))}
-        </div>
-
-        <div className="row">
-          {content.slice(4, 6).map(p => (
-            <Container {...p} key={p.title} />
-          ))}
-        </div>
-      </div>
-    </section>
+      <Row justifyContent="space-between" alignSelf="stretch">
+        {content.slice(4, 6).map(p => (
+          <Container {...p} key={p.title} />
+        ))}
+      </Row>
+    </Section>
     <style jsx>{`
-      .container {
-        background: var(--black);
-      }
-
-      section {
-        align-items: center;
-      }
-
       .desktop {
         display: flex;
         flex-direction: column;
@@ -173,7 +142,7 @@ const Features = () => (
         }
       }
     `}</style>
-  </div>
+  </Column>
 );
 
 export default Features;

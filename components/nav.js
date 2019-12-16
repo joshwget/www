@@ -1,49 +1,62 @@
 import React from 'react';
-import Link from 'next/link';
+import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import { routes as docRoutes } from './docs';
-import Arrow from './icons/arrow';
+import { Row, Column, Button, Text, Link } from './core';
+
+const Overlay = styled(Column)`
+  display: ${props => (props.show ? 'block' : 'none')};
+  box-sizing: border-box;
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  padding: 1rem 2rem;
+  z-index: 1;
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none !important;
+  transition: color 150ms;
+  color: ${props => props.theme.colors.white};
+  &:hover {
+    color: ${props => props.theme.colors.primary};
+  }
+  margin-right: 24px;
+  font-size: 15px;
+`;
 
 const MobileNav = ({ show, pathname }) => {
   const [expand, setExpand] = React.useState(pathname.includes('/docs'));
 
   return (
-    <div className="overlay">
-      <div className="container">
-        <div className="row">
-          <a className="login" href="https://cloud.deviceplane.com/login">
-            <span>Log in</span>
-            <div className="arrow">
-              <Arrow />
-            </div>
-          </a>
+    <Overlay>
+      <Column>
+        <Row>
+          <Button
+            title="Log in"
+            variant="text"
+            href="https://cloud.deviceplane.com/login"
+          />
 
-          <a className="signup" href="https://cloud.deviceplane.com/register">
-            Sign up
-          </a>
-        </div>
+          <Button
+            title="Sign up"
+            href="https://cloud.deviceplane.com/register"
+          />
+        </Row>
 
         <ul>
           <li>
             <div className="expander" onClick={() => setExpand(!expand)}>
-              <a>Documentation</a>
+              <NavLink>Documentation</NavLink>
               <img className="caret" src="/caret.svg" />
             </div>
           </li>
-          <div className="docs">
+          <Column>
             <li className="doc-route">
-              <Link href="/docs/quick-start">
-                <a
-                  className={
-                    pathname === '/docs/quick-start' || pathname === '/docs'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  Quick start
-                </a>
-              </Link>
+              <NavLink href="/docs/quick-start">Quick start</NavLink>
             </li>
             {docRoutes
               .slice(1, docRoutes.length)
@@ -52,33 +65,21 @@ const MobileNav = ({ show, pathname }) => {
                   key={href}
                   className={nested ? 'doc-route nested' : 'doc-route'}
                 >
-                  <Link href={href}>
-                    <a className={href === pathname ? 'selected' : ''}>
-                      {title}
-                    </a>
-                  </Link>
+                  <NavLink href={href}>{title}</NavLink>
                 </li>
               ))}
-          </div>
+          </Column>
           <li>
-            <a href="mailto:support@deviceplane.com">Support</a>
+            <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
           </li>
           <li>
-            <Link href="/careers">
-              <a className={pathname.includes('/careers') ? 'selected' : ''}>
-                Careers
-              </a>
-            </Link>
+            <NavLink href="/careers">Careers</NavLink>
           </li>
           <li>
-            <Link href="/legal">
-              <a className={pathname.includes('/legal') ? 'selected' : ''}>
-                Legal & Privacy
-              </a>
-            </Link>
+            <NavLink href="/legal">Legal & Privacy</NavLink>
           </li>
         </ul>
-      </div>
+      </Column>
 
       <style jsx>
         {`
@@ -96,44 +97,6 @@ const MobileNav = ({ show, pathname }) => {
           a {
             text-decoration: none;
             color: var(--white);
-          }
-          .overlay {
-            display: ${show ? 'block' : 'none'};
-            box-sizing: border-box;
-            position: absolute;
-            top: 5rem;
-            left: 0;
-            width: 100%;
-            height: 45rem;
-            min-height: 100%;
-            padding: 1rem 2rem;
-            background-color: var(--black);
-            z-index: 1;
-          }
-          .row {
-            display: flex;
-            margin-bottom: 2rem;
-          }
-          .login,
-          .signup {
-            display: flex;
-            flex: 1;
-            height: 2.5rem;
-            justify-content: center;
-            align-items: center;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: var(--radius);
-          }
-          .login {
-            color: var(--white);
-            border: 1px solid var(--white);
-            margin-right: 1rem;
-          }
-          .signup {
-            color: var(--black);
-            background-color: var(--primary);
-            border: 2px solid var(--primary);
           }
           .arrow {
             display: flex;
@@ -183,155 +146,85 @@ const MobileNav = ({ show, pathname }) => {
           }
         `}
       </style>
-    </div>
+    </Overlay>
   );
 };
+
+const StyledNav = styled.nav`
+  position: relative;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  z-index: 2;
+  color: ${props => props.theme.colors.white};
+  padding: ${props => props.theme.sizes[4]}px;
+  padding-top: ${props => props.theme.sizes[4]}px;
+  background-color: ${props => props.theme.colors.black};
+`;
+
+const Container = styled(Row)`
+  max-width: ${props => props.theme.navWidth}px;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+`;
 
 const Nav = () => {
   const [overlay, setOverlay] = React.useState(false);
   const { pathname } = useRouter();
 
   return (
-    <nav>
-      <div className="container desktop">
-        <div className="left">
-          <Link href="/">
-            <div className="logo">
+    <StyledNav>
+      <Container>
+        <Row alignItems="center">
+          <NavLink href="/">
+            <Row marginRight={6} alignItems="center">
               <img src="/logo-white.svg" />
 
-              <a className="name">deviceplane</a>
-            </div>
-          </Link>
-          <ul>
-            <li className="link">
-              <Link href="/docs">
-                <a className={pathname.includes('/docs') ? 'selected' : ''}>
-                  Documentation
-                </a>
-              </Link>
-            </li>
-            <li className="link">
-              <a href="mailto:support@deviceplane.com">Support</a>
-            </li>
-          </ul>
-        </div>
-        <div className="right">
-          <a href="https://cloud.deviceplane.com/login" className="login">
-            Log in
-          </a>
-          <a href="https://cloud.deviceplane.com/register" className="signup">
-            Sign up
-          </a>
-        </div>
-      </div>
+              <Text fontWeight={5} fontSize="26px" color="#fff">
+                deviceplane
+              </Text>
+            </Row>
+          </NavLink>
+        </Row>
+        <Row justifyContent="flex-end" alignItems="center">
+          <NavLink href="/docs">Documentation</NavLink>
+          <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
+          <NavLink href="https://cloud.deviceplane.com/login">Log in</NavLink>
+          <Button
+            title="Sign up"
+            href="https://cloud.deviceplane.com/register"
+          />
+        </Row>
+      </Container>
 
       <MobileNav show={overlay} pathname={pathname} />
-
+      {/* 
       <div className="mobile">
-        <div className="container">
-          <div className="left">
-            <Link href="/">
+        <Row padding={2} flex={1} justifyContent="space-between">
+          <Row className="left">
+            <NavLink href="/">
               <div className="logo">
                 <img src="/logo-white.svg" />
 
                 <a className="name">deviceplane</a>
               </div>
-            </Link>
-          </div>
-          <div className="right">
+            </NavLink>
+          </Row>
+          <Row>
             <button onClick={() => setOverlay(!overlay)}>
               <img className="cancel" src="/cancel.svg" />
               <img className="hamburger" src="/hamburger.svg" />
             </button>
-          </div>
-        </div>
-      </div>
+          </Row>
+        </Row>
+      </div> */}
 
       <style jsx>{`
         @keyframes fadeIn {
           100% {
             opacity: 1;
           }
-        }
-        nav {
-          display: flex;
-          justify-content: center;
-          background-color: var(--black);
-          color: var(--white);
-        }
-        .container {
-          max-width: var(--page-width);
-          padding: 2rem 2rem;
-          display: flex;
-          flex: 1;
-          justify-content: space-between;
-          align-items: center;
-        }
-        ul {
-          margin: 0;
-          padding: 0;
-          display: flex;
-        }
-        li {
-          display: flex;
-        }
-        a {
-          text-decoration: none;
-          user-select: none;
-        }
-
-        .link {
-          margin: 0 1rem;
-        }
-        .link a {
-          font-size: 18px;
-          color: var(--white);
-          margin-top: 4px;
-          padding-bottom: 4px;
-          border-bottom: 2px solid var(--black);
-          transition: border-color 200ms, color 200ms;
-        }
-        .link a:not(.selected):hover {
-          border-color: var(--primary);
-        }
-        .link a.selected {
-          color: var(--primary);
-        }
-
-        .name {
-          font-size: 28px;
-          font-weight: 300;
-          margin-right: 1rem;
-        }
-        .login {
-          font-size: 18px;
-          margin-top: 4px;
-          padding-bottom: 4px;
-          margin-right: 2rem;
-          color: var(--white);
-          border-bottom: 2px solid var(--black);
-          transition: border-color 200ms;
-        }
-        .login:hover {
-          border-color: var(--primary);
-        }
-        .signup {
-          background: var(--primary);
-          border: 1px solid var(--primary);
-          border-radius: var(--radius);
-          padding: 11px 1rem;
-          color: var(--black);
-          font-weight: 500;
-          transition: background 200ms, color 200ms;
-        }
-        .signup:hover {
-          background-color: var(--black);
-          color: var(--primary);
-        }
-        .left,
-        .right {
-          display: flex;
-          align-items: center;
         }
         .logo {
           display: flex;
@@ -341,26 +234,8 @@ const Nav = () => {
           margin-bottom: 0.55rem;
         }
         img {
-          width: 3rem;
-          height: 3rem;
-        }
-
-        .mobile {
-          position: relative;
-          display: none;
-          flex: 1;
-          background-color: var(--black);
-          z-index: 2;
-          height: 5rem;
-        }
-
-        .mobile button {
-          padding: 0;
-          margin: 0;
-          background: none;
-          border: none;
-          outline: none;
-          appearance: none;
+          width: 56px;
+          height: 56px;
         }
 
         .hamburger,
@@ -404,7 +279,7 @@ const Nav = () => {
           }
         }
       `}</style>
-    </nav>
+    </StyledNav>
   );
 };
 

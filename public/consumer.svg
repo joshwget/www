@@ -3,49 +3,49 @@
 <path d="M218.813 130.079C221.143 127.809 224.857 127.809 227.187 130.079L385.636 284.452C389.491 288.209 386.832 294.75 381.449 294.75H64.5513C59.1681 294.75 56.5086 288.209 60.3643 284.452L218.813 130.079Z" fill="#000"/>
 <path d="M155 334H157C160.314 334 163 336.686 163 340V434H155V334Z" fill="rgba(255,255,255,.9)"/>
 <rect x="146.347" y="322.075" width="21" height="8" transform="rotate(42.5666 146.347 322.075)" fill="rgba(255,255,255,.9)"/>
-<circle cx="138" cy="319" r="10" fill="#57e3ff"/>
+<circle cx="138" cy="319" r="10" fill="#6fccff"/>
 <path d="M187 284H189C192.314 284 195 286.686 195 290V434H187V284Z" fill="rgba(255,255,255,.9)"/>
 <path d="M219 204H227V434H219V204Z" fill="rgba(255,255,255,.9)"/>
-<circle cx="223" cy="197" r="10" fill="#57e3ff"/>
+<circle cx="223" cy="197" r="10" fill="#6fccff"/>
 <rect x="177.253" y="272" width="21" height="8" transform="rotate(41.0421 177.253 272)" fill="rgba(255,255,255,.9)"/>
-<circle cx="169" cy="270" r="10" fill="#57e3ff"/>
+<circle cx="169" cy="270" r="10" fill="#6fccff"/>
 <path d="M259 334H257C253.686 334 251 336.686 251 340V434H259V334Z" fill="rgba(255,255,255,.9)"/>
 <rect width="21" height="8" transform="matrix(-0.726073 0.687618 0.687618 0.726073 267.247 322)" fill="rgba(255,255,255,.9)"/>
-<circle r="10" transform="matrix(-1 0 0 1 276 320)" fill="#57e3ff"/>
+<circle r="10" transform="matrix(-1 0 0 1 276 320)" fill="#6fccff"/>
 <path d="M291 374H289C285.686 374 283 376.686 283 380V434H291V374Z" fill="rgba(255,255,255,.9)"/>
 <rect width="20.6473" height="8" transform="matrix(-0.792397 0.610005 0.610005 0.792397 301.361 363)" fill="rgba(255,255,255,.9)"/>
-<circle r="10" transform="matrix(-1 0 0 1 309 361)" fill="#57e3ff"/>
+<circle r="10" transform="matrix(-1 0 0 1 309 361)" fill="#6fccff"/>
 <circle cx="36.1062" cy="200.301" r="36.1062" fill="#000"/>
 <path d="M18.0531 74C18.0531 65.1635 25.2165 58 34.0531 58H38.1593C46.9959 58 54.1593 65.1634 54.1593 74V181.186H18.0531V74Z" fill="#000"/>
-<path d="M40.354 188.996H42.854V186.496V78.177C42.854 74.4503 39.8329 71.4292 36.1062 71.4292C32.3795 71.4292 29.3585 74.4503 29.3585 78.177V186.496V188.996H31.8585H40.354Z" fill="#57e3ff" stroke="rgba(255,255,255,.9)" stroke-width="5"/>
-<circle cx="36.1062" cy="200.301" r="23.7389" fill="#57e3ff" stroke="rgba(255,255,255,.9)" stroke-width="5"/>
-<rect x="31.8585" y="171.628" width="8.49557" height="9.55752" fill="#57e3ff"/>
+<path d="M40.354 188.996H42.854V186.496V78.177C42.854 74.4503 39.8329 71.4292 36.1062 71.4292C32.3795 71.4292 29.3585 74.4503 29.3585 78.177V186.496V188.996H31.8585H40.354Z" fill="#6fccff" stroke="rgba(255,255,255,.9)" stroke-width="5"/>
+<circle cx="36.1062" cy="200.301" r="23.7389" fill="#6fccff" stroke="rgba(255,255,255,.9)" stroke-width="5"/>
+<rect x="31.8585" y="171.628" width="8.49557" height="9.55752" fill="#6fccff"/>
 <rect x="60.531" y="85.6104" width="31.8584" height="4.24779" fill="#000"/>
 <rect width="12.7621" height="4.24779" transform="matrix(0.866025 -0.5 -0.5 -0.866025 92.3894 89.9155)" fill="#000"/>
-<circle cx="106.195" cy="79.2389" r="5.30973" fill="#57e3ff"/>
+<circle cx="106.195" cy="79.2389" r="5.30973" fill="#6fccff"/>
 <rect x="60.5309" y="100.478" width="50.9734" height="4.24779" fill="#000"/>
-<circle cx="114.69" cy="102.602" r="5.30973" fill="#57e3ff"/>
+<circle cx="114.69" cy="102.602" r="5.30973" fill="#6fccff"/>
 <rect x="60.5309" y="115.345" width="22.3009" height="4.24779" fill="#000"/>
 <rect x="82.8318" y="115.345" width="11.1195" height="4.24779" transform="rotate(30 82.8318 115.345)" fill="#000"/>
-<circle cx="94.5132" cy="124.902" r="5.30973" fill="#57e3ff"/>
+<circle cx="94.5132" cy="124.902" r="5.30973" fill="#6fccff"/>
 <rect x="162.901" y="46.2183" width="12.4171" height="50.9101" rx="6" fill="#000"/>
 <rect x="187.735" y="40.0098" width="12.4171" height="33.5262" rx="6" fill="#000"/>
 <rect x="148" y="32.5591" width="99.3368" height="18.6256" rx="6" fill="#000"/>
 <circle cx="270.929" cy="41.2507" r="24.0427" fill="rgba(255,255,255,.9)" stroke="#000" stroke-width="14"/>
 <rect x="293.478" y="22.0933" width="20.1997" height="4.96684" transform="rotate(-31.2776 293.478 22.0933)" fill="#000"/>
-<circle cx="316.132" cy="11.1317" r="6.20855" transform="rotate(-22.8463 316.132 11.1317)" fill="#57e3ff"/>
+<circle cx="316.132" cy="11.1317" r="6.20855" transform="rotate(-22.8463 316.132 11.1317)" fill="#6fccff"/>
 <rect x="301" y="38.0005" width="26" height="5" fill="#000"/>
-<circle cx="332.209" cy="40.2085" r="6.20855" fill="#57e3ff"/>
+<circle cx="332.209" cy="40.2085" r="6.20855" fill="#6fccff"/>
 <rect x="292.629" y="49.9429" width="30.0316" height="4.96684" transform="rotate(48.5383 292.629 49.9429)" fill="#000"/>
-<circle cx="313.789" cy="77.6419" r="6.20855" transform="rotate(48.5383 313.789 77.6419)" fill="#57e3ff"/>
+<circle cx="313.789" cy="77.6419" r="6.20855" transform="rotate(48.5383 313.789 77.6419)" fill="#6fccff"/>
 <rect x="398.516" y="174.906" width="5.3125" height="47.8125" fill="#000"/>
 <rect x="386.562" y="174.906" width="5.3125" height="19.9219" fill="#000"/>
 <rect x="387.854" y="191.348" width="5.3125" height="30.3364" transform="rotate(40.9818 387.854 191.348)" fill="#000"/>
 <path d="M433.264 228.133L436.77 224.141L413.974 204.124L410.469 208.116L433.264 228.133Z" fill="#000"/>
 <rect x="410.469" y="174.906" width="5.3125" height="33.2031" fill="#000"/>
-<circle cx="401.172" cy="226.703" r="6.64062" transform="rotate(-90 401.172 226.703)" fill="#57e3ff"/>
-<circle cx="438.359" cy="229.359" r="6.64062" transform="rotate(-90 438.359 229.359)" fill="#57e3ff"/>
-<circle cx="366.641" cy="220.062" r="6.64062" transform="rotate(-90 366.641 220.062)" fill="#57e3ff"/>
+<circle cx="401.172" cy="226.703" r="6.64062" transform="rotate(-90 401.172 226.703)" fill="#6fccff"/>
+<circle cx="438.359" cy="229.359" r="6.64062" transform="rotate(-90 438.359 229.359)" fill="#6fccff"/>
+<circle cx="366.641" cy="220.062" r="6.64062" transform="rotate(-90 366.641 220.062)" fill="#6fccff"/>
 <rect x="380.094" y="67.4995" width="10.2812" height="36.8438" rx="4.5" fill="rgba(255,255,255,.9)" stroke="#000" stroke-width="3"/>
 <rect x="413.297" y="67.4995" width="10.2812" height="36.8438" rx="4.5" fill="rgba(255,255,255,.9)" stroke="#000" stroke-width="3"/>
 <rect x="360" y="99.2026" width="82.3438" height="67.7344" rx="6" fill="#000"/>

@@ -1,75 +1,132 @@
+import styled from 'styled-components';
+
+import { Row, Column, Text, Section, Heading } from './core';
+
+const Container = styled(Column)`
+  justify-content: flex-end;
+  align-items: center;
+`;
+Container.defaultProps = {
+  width: '130px'
+};
+
+const Label = styled(Text)`
+  text-transform: uppercase;
+`;
+Label.defaultProps = {
+  fontWeight: 6,
+  fontSize: 2,
+  marginTop: 4,
+  textAlign: 'center'
+};
+
 const UseCases = () => (
-  <section>
-    <h2>Ready for any industry</h2>
+  <Section alignItems="flex-start">
+    <Row
+      alignItems="center"
+      marginBottom={11}
+      justifyContent="space-between"
+      alignSelf="stretch"
+    >
+      <Column marginRight={10}>
+        <Container marginBottom={8}>
+          <img
+            src="/single-board-computer.svg"
+            height={80}
+            alt="Single-board computer"
+          />
+          <Label>Single-board computers</Label>
+        </Container>
 
-    <div className="desktop row">
+        <Container>
+          <img src="/iot-gateway.svg" height={80} alt="IoT gateways" />
+          <Label>IoT gateways</Label>
+        </Container>
+      </Column>
+      <Column justifyContent="space-between" marginRight={10}>
+        <Container marginBottom={8}>
+          <img src="/servers.svg" height={80} alt="Edge servers" />
+          <Label>Edge servers</Label>
+        </Container>
+
+        <Container>
+          <img src="/drones.svg" height={80} alt="Drones" />
+          <Label>Drones</Label>
+        </Container>
+      </Column>
+      <Heading variant="secondary" textAlign="right" maxWidth="550px">
+        Support for a variety of hardware
+      </Heading>
+    </Row>
+
+    <Row alignItems="center" justifyContent="space-between" alignSelf="stretch">
+      <Heading variant="secondary">Ready for any industry</Heading>
+      <Container marginRight={10} marginLeft={10}>
+        <img src="/machine-learning.svg" height={80} />
+        <Label style={{ whiteSpace: 'nowrap' }}>Machine Learning</Label>
+      </Container>
+      <Row alignItems="center">
+        <Column alignItems="flex-end" marginRight={10}>
+          <Container marginBottom={6}>
+            <img src="/consumer.svg" height={80} />
+            <Label>Consumer</Label>
+          </Container>
+
+          <Container>
+            <img src="/medical.svg" height={80} />
+            <Label>Medical</Label>
+          </Container>
+        </Column>
+
+        <Column>
+          <Container marginBottom={6}>
+            <img src="/robotics.svg" height={80} />
+            <Label>Robotics</Label>
+          </Container>
+
+          <Container>
+            <img src="/industrial.svg" height={80} />
+            <Label>Industrial</Label>
+          </Container>
+        </Column>
+      </Row>
+    </Row>
+
+    {/* <div className="tablet">
       <div className="group">
         <div className="container">
           <img src="/consumer.svg" height={120} />
-          <span>Consumer</span>
+          <Text>Consumer</Text>
         </div>
 
         <div className="container">
           <img src="/robotics.svg" height={140} />
-          <span>Robotics</span>
-        </div>
-        <div className="container">
-          <img src="/machine-learning.svg" height={100} />
-          <span>Machine Learning</span>
+          <Text>Robotics</Text>
         </div>
       </div>
 
       <div className="group">
         <div className="container">
           <img src="/medicine.svg" height={110} />
-          <span>Medicine</span>
-        </div>
-
-        <div className="container">
-          <img src="/industrial.svg" height={140} />
-          <span>Industrial</span>
-        </div>
-      </div>
-    </div>
-
-    <div className="tablet">
-      <div className="group">
-        <div className="container">
-          <img src="/consumer.svg" height={120} />
-          <span>Consumer</span>
-        </div>
-
-        <div className="container">
-          <img src="/robotics.svg" height={140} />
-          <span>Robotics</span>
-        </div>
-      </div>
-
-      <div className="group">
-        <div className="container">
-          <img src="/medicine.svg" height={110} />
-          <span>Medical</span>
+          <Text>Medical</Text>
         </div>
 
         <div className="container">
           <img src="/machine-learning.svg" height={100} />
-          <span>Machine Learning</span>
+          <Text>Machine Learning</Text>
         </div>
       </div>
 
       <div className="container">
         <img src="/industrial.svg" height={140} />
-        <span>Industrial</span>
+        <Text>Industrial</Text>
       </div>
-    </div>
+    </div> */}
 
     <style jsx>{`
-      section {
-        color: white;
-      }
       span {
         text-transform: uppercase;
-        font-weight: 700;
+        font-weight: 800;
         font-size: 14px;
         margin-top: 1rem;
         text-align: center;
@@ -102,7 +159,7 @@ const UseCases = () => (
           margin-top: 3rem;
         }
       }
-      @media screen and (max-width: 700px) {
+      @media screen and (max-width: 800px) {
         .desktop {
           display: none;
         }
@@ -134,7 +191,7 @@ const UseCases = () => (
         }
       }
     `}</style>
-  </section>
+  </Section>
 );
 
 export default UseCases;

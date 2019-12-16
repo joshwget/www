@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import Link from 'next/link';
 
 import Logo from './logo';
@@ -11,8 +12,13 @@ const links = [
   { href: '/legal', label: 'Legal & Privacy' }
 ];
 
+const StyledFooter = styled.footer`
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+`;
+
 const Footer = () => (
-  <footer>
+  <StyledFooter>
     <div className="container">
       <div className="logo">
         <Link href="/">
@@ -44,12 +50,6 @@ const Footer = () => (
     </div>
 
     <style jsx>{`
-      footer {
-        background: #000;
-        color: var(--white);
-        margin-top: auto;
-      }
-
       .container {
         max-width: var(--page-width);
         display: flex;
@@ -123,7 +123,7 @@ const Footer = () => (
         }
       }
     `}</style>
-  </footer>
+  </StyledFooter>
 );
 
 export default Footer;

@@ -1,3 +1,7 @@
+import styled from 'styled-components';
+
+import { Section, Heading, Row, Column, Text } from './core';
+
 const content = [
   {
     title: 'Register',
@@ -27,51 +31,85 @@ const content = [
   }
 ];
 
+const Tab = styled.button`
+  appearance: none;
+  border: none;
+  outline: none;
+  user-select: none;
+  border-radius: 4px;
+  transition: background-color 150ms;
+  border-radius: 4px;
+  padding: 10px 14px;
+  cursor: ${props => (props.selected ? 'default' : 'pointer')};
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &:not(:last-child) {
+    margin-right: 18px;
+  }
+  text-decoration: none !important;
+
+  font-size: ${props => props.theme.fontSizes[1]}px;
+  font-weight: ${props => props.theme.fontWeights[3]};
+  color: ${props =>
+    props.selected ? props.theme.colors.primary : props.theme.colors.white};
+  background-color: ${props =>
+    props.selected ? props.theme.colors.black : 'transparent'};
+  &:hover {
+    background-color: ${props =>
+      props.selected ? props.theme.colors.black : props.theme.colors.grays[2]};
+  }
+`;
+
 const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <section>
-      <h2>How it works</h2>
+    <Section height="540px">
+      <Heading variant="secondary">How it works</Heading>
 
-      <div className="desktop buttons">
+      <Row marginTop={9}>
         {content.map(({ title }, i) => (
-          <button
-            className={i === selection ? 'selected' : ''}
-            onClick={() => setSelection(i)}
-          >
+          <Tab selected={i === selection} onClick={() => setSelection(i)}>
             {title}
-          </button>
+          </Tab>
         ))}
-      </div>
+      </Row>
 
-      <div className="tablet buttons">
-        <div className="group">
+      {/* <Row>
+        <Row>
           {content.slice(0, 2).map(({ title }, i) => (
-            <button
+            <Tab
               className={i === selection ? 'selected' : ''}
               onClick={() => setSelection(i)}
             >
               {title}
-            </button>
+            </Tab>
           ))}
-        </div>
+        </Row>
 
-        <div className="group">
+        <Row>
           {content.slice(2, 4).map(({ title }, i) => (
-            <button
+            <Tab
               className={i + 2 === selection ? 'selected' : ''}
               onClick={() => setSelection(i + 2)}
             >
               {title}
-            </button>
+            </Tab>
           ))}
-        </div>
-      </div>
+        </Row>
+      </Row> */}
 
-      <div className="container">
-        <p>{content[selection].body}</p>
-      </div>
+      <Row
+        bg="black"
+        borderRadius={2}
+        padding={8}
+        marginTop={4}
+        maxWidth={13}
+        border={0}
+      >
+        <Text>{content[selection].body}</Text>
+      </Row>
 
       <style jsx>{`
         section {
@@ -95,56 +133,8 @@ const Tutorial = () => {
           border: 1px solid var(--primary);
           max-width: 25rem;
         }
-
-        p {
-          margin: 0;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .group {
-          display: flex;
-          flex: 1;
-        }
-
-        .buttons {
-          display: flex;
-          justify-content: space-between;
-          width: 29rem;
-          margin-bottom: 1rem;
-        }
-
         .tablet {
           display: none;
-        }
-
-        button {
-          max-width: 5.5rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          appearance: none;
-          outline: none;
-          border: 1px solid var(--primary);
-          background: none;
-          color: var(--primary);
-          padding: 0.7rem 1rem;
-          font-size: 1rem;
-          font-weight: 500;
-          border-radius: var(--radius);
-          transition: color 200ms, border-color 200ms;
-          cursor: pointer;
-        }
-
-        button:not(.selected):hover {
-          color: var(--white);
-          border-color: var(--white);
-        }
-
-        .selected {
-          background: var(--white);
-          color: var(--black);
-          border-color: var(--white);
-          cursor: auto;
         }
 
         @media screen and (max-width: 700px) {
@@ -173,7 +163,7 @@ const Tutorial = () => {
           }
         }
       `}</style>
-    </section>
+    </Section>
   );
 };
 
