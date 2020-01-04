@@ -1,0 +1,51 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Self-hosted Local Setup">
+
+# Self-hosted Local Setup
+
+This guide will teach you how to setup a self-hosted install of Deviceplane on your local network.
+
+## Requirements
+
+Two nodes on the same network are required to complete the quick start. Both nodes must be running Linux and have a recent version of Docker installed. Reference the [standard quick start guide](./quick-start) for information on how to install Docker.
+
+The first node will run the Deviceplane backend. Only `x86 / amd64` is supported for this node. Docker for Mac can also be used as the backend node. You'll need to have the IP addess of this node handy for the remainder of this guide. We'll refer to this IP address as `backend_ip_address`.
+
+The second node will run the Deviceplane agent and connect to the node running the Deviceplane backend.
+
+## Steps
+
+### Running the backend
+
+You can start Deviceplane on the backend node with the following command. View [self-hosted overview](./self-hosted) for more information on the Deviceplane Docker image and what components are contained in it.
+
+```
+docker run -d --restart=unless-stopped -p 8080:8080 deviceplane/deviceplane:1.11.0-with-db
+```
+
+You'll be able to see the Deviceplane UI within a few minutes at `http://<backend_ip_address>:8080`.
+
+### Setting up a new user and project
+
+Follow along with the standard [quick start](./quick-start) guide to register and create a project. Note that you will not need to validate your email as you would with the managed version of Deviceplane.
+
+### Registering a device
+
+Now that you have a user and project created in your setup you're ready to add a device. Go to the devices page, then click on "Add Device". The command that's generated needs to be modified slightly before it can be used. The command has multiple environment variables set such as `PROJECT` and `REGISTRATION_TOKEN`. Another environment variable, `CONTROLLER`, must be added to the command. The value of `CONTROLLER` must be the IP address of your backend node with `/api` appended (`http://<backend_ip_address>:8080/api`).
+
+For example, suppose the command was in the following format.
+
+```
+curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
+```
+
+The command should be modified to include `CONTROLLER=http://<backend_ip_address>:8080/api` as in the following command.
+
+```
+curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=http://<backend_ip_address>:8080/api bash
+```
+
+You should see a new device come online in the dashboard after running the command. From here you can follow along with the remainder of steps in the [standard quick start](./quick-start) to deploy your first application to your device.
+
+</Docs>

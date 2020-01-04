@@ -1,0 +1,33 @@
+import Docs from '../../components/docs';
+import Table from '../../components/table';
+
+<Docs title="Self-hosted">
+
+# Self-hosted
+
+Deviceplane is available in two forms: as a managed service available at [cloud.deviceplane.com](https://cloud.deviceplane.com/) and as an open source project that can be installed on your own infrastructure. The self-hosted section of our documentation contains information on how to setup Deviceplane on your own. Usage of Deviceplane between the managed version and a self-hosted version is nearly identical and so we don't maintain seperate documentation on how to use a self-hosted Deviceplane installation.
+
+**Self-hosted Deviceplane is currently in beta.** We make make no guarantees about the stability of a self-hosted install and critical workflows such as upgrading and rolling back are not currently supported.
+
+We currently have documentation for two self-hosted use cases.
+
+1. [Local network setup](./local-setup) - The first guide sets up Deviceplane for use within a local network. This is the simplest way to try out Deviceplane, though it isn't capable of managing remote devices or devices on a different network.
+1. [Public setup](./public-setup) - This guide sets up Deviceplane publicly using DigitalOcean as an example cloud provider. This setup can be used to manage remote devices, but it should still *not* be considered a production setup.
+
+## Deviceplane Docker Images
+
+The Deviceplane backend consists of two components.
+
+1. The controller, which is the Deviceplane backend service.
+1. A MySQL database with the Deviceplane schema.
+
+Deviceplane maintains a Docker image that contains only the controller and a Docker image that contains both the controller and an embedded MySQL with the schema preloaded.
+
+`deviceplane/deviceplane:<version>-with-db` - Contains both the controller and an embedded MySQL with the schema preloaded.
+`deviceplane/deviceplane:<version>` - Contains only the controller.
+
+The former image is used for the two documented self-hosted use cases.
+
+The latter image should be used when you want to connect to an external MySQL database. Setups using an external database are not yet documented.
+
+</Docs>

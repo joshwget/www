@@ -1,0 +1,77 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Self-hosted Public Setup">
+
+# Self-hosted Public Setup
+
+This guide will setup an installation of Deviceplane exposed to the public internet. This Deviceplane setup will allow managing any remote device that can connect back to the backend.
+
+We'll host the Deviceplane backend using DigitalOcean, but this guide can be easily translated for other cloud providers or on-prem environments.
+
+## Requirements
+
+This guide requires a DigitalOcean account, a valid domain (or subdomain), and a test device. The test device must be running Linux and a recent version of Docker. We'll refer to the domain as `mydomain.com` for the remainder of this guide.
+
+## Steps
+
+### Provisioning a Droplet
+
+First, create a new droplet in DigitalOcean. Deviceplane will run on any of available droplet specs and Linux distros.
+
+Once the droplet is created we need to perform two actions to provision it.
+
+1. Install Docker
+1. Run Deviceplane via Docker
+
+Reference the [standard quick start guide](./quick-start) for information on how to install Docker. Alternately, the DigitalOcean marketplace includes [a Docker app](https://marketplace.digitalocean.com/apps/docker) that provides a convenient way to launch droplets with Docker included.
+
+Once Docker is installed and running you can start Deviceplane with the following command. View [self-hosted overview](./self-hosted) for more information on the Deviceplane Docker image and what components are contained in it.
+
+```
+docker run -d --restart=unless-stopped -p 8080:8080 deviceplane/deviceplane:1.11.0-with-db
+```
+
+Since all droplets contain a public IP address by default, you'll be able to see the Deviceplane UI within a few minutes at `http://<droplet_ip_address>:8080`.
+
+### Setting up a load balancer
+
+We now have Deviceplane available at `http://<droplet_ip_address>:8080`, but what we'd like is to have it available at `https://mydomain.com`. To do this we need to perform three more steps.
+
+1. Configure DNS for `mydomain.com` so that DigitalOcean can control its DNS records.
+1. Create a new domain in DigitalOcean for `mydomain.com`.
+1. Create a new HTTPS load balancer targeted at our droplet.
+
+DigitalOcean maintains a [tutorial for (1)](https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars) and a [tutorial for (2)](https://www.digitalocean.com/docs/networking/dns/how-to/add-domains/). Follow along with these two tutorials before continuing in this guide. Note that the DNS settings in (1) usually take about 30 minutes, but could take up to a few hours depending on your domain registrar.
+
+Next, create a load balancer with the following properties.
+
+1. A single forwarding rule listening with protocol HTTPS and on port 443 (you'll need to create a new certificate for the domain you just added). The forwarding rule should target protocol HTTP on port 8080, *not* port 80.
+2. A health check on port 8080 with path `/api/health`. This requires editing the advanced settings of the load balancer.
+
+Once the load balancer is created, add the droplet from above to it. The load balancer should enter a healthy state within a few minutes, but if not then it's likely you accidently skipped or misconfigured step 2 from above.
+
+It might take up to an hour for the DNS settings to propagate, but afterwards your Deviceplane setup should be available at `https://mydomain.com`. Note that `https` must be used and not `http`.
+
+### Setting up a new user and project
+
+Follow along with the standard [quick start](./quick-start) guide to register and create a project. Note that you will not need to validate your email as you would with the managed version of Deviceplane.
+
+### Registering a device
+
+Now that you have a user and project created in your setup you're ready to add a device. Go to the devices page, then click on "Add Device". The command that's generated needs to be modified slightly before it can be used. The command has multiple environment variables set such as `PROJECT` and `REGISTRATION_TOKEN`. Another environment variable, `CONTROLLER`, must be added to the command. The value of `CONTROLLER` must be your domain with `/api` appended (`https://mydomain.com/api`).
+
+For example, suppose the command was in the following format.
+
+```
+curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
+```
+
+The command should be modified to include `CONTROLLER=https://mydomain.com/api` as in the following command.
+
+```
+curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=https://mydomain.com/api bash
+```
+
+You should see a new device come online in the dashboard after running the command. From here you can follow along with the remainder of steps in the [standard quick start](./quick-start) to deploy your first application to your device.
+
+</Docs>

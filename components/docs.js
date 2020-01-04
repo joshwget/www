@@ -55,7 +55,21 @@ export const routes = [
   {
     href: '/docs/cli',
     title: 'CLI'
-  }
+  },
+  {
+    href: '/docs/self-hosted',
+    title: 'Self-hosted'
+  },
+  {
+    href: '/docs/self-hosted/local-setup',
+    title: 'Local Setup',
+    nested: true
+  },
+  {
+    href: '/docs/self-hosted/public-setup',
+    title: 'Public Setup',
+    nested: true
+  },
 ];
 
 const Docs = ({ title, children }) => {
