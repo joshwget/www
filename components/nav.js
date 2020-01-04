@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import { routes as docRoutes } from './docs';
+import { routeGroups as docRoutes } from './docs';
 import Logo from './icons/logo';
 import { Row, Column, Button, Text, Link } from './core';
 
@@ -56,19 +56,13 @@ const MobileNav = ({ show, pathname }) => {
             </div>
           </li>
           <Column>
-            <li className="doc-route">
-              <NavLink href="/docs/quick-start">Quick start</NavLink>
-            </li>
-            {docRoutes
-              .slice(1, docRoutes.length)
-              .map(({ href, title, nested }) => (
-                <li
-                  key={href}
-                  className={nested ? 'doc-route nested' : 'doc-route'}
-                >
-                  <NavLink href={href}>{title}</NavLink>
-                </li>
-              ))}
+            {docRoutes.map(routes =>
+              routes.map(({ href, title, nested }) => (
+                <NavLink href={href} nested={nested}>
+                  {title}
+                </NavLink>
+              ))
+            )}
           </Column>
           <li>
             <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
@@ -182,7 +176,7 @@ const Nav = () => {
               <Logo />
 
               <Text
-                fontWeight={3}
+                fontWeight={4}
                 fontSize="26px"
                 color="#fff"
                 marginLeft="8px"

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Head } from 'next';
 
 import Nav from '../components/nav';
@@ -14,14 +13,14 @@ const postings = [
           As a software engineer, you'll own projects both big and small and be
           responsible for complete ownership and delivery of these projects. Our
           philosophy is that all engineers should be both product-minded and
-          involved in product decisions day to day. This means that all engineers
-          will be responsible for everything from product design to technical
-          architecture and implementation.
+          involved in product decisions day to day. This means that all
+          engineers will be responsible for everything from product design to
+          technical architecture and implementation.
         </p>
         <p>
           If you're excited by open source, working on a highly technical
-          products, and tackling the hardest engineering problems then we'd
-          like to talk to you!
+          products, and tackling the hardest engineering problems then we'd like
+          to talk to you!
         </p>
       </>
     )
@@ -33,10 +32,10 @@ const postings = [
       <>
         <p>
           As a developer advocate, you’ll spread awareness of Deviceplane
-          through a wide variety of online and in-person mediums including forums,
-          meetups, and conferences. You'll create content such as blog posts,
-          sample applications, and video demos that serve to teach both how to use
-          Deviceplane and the technical details of its internals.
+          through a wide variety of online and in-person mediums including
+          forums, meetups, and conferences. You'll create content such as blog
+          posts, sample applications, and video demos that serve to teach both
+          how to use Deviceplane and the technical details of its internals.
         </p>
         <p>
           If you’re excited by engaging with developers, telling stories, and
@@ -59,7 +58,7 @@ const Careers = () => (
       <div className="container">
         <h1>Careers</h1>
 
-        {/* <div className="intro">
+        <div className="intro">
           <p>
             Our goal is to make Deviceplane the de facto way to manage all
             remote hardware and devices. The path to get there requires deep
@@ -67,7 +66,7 @@ const Careers = () => (
             adoption of Deviceplane, and to make sure we're building the product
             that fits their requirements and sparks joy.
           </p>
-        </div> */}
+        </div>
 
         <div className="content">
           {postings.map(({ title, location, body }) => (

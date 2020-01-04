@@ -4,7 +4,8 @@ import { typography, color, space, layout } from 'styled-system';
 
 const defaultProps = {
   color: 'white',
-  margin: 0
+  margin: 0,
+  fontWeight: 5
 };
 
 const H1 = styled.h1`

@@ -9,8 +9,10 @@ const A = styled.a`
   color: ${props => props.theme.colors.primary};
 
   &:hover {
-    text-decoration: underline;
+    color: ${props => props.theme.colors.white};
   }
+
+  font-weight: 600;
 
   ${color} ${layout} ${space} ${typography}
 `;

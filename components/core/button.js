@@ -10,7 +10,6 @@ import {
   shadow,
   flexbox
 } from 'styled-system';
-import titlify from 'title';
 
 import theme from '../../theme';
 
@@ -68,7 +67,7 @@ const variants = {
 const defaultProps = {
   variant: 'primary',
   fontSize: 1,
-  fontWeight: 2,
+  fontWeight: 4,
   borderRadius: 1,
   boxShadow: 0,
   display: 'flex',
@@ -82,7 +81,7 @@ export const Btn = styled.button`
   outline: none;
   font-family: inherit;
   cursor: pointer;
-  transition: all 250ms;
+  transition: all 300ms;
   transform: translateZ(0);
   backface-visibility: hidden;
   white-space: nowrap;

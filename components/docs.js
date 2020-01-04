@@ -7,112 +7,124 @@ import Nav from './nav';
 import Highlight from './highlight';
 import Footer from './footer';
 
-export const routes = [
-  {
-    href: '/docs/quick-start',
-    title: 'Quick start'
-  },
-  {
-    href: '/docs/provisioning',
-    title: 'Provisioning'
-  },
-  {
-    href: '/docs/deploying',
-    title: 'Deploying'
-  },
-  {
-    href: '/docs/deploying/scheduling',
-    title: 'Scheduling',
-    nested: true
-  },
-  {
-    href: '/docs/managing/ssh-access',
-    title: 'Managing'
-  },
-  {
-    href: '/docs/managing/ssh-access',
-    title: 'SSH access',
-    nested: true
-  },
-  {
-    href: '/docs/managing/device-labels',
-    title: 'Device labels',
-    nested: true
-  },
-  {
-    href: '/docs/iam',
-    title: 'IAM'
-  },
-  {
-    href: '/docs/iam/custom-roles',
-    title: 'Custom roles',
-    nested: true
-  },
-  {
-    href: '/docs/device-variables',
-    title: 'Device Variables'
-  },
-  {
-    href: '/docs/cli',
-    title: 'CLI'
-  },
-  {
-    href: '/docs/self-hosted',
-    title: 'Self-hosted'
-  },
-  {
-    href: '/docs/self-hosted/local-setup',
-    title: 'Local Setup',
-    nested: true
-  },
-  {
-    href: '/docs/self-hosted/public-setup',
-    title: 'Public Setup',
-    nested: true
-  },
+export const routeGroups = [
+  [
+    {
+      href: '/docs/quick-start',
+      title: 'Quick start'
+    },
+    {
+      href: '/docs/provisioning',
+      title: 'Provisioning'
+    },
+    {
+      href: '/docs/deploying',
+      title: 'Deploying'
+    },
+    {
+      href: '/docs/deploying/scheduling',
+      title: 'Scheduling',
+      nested: true
+    },
+    {
+      href: '/docs/managing/ssh-access',
+      title: 'Managing'
+    },
+    {
+      href: '/docs/managing/ssh-access',
+      title: 'SSH access',
+      nested: true
+    },
+    {
+      href: '/docs/managing/device-labels',
+      title: 'Device labels',
+      nested: true
+    },
+    {
+      href: '/docs/iam',
+      title: 'IAM'
+    },
+    {
+      href: '/docs/iam/custom-roles',
+      title: 'Custom roles',
+      nested: true
+    },
+    {
+      href: '/docs/device-variables',
+      title: 'Device Variables'
+    },
+    {
+      href: '/docs/cli',
+      title: 'CLI'
+    }
+  ],
+  [
+    {
+      href: '/docs/self-hosted',
+      title: 'Self-hosted'
+    },
+    {
+      href: '/docs/self-hosted/local-setup',
+      title: 'Local Setup',
+      nested: true
+    },
+    {
+      href: '/docs/self-hosted/public-setup',
+      title: 'Public Setup',
+      nested: true
+    }
+  ]
 ];
 
 const DocLink = styled(Link)`
   text-decoration: none !important;
   color: ${props =>
     props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
+  font-size: ${props => props.theme.fontSizes[1]}px;
   margin: ${props => (props.nested ? '16px 0 0 16px' : '16px 0 0')};
+
+  &:hover {
+    color: ${props => props.theme.colors.primary};
+  }
+`;
+
+const Divider = styled.div`
+  width: calc(100% - 16px);
+  border-top: 1px solid ${props => props.theme.colors.grays[8]};
+  margin-top: 24px;
+  margin-bottom: 8px;
 `;
 
 const Docs = ({ title, children }) => {
   const { pathname } = useRouter();
 
   return (
-    <>
+    <Column height="100%" overflow="hidden">
       <Head>
         <title>{title ? `${title} | Docs` : 'Documentation'}</title>
       </Head>
 
       <Nav />
 
-      <Row>
+      <Row height="100%" overflow="hidden">
         <Column bg="black" minWidth="200px" paddingLeft={6}>
-          <DocLink href="/docs/quick-start">
-            <a
-              className={
-                pathname === '/docs/quick-start' || pathname === '/docs'
-                  ? 'selected'
-                  : ''
-              }
-            >
-              Quick start
-            </a>
-          </DocLink>
-          {routes.slice(1, routes.length).map(({ href, title, nested }) => (
-            <DocLink href={href} nested={nested}>
-              <a
-                className={
-                  title !== 'Managing' && href === pathname ? 'selected' : ''
-                }
-              >
-                {title}
-              </a>
-            </DocLink>
+          {routeGroups.map((routes, index) => (
+            <>
+              {routes.map(({ href, title, nested }) => (
+                <DocLink href={href} nested={nested}>
+                  <a
+                    className={
+                      title !== 'Managing' && href === pathname
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    {title}
+                  </a>
+                </DocLink>
+              ))}
+              {index < routeGroups.length - 1 ? <Divider /> : null}
+            </>
           ))}
         </Column>
 
@@ -120,7 +132,7 @@ const Docs = ({ title, children }) => {
           <Column
             color="white"
             maxWidth="800px"
-            height="100%"
+            maxHeight="100%"
             overflow="auto"
             padding={6}
             paddingTop={0}
@@ -252,7 +264,7 @@ const Docs = ({ title, children }) => {
           }
         `}
       </style>
-    </>
+    </Column>
   );
 };
 

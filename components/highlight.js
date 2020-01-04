@@ -1,7 +1,7 @@
 import { default as Highlighter, defaultProps } from 'prism-react-renderer';
 import { MDXProvider } from '@mdx-js/react';
 
-import { Heading, Table } from './core';
+import { Heading, Table, Code, Link } from './core';
 
 const theme = {
   plain: {
@@ -88,7 +88,7 @@ const theme = {
   ]
 };
 
-const Code = ({ children, className }) => {
+const HighlightedCode = ({ children, className }) => {
   const language = className ? className.replace(/language-/, '') : '';
 
   return (
@@ -115,10 +115,11 @@ const Code = ({ children, className }) => {
 
 const components = {
   pre: props => <div {...props} />,
-  code: Code,
+  code: HighlightedCode,
   h1: Heading.H1,
   h2: Heading.H2,
-  table: Table
+  table: Table,
+  a: Link
 };
 
 const Highlight = ({ children }) => (
