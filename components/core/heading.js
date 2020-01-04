@@ -14,7 +14,7 @@ const H1 = styled.h1`
 
 H1.defaultProps = {
   ...defaultProps,
-  fontSize: 7
+  fontSize: '60px'
 };
 
 const H2 = styled.h2`
@@ -24,7 +24,7 @@ const H2 = styled.h2`
 
 H2.defaultProps = {
   ...defaultProps,
-  fontSize: 7
+  fontSize: 6
 };
 
 const H3 = styled.h3`
@@ -34,7 +34,7 @@ const H3 = styled.h3`
 
 H3.defaultProps = {
   ...defaultProps,
-  fontSize: 6
+  fontSize: 4
 };
 
 const Heading = ({ variant, ...rest }) => {

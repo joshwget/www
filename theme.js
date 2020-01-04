@@ -61,7 +61,7 @@ export default {
     code: 'source-code-pro,Menlo,Monaco,Consolas,monospace'
   },
 
-  fontSizes: [13, 15, 16, 18, 26, 32, 40, 56],
+  fontSizes: [12, 14, 16, 18, 22, 30, 40, 56],
 
   fontWeights: [100, 300, 400, 500, 600, 700, 900],
 
@@ -98,9 +98,9 @@ export default {
     large: `@media screen and (min-width: ${breakpoints[2]})`
   },
 
-  pageWidth: 1024,
+  pageWidth: 1080,
 
-  navWidth: 1280
+  navWidth: 1080
 };
 
 export const labelColors = [

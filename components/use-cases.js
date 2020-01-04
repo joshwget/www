@@ -3,71 +3,69 @@ import styled from 'styled-components';
 import { Row, Column, Text, Section, Heading } from './core';
 
 const Container = styled(Column)`
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
 `;
 Container.defaultProps = {
-  width: '130px'
+  width: '130px',
+  margin: 8
 };
 
 const Label = styled(Text)`
   text-transform: uppercase;
 `;
 Label.defaultProps = {
-  fontWeight: 6,
-  fontSize: 2,
+  fontWeight: 4,
+  fontSize: 0,
   marginTop: 4,
   textAlign: 'center'
 };
 
 const UseCases = () => (
-  <Section alignItems="flex-start">
-    <Row
-      alignItems="center"
-      marginBottom={11}
-      justifyContent="space-between"
-      alignSelf="stretch"
-    >
-      <Column marginRight={10}>
-        <Container marginBottom={8}>
-          <img
-            src="/single-board-computer.svg"
-            height={80}
-            alt="Single-board computer"
-          />
-          <Label>Single-board computers</Label>
-        </Container>
+  <Section>
+    <Column alignItems="center" marginBottom={9}>
+      <Heading variant="secondary">Support for a variety of hardware</Heading>
+      <Row marginTop={4}>
+        <Row>
+          <Container>
+            <img
+              src="/single-board-computer.svg"
+              height={80}
+              alt="Single-board computer"
+            />
+            <Label>Single-board computers</Label>
+          </Container>
 
-        <Container>
-          <img src="/iot-gateway.svg" height={80} alt="IoT gateways" />
-          <Label>IoT gateways</Label>
-        </Container>
-      </Column>
-      <Column justifyContent="space-between" marginRight={10}>
-        <Container marginBottom={8}>
-          <img src="/servers.svg" height={80} alt="Edge servers" />
-          <Label>Edge servers</Label>
-        </Container>
+          <Container>
+            <img src="/iot-gateway.svg" height={80} alt="IoT gateways" />
+            <Label>IoT gateways</Label>
+          </Container>
+        </Row>
+        <Row>
+          <Container marginBottom={8}>
+            <img src="/servers.svg" height={80} alt="Edge servers" />
+            <Label>Edge servers</Label>
+          </Container>
 
-        <Container>
-          <img src="/drones.svg" height={80} alt="Drones" />
-          <Label>Drones</Label>
-        </Container>
-      </Column>
-      <Heading variant="secondary" textAlign="right" maxWidth="550px">
-        Support for a variety of hardware
-      </Heading>
-    </Row>
+          <Container>
+            <img src="/drones.svg" height={80} alt="Drones" />
+            <Label>Drones</Label>
+          </Container>
+        </Row>
+      </Row>
+    </Column>
 
-    <Row alignItems="center" justifyContent="space-between" alignSelf="stretch">
+    <Column alignItems="center">
       <Heading variant="secondary">Ready for any industry</Heading>
-      <Container marginRight={10} marginLeft={10}>
-        <img src="/machine-learning.svg" height={80} />
-        <Label style={{ whiteSpace: 'nowrap' }}>Machine Learning</Label>
-      </Container>
-      <Row alignItems="center">
-        <Column alignItems="flex-end" marginRight={10}>
-          <Container marginBottom={6}>
+
+      <Row marginTop={4}>
+        <Row>
+          <Container>
+            <img src="/machine-learning.svg" height={80} />
+            <Label style={{ whiteSpace: 'nowrap' }}>Machine Learning</Label>
+          </Container>
+
+          <Container>
             <img src="/consumer.svg" height={80} />
             <Label>Consumer</Label>
           </Container>
@@ -76,10 +74,10 @@ const UseCases = () => (
             <img src="/medical.svg" height={80} />
             <Label>Medical</Label>
           </Container>
-        </Column>
+        </Row>
 
-        <Column>
-          <Container marginBottom={6}>
+        <Row alignItems="flex-end">
+          <Container>
             <img src="/robotics.svg" height={80} />
             <Label>Robotics</Label>
           </Container>
@@ -88,9 +86,9 @@ const UseCases = () => (
             <img src="/industrial.svg" height={80} />
             <Label>Industrial</Label>
           </Container>
-        </Column>
+        </Row>
       </Row>
-    </Row>
+    </Column>
 
     {/* <div className="tablet">
       <div className="group">

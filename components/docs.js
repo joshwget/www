@@ -1,7 +1,8 @@
+import styled from 'styled-components';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { Row, Column, Link } from './core';
 import Nav from './nav';
 import Highlight from './highlight';
 import Footer from './footer';
@@ -71,6 +72,13 @@ export const routes = [
   },
 ];
 
+const DocLink = styled(Link)`
+  text-decoration: none !important;
+  color: ${props =>
+    props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
+  margin: ${props => (props.nested ? '16px 0 0 16px' : '16px 0 0')};
+`;
+
 const Docs = ({ title, children }) => {
   const { pathname } = useRouter();
 
@@ -82,55 +90,50 @@ const Docs = ({ title, children }) => {
 
       <Nav />
 
-      <div className="container">
-        <div className="content">
-          <div className="sidebar">
-            <ul>
-              <li>
-                <Link href="/docs/quick-start">
-                  <a
-                    className={
-                      pathname === '/docs/quick-start' || pathname === '/docs'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    Quick start
-                  </a>
-                </Link>
-              </li>
-              {routes.slice(1, routes.length).map(({ href, title, nested }) => (
-                <li key={title} className={nested ? 'nested' : ''}>
-                  <Link href={href}>
-                    <a
-                      className={
-                        title !== 'Managing' && href === pathname
-                          ? 'selected'
-                          : ''
-                      }
-                    >
-                      {title}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <Row>
+        <Column bg="black" minWidth="200px" paddingLeft={6}>
+          <DocLink href="/docs/quick-start">
+            <a
+              className={
+                pathname === '/docs/quick-start' || pathname === '/docs'
+                  ? 'selected'
+                  : ''
+              }
+            >
+              Quick start
+            </a>
+          </DocLink>
+          {routes.slice(1, routes.length).map(({ href, title, nested }) => (
+            <DocLink href={href} nested={nested}>
+              <a
+                className={
+                  title !== 'Managing' && href === pathname ? 'selected' : ''
+                }
+              >
+                {title}
+              </a>
+            </DocLink>
+          ))}
+        </Column>
 
-          <Highlight>
-            <div className="children">{children}</div>
-          </Highlight>
-        </div>
-      </div>
+        <Highlight>
+          <Column
+            color="white"
+            maxWidth="800px"
+            height="100%"
+            overflow="auto"
+            padding={6}
+            paddingTop={0}
+          >
+            {children}
+          </Column>
+        </Highlight>
+      </Row>
 
       <Footer />
 
       <style global jsx>
         {`
-          html {
-            background-color: var(--black);
-          }
-
           .prism-code .token-line:last-child {
             display: none;
           }
@@ -194,19 +197,8 @@ const Docs = ({ title, children }) => {
             padding: 2rem;
             max-width: var(--page-width);
             margin: 0 auto;
-          }
-
-          .children {
-            border-radius: var(--radius);
-            padding: 1.5rem;
             overflow: hidden;
-            color: var(--black);
-            background: rgba(255, 255, 255, 0.9);
-          }
-
-          .sidebar {
-            color: var(--white);
-            min-width: 10rem;
+            height: 100%;
           }
 
           ul {
@@ -256,10 +248,6 @@ const Docs = ({ title, children }) => {
             }
             .children {
               background: var(--white);
-            }
-
-            :global(html) {
-              background-color: white;
             }
           }
         `}

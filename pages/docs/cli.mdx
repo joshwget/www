@@ -1,5 +1,4 @@
 import Docs from '../../components/docs';
-import Table from '../../components/table';
 
 <Docs title="CLI">
 
@@ -25,15 +24,11 @@ The most common use case of using the CLI is to deploy a new release for your ap
 
 If a single application is constantly being updated, Deviceplane recommends setting up environment variables so the project and application do not have to be passed in as same options in the command.
 
-<Table height="13rem">
-
 | Environment Variable       | Value                              | Description                                                  |
 | -------------------------- | ---------------------------------- | ------------------------------------------------------------ |
 | `$DEVICEPLANE_ACCESS_KEY`  | User or Service Account Access Key | Access Key to access the project/application                 |
 | `$DEVICEPLANE_PROJECT`     | Project ID or Name                 | Define which project your application is in                  |
 | `$DEVICEPLANE_APPLICATION` | Application ID or Name             | Define which application you want to deploy a new release to |
-
-</Table>
 
 ```
 # Set environment variables for access key, project and application

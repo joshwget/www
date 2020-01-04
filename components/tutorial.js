@@ -65,7 +65,7 @@ const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <Section height="540px">
+    <Section height="500px">
       <Heading variant="secondary">How it works</Heading>
 
       <Row marginTop={9}>

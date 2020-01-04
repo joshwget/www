@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import { routes as docRoutes } from './docs';
+import Logo from './icons/logo';
 import { Row, Column, Button, Text, Link } from './core';
 
 const Overlay = styled(Column)`
@@ -25,7 +26,7 @@ const NavLink = styled(Link)`
     color: ${props => props.theme.colors.primary};
   }
   margin-right: 24px;
-  font-size: 15px;
+  font-size: ${props => props.theme.fontSizes[1]}px;
 `;
 
 const MobileNav = ({ show, pathname }) => {
@@ -157,8 +158,7 @@ const StyledNav = styled.nav`
   justify-content: center;
   z-index: 2;
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.sizes[4]}px;
-  padding-top: ${props => props.theme.sizes[4]}px;
+  padding: ${props => props.theme.sizes[3]}px ${props => props.theme.sizes[4]}px;
   background-color: ${props => props.theme.colors.black};
 `;
 
@@ -179,9 +179,14 @@ const Nav = () => {
         <Row alignItems="center">
           <NavLink href="/">
             <Row marginRight={6} alignItems="center">
-              <img src="/logo-white.svg" />
+              <Logo />
 
-              <Text fontWeight={5} fontSize="26px" color="#fff">
+              <Text
+                fontWeight={3}
+                fontSize="26px"
+                color="#fff"
+                marginLeft="8px"
+              >
                 deviceplane
               </Text>
             </Row>
@@ -205,7 +210,7 @@ const Nav = () => {
           <Row className="left">
             <NavLink href="/">
               <div className="logo">
-                <img src="/logo-white.svg" />
+                <img src="/logo.svg" />
 
                 <a className="name">deviceplane</a>
               </div>

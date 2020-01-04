@@ -1,5 +1,4 @@
 import Docs from '../../../components/docs';
-import Table from '../../../components/table';
 
 <Docs title="Scheduling">
 
@@ -77,8 +76,6 @@ This expression could be expanded to the following since filters have multiple i
 
 Some example evaluations are provided below. Suppose we have the following devices in our project.
 
-<Table height="20rem">
-
 | Devices      | Labels                                          |
 | ------------ | ----------------------------------------------- |
 | device1      | `customer=customer1`, `generation=3`             |
@@ -87,9 +84,6 @@ Some example evaluations are provided below. Suppose we have the following devic
 | device4      | `customer=customer1`                             |
 | device5      | *No labels set* .                                |
 
-</Table>
-
-<Table height="20rem">
 
 | Schedule Rule                                                                                    | Matching device(s)           |
 | ------------------------------------------------------------------------------------------------ | ---------------------------- |
@@ -97,7 +91,5 @@ Some example evaluations are provided below. Suppose we have the following devic
 | <b>filter1:</b> condition(`customer=customer1`), condition(`customer=customer3`)                 | device1, device4, device3    |
 | <b>filter1:</b> condition(`customer!=customer1`)                                                 | device2, device3, device5    |
 | <b>filter1:</b> condition(`customer=customer1`) <br/><b>filter2:</b> condition(`generation=3`)   | device1                      |
-
-</Table>
 
 </Docs>

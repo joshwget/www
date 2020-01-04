@@ -1,4 +1,5 @@
 import React from 'react';
+import { default as NextLink } from 'next/link';
 import styled from 'styled-components';
 import { space, layout, color, typography } from 'styled-system';
 
@@ -15,7 +16,11 @@ const A = styled.a`
 `;
 
 const Link = ({ children, href, ...rest }) => {
-  return <A {...rest}>{children}</A>;
+  return (
+    <NextLink href={href}>
+      <A {...rest}>{children}</A>
+    </NextLink>
+  );
 };
 
 export default Link;

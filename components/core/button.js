@@ -132,7 +132,6 @@ export const LinkButton = styled.a`
 LinkButton.defaultProps = defaultProps;
 
 const Button = ({ href, title, onClick, ...rest }) => {
-  title = typeof title === 'string' ? titlify(title) : title;
   if (href) {
     return <LinkButton {...rest}>{title}</LinkButton>;
   }

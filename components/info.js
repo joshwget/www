@@ -1,53 +1,36 @@
 import styled from 'styled-components';
 
-import {
-  Column,
-  Row,
-  Heading,
-  Section,
-  Badge,
-  Text,
-  Link,
-  Image,
-  Button,
-  Paragraph
-} from './core';
-import Arrow from './icons/arrow';
+import { Column, Row, Heading, Section, Link, Paragraph, Icon } from './core';
 
-const Container = styled(Column)`
-  &:not(:last-child) {
-    margin-right: 60px;
-  }
-`;
+const Container = styled(Column)``;
 Container.defaultProps = {
-  padding: 3,
+  padding: 2,
   borderRadius: 2,
   justifyContent: 'space-between',
   alignItems: 'center',
   textAlign: 'center',
-  width: '540px'
+  maxWidth: '550px'
 };
 
-const Icon = styled(Column)`
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  margin-bottom: 12px;
-`;
-
 const Info = () => (
-  <Section>
-    <Row marginBottom={10}>
-      <Container>
+  <Section alignItems="center">
+    <Row
+      flex={1}
+      alignItems={['center', 'center', 'flex-start']}
+      flexDirection={['column', 'column', 'row']}
+      justifyContent={['initial', 'initial', 'space-between']}
+    >
+      <Container
+        margin={['0 64px 64px 64px', '0 64px 64px 64px', '0 0 0 24px', 0]}
+      >
         <Column alignItems="center">
-          <Icon>
-            <Image src="/code.svg" height="100%" />
-          </Icon>
-          <Link href="/docs" marginBottom={2}>
+          <Icon size="32" icon="manual" color="primary" marginBottom={2} />
+          <Link href="/docs" marginBottom={3}>
             Documentation
           </Link>
-          <Heading variant="tertiary">Developer focused</Heading>
+          <Heading variant="tertiary" fontSize={5}>
+            Developer focused
+          </Heading>
           <Paragraph>
             Deploying to remote devices should be as easy as deploying to the
             cloud. We're building modern and accessible tooling so developers
@@ -56,18 +39,25 @@ const Info = () => (
         </Column>
       </Container>
 
-      <Container>
+      <Container
+        margin={[
+          '0 64px 64px 64px',
+          '0 64px 64px 64px',
+          '0 24px 0 64px',
+          '0 0 0 64px'
+        ]}
+      >
         <Column alignItems="center">
-          <Icon>
-            <Image src="/github.svg" height="100%" />
-          </Icon>
+          <Icon icon="git-branch" color="primary" size="32" marginBottom={2} />
           <Link
             href="https://github.com/deviceplane/deviceplane"
-            marginBottom={2}
+            marginBottom={3}
           >
             Source Code
           </Link>
-          <Heading variant="tertiary">Open source</Heading>
+          <Heading variant="tertiary" fontSize={5}>
+            Open source
+          </Heading>
           <Paragraph>
             Developer infrastructure is inherently best when open source.
             Everything we build can be found on our GitHub and is distributed
@@ -77,12 +67,15 @@ const Info = () => (
       </Container>
     </Row>
 
-    <Container alignItems="center">
+    <Container
+      alignItems="center"
+      margin={['0 64px 64px 64px', '0 64px 64px 64px', '64px']}
+    >
       <Column alignItems="center">
-        <Icon>
-          <Image src="/lock.svg" height="100%" />
-        </Icon>
-        <Heading variant="tertiary">Security conscious</Heading>
+        <Icon color="primary" icon="lock" size="32" marginBottom={3} />
+        <Heading variant="tertiary" fontSize={5}>
+          Security conscious
+        </Heading>
         <Paragraph>
           We follow the best security practices across all of our systems to
           ensure your devices are secure. By using us you'll gain access to a

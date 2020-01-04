@@ -1,6 +1,8 @@
 import { default as Highlighter, defaultProps } from 'prism-react-renderer';
 import { MDXProvider } from '@mdx-js/react';
 
+import { Heading, Table } from './core';
+
 const theme = {
   plain: {
     color: 'var(--primary)'
@@ -113,7 +115,10 @@ const Code = ({ children, className }) => {
 
 const components = {
   pre: props => <div {...props} />,
-  code: Code
+  code: Code,
+  h1: Heading.H1,
+  h2: Heading.H2,
+  table: Table
 };
 
 const Highlight = ({ children }) => (

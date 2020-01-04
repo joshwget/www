@@ -42,7 +42,7 @@ const Hero = ({ airtable }) => {
     <Column
       alignItems="center"
       width="100%"
-      paddingBottom="200px"
+      paddingBottom="240px"
       position="relative"
       overflow="hidden"
     >
@@ -52,14 +52,13 @@ const Hero = ({ airtable }) => {
         <Column maxWidth={14} marginTop={6}>
           <Heading maxWidth="625px">Manage your devices at the edge</Heading>
 
-          <Paragraph maxWidth={12}>
-            Update, monitor, and access remote devices and servers with ease.
-            Let us handle the hard infrastructure problems around managing
-            remote hardware so you can stay focused on your business.
+          <Paragraph maxWidth="480px">
+            Deviceplane makes it easy to update, monitor, and access remote
+            devices and servers.
           </Paragraph>
         </Column>
 
-        <Column maxWidth="435px" width="100%">
+        <Column maxWidth="425px" width="100%">
           <Column>
             {/* <div>
               <span>
@@ -101,43 +100,8 @@ const Hero = ({ airtable }) => {
 
         .bg {
           position: absolute;
-          top: 0;
-          right: -220px;
-        }
-
-        // .chat:hover .arrow {
-        //   animation-name: shift;
-        //   animation-duration: 1.2s;
-        //   animation-timing-function: ease-in-out;
-        //   animation-iteration-count: infinite;
-        //   animation-fill-mode: forwards;
-        //   animation-direction: alternate;
-        // }
-        // .chat:hover :global(svg) {
-        //   fill: var(--white);
-        // }
-
-        .arrow {
-          display: flex;
-          margin-left: 0.75rem;
-        }
-
-        .arrow :global(svg) {
-          fill: var(--black);
-          transition: fill 200ms;
-        }
-
-        .success {
-          display: flex;
-          align-items: center;
-          margin-bottom: 2rem;
-          padding: 0 1.5rem;
-          height: 3rem;
-          border: 2px solid var(--primary);
-          border-radius: var(--radius);
-          color: var(--primary);
-          font-weight: 500;
-          display: ${submitted ? 'inline-flex' : 'none'};
+          top: -40px;
+          right: -300px;
         }
 
         @media screen and (max-width: 600px) {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 
-import Logo from './logo';
+import Logo from './icons/logo';
+import { Column, Link, Text } from './core';
 
 const links = [
   { href: '/docs', label: 'Documentation' },
@@ -13,53 +13,69 @@ const links = [
 ];
 
 const StyledFooter = styled.footer`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
+  padding: 64px 24px 24px 24px;
+`;
+
+const Container = styled(Column)`
+  align-items: center;
+  max-width: ${props => props.theme.pageWidth}px;
+  width: 100%;
+`;
+
+const FooterLink = styled(Link)`
+  text-decoration: none !important;
+  transition: color 150ms;
+  color: ${props => props.theme.colors.grays[5]};
+  &:hover {
+    color: ${props => props.theme.colors.white};
+  }
+  font-size: ${props => props.theme.fontSizes[1]}px;
+  margin: 0 12px;
+`;
+
+FooterLink.defaultProps = {
+  color: 'grays.8'
+};
+
+const FooterNav = styled.nav`
+  margin: 32px 0;
 `;
 
 const Footer = () => (
   <StyledFooter>
-    <div className="container">
-      <div className="logo">
+    <Container>
+      <Column>
         <Link href="/">
-          <a>
-            <Logo width={40} height={40} />
-          </a>
+          <Logo size={28} />
         </Link>
-      </div>
+      </Column>
 
-      <nav>
+      <FooterNav>
         <ul>
           {links.map(({ href, label, mailto }) => (
             <li key={label}>
               {mailto ? (
-                <a href={`mailto:${mailto}`} className="link">
-                  {label}
-                </a>
+                <FooterLink href={`mailto:${mailto}`}>{label}</FooterLink>
               ) : (
-                <Link href={href}>
-                  <a className="link">{label}</a>
-                </Link>
+                <FooterLink href={href}>{label}</FooterLink>
               )}
             </li>
           ))}
         </ul>
-      </nav>
+      </FooterNav>
 
-      <span className="copyright">© Deviceplane</span>
-    </div>
+      <Text fontSize={0} color="grays.5">
+        © Deviceplane
+      </Text>
+    </Container>
 
     <style jsx>{`
-      .container {
-        max-width: var(--page-width);
-        display: flex;
-        align-self: stretch;
-        flex-direction: column;
-        align-items: center;
-        padding: 3rem 0 2rem 0;
-        margin: 0 auto;
-      }
-
       ul {
         margin: 0;
         padding: 0;
@@ -68,37 +84,12 @@ const Footer = () => (
 
       li {
         display: flex;
-        margin: 0 1rem;
-      }
-
-      .link {
-        color: var(--white);
-        opacity: 0.8;
-        text-decoration: none;
-        transition: opacity 250ms;
-        font-size: 14px;
-      }
-
-      .link:hover {
-        opacity: 1;
       }
 
       .bottom {
         padding: 1rem;
         display: flex;
         justify-content: center;
-      }
-
-      .copyright {
-        color: var(--white);
-        opacity: 0.4;
-        margin-top: 3rem;
-        font-size: 10px;
-      }
-
-      .logo {
-        margin-bottom: 2rem;
-        cursor: pointer;
       }
 
       .logo:hover :global(polyline) {

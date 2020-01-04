@@ -15,11 +15,10 @@ const StyledInput = styled.input`
   margin: 0;
   transition: border-color 200ms;
   width: 100%;
-  border-color: ${props => props.theme.colors.white};
   caret-color: ${props => props.theme.colors.primary};
 
   &:focus {
-    border-color: ${props => props.theme.colors.primary};
+    border-color: ${props => props.theme.colors.white};
   }
 
   &::placeholder {

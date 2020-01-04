@@ -9,6 +9,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@blueprintjs/icons": "^3.13.0",
     "@mdx-js/loader": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "@next/mdx": "^9.1.3",

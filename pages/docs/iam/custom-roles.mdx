@@ -1,5 +1,4 @@
 import Docs from '../../../components/docs';
-import Table from '../../../components/table';
 
 <Docs title="Custom Roles">
 
@@ -35,8 +34,6 @@ rules:
 
 Besides using the default roles, you may want to create your own custom roles, using the reference table, you would select what resources to provide access to and the action level. For the action, you can either use a parent action (`read`, `write`, `admin`) or an individual action.
 
-<Table height="70rem">
-
 | Resource               | Parent Action | Individual Action                                                            |
 | ---------------------- | ------------- | ---------------------------------------------------------------------------- |
 | project                | read          | GetProject                                                                   |
@@ -59,7 +56,5 @@ Besides using the default roles, you may want to create your own custom roles, u
 | serviceaccount         | read          | GetServiceAccount <br /> ListServiceAccounts                                 |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
-
-</Table>
 
 </Docs>
