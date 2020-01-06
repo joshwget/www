@@ -50,12 +50,16 @@ const Tab = styled.button`
   text-decoration: none !important;
 
   font-size: ${props => props.theme.fontSizes[1]}px;
-  font-weight: ${props => props.theme.fontWeights[3]};
+  font-weight: ${props => props.theme.fontWeights[2]};
   color: ${props =>
     props.selected ? props.theme.colors.primary : props.theme.colors.white};
   background-color: ${props =>
     props.selected ? props.theme.colors.black : 'transparent'};
   &:hover {
+    color: ${props =>
+      props.selected
+        ? props.theme.colors.primary
+        : props.theme.colors.pureWhite};
     background-color: ${props =>
       props.selected ? props.theme.colors.black : props.theme.colors.grays[2]};
   }
@@ -65,10 +69,10 @@ const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <Section height="500px">
+    <Section height="400px">
       <Heading variant="secondary">How it works</Heading>
 
-      <Row marginTop={9}>
+      <Row marginTop={5}>
         {content.map(({ title }, i) => (
           <Tab selected={i === selection} onClick={() => setSelection(i)}>
             {title}
@@ -103,7 +107,7 @@ const Tutorial = () => {
       <Row
         bg="black"
         borderRadius={2}
-        padding={8}
+        padding={7}
         marginTop={4}
         maxWidth={13}
         border={0}

@@ -10,20 +10,21 @@ import {
 } from 'styled-system';
 
 const StyledInput = styled.input`
-  border: 1px solid ${props => props.theme.colors.grays[0]};
+  border: 1px solid ${props => props.theme.colors.white};
   outline: none;
   margin: 0;
-  transition: border-color 200ms;
+  transition: border-color 200ms box-shadow 200ms;
   width: 100%;
   caret-color: ${props => props.theme.colors.primary};
 
-  &:focus {
-    border-color: ${props => props.theme.colors.white};
+  &:not(:disabled):focus {
+    border-color: ${props => props.theme.colors.pureWhite};
+    box-shadow: 0px 0px 0px 1px ${props => props.theme.colors.pureWhite} inset;
   }
 
   &::placeholder {
     font-size: 16px;
-    color: ${props => props.theme.colors.grays[10]};
+    color: ${props => props.theme.colors.grays[8]};
   }
 
   -webkit-autofill,
@@ -41,7 +42,7 @@ StyledInput.defaultProps = {
   color: 'white',
   bg: 'grays.0',
   borderRadius: 1,
-  fontWeight: 2,
+  fontWeight: 1,
   boxShadow: 0,
   fontSize: 2
 };

@@ -1,17 +1,38 @@
 import { default as Highlighter, defaultProps } from 'prism-react-renderer';
 import { MDXProvider } from '@mdx-js/react';
+import styled from 'styled-components';
 
-import { Heading, Table, Code, Link } from './core';
+import theme from '../theme';
+import { Table, Link, Code, Paragraph } from './core';
+import * as Heading from './core/heading';
 
-const theme = {
+const H1 = styled(Heading.H1)`
+  font-size: 48px;
+`;
+
+const H2 = styled(Heading.H2)`
+  font-size: 32px;
+`;
+
+const H3 = styled(Heading.H3)`
+  font-size: 20px;
+`;
+
+const syntaxTheme = {
   plain: {
-    color: 'var(--primary)'
+    color: theme.colors.white
   },
   styles: [
     {
+      types: ['plain', 'string', 'attr-value'],
+      style: {
+        color: theme.colors.white
+      }
+    },
+    {
       types: ['comment'],
       style: {
-        color: 'rgba(255,255,255,.8)',
+        color: theme.colors.grays[8],
         fontStyle: 'italic'
       }
     },
@@ -22,48 +43,31 @@ const theme = {
       }
     },
     {
-      types: ['key', 'atrule'],
-      style: {
-        color: 'var(--white)'
-      }
-    },
-    {
-      types: ['string', 'attr-value'],
-      style: {
-        color: 'var(--primary)'
-      }
-    },
-    {
       types: ['punctuation', 'operator'],
       style: {
-        color: 'rgba(255,255,255,.6)'
+        color: theme.colors.grays[8]
       }
     },
     {
       types: [
+        'assign-left',
+        'key',
+        'atrule',
+        'keyword',
+        'attr-name',
+        'selector',
         'entity',
-        'url',
         'symbol',
-        'number',
-        'boolean',
-        'variable',
-        'constant',
         'property'
       ],
       style: {
-        color: 'var(--primary)'
-      }
-    },
-    {
-      types: [, 'keyword', 'attr-name', 'selector'],
-      style: {
-        color: '#00a4db'
+        color: theme.colors.primary
       }
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: '#d73a49'
+        color: theme.colors.red
       }
     },
     {
@@ -73,7 +77,7 @@ const theme = {
       }
     },
     {
-      types: ['tag', 'selector', 'keyword'],
+      types: ['tag', 'selector'],
       style: {
         color: '#00009f'
       }
@@ -82,11 +86,18 @@ const theme = {
       types: ['function'],
       languages: ['shell'],
       style: {
-        color: 'var(--primary)'
+        color: theme.colors.white
       }
     }
   ]
 };
+
+const Blockquote = styled.blockquote`
+  border: 4px solid ${props => props.theme.colors.white};
+  border-radius: 4px;
+  padding: 0 16px;
+  margin: 16px 0;
+`;
 
 const HighlightedCode = ({ children, className }) => {
   const language = className ? className.replace(/language-/, '') : '';
@@ -96,10 +107,20 @@ const HighlightedCode = ({ children, className }) => {
       {...defaultProps}
       code={children}
       language={language}
-      theme={theme}
+      theme={syntaxTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: '1rem' }}>
+        <pre
+          className={className}
+          style={{
+            ...style,
+            padding: '16px',
+            background: theme.colors.black,
+            borderRadius: '4px',
+            margin: '16px 0',
+            whiteSpace: 'pre-wrap'
+          }}
+        >
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
@@ -114,16 +135,20 @@ const HighlightedCode = ({ children, className }) => {
 };
 
 const components = {
+  p: Paragraph,
   pre: props => <div {...props} />,
   code: HighlightedCode,
-  h1: Heading.H1,
-  h2: Heading.H2,
+  inlineCode: Code,
+  h1: H1,
+  h2: H2,
+  h3: H3,
   table: Table,
-  a: Link
+  a: Link,
+  blockquote: Blockquote
 };
 
-const Highlight = ({ children }) => (
+const MDX = ({ children }) => (
   <MDXProvider components={components}>{children}</MDXProvider>
 );
 
-export default Highlight;
+export default MDX;

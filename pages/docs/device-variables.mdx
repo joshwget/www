@@ -2,11 +2,11 @@ import Docs from '../../components/docs';
 
 <Docs title="Device Variables">
 
-# Device Variables
+# Device variables
+
+Device variables allow you to customize various aspects of Deviceplane agent behavior. Variables are set through the filesystem meaning that interactions occur by placing files in a specific location (`/etc/deviceplane`). The agent detects these changes (without ever needing a restart) and changes behavior accordingly.
 
 ## Variables
-
-Variables allow you to customize various aspects of Deviceplane agent behavior. Variables are set through the filesystem meaning that interactions occur by placing files in a specific location (`/etc/deviceplane`). The agent detects these changes (without ever needing a restart) and changes behavior accordingly.
 
 Below is a reference list of flags available in the API. All of these flags should be placed in the `/etc/deviceplane` directory as a standalone file. For example, the `authorized-ssh-keys` file would exist as a file at `/etc/deviceplane/authorized-ssh-keys`.
 

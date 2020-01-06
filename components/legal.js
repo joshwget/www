@@ -1,73 +1,53 @@
 import React from 'react';
-import Link from 'next/link';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import Page from '../components/page';
-import Head from '../components/head';
+import theme from '../theme';
 import Nav from '../components/nav';
 import Footer from '../components/footer';
+import MDX from '../components/mdx';
+import { Box, Row, Column, Heading, Link } from '../components/core';
 
 const Legal = ({ children }) => {
   const { pathname } = useRouter();
 
   return (
-    <Page>
-      <Head title="Legal & Privacy" />
+    <>
+      <Head>
+        <title>Legal & Privacy</title>
+      </Head>
 
       <Nav />
 
       <main>
-        <div className="container">
-          <h1>Legal & Privacy</h1>
+        <Column alignItems="center">
+          <Column alignItems="center">
+            <Heading>Legal & Privacy</Heading>
 
-          <ul>
-            <li>
-              <Link href="/legal/terms">
-                <a
-                  className={
-                    pathname === '/legal' || pathname.includes('/terms')
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  User Agreement
-                </a>
+            <Row>
+              <Link
+                href="/legal/terms"
+                active={pathname === '/legal' || pathname.includes('/terms')}
+              >
+                User Agreement
               </Link>
-            </li>
-            <li>
-              <Link href="/legal/privacy">
-                <a className={pathname.includes('/privacy') ? 'selected' : ''}>
-                  Privacy Policy
-                </a>
-              </Link>
-            </li>
-          </ul>
+              <Link
+                href="/legal/privacy"
+                active={pathname.includes('/privacy')}
+              ></Link>
+            </Row>
+          </Column>
 
-          <div className="content">{children}</div>
-        </div>
+          <Box maxWidth={theme.pageWidth}>
+            <MDX>{children}</MDX>
+          </Box>
+        </Column>
       </main>
 
       <Footer />
 
-      <style global jsx>
-        {`
-          html {
-            color: rgba(255, 255, 255, 0.9);
-            background-color: var(--black);
-          }
-        `}
-      </style>
-
       <style jsx>
         {`
-          .container :global(h1, h2, h3, h4, h5, h6) {
-            color: var(--white) !important;
-          }
-
-          .container :global(h1) {
-            font-size: 3rem;
-            margin: 0;
-          }
           .content :global(li:not(:last-child)) {
             margin: 0 0 1rem 0;
           }
@@ -115,7 +95,7 @@ const Legal = ({ children }) => {
           }
         `}
       </style>
-    </Page>
+    </>
   );
 };
 

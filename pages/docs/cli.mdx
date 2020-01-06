@@ -8,7 +8,7 @@ The Deviceplane CLI can be used to manage the releases in applications, SSH into
 
 The CLI can be downloaded for the OS that is being used under the user dropdown located in the upper right hand corner of the UI.
 
-## Access Key
+## Access key
 
 When using the CLI, an access key must be provided. Without this access key, Deviceplane will not be able to authenticate the request. Each user or service account can create access keys to use for the CLI. User access keys are scoped to a specific user and will have the same role as a user. Service account access keys are great to use when a service is being set up to make changes into Deviceplane. For example, it's best to use a service account access key instead of a user access key for CI/CD systems.
 
@@ -16,7 +16,7 @@ The access key can be set as an environment variable `$DEVICEPLANE_ACCESS_KEY` o
 
 Setting the access key as an environment variable is recommended so that it doesn't need to be constantly passed with every command. Even if the access key has been set as an environment variable, it can always be overridden by setting it directly in the command.
 
-## Deploying Releases
+## Deploying releases
 
 The most common use case of using the CLI is to deploy a new release for your application. Deploying a new release is simply passing in a yaml file that specifies the config of the release. The project and application needs to be specified in order to create a new release. The project and application can be set as environment variables or passed in as options in the command to determine which project and application the new release will apply to.
 
@@ -24,13 +24,13 @@ The most common use case of using the CLI is to deploy a new release for your ap
 
 If a single application is constantly being updated, Deviceplane recommends setting up environment variables so the project and application do not have to be passed in as same options in the command.
 
-| Environment Variable       | Value                              | Description                                                  |
-| -------------------------- | ---------------------------------- | ------------------------------------------------------------ |
-| `$DEVICEPLANE_ACCESS_KEY`  | User or Service Account Access Key | Access Key to access the project/application                 |
-| `$DEVICEPLANE_PROJECT`     | Project ID or Name                 | Define which project your application is in                  |
-| `$DEVICEPLANE_APPLICATION` | Application ID or Name             | Define which application you want to deploy a new release to |
+| Environment Variable    | Value                              | Description                                                  |
+| ----------------------- | ---------------------------------- | ------------------------------------------------------------ |
+| DEVICEPLANE_ACCESS_KEY  | User or Service Account Access Key | Access Key to access the project/application                 |
+| DEVICEPLANE_PROJECT     | Project ID or Name                 | Define which project your application is in                  |
+| DEVICEPLANE_APPLICATION | Application ID or Name             | Define which application you want to deploy a new release to |
 
-```
+```shell
 # Set environment variables for access key, project and application
 
 $ printenv
@@ -45,7 +45,7 @@ $ deviceplane deploy <CONFIG_YML>
 
 If you don't want to set environment variables, the project and application can always be passed as the options for each command. Whenever these options are passed in a command, it overrides any environment variables so that the option passed in is used.
 
-```
+```shell
 # Set only the access key as an environment variable
 
 $ printenv
@@ -57,7 +57,7 @@ $ deviceplane deploy --project <PROJECT_ID_OR_NAME>
   <APPLICATION_ID_OR_NAME> <CONFIG_YML>
 ```
 
-### Environment Interpolation
+### Environment interpolation
 
 When creating the yaml file for the release, your configuration options can contain environment variables so that the file will be use the variable values from the shell environment running the `deviceplane deploy` command. Environment interpolation is only supported in the CLI and not supported in config file the UI.
 
@@ -81,13 +81,13 @@ service1:
     key: '$${NOT_INTERPOLATED}'
 ```
 
-## Editing Existing Releases
+## Editing existing releases
 
 An easy way to update an existing release is to edit it using the CLI. Similar to deploying releases, the project and application can be set as environment variables or as options in the command.
 
 When running `deviceplane edit`, the CLI pulls up the current config of the application into an editor. After the config is saved and exited, it is **automatically deployed** into the application.
 
-```
+```shell
 # Environment variables are set for access key, project and application
 
 $ printenv

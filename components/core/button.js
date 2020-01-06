@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   space,
   layout,
@@ -22,12 +22,12 @@ const variants = {
       '&:not(:disabled):hover': {
         bg: 'transparent',
         color: theme.colors.primary,
-        boxShadow: `0px 0px 0px 2px ${theme.colors.primary} inset`
+        boxShadow: `0px 0px 0px 1px ${theme.colors.primary} inset`
       },
       '&:not(:disabled):focus': {
         bg: 'transparent',
         color: theme.colors.primary,
-        boxShadow: `0px 0px 0px 2px ${theme.colors.primary} inset`
+        boxShadow: `0px 0px 0px 1px ${theme.colors.primary} inset`
       }
     },
     secondary: {
@@ -36,97 +36,81 @@ const variants = {
       bg: 'transparent',
       borderColor: 'white',
       '&:not(:disabled):hover': {
-        borderColor: 'white',
-        boxShadow: `0px 0px 0px 2px ${theme.colors.white} inset`
+        color: 'pureWhite',
+        borderColor: 'pureWhite',
+        boxShadow: `0px 0px 0px 1px ${theme.colors.pureWhite} inset`
       },
       '&:not(:disabled):focus': {
-        boxShadow: `0px 0px 0px 2px ${theme.colors.white} inset`
+        color: 'pureWhite',
+        borderColor: 'pureWhite',
+        boxShadow: `0px 0px 0px 1px ${theme.colors.pureWhite} inset`
       }
     },
     text: {
-      color: 'white',
+      color: 'primary',
       border: 'none',
-      opacity: 0.8,
       padding: 0,
       '&:not(:disabled):hover': {
-        opacity: 1
+        color: 'white'
       },
       '&:not(:disabled):focus': {
-        opacity: 1
+        color: 'white'
       }
     },
     icon: {
       bg: 'transparent',
       border: 'none',
-      padding: 0,
-      boxShadow: 'none'
+      padding: 0
     }
   }
 };
 
 const defaultProps = {
   variant: 'primary',
-  fontSize: 1,
-  fontWeight: 4,
+  fontSize: 0,
+  fontWeight: 2,
   borderRadius: 1,
-  boxShadow: 0,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center'
 };
 
-export const Btn = styled.button`
-  appearance: none;
-  border: none;
+const styles = css`
+appearance: none;
+border: none;
+outline: none;
+font-family: inherit;
+cursor: pointer;
+transition: all 300ms;
+transform: translateZ(0);
+backface-visibility: hidden;
+white-space: nowrap;
+text-transform: uppercase;
+
+&:disabled {
+  cursor: not-allowed;
+  opacity: .3;
+}
+
+&:focus {
   outline: none;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 300ms;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  white-space: nowrap;
+}
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: .3;
-  }
+padding: ${props => props.theme.sizes[1]}px;
 
-  &:focus {
-    outline: none;
-  }
+${variant(variants)}
 
-  padding: ${props => props.theme.sizes[1]}px;
+${space} ${layout} ${typography} ${color} ${border} ${shadow} ${flexbox}
+`;
 
-  ${variant(variants)}
-
-  ${space} ${layout} ${typography} ${color} ${border} ${shadow} ${flexbox}
+export const Btn = styled.button`
+  ${styles}
 `;
 
 Btn.defaultProps = defaultProps;
 
 export const LinkButton = styled.a`
-  text-decoration: none;
-  font-family: inherit;
-  cursor: pointer;
-  transition: all 250ms;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  white-space: nowrap;
-
-  &:disabled {
-    opacity: .3;
-    cursor: not-allowed;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  padding: ${props => props.theme.sizes[1]}px;
-
-  ${variant(variants)}
-
-  ${space} ${layout} ${typography} ${color} ${border} ${shadow} ${flexbox}
+  ${styles}
 `;
 LinkButton.defaultProps = defaultProps;
 

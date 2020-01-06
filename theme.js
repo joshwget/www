@@ -8,6 +8,8 @@ const colors = {
   green: '#9EE493',
   red: '#D7263D',
 
+  pureWhite: '#fff',
+
   transparent: 'transparent',
 
   overlay: 'rgba(0,0,0,.8)',
@@ -58,14 +60,14 @@ export default {
 
   fonts: {
     default: `Rubik,Roboto,sans-serif`,
-    code: 'source-code-pro,Menlo,Monaco,Consolas,monospace'
+    code: 'Menlo,Monaco,Consolas,monospace,serif'
   },
 
-  fontSizes: [12, 14, 16, 18, 22, 30, 40, 56],
+  fontSizes: [12, 14, 16, 18, 22, 30, 48, 64],
 
-  fontWeights: [100, 300, 400, 500, 600, 700, 900],
+  fontWeights: [300, 400, 500, 700, 900],
 
-  radii: [0, 3, 6, 8, 12, 16, 9999, '100%'],
+  radii: [0, 4, 6, 8, 12, 16, 9999, '100%'],
 
   sizes: [
     8,

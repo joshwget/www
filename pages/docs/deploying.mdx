@@ -21,7 +21,7 @@ An application config is a file in Docker Compose format that defines all of the
 
 Here is an example of a Deviceplane application config.
 
-```
+```yaml
 service1:
   image: nginx
 service2:
@@ -33,20 +33,16 @@ A comprehensive list of flags available can be found in the [Docker documentatio
 
 | Compose Directive | Difference in Deviceplane                                                                          |
 | ----------------- | --------------------------------------------------------------------------------------------------- |
-| `build`           | Not supported (only applicable for development purposes)                                           |
-| `dockerfile`      | Not supported (only applicable for development purposes)                                           |
-| `expose`          | Use ports instead                                                                                  |
-| `volumes`         | **Only** bind mount volumes will work in Deviceplane. Any other type of volumes are not supported. |
+| build           | Not supported (only applicable for development purposes)                                           |
+| dockerfile      | Not supported (only applicable for development purposes)                                           |
+| expose          | Use ports instead                                                                                  |
+| volumes         | **Only** bind mount volumes will work in Deviceplane. Any other type of volumes are not supported. |
 
-<<<<<<< HEAD
 ## Releasing
 
 Releasing an application consists of setting a new application config. The changes reflected in this new version will then be deployed to all relevant devices. Let's walk through an example of releasing and explain the exact steps that will be taken by Deviceplane. The initial application config is a single service running nginx with image tag `1.16` and exposed on port 8080 on the host.
-=======
-### Example Config
->>>>>>> updates
 
-```
+```yaml
 example:
   image: nginx:1.16
   ports:

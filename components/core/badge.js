@@ -12,7 +12,7 @@ const Badge = styled.div`
 
 Badge.defaultProps = {
   fontSize: 0,
-  fontWeight: 4
+  fontWeight: 2
 };
 
 export default Badge;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Column, Row, Heading, Section, Link, Paragraph, Icon } from './core';
+import { Column, Row, Heading, Section, Button, Paragraph, Icon } from './core';
 
 const Container = styled(Column)``;
 Container.defaultProps = {
@@ -25,9 +25,12 @@ const Info = () => (
       >
         <Column alignItems="center">
           <Icon size="32" icon="manual" color="primary" marginBottom={2} />
-          <Link href="/docs" marginBottom={3}>
-            Documentation
-          </Link>
+          <Button
+            variant="text"
+            title="Documentation"
+            href="/docs"
+            marginBottom={3}
+          />
           <Heading variant="tertiary" fontSize={5}>
             Developer focused
           </Heading>
@@ -49,12 +52,12 @@ const Info = () => (
       >
         <Column alignItems="center">
           <Icon icon="git-branch" color="primary" size="32" marginBottom={2} />
-          <Link
+          <Button
+            variant="text"
+            title="Source code"
             href="https://github.com/deviceplane/deviceplane"
             marginBottom={3}
-          >
-            Source Code
-          </Link>
+          />
           <Heading variant="tertiary" fontSize={5}>
             Open source
           </Heading>
@@ -69,7 +72,7 @@ const Info = () => (
 
     <Container
       alignItems="center"
-      margin={['0 64px 64px 64px', '0 64px 64px 64px', '64px']}
+      margin={['0 64px 64px 64px', '0 64px 64px 64px', '64px 64px 0 64px']}
     >
       <Column alignItems="center">
         <Icon color="primary" icon="lock" size="32" marginBottom={3} />

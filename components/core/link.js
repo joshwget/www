@@ -12,10 +12,12 @@ const A = styled.a`
     color: ${props => props.theme.colors.white};
   }
 
-  font-weight: 600;
-
   ${color} ${layout} ${space} ${typography}
 `;
+
+A.defaultProps = {
+  fontWeight: 2
+};
 
 const Link = ({ children, href, ...rest }) => {
   return (

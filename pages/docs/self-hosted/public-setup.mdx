@@ -2,7 +2,7 @@ import Docs from '../../../components/docs';
 
 <Docs title="Self-hosted Public Setup">
 
-# Self-hosted Public Setup
+# Self-hosted public setup
 
 This guide will setup an installation of Deviceplane exposed to the public internet. This Deviceplane setup will allow managing any remote device that can connect back to the backend.
 
@@ -12,9 +12,11 @@ We'll host the Deviceplane backend using DigitalOcean, but this guide can be eas
 
 This guide requires a DigitalOcean account, a valid domain (or subdomain), and a test device. The test device must be running Linux and a recent version of Docker. We'll refer to the domain as `mydomain.com` for the remainder of this guide.
 
-## Steps
+## Instructions
 
-### Provisioning a Droplet
+The following steps will guide you through the setup process.
+
+### Provisioning a droplet
 
 First, create a new droplet in DigitalOcean. Deviceplane will run on any of available droplet specs and Linux distros.
 
@@ -62,13 +64,13 @@ Now that you have a user and project created in your setup you're ready to add a
 
 For example, suppose the command was in the following format.
 
-```
+```shell
 curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
 ```
 
 The command should be modified to include `CONTROLLER=https://mydomain.com/api` as in the following command.
 
-```
+```shell
 curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=https://mydomain.com/api bash
 ```
 

@@ -21,9 +21,12 @@ const Overlay = styled(Column)`
 const NavLink = styled(Link)`
   text-decoration: none !important;
   transition: color 150ms;
-  color: ${props => props.theme.colors.white};
+  cursor: ${props => (props.active ? 'default' : 'pointer')};
+  color: ${props =>
+    props.active ? props.theme.colors.primary : props.theme.colors.white};
   &:hover {
-    color: ${props => props.theme.colors.primary};
+    color: ${props =>
+      props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
   }
   margin-right: 24px;
   font-size: ${props => props.theme.fontSizes[1]}px;
@@ -157,7 +160,6 @@ const StyledNav = styled.nav`
 `;
 
 const Container = styled(Row)`
-  max-width: ${props => props.theme.navWidth}px;
   justify-content: space-between;
   align-items: center;
   flex: 1;
@@ -171,23 +173,26 @@ const Nav = () => {
     <StyledNav>
       <Container>
         <Row alignItems="center">
-          <NavLink href="/">
+          <Link href="/">
             <Row marginRight={6} alignItems="center">
               <Logo />
 
               <Text
-                fontWeight={4}
+                fontWeight={2}
                 fontSize="26px"
                 color="#fff"
                 marginLeft="8px"
+                style={{ textTransform: 'none' }}
               >
                 deviceplane
               </Text>
             </Row>
-          </NavLink>
+          </Link>
         </Row>
         <Row justifyContent="flex-end" alignItems="center">
-          <NavLink href="/docs">Documentation</NavLink>
+          <NavLink href="/docs" active={pathname.includes('docs')}>
+            Documentation
+          </NavLink>
           <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
           <NavLink href="https://cloud.deviceplane.com/login">Log in</NavLink>
           <Button

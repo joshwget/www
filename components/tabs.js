@@ -23,8 +23,8 @@ const styles = css`
     margin-right: 18px;
   }
 
-  font-size: ${props => props.theme.fontSizes[2]}px;
-  font-weight: ${props => props.theme.fontWeights[5]};
+  font-size: ${props => props.theme.fontSizes[3]}px;
+  font-weight: ${props => props.theme.fontWeights[2]};
   color: ${props =>
     props.active ? props.theme.colors.primary : props.theme.colors.white};
   background-color: ${props =>

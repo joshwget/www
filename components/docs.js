@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { Row, Column, Link } from './core';
+import { Box, Row, Column, Link } from './core';
 import Nav from './nav';
-import Highlight from './highlight';
-import Footer from './footer';
+import MDX from './mdx';
 
 export const routeGroups = [
   [
@@ -79,18 +78,24 @@ export const routeGroups = [
 const DocLink = styled(Link)`
   text-decoration: none !important;
   color: ${props =>
-    props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
+    props.active
+      ? props.theme.colors.primary
+      : props.nested
+      ? props.theme.colors.grays[10]
+      : props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes[1]}px;
-  margin: ${props => (props.nested ? '16px 0 0 16px' : '16px 0 0')};
+  margin: ${props => (props.nested ? '12px 0 0 18px' : '12px 0 0')};
+  cursor: ${props => (props.active ? 'default' : 'pointer')};
 
   &:hover {
-    color: ${props => props.theme.colors.primary};
+    color: ${props =>
+      props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
   }
 `;
 
 const Divider = styled.div`
-  width: calc(100% - 16px);
-  border-top: 1px solid ${props => props.theme.colors.grays[8]};
+  width: calc(100% - 32px);
+  border-top: 1px solid ${props => props.theme.colors.grays[3]};
   margin-top: 24px;
   margin-bottom: 8px;
 `;
@@ -99,28 +104,26 @@ const Docs = ({ title, children }) => {
   const { pathname } = useRouter();
 
   return (
-    <Column height="100%" overflow="hidden">
+    <Column height="100vh" overflow="hidden">
       <Head>
-        <title>{title ? `${title} | Docs` : 'Documentation'}</title>
+        <title>
+          {title ? `${title} - Documentation - Deviceplane` : 'Documentation'}
+        </title>
       </Head>
 
       <Nav />
 
       <Row height="100%" overflow="hidden">
-        <Column bg="black" minWidth="200px" paddingLeft={6}>
+        <Column bg="black" minWidth="220px" paddingLeft={6}>
           {routeGroups.map((routes, index) => (
             <>
               {routes.map(({ href, title, nested }) => (
-                <DocLink href={href} nested={nested}>
-                  <a
-                    className={
-                      title !== 'Managing' && href === pathname
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    {title}
-                  </a>
+                <DocLink
+                  href={href}
+                  nested={nested}
+                  active={title !== 'Managing' && pathname === href}
+                >
+                  {title}
                 </DocLink>
               ))}
               {index < routeGroups.length - 1 ? <Divider /> : null}
@@ -128,21 +131,12 @@ const Docs = ({ title, children }) => {
           ))}
         </Column>
 
-        <Highlight>
-          <Column
-            color="white"
-            maxWidth="800px"
-            maxHeight="100%"
-            overflow="auto"
-            padding={6}
-            paddingTop={0}
-          >
-            {children}
-          </Column>
-        </Highlight>
+        <Column height="100%" overflow="auto" padding={6} width="100%">
+          <Box color="white" maxWidth="800px">
+            <MDX>{children}</MDX>
+          </Box>
+        </Column>
       </Row>
-
-      <Footer />
 
       <style global jsx>
         {`

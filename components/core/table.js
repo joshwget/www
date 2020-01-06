@@ -1,35 +1,48 @@
-const Table = ({ children, height }) => (
-  <div className="container">
+import theme from '../../theme';
+
+const Table = ({ children }) => (
+  <table>
     {children}
 
     <style jsx>{`
-      .container {
+      table {
         position: relative;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        height: ${height};
-        margin-top: 1rem;
+        margin-top: 16px;
+        border-collapse: collapse;
+        width: 100%;
+        margin: 16px 0;
       }
-      .container :global(thead) {
-        border: 2px solid black;
+      table :global(thead) {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 12px;
+        background: ${theme.colors.black};
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
       }
-      .container :global(table) {
+      table :global(thead tr) {
+        height: 48px;
+        vertical-align: center;
+      }
+      table :global(table) {
         position: absolute;
         white-space: pre-wrap;
+        border: 1px solid white;
+        border-radius: 4px;
       }
-      .container :global(tr) {
-        height: 3rem;
+      table :global(tbody tr) {
         vertical-align: baseline;
+        border-bottom: 1px solid ${theme.colors.grays[4]};
       }
-      .container :global(th) {
+      table :global(th) {
         text-align: left;
-        padding: 0.5rem 1rem 0.5rem 0;
+        padding: 0 24px 0 16px;
       }
-      .container :global(td) {
-        padding: 0.5rem 1rem 0.5rem 0;
+      table :global(td) {
+        padding: 8px 24px 8px 16px;
       }
     `}</style>
-  </div>
+  </table>
 );
 
 export default Table;

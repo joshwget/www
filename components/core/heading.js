@@ -1,26 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { typography, color, space, layout } from 'styled-system';
 
 const defaultProps = {
   color: 'white',
   margin: 0,
-  fontWeight: 5
+  fontWeight: 3
 };
 
-const H1 = styled.h1`
-  word-break: break-word;
-  ${typography} ${color} ${space} ${layout} 
+const styles = css`
+word-break: break-word;
+${typography} ${color} ${space} ${layout} 
+`;
+
+export const H1 = styled.h1`
+  ${styles}
 `;
 
 H1.defaultProps = {
   ...defaultProps,
-  fontSize: '60px'
+  fontSize: 7
 };
 
-const H2 = styled.h2`
-  word-break: break-word;
-  ${typography} ${color} ${space} ${layout} 
+export const H2 = styled.h2`
+  ${styles}
 `;
 
 H2.defaultProps = {
@@ -28,14 +31,13 @@ H2.defaultProps = {
   fontSize: 6
 };
 
-const H3 = styled.h3`
-  word-break: break-word;
-  ${typography} ${color} ${space} ${layout} 
+export const H3 = styled.h3`
+  ${styles}
 `;
 
 H3.defaultProps = {
   ...defaultProps,
-  fontSize: 4
+  fontSize: 5
 };
 
 const Heading = ({ variant, ...rest }) => {

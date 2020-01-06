@@ -15,9 +15,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${props => props.theme.fonts.default};
     
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.3;
     background-color: ${props => props.theme.colors.pageBackground};
+    color: ${props => props.theme.colors.white};
   }
 
   body {

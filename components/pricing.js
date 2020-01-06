@@ -18,7 +18,7 @@ const plans = [
   {
     name: 'Team',
     features: ['50 devices included', '3 users included', 'Support'],
-    price: 'Starting at $250/month',
+    price: 'Starts at $250/month',
     bottom: (
       <Text marginTop="auto" color="grays.8">
         Cost based on each additional device or user.
@@ -33,7 +33,7 @@ const plans = [
       'Dedicated support',
       'Onboarding and integrations'
     ],
-    price: 'Custom Pricing',
+    price: 'Custom pricing',
     bottom: (
       <Button
         title="Contact sales"
@@ -46,27 +46,14 @@ const plans = [
   }
 ];
 
-const Border = styled(Column)`
-  align-items: center;
-  position: relative;
-  z-index: 3;
-  height: 370px;
-  width: 270px;
-`;
-Border.defaultProps = {
-  marginX: 6,
-  bg: 'pageBackground',
-  borderRadius: 2,
-  padding: 4
-};
-
-const Container = styled(motion.div)`
+const PlanContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  flex: 1;
-  align-self: stretch;
+  flex: 0 0 240px;
+  height: 340px;
   padding: 24px;
+  margin: 0 32px;
   background: ${props => props.theme.colors.black};
   border: 1px solid ${props => props.theme.colors.white};
   border-color: ${props => props.theme.colors.white};
@@ -83,6 +70,39 @@ const Check = styled.div`
   height: 20px;
   margin-right: 8px;
 `;
+
+const Plan = ({ name, features, price, bottom, index, animate }) => (
+  <PlanContainer
+    key={name}
+    animate={animate && { opacity: [0, 1], y: [-50, 0] }}
+    transition={{
+      delay: index / 3,
+      duration: 0.75,
+      ease: 'easeIn'
+    }}
+  >
+    <Column>
+      <Text fontSize={5} fontWeight={3}>
+        {name}
+      </Text>
+      <Text marginTop={1} fontWeight={1} fontSize={1} color="grays.8">
+        {price}
+      </Text>
+    </Column>
+
+    <Column>
+      {features.map(feature => (
+        <Row key={feature} marginTop={4}>
+          <Check>
+            <Image src="/check.svg" width={3} height={3} />
+          </Check>
+          <Text>{feature}</Text>
+        </Row>
+      ))}
+    </Column>
+    {bottom}
+  </PlanContainer>
+);
 
 const Pricing = () => {
   const [ref, entry] = useInView();
@@ -107,47 +127,9 @@ const Pricing = () => {
           <Heading variant="secondary">Flexible plans that scale</Heading>
         </motion.div>
 
-        <Row marginTop={9}>
-          {plans.map(({ name, features, price, bottom }, index) => (
-            <Border key={name}>
-              <Container
-                animate={animate && { opacity: [0, 1], y: [-50, 0] }}
-                transition={{
-                  delay: index / 3,
-                  duration: 0.75,
-                  ease: 'easeIn'
-                }}
-              >
-                <Column>
-                  {/* <img src={icon} /> */}
-                  <Heading variant="tertiary" fontSize={4}>
-                    {name}
-                  </Heading>
-                  <Text
-                    marginTop={1}
-                    fontWeight={3}
-                    fontSize={1}
-                    color="grays.8"
-                  >
-                    {price}
-                  </Text>
-                </Column>
-
-                <Column>
-                  <ul>
-                    {features.map(feature => (
-                      <li key={feature}>
-                        <Check>
-                          <Image src="/check.svg" width={3} height={3} />
-                        </Check>
-                        <Text>{feature}</Text>
-                      </li>
-                    ))}
-                  </ul>
-                </Column>
-                {bottom}
-              </Container>
-            </Border>
+        <Row marginTop={9} justifyContent="center">
+          {plans.map((plan, index) => (
+            <Plan key={plan.name} {...plan} index={index} animate={animate} />
           ))}
         </Row>
       </Section>
@@ -159,23 +141,12 @@ const Pricing = () => {
           left: 0;
           height: 450px;
           background: linear-gradient(
-            170deg,
+            165deg,
             #141414 calc(50% - 1px),
             #000 50%
           );
           width: 100vw;
           bottom: 0;
-        }
-        ul {
-          display: flex;
-          flex-direction: column;
-          padding: 0;
-          margin: 0;
-        }
-        li {
-          display: flex;
-          align-items: flex-start;
-          margin-top: 1rem;
         }
         @media screen and (max-width: 900px) {
           .content {

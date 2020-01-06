@@ -10,11 +10,11 @@ By default, an application will run on all devices in a project. To run the appl
 
 Imagine that you have a project that has 2 different device types: x86 servers, and Raspberry Pis. Different applications should run on the x86 servers versus the Raspberry Pis.
 
-### Labeling your Devices
+### Labeling your devices
 
 After adding your devices into the project, you'll need to label each one to group the types of devices.
 
-#### Labeling your Server devices
+#### Labeling your server devices
 
 1. From the list of devices, select the device that is one of the servers.
 2. Select the device to get the details of the device.
@@ -28,7 +28,7 @@ After adding your devices into the project, you'll need to label each one to gro
 3. Add a device label, i.e. `type=rpi`.
 4. Repeat this for all devices that are Raspberry Pis.
 
-### Deploying Applications
+### Deploying applications
 
 Next we'll add two applications: one designed to run on the servers and one designed to run on the Raspberry Pis. It makes sense to set a scheduling rule _before_ creating the first release of the application so that the containers will be scheduled to the correct devices as soon as they're first deployed.
 
@@ -54,7 +54,7 @@ Now that the devices are split by device type, you can add releases to your appl
 
 As you add more devices into the project, the application will only be deployed onto devices that have the corresponding label. These labels could either be manually added after the device is registered or automatically added during registration by using [registration tokens](/docs/provisioning).
 
-## Filters Reference
+## Filters reference
 
 The earlier example showed a simple scenario where only one device label was considered. However, there are many other scenarios that can be managed through scheduling rules. In order to explain how scheduling rules could be used for these more complex scenarios let's first define some terminology.
 
@@ -78,18 +78,18 @@ Some example evaluations are provided below. Suppose we have the following devic
 
 | Devices      | Labels                                          |
 | ------------ | ----------------------------------------------- |
-| device1      | `customer=customer1`, `generation=3`             |
-| device2      | `customer=customer2`                             |
-| device3      | `customer=customer3`                             |
-| device4      | `customer=customer1`                             |
+| device1      | customer=customer1, generation=3             |
+| device2      | customer=customer2                             |
+| device3      | customer=customer3                             |
+| device4      | customer=customer1                             |
 | device5      | *No labels set* .                                |
 
 
 | Schedule Rule                                                                                    | Matching device(s)           |
 | ------------------------------------------------------------------------------------------------ | ---------------------------- |
-| <b>filter1:</b> condition(`customer=customer1`)                                                  | device1, device4             |
-| <b>filter1:</b> condition(`customer=customer1`), condition(`customer=customer3`)                 | device1, device4, device3    |
-| <b>filter1:</b> condition(`customer!=customer1`)                                                 | device2, device3, device5    |
-| <b>filter1:</b> condition(`customer=customer1`) <br/><b>filter2:</b> condition(`generation=3`)   | device1                      |
+| <b>filter1:</b> condition(customer=customer1)                                                  | device1, device4             |
+| <b>filter1:</b> condition(customer=customer1), condition(customer=customer3)                 | device1, device4, device3    |
+| <b>filter1:</b> condition(customer!=customer1)                                                 | device2, device3, device5    |
+| <b>filter1:</b> condition(customer=customer1) <br/><b>filter2:</b> condition(generation=3)   | device1                      |
 
 </Docs>

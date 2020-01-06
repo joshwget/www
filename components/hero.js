@@ -42,7 +42,7 @@ const Hero = ({ airtable }) => {
     <Column
       alignItems="center"
       width="100%"
-      paddingBottom="240px"
+      paddingBottom="200px"
       position="relative"
       overflow="hidden"
     >
@@ -50,11 +50,12 @@ const Hero = ({ airtable }) => {
 
       <Section alignItems="flex-start" position="relative" padding={0}>
         <Column maxWidth={14} marginTop={6}>
-          <Heading maxWidth="625px">Manage your devices at the edge</Heading>
+          <Heading maxWidth="675px">Manage your devices at the edge</Heading>
 
-          <Paragraph maxWidth="480px">
-            Deviceplane makes it easy to update, monitor, and access remote
-            devices and servers.
+          <Paragraph maxWidth="500px">
+            Update, monitor, and access remote devices and servers with ease.
+            Let us handle the hard infrastructure problems around managing
+            remote hardware so you stay focused on your business.
           </Paragraph>
         </Column>
 
@@ -74,7 +75,7 @@ const Hero = ({ airtable }) => {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
-                <Button title="Request a demo" marginLeft={1} />
+                <Button title="Request a demo" marginLeft={2} />
               </Row>
             </Form>
           </Column>

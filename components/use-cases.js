@@ -15,15 +15,15 @@ const Label = styled(Text)`
   text-transform: uppercase;
 `;
 Label.defaultProps = {
-  fontWeight: 4,
-  fontSize: 0,
+  fontWeight: 2,
+  fontSize: 1,
   marginTop: 4,
   textAlign: 'center'
 };
 
 const UseCases = () => (
   <Section>
-    <Column alignItems="center" marginBottom={9}>
+    <Column alignItems="center" marginBottom="96px">
       <Heading variant="secondary">Support for a variety of hardware</Heading>
       <Row marginTop={4}>
         <Row>
@@ -33,18 +33,18 @@ const UseCases = () => (
               height={80}
               alt="Single-board computer"
             />
-            <Label>Single-board computers</Label>
+            <Label>Single-board Computers</Label>
           </Container>
 
           <Container>
             <img src="/iot-gateway.svg" height={80} alt="IoT gateways" />
-            <Label>IoT gateways</Label>
+            <Label>IoT Gateways</Label>
           </Container>
         </Row>
         <Row>
           <Container marginBottom={8}>
             <img src="/servers.svg" height={80} alt="Edge servers" />
-            <Label>Edge servers</Label>
+            <Label>Edge Servers</Label>
           </Container>
 
           <Container>

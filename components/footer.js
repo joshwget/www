@@ -19,7 +19,7 @@ const StyledFooter = styled.footer`
   align-items: center;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
-  padding: 64px 24px 24px 24px;
+  padding: 24px;
 `;
 
 const Container = styled(Column)`
@@ -31,11 +31,11 @@ const Container = styled(Column)`
 const FooterLink = styled(Link)`
   text-decoration: none !important;
   transition: color 150ms;
-  color: ${props => props.theme.colors.grays[5]};
+  color: ${props => props.theme.colors.grays[8]};
   &:hover {
-    color: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.pureWhite};
   }
-  font-size: ${props => props.theme.fontSizes[1]}px;
+  font-size: ${props => props.theme.fontSizes[0]}px;
   margin: 0 12px;
 `;
 
@@ -70,8 +70,8 @@ const Footer = () => (
         </ul>
       </FooterNav>
 
-      <Text fontSize={0} color="grays.5">
-        © Deviceplane
+      <Text fontSize={0} fontWeight={2} color="grays.5">
+        © deviceplane
       </Text>
     </Container>
 
