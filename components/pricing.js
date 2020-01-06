@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { Column, Row, Heading, Section, Text, Image, Button } from './core';
+import { Box, Column, Row, Heading, Section, Text, Icon, Button } from './core';
 
 const plans = [
   {
@@ -31,7 +31,7 @@ const plans = [
       'Custom solutions',
       'Unlimited users',
       'Dedicated support',
-      'Onboarding and integrations'
+      'Onboarding'
     ],
     price: 'Custom pricing',
     bottom: (
@@ -59,18 +59,6 @@ const PlanContainer = styled(motion.div)`
   border-color: ${props => props.theme.colors.white};
 `;
 
-const Check = styled.div`
-  flex: 0 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${props => props.theme.colors.primary};
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-`;
-
 const Plan = ({ name, features, price, bottom, index, animate }) => (
   <PlanContainer
     key={name}
@@ -92,11 +80,11 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
 
     <Column>
       {features.map(feature => (
-        <Row key={feature} marginTop={4}>
-          <Check>
-            <Image src="/check.svg" width={3} height={3} />
-          </Check>
-          <Text>{feature}</Text>
+        <Row key={feature} marginTop={4} alignItems="center">
+          <Box>
+            <Icon icon="tick-circle" size={18} color="primary" />
+          </Box>
+          <Text marginLeft={2}>{feature}</Text>
         </Row>
       ))}
     </Column>

@@ -6,23 +6,23 @@ const Table = ({ children }) => (
 
     <style jsx>{`
       table {
+        border: 1px solid ${theme.colors.white};
+        border-radius: 4px;
         position: relative;
-        margin-top: 16px;
-        border-collapse: collapse;
+        border-spacing: 0;
         width: 100%;
         margin: 16px 0;
       }
       table :global(thead) {
+        margin-top: 4px;
         font-weight: 600;
         text-transform: uppercase;
         font-size: 12px;
         background: ${theme.colors.black};
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
       }
       table :global(thead tr) {
         height: 48px;
-        vertical-align: center;
+        vertical-align: middle;
       }
       table :global(table) {
         position: absolute;
@@ -32,13 +32,21 @@ const Table = ({ children }) => (
       }
       table :global(tbody tr) {
         vertical-align: baseline;
-        border-bottom: 1px solid ${theme.colors.grays[4]};
       }
       table :global(th) {
         text-align: left;
         padding: 0 24px 0 16px;
       }
+      table :global(th:first-child) {
+        border-top-left-radius: 4px;
+      }
+      table :global(th:last-child) {
+        border-top-right-radius: 4px;
+      }
       table :global(td) {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid ${theme.colors.grays[5]};
         padding: 8px 24px 8px 16px;
       }
     `}</style>

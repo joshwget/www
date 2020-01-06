@@ -85,7 +85,6 @@ const DocLink = styled(Link)`
       : props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes[1]}px;
   margin: ${props => (props.nested ? '12px 0 0 18px' : '12px 0 0')};
-  cursor: ${props => (props.active ? 'default' : 'pointer')};
 
   &:hover {
     color: ${props =>

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import theme from '../theme';
 import { Table, Link, Code, Paragraph } from './core';
 import * as Heading from './core/heading';
+import { OrderedList, UnorderedList } from './core/list';
 
 const H1 = styled(Heading.H1)`
   font-size: 48px;
@@ -15,7 +16,7 @@ const H2 = styled(Heading.H2)`
 `;
 
 const H3 = styled(Heading.H3)`
-  font-size: 20px;
+  font-size: 24px;
 `;
 
 const syntaxTheme = {
@@ -61,25 +62,19 @@ const syntaxTheme = {
         'property'
       ],
       style: {
-        color: theme.colors.primary
+        color: theme.colors.green
       }
     },
     {
       types: ['function', 'deleted', 'tag'],
       style: {
-        color: theme.colors.red
+        color: theme.colors.danger
       }
     },
     {
-      types: ['function-variable'],
+      types: ['function-variable', 'tag', 'selector'],
       style: {
-        color: '#6f42c1'
-      }
-    },
-    {
-      types: ['tag', 'selector'],
-      style: {
-        color: '#00009f'
+        color: theme.colors.pink
       }
     },
     {
@@ -93,10 +88,11 @@ const syntaxTheme = {
 };
 
 const Blockquote = styled.blockquote`
-  border: 4px solid ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.white};
   border-radius: 4px;
   padding: 0 16px;
   margin: 16px 0;
+  font-weight: 400;
 `;
 
 const HighlightedCode = ({ children, className }) => {
@@ -118,7 +114,8 @@ const HighlightedCode = ({ children, className }) => {
             background: theme.colors.black,
             borderRadius: '4px',
             margin: '16px 0',
-            whiteSpace: 'pre-wrap'
+            whiteSpace: 'pre-wrap',
+            border: `1px solid ${theme.colors.white}`
           }}
         >
           {tokens.map((line, i) => (
@@ -144,7 +141,9 @@ const components = {
   h3: H3,
   table: Table,
   a: Link,
-  blockquote: Blockquote
+  blockquote: Blockquote,
+  ol: OrderedList,
+  ul: UnorderedList
 };
 
 const MDX = ({ children }) => (

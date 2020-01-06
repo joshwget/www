@@ -57,6 +57,8 @@ const postings = [
 
 const Posting = ({ title, location, body }) => (
   <Column
+    border={0}
+    borderColor="white"
     bg="black"
     padding={6}
     borderRadius={1}
@@ -64,11 +66,7 @@ const Posting = ({ title, location, body }) => (
     marginHorizontal={4}
     marginTop={6}
   >
-    <Row
-      justifyContent="space-between"
-      alignItems="flex-start"
-      alignSelf="stretch"
-    >
+    <Row justifyContent="space-between" alignItems="center" alignSelf="stretch">
       <Text fontWeight={3} fontSize={5}>
         {title}
       </Text>
@@ -109,9 +107,10 @@ const Careers = () => (
         </Text>
 
         <Row
+          marginTop={4}
           flexWrap="wrap"
-          flex={1}
           justifyContent="space-between"
+          width="100%"
           maxWidth={theme.pageWidth}
         >
           {postings.map(props => (

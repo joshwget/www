@@ -8,7 +8,6 @@ const Code = styled.code`
 `;
 
 Code.defaultProps = {
-  bg: 'black',
   color: 'white',
   fontSize: 1,
   fontFamily: 'code',
