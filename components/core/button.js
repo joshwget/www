@@ -81,7 +81,7 @@ border: none;
 outline: none;
 font-family: inherit;
 cursor: pointer;
-transition: all 300ms;
+transition: ${props => props.theme.transitions[0]};
 transform: translateZ(0);
 backface-visibility: hidden;
 white-space: nowrap;

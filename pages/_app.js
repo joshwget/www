@@ -10,6 +10,11 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: inherit;
   }
 
+  ::selection {
+    background-color: rgba(255,255,255,.99);
+    color: #000;
+  }
+
   html {
     box-sizing: border-box;
     font-family: ${props => props.theme.fonts.default};

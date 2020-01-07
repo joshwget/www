@@ -47,7 +47,7 @@ export const OrderedList = styled.ol`
     border-radius: 99px;
     width: 18px;
     height: 18px;
-    font-weight: 500;
+    font-weight: 400;
     margin-right: 6px;
     color: ${theme.colors.black};
   }

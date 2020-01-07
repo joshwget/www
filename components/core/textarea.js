@@ -6,7 +6,7 @@ border: 1px solid ${props => props.theme.colors.black};
 outline: none;
 appearance: none;
 
-transition: border-color 150ms;
+transition: ${props => props.theme.transitions[0]};
 
 &:focus {
   border-color: ${props => props.theme.colors.primary};
@@ -20,7 +20,7 @@ Textarea.defaultProps = {
   borderRadius: 1,
   boxShadow: 0,
   padding: 3,
-  fontSize: 2,
+  fontSize: 2
 };
 
 export default Textarea;

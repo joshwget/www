@@ -9,7 +9,8 @@ const links = [
   { mailto: 'support@deviceplane.com', label: 'Support' },
   { href: '/careers', label: 'Careers' },
   //{ href: '/press', label: 'Press' },
-  { href: '/legal', label: 'Legal & Privacy' }
+  { href: '/terms', label: 'Terms of Service' },
+  { href: '/privacy', label: 'Privacy' }
 ];
 
 const StyledFooter = styled.footer`
@@ -30,7 +31,7 @@ const Container = styled(Column)`
 
 const FooterLink = styled(Link)`
   text-decoration: none !important;
-  transition: color 150ms;
+  transition: ${props => props.theme.transitions[0]};
   color: ${props => props.theme.colors.grays[8]};
   &:hover {
     color: ${props => props.theme.colors.pureWhite};

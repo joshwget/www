@@ -13,7 +13,7 @@ const StyledInput = styled.input`
   border: 1px solid ${props => props.theme.colors.white};
   outline: none;
   margin: 0;
-  transition: border-color 200ms box-shadow 200ms;
+  transition: ${props => props.theme.transitions[0]};
   width: 100%;
   caret-color: ${props => props.theme.colors.primary};
 

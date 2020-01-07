@@ -10,7 +10,7 @@ const plans = [
     features: ['25 device limit', 'Single user'],
     price: 'Free',
     bottom: (
-      <Text marginTop="auto" color="grays.8">
+      <Text marginTop="auto" color="grays.8" fontWeight={1}>
         Scale to another plan seamlessly as you grow.
       </Text>
     )
@@ -20,7 +20,7 @@ const plans = [
     features: ['50 devices included', '3 users included', 'Support'],
     price: 'Starts at $250/month',
     bottom: (
-      <Text marginTop="auto" color="grays.8">
+      <Text marginTop="auto" color="grays.8" fontWeight={1}>
         Cost based on each additional device or user.
       </Text>
     )

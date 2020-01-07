@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { space, color, typography } from 'styled-system';
-import { useActive, useLinkProps } from 'react-navi';
 
 import { Row } from './core';
 
@@ -11,7 +10,7 @@ const styles = css`
   border: none;
   outline: none;
   border-radius: 0;
-  transition: background-color 150ms;
+  transition: ${props => props.theme.transitions[0]};
   border-radius: 4px;
   padding: 10px 14px;
   user-select: none;
@@ -23,7 +22,7 @@ const styles = css`
     margin-right: 18px;
   }
 
-  font-size: ${props => props.theme.fontSizes[3]}px;
+  font-size: ${props => props.theme.fontSizes[1]}px;
   font-weight: ${props => props.theme.fontWeights[2]};
   color: ${props =>
     props.active ? props.theme.colors.primary : props.theme.colors.white};
@@ -52,14 +51,7 @@ const ButtonTab = styled.button`
 
 const Tab = ({ title, href, onClick, active = true }) => {
   if (href) {
-    return (
-      <LinkTab
-        {...useLinkProps({ href })}
-        active={useActive(href, { exact: false })}
-      >
-        {title}
-      </LinkTab>
-    );
+    return <LinkTab href={href}>{title}</LinkTab>;
   }
 
   return (
@@ -69,10 +61,10 @@ const Tab = ({ title, href, onClick, active = true }) => {
   );
 };
 
-const Tabs = ({ content = [] }) => {
+const Tabs = ({ tabs = [] }) => {
   return (
     <Container marginX={4}>
-      {content.map(tab => (
+      {tabs.map(tab => (
         <Tab key={tab.title} {...tab} />
       ))}
     </Container>

@@ -16,7 +16,7 @@ const colors = {
 
   overlay: 'rgba(0,0,0,.8)',
 
-  pageBackground: '#141414',
+  pageBackground: '#181818',
 
   grays: [
     '#141414',
@@ -101,6 +101,8 @@ export default {
     medium: `@media screen and (min-width: ${breakpoints[1]})`,
     large: `@media screen and (min-width: ${breakpoints[2]})`
   },
+
+  transitions: ['all 200ms ease'],
 
   pageWidth: 1080,
 

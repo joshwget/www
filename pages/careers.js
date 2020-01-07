@@ -63,8 +63,9 @@ const Posting = ({ title, location, body }) => (
     padding={6}
     borderRadius={1}
     maxWidth="500px"
-    marginHorizontal={4}
-    marginTop={6}
+    marginX={4}
+    marginTop={10}
+    marginBottom={0}
   >
     <Row justifyContent="space-between" alignItems="center" alignSelf="stretch">
       <Text fontWeight={3} fontSize={5}>
@@ -94,31 +95,29 @@ const Careers = () => (
 
     <Nav />
 
-    <main>
-      <Column padding={4} paddingBottom={8} alignItems="center">
-        <Heading>Careers</Heading>
+    <Column paddingY={10} alignItems="center">
+      <Heading>Careers</Heading>
 
-        <Text maxWidth="650px" textAlign="center" fontWeight={1}>
-          Our goal is to make Deviceplane the de facto way to manage all remote
-          hardware and devices. The path to get there requires deep engagement
-          with a massive community of developers — both to maximize adoption of
-          Deviceplane, and to make sure we're building the product that fits
-          their requirements and sparks joy.
-        </Text>
+      <Text maxWidth="630px" textAlign="center" fontWeight={1}>
+        Our goal is to make Deviceplane the de facto way to manage all remote
+        hardware and devices. The path to get there requires deep engagement
+        with a massive community of developers — both to maximize adoption of
+        Deviceplane, and to make sure we're building the product that fits their
+        requirements and sparks joy.
+      </Text>
 
-        <Row
-          marginTop={4}
-          flexWrap="wrap"
-          justifyContent="space-between"
-          width="100%"
-          maxWidth={theme.pageWidth}
-        >
-          {postings.map(props => (
-            <Posting {...props} />
-          ))}
-        </Row>
-      </Column>
-    </main>
+      <Row
+        justifyContent={['initial', 'initial', 'initial', 'space-between']}
+        alignItems={['center', 'center', 'center', 'initial']}
+        width="100%"
+        maxWidth={theme.pageWidth}
+        flexDirection={['column', 'column', 'column', 'row']}
+      >
+        {postings.map(props => (
+          <Posting {...props} />
+        ))}
+      </Row>
+    </Column>
 
     <Footer />
   </>

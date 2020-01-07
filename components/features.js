@@ -47,9 +47,11 @@ const content = [
 
 const Container = ({ title, body, icon }) => (
   <Column maxWidth={12} margin={6}>
-    <Icon color="primary" size={24} icon={icon} marginBottom={4} />
+    <Icon color="primary" size={26} icon={icon} marginBottom={4} />
 
-    <Heading variant="tertiary">{title}</Heading>
+    <Heading variant="tertiary" fontSize={4}>
+      {title}
+    </Heading>
     <Paragraph>{body}</Paragraph>
   </Column>
 );

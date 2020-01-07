@@ -30,7 +30,7 @@ const StyledCheckbox = styled.div`
   background: ${props =>
     props.checked ? props.theme.colors.primary : props.theme.colors.white};
   border-radius: 3px;
-  transition: all 150ms;
+  transition: all 200ms ease;
   cursor: pointer;
 
   ${Icon} {

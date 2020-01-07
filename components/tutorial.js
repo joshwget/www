@@ -37,7 +37,7 @@ const Tab = styled.button`
   outline: none;
   user-select: none;
   border-radius: 4px;
-  transition: background-color 150ms;
+  transition: ${props => props.theme.transitions[0]};
   border-radius: 4px;
   padding: 10px 14px;
   cursor: ${props => (props.selected ? 'default' : 'pointer')};

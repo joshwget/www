@@ -20,7 +20,7 @@ const Overlay = styled(Column)`
 
 const NavLink = styled(Link)`
   text-decoration: none !important;
-  transition: color 150ms;
+  transition: ${props => props.theme.transitions[0]};
   color: ${props =>
     props.active ? props.theme.colors.primary : props.theme.colors.white};
   &:hover {

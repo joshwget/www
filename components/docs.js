@@ -64,12 +64,12 @@ export const routeGroups = [
     },
     {
       href: '/docs/self-hosted/local-setup',
-      title: 'Local Setup',
+      title: 'Local setup',
       nested: true
     },
     {
       href: '/docs/self-hosted/public-setup',
-      title: 'Public Setup',
+      title: 'Public setup',
       nested: true
     }
   ]
@@ -113,7 +113,12 @@ const Docs = ({ title, children }) => {
       <Nav />
 
       <Row height="100%" overflow="hidden">
-        <Column bg="black" minWidth="220px" paddingLeft={6}>
+        <Column
+          bg="black"
+          minWidth="220px"
+          paddingLeft={6}
+          display={['none', 'none', 'flex']}
+        >
           {routeGroups.map((routes, index) => (
             <>
               {routes.map(({ href, title, nested }) => (
