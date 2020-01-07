@@ -115,6 +115,7 @@ const HighlightedCode = ({ children, className }) => {
             borderRadius: '4px',
             margin: '16px 0',
             whiteSpace: 'pre-wrap',
+            wordBreak: 'break-word',
             border: `1px solid ${theme.colors.white}`
           }}
         >

@@ -37,7 +37,7 @@ const FooterLink = styled(Link)`
     color: ${props => props.theme.colors.pureWhite};
   }
   font-size: ${props => props.theme.fontSizes[0]}px;
-  margin: 0 12px;
+  margin: 12px;
 `;
 
 FooterLink.defaultProps = {
@@ -45,6 +45,9 @@ FooterLink.defaultProps = {
 };
 
 const FooterNav = styled.nav`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 32px 0;
 `;
 
@@ -58,63 +61,17 @@ const Footer = () => (
       </Column>
 
       <FooterNav>
-        <ul>
-          {links.map(({ href, label, mailto }) => (
-            <li key={label}>
-              {mailto ? (
-                <FooterLink href={`mailto:${mailto}`}>{label}</FooterLink>
-              ) : (
-                <FooterLink href={href}>{label}</FooterLink>
-              )}
-            </li>
-          ))}
-        </ul>
+        {links.map(({ href, label, mailto }) => (
+          <FooterLink key={href} href={mailto ? `mailto:${mailto}` : href}>
+            {label}
+          </FooterLink>
+        ))}
       </FooterNav>
 
       <Text fontSize={0} fontWeight={2} color="grays.5">
         © deviceplane
       </Text>
     </Container>
-
-    <style jsx>{`
-      ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-      }
-
-      li {
-        display: flex;
-      }
-
-      .bottom {
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-      }
-
-      .logo:hover :global(polyline) {
-        stroke: var(--primary);
-      }
-      .logo:hover :global(polygon) {
-        fill: var(--primary);
-      }
-
-      @media screen and (max-width: 600px) {
-        .container {
-          padding: 4rem 2rem;
-          align-items: flex-start;
-        }
-
-        ul {
-          flex-direction: column;
-        }
-
-        li {
-          margin: 0.5rem 0;
-        }
-      }
-    `}</style>
   </StyledFooter>
 );
 

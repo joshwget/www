@@ -4,6 +4,7 @@ import { space, color, typography, border } from 'styled-system';
 const Code = styled.code`
     display: inline-block;
     word-break: break-word;
+    white-space: pre-wrap;
     ${space} ${color} ${typography} ${border}
 `;
 

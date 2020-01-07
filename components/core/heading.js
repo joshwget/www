@@ -4,12 +4,12 @@ import { typography, color, space, layout } from 'styled-system';
 
 const defaultProps = {
   color: 'white',
-  margin: 0,
   fontWeight: 3
 };
 
 const styles = css`
 word-break: break-word;
+margin: 0;
 ${typography} ${color} ${space} ${layout} 
 `;
 

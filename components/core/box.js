@@ -9,17 +9,22 @@ import {
   shadow,
   position
 } from 'styled-system';
+import { motion } from 'framer-motion';
 
 export const Box = styled.div`
-  ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position}
+  ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox}
 `;
 
-export const Row = styled(Box)`
-  ${flexbox}
+export const Row = styled(Box)``;
+Row.defaultProps = {
+  display: 'flex'
+};
 
-  display: flex;
-`;
+export const Column = styled(Row)``;
+Column.defaultProps = {
+  flexDirection: 'column'
+};
 
-export const Column = styled(Row)`
-  flex-direction: column;
+export const Motion = styled(motion.div)`
+  ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox}
 `;

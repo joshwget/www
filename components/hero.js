@@ -1,4 +1,5 @@
-import Arrow from './icons/arrow';
+import styled from 'styled-components';
+
 import {
   Column,
   Row,
@@ -9,6 +10,12 @@ import {
   Paragraph,
   Form
 } from './core';
+
+const Background = styled.img`
+  position: absolute;
+  top: -40px;
+  right: -300px;
+`;
 
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
@@ -40,16 +47,16 @@ const Hero = ({ airtable }) => {
 
   return (
     <Column
-      alignItems="center"
       width="100%"
       paddingBottom="200px"
       position="relative"
       overflow="hidden"
+      alignItems="center"
     >
-      <img alt="Black triangle background" className="bg" src="/bg.svg" />
+      <Background src="/bg.svg" />
 
-      <Section alignItems="flex-start" position="relative" padding={0}>
-        <Column maxWidth={14} marginTop={6}>
+      <Section alignItems="flex-start" position="relative" padding={6}>
+        <Column maxWidth={14}>
           <Heading maxWidth="675px">Manage your devices at the edge</Heading>
 
           <Paragraph maxWidth="500px">
@@ -82,43 +89,14 @@ const Hero = ({ airtable }) => {
 
           <Row>
             <Button
-              marginTop={5}
+              marginTop={4}
               title="Chat with us"
               variant="secondary"
               onClick={() => window.Intercom('show')}
-              icon={<Arrow />}
             />
           </Row>
         </Column>
       </Section>
-
-      <style jsx>{`
-        @keyframes shift {
-          50% {
-            transform: translateX(5px);
-          }
-        }
-
-        .bg {
-          position: absolute;
-          top: -40px;
-          right: -300px;
-        }
-
-        @media screen and (max-width: 600px) {
-          section {
-            height: 40rem;
-          }
-          .bg {
-            height: 45rem;
-            left: -88rem;
-          }
-
-          .success {
-            height: 5rem;
-          }
-        }
-      `}</style>
     </Column>
   );
 };

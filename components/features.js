@@ -59,10 +59,12 @@ const Container = ({ title, body, icon }) => (
 const Features = () => (
   <Column flex={1} bg="black" alignSelf="stretch" alignItems="center">
     <Section alignItems="center">
-      <Heading variant="secondary">Powerful features</Heading>
+      <Heading variant="secondary" textAlign="center" marginX={6}>
+        Powerful features
+      </Heading>
 
       <Row
-        marginTop={[0, 0, 6]}
+        marginTop={6}
         justifyContent="space-between"
         alignItems={['center', 'center', 'initial']}
         alignSelf="stretch"

@@ -33,16 +33,18 @@ const Legal = ({ title, lastUpdated, children }) => {
           alignItems="center"
           flex={1}
           paddingTop={6}
-          paddingBottom={10}
+          paddingBottom={9}
           alignSelf="stretch"
         >
-          <Heading>{title}</Heading>
-          <Text fontWeight={1} color="grays.8" marginTop={2}>
+          <Heading textAlign="center" marginX={4}>
+            {title}
+          </Heading>
+          <Text fontWeight={1} color="grays.8" marginTop={4}>
             Last update: {lastUpdated}
           </Text>
         </Column>
 
-        <Box maxWidth={theme.pageWidth} padding={8}>
+        <Box width="100%" maxWidth={theme.pageWidth} padding={8} paddingTop={6}>
           <MDX>{children}</MDX>
         </Box>
       </Column>

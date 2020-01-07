@@ -64,13 +64,19 @@ const Posting = ({ title, location, body }) => (
     borderRadius={1}
     maxWidth="500px"
     marginX={6}
-    marginTop={8}
+    marginTop={9}
   >
-    <Row justifyContent="space-between" alignItems="center" alignSelf="stretch">
+    <Row
+      justifyContent="space-between"
+      alignItems="center"
+      alignSelf="stretch"
+      marginBottom={4}
+    >
       <Text fontWeight={3} fontSize={5}>
         {title}
       </Text>
       <Button
+        display={['none', 'none', 'flex']}
         marginLeft={2}
         variant="text"
         title="Apply"
@@ -80,7 +86,17 @@ const Posting = ({ title, location, body }) => (
       />
     </Row>
 
-    <Text fontWeight={2}>{location}</Text>
+    <Row display={['flex', 'flex', 'none']} marginBottom={4}>
+      <Button
+        variant="text"
+        title="Apply"
+        rel="noopener noreferrer"
+        target="_blank"
+        href={`mailto:careers@deviceplane.com?subject=${title}`}
+      />
+    </Row>
+
+    {/* <Text fontWeight={2}>{location}</Text> */}
 
     <div>{body}</div>
   </Column>
@@ -94,18 +110,24 @@ const Careers = () => (
 
     <Nav />
 
-    <Column alignItems="center" paddingBottom={8}>
+    <Column alignItems="center" paddingBottom={9}>
       <Column
         bg="black"
         alignItems="center"
         flex={1}
         paddingTop={6}
-        paddingBottom={10}
+        paddingBottom={9}
         alignSelf="stretch"
       >
         <Heading>Careers</Heading>
 
-        <Text maxWidth="630px" textAlign="center" fontWeight={1}>
+        <Text
+          maxWidth="630px"
+          marginX={6}
+          marginTop={4}
+          textAlign="center"
+          fontWeight={1}
+        >
           Our goal is to make Deviceplane the de facto way to manage all remote
           hardware and devices. The path to get there requires deep engagement
           with a massive community of developers — both to maximize adoption of

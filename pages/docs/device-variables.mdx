@@ -39,8 +39,8 @@ An image is allowed if its name is prefixed by a line in the file.
 
 For example, the following `whitelisted-images` file will allow:
 
-1. The `redis` image, with any tag, or no tag (which defaults to latest)
-1. And any images from the `myorg` org (e.g. `myorg/deployimage`)
+- The `redis` image, with any tag, or no tag (which defaults to latest)
+- And any images from the `myorg` org (e.g. `myorg/deployimage`)
 
 ```
 redis
@@ -50,7 +50,7 @@ myorg/
 Here is a list of implications with this change.
 
 - If a bad actor gets access to a Deviceplane access key then they won't be able to launch images that aren't in your `whitelisted-images` file.
-  - If all images that run on your device are under your org name on DockerHub (e.g. `myorg/`), then keeping this list up to date is easy!
+- If all images that run on your device are under your org name on DockerHub (e.g. `myorg/`), then keeping this list up to date is easy!
 
 ### disable-custom-commands
 

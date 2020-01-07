@@ -48,6 +48,7 @@ const Table = ({ children }) => (
         border-right: none;
         border-top: 1px solid ${theme.colors.grays[5]};
         padding: 8px 24px 8px 16px;
+        vertical-align: top;
       }
     `}</style>
   </table>

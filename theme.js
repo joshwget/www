@@ -1,4 +1,8 @@
-const breakpoints = ['480px', '768px', '1024px'];
+const breakpoints = ['600px', '800px', '1000px', '1200px'];
+
+breakpoints.sm = breakpoints[0];
+breakpoints.md = breakpoints[1];
+breakpoints.lg = breakpoints[2];
 
 const colors = {
   primary: '#6fccff',
@@ -90,17 +94,11 @@ export default {
     1024
   ],
 
-  breakpoints,
-
   borders: [`1px solid ${colors.primary}`, `3px solid ${colors.primary}`],
 
   shadows: [`0 2px 4px black`, `0 3px 6px black`],
 
-  mediaQueries: {
-    small: `@media screen and (min-width: ${breakpoints[0]})`,
-    medium: `@media screen and (min-width: ${breakpoints[1]})`,
-    large: `@media screen and (min-width: ${breakpoints[2]})`
-  },
+  breakpoints,
 
   transitions: ['all 200ms ease'],
 

@@ -70,7 +70,9 @@ const Tutorial = () => {
 
   return (
     <Section height="400px">
-      <Heading variant="secondary">How it works</Heading>
+      <Heading variant="secondary" textAlign="center">
+        How it works
+      </Heading>
 
       <Row marginTop={5}>
         {content.map(({ title }, i) => (

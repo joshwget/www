@@ -21,7 +21,7 @@ const Info = () => (
       justifyContent={['initial', 'initial', 'space-between']}
     >
       <Container
-        margin={['0 64px 64px 64px', '0 64px 64px 64px', '0 0 0 24px', 0]}
+        margin={['0 24px 64px 24px', '0 24px 64px 24px', '0 0 0 24px', 0]}
       >
         <Column alignItems="center">
           <Icon size="32" icon="manual" color="primary" marginBottom={2} />
@@ -44,9 +44,9 @@ const Info = () => (
 
       <Container
         margin={[
-          '0 64px 64px 64px',
-          '0 64px 64px 64px',
-          '0 24px 0 64px',
+          '0 24px 64px 24px',
+          '0 24px 64px 24px',
+          '0 24px 64px 24px',
           '0 0 0 64px'
         ]}
       >
@@ -72,7 +72,7 @@ const Info = () => (
 
     <Container
       alignItems="center"
-      margin={['0 64px 64px 64px', '0 64px 64px 64px', '64px 64px 0 64px']}
+      margin={['0 24px 64px 24px', '0 24px 64px 24px', '64px 24px 0 24px']}
     >
       <Column alignItems="center">
         <Icon color="primary" icon="lock" size="32" marginBottom={3} />

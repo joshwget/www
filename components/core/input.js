@@ -40,7 +40,7 @@ const StyledInput = styled.input`
 
 StyledInput.defaultProps = {
   color: 'white',
-  bg: 'grays.0',
+  bg: 'transparent',
   borderRadius: 1,
   fontWeight: 1,
   boxShadow: 0,

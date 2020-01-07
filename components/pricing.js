@@ -2,7 +2,17 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { Box, Column, Row, Heading, Section, Text, Icon, Button } from './core';
+import {
+  Box,
+  Column,
+  Row,
+  Motion,
+  Heading,
+  Section,
+  Text,
+  Icon,
+  Button
+} from './core';
 
 const plans = [
   {
@@ -46,12 +56,10 @@ const plans = [
   }
 ];
 
-const PlanContainer = styled(motion.div)`
+const PlanContainer = styled(Motion)`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  flex: 0 0 240px;
-  height: 340px;
   padding: 24px;
   margin: 0 32px;
   background: ${props => props.theme.colors.black};
@@ -68,6 +76,9 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
       duration: 0.75,
       ease: 'easeIn'
     }}
+    height={['auto', 'auto', '340px']}
+    margin={['32px 0 0 0', '32px 0 0 0', '0 16px', '0 32px']}
+    flex={['0 0 200px', '0 0 200px', '0 0 230px', '0 0 260px']}
   >
     <Column>
       <Text fontSize={5} fontWeight={3}>
@@ -81,16 +92,32 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
     <Column>
       {features.map(feature => (
         <Row key={feature} marginTop={4} alignItems="center">
-          <Box>
+          <Row>
             <Icon icon="tick-circle" size={18} color="primary" />
-          </Box>
-          <Text marginLeft={2}>{feature}</Text>
+          </Row>
+          <Text marginLeft={2} fontWeight={1}>
+            {feature}
+          </Text>
         </Row>
       ))}
     </Column>
     {bottom}
   </PlanContainer>
 );
+
+const Background = styled.div`
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  height: 450px;
+  background: linear-gradient(
+    165deg,
+    ${props => props.theme.colors.pageBackground} calc(50% - 1px),
+    ${props => props.theme.colors.black} 50%
+  );
+  width: 100vw;
+  bottom: 0;
+`;
 
 const Pricing = () => {
   const [ref, entry] = useInView();
@@ -105,110 +132,28 @@ const Pricing = () => {
       overflow="hidden"
       ref={ref}
     >
-      <div className="bg" />
+      <Background />
 
       <Section position="relative">
         <motion.div
           animate={animate && { opacity: [0, 1] }}
           transition={{ duration: 1, delay: 0.25 }}
         >
-          <Heading variant="secondary">Flexible plans that scale</Heading>
+          <Heading variant="secondary" textAlign="center">
+            Flexible plans that scale
+          </Heading>
         </motion.div>
 
-        <Row marginTop={9} justifyContent="center">
+        <Row
+          marginTop={9}
+          justifyContent="center"
+          flexDirection={['column', 'column', 'row', 'row']}
+        >
           {plans.map((plan, index) => (
             <Plan key={plan.name} {...plan} index={index} animate={animate} />
           ))}
         </Row>
       </Section>
-
-      <style jsx>{`
-        .bg {
-          position: absolute;
-          z-index: 0;
-          left: 0;
-          height: 450px;
-          background: linear-gradient(
-            165deg,
-            #141414 calc(50% - 1px),
-            #000 50%
-          );
-          width: 100vw;
-          bottom: 0;
-        }
-        @media screen and (max-width: 900px) {
-          .content {
-            padding: 0;
-          }
-          .container {
-            width: 10rem;
-            height: 17.5rem;
-          }
-          .border {
-            width: 12.5rem;
-            height: 19rem;
-            margin: 4rem 1.25rem;
-          }
-        }
-        @media screen and (max-width: 700px) {
-          .border {
-            margin: 2rem 0;
-            border-radius: 0;
-          }
-          .border:first-child {
-            border-bottom-left-radius: var(--radius);
-          }
-          .border:last-child {
-            border-bottom-right-radius: var(--radius);
-          }
-          .bg {
-            height: 28rem;
-            background: linear-gradient(
-              165deg,
-              var(--bg) calc(50% - 1px),
-              #000 50%
-            );
-          }
-        }
-        @media screen and (max-width: 600px) {
-          h2 {
-            margin: 0 0 3rem 0;
-          }
-          .plans {
-            flex-direction: column;
-          }
-          .border {
-            height: auto;
-            margin: 0 0 2rem 0;
-            width: 15.5rem;
-            border-radius: 0;
-          }
-          .border:last-child {
-            margin: 0;
-          }
-          .container {
-            height: auto;
-            width: 13rem;
-            transform: unset !important;
-          }
-          .border:last-child {
-            height: 16rem;
-            border-bottom-right-radius: 4px;
-            border-bottom-left-radius: 4px;
-          }
-          .border:last-child .container {
-            height: 14rem;
-          }
-          .bg {
-            height: 25rem;
-            background: linear-gradient(
-              150deg,
-              var(--bg) calc(50% - 1px),
-              #000 50%
-            );
-          }
-        }
-      `}</style>
     </Column>
   );
 };

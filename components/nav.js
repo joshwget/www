@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 
 import { routeGroups as docRoutes } from './docs';
 import Logo from './icons/logo';
-import { Row, Column, Button, Text, Link } from './core';
+import { Row, Column, Button, Text, Link, Icon } from './core';
 
 const Overlay = styled(Column)`
-  display: ${props => (props.show ? 'block' : 'none')};
   box-sizing: border-box;
   position: fixed;
   top: 5rem;
@@ -16,6 +15,7 @@ const Overlay = styled(Column)`
   min-height: 100%;
   padding: 1rem 2rem;
   z-index: 1;
+  background-color: ${props => props.theme.colors.black};
 `;
 
 const NavLink = styled(Link)`
@@ -31,118 +31,87 @@ const NavLink = styled(Link)`
   font-size: ${props => props.theme.fontSizes[1]}px;
 `;
 
-const MobileNav = ({ show, pathname }) => {
+const MobileNavLink = styled(NavLink)`
+  margin-left: ${props => (props.nested ? '32px' : 0)};
+  margin-right: 0;
+  margin-bottom: 16px;
+  font-size: ${props => props.theme.fontSizes[3]}px;
+  color: ${props =>
+    props.active
+      ? props.theme.colors.primary
+      : props.nested
+      ? props.theme.colors.grays[8]
+      : props.theme.colors.white};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const MobileMenu = ({ show, pathname }) => {
   const [expand, setExpand] = React.useState(pathname.includes('/docs'));
+
+  if (!show) {
+    return null;
+  }
 
   return (
     <Overlay>
-      <Column>
-        <Row>
-          <Button
-            title="Log in"
-            variant="text"
-            href="https://cloud.deviceplane.com/login"
-          />
+      <Row alignSelf="stretch" justifyContent="center" marginBottom={6}>
+        <Button
+          title="Log in"
+          variant="secondary"
+          href="https://cloud.deviceplane.com/login"
+          marginRight={6}
+          flex={1}
+        />
 
-          <Button
-            title="Sign up"
-            href="https://cloud.deviceplane.com/register"
+        <Button
+          title="Sign up"
+          href="https://cloud.deviceplane.com/register"
+          flex={1}
+        />
+      </Row>
+
+      <Column>
+        <Row onClick={() => setExpand(!expand)}>
+          <MobileNavLink active={expand}>Documentation</MobileNavLink>
+          <Icon
+            marginLeft={2}
+            icon={expand ? 'chevron-down' : 'chevron-right'}
+            size={20}
+            color={expand ? 'primary' : 'white'}
           />
         </Row>
 
-        <ul>
-          <li>
-            <div className="expander" onClick={() => setExpand(!expand)}>
-              <NavLink>Documentation</NavLink>
-              <img className="caret" src="/caret.svg" />
-            </div>
-          </li>
-          <Column>
+        {expand && (
+          <Column borderLeft={0} paddingLeft={6} marginBottom={4}>
             {docRoutes.map(routes =>
               routes.map(({ href, title, nested }) => (
-                <NavLink href={href} nested={nested}>
+                <MobileNavLink
+                  href={href}
+                  nested={nested}
+                  active={title !== 'Managing' && pathname === href}
+                >
                   {title}
-                </NavLink>
+                </MobileNavLink>
               ))
             )}
           </Column>
-          <li>
-            <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
-          </li>
-          <li>
-            <NavLink href="/careers">Careers</NavLink>
-          </li>
-          <li>
-            <NavLink href="/legal">Legal & Privacy</NavLink>
-          </li>
-        </ul>
+        )}
+        <MobileNavLink href="mailto:support@deviceplane.com">
+          Support
+        </MobileNavLink>
+        <MobileNavLink href="/careers" active={pathname === '/careers'}>
+          Careers
+        </MobileNavLink>
+        <MobileNavLink href="/terms" active={pathname === '/terms'}>
+          Terms of Service
+        </MobileNavLink>
+        <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+          Privacy Policy
+        </MobileNavLink>
       </Column>
-
-      <style jsx>
-        {`
-          @keyframes slideDown {
-            100% {
-              transform: translateY(0);
-            }
-          }
-          @keyframes fadeIn {
-            100% {
-              opacity: 1;
-            }
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--white);
-          }
-          .arrow {
-            display: flex;
-            margin-left: 0.75rem;
-          }
-          .arrow :global(svg) {
-            fill: var(--white);
-          }
-          ul {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-          }
-          li a {
-            border-bottom: 2px solid var(--black);
-          }
-          li a.selected {
-            border-color: var(--primary);
-          }
-          li:not(:last-child) {
-            margin-bottom: 1.25rem;
-          }
-          .docs {
-            border-left: 2px solid var(--primary);
-            margin-bottom: 1.25rem;
-            display: ${expand ? 'block' : 'none'};
-            user-select: none;
-          }
-          .doc-route {
-            margin-left: 1rem;
-          }
-          .doc-route.nested {
-            margin-left: 2rem;
-          }
-          .expander {
-            display: flex;
-            align-items: start;
-          }
-          .expander a {
-            color: ${expand ? 'var(--primary)' : 'var(--white)'};
-          }
-          .caret {
-            width: 0.8rem;
-            margin-left: 0.5rem;
-            transform: rotate(${expand ? 0 : -90}deg);
-            padding-top: 0.25rem;
-          }
-        `}
-      </style>
     </Overlay>
   );
 };
@@ -151,138 +120,86 @@ const StyledNav = styled.nav`
   position: relative;
   display: flex;
   flex: 1;
-  justify-content: center;
   z-index: 2;
+  max-width: ${props => props.theme.pageWidth}px;
+  align-self: stretch;
   color: ${props => props.theme.colors.white};
   padding: ${props => props.theme.sizes[3]}px ${props => props.theme.sizes[4]}px;
-  background-color: ${props => props.theme.colors.black};
 `;
 
-const Container = styled(Row)`
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-`;
+const Name = () => (
+  <Link href="/">
+    <Row marginRight={6} alignItems="center">
+      <Logo />
+
+      <Text
+        fontWeight={2}
+        fontSize="26px"
+        color="#fff"
+        marginLeft="8px"
+        style={{ textTransform: 'none' }}
+      >
+        deviceplane
+      </Text>
+    </Row>
+  </Link>
+);
 
 const Nav = () => {
   const [overlay, setOverlay] = React.useState(false);
   const { pathname } = useRouter();
 
   return (
-    <StyledNav>
-      <Container>
-        <Row alignItems="center">
-          <Link href="/">
-            <Row marginRight={6} alignItems="center">
-              <Logo />
-
-              <Text
-                fontWeight={2}
-                fontSize="26px"
-                color="#fff"
-                marginLeft="8px"
-                style={{ textTransform: 'none' }}
-              >
-                deviceplane
-              </Text>
+    <>
+      <Row bg="black" justifyContent="center" flex={1}>
+        <StyledNav>
+          <Row
+            justifyContent="space-between"
+            flex={1}
+            alignItems="center"
+            display={['none', 'none', 'flex']}
+          >
+            <Name />
+            <Row justifyContent="flex-end" alignItems="center">
+              <NavLink href="/docs" active={pathname.includes('docs')}>
+                Documentation
+              </NavLink>
+              <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
+              <NavLink href="https://cloud.deviceplane.com/login">
+                Log in
+              </NavLink>
+              <Button
+                title="Sign up"
+                href="https://cloud.deviceplane.com/register"
+              />
             </Row>
-          </Link>
-        </Row>
-        <Row justifyContent="flex-end" alignItems="center">
-          <NavLink href="/docs" active={pathname.includes('docs')}>
-            Documentation
-          </NavLink>
-          <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
-          <NavLink href="https://cloud.deviceplane.com/login">Log in</NavLink>
-          <Button
-            title="Sign up"
-            href="https://cloud.deviceplane.com/register"
-          />
-        </Row>
-      </Container>
-
-      <MobileNav show={overlay} pathname={pathname} />
-      {/* 
-      <div className="mobile">
-        <Row padding={2} flex={1} justifyContent="space-between">
-          <Row className="left">
-            <NavLink href="/">
-              <div className="logo">
-                <img src="/logo.svg" />
-
-                <a className="name">deviceplane</a>
-              </div>
-            </NavLink>
           </Row>
-          <Row>
-            <button onClick={() => setOverlay(!overlay)}>
-              <img className="cancel" src="/cancel.svg" />
-              <img className="hamburger" src="/hamburger.svg" />
-            </button>
+
+          <Row
+            flex={1}
+            justifyContent="space-between"
+            display={['flex', 'flex', 'none']}
+          >
+            <Name />
+            <Row>
+              <Button
+                variant="icon"
+                title={
+                  <Icon
+                    icon={overlay ? 'cross' : 'menu'}
+                    size={24}
+                    color="white"
+                  />
+                }
+                onClick={() => setOverlay(!overlay)}
+              />
+            </Row>
           </Row>
-        </Row>
-      </div> */}
+        </StyledNav>
+      </Row>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          100% {
-            opacity: 1;
-          }
-        }
-        .logo {
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          margin-right: 1rem;
-          margin-bottom: 0.55rem;
-        }
-        img {
-          width: 56px;
-          height: 56px;
-        }
-
-        .hamburger,
-        .cancel {
-          opacity: 0;
-          animation: fadeIn 200ms;
-          animation-fill-mode: forwards;
-        }
-
-        .hamburger {
-          display: ${overlay ? 'none' : 'block'};
-          width: 1.5rem;
-        }
-        .cancel {
-          display: ${overlay ? 'block' : 'none'};
-          width: 1.25rem;
-        }
-
-        @media screen and (max-width: 760px) {
-          .logo {
-            margin-right: 0.5rem;
-          }
-          .name {
-            display: none;
-          }
-        }
-
-        @media screen and (max-width: 600px) {
-          .mobile {
-            display: flex;
-            align-items: center;
-          }
-          .name {
-            display: flex;
-          }
-          .desktop {
-            display: none;
-          }
-          .container {
-            padding: 1rem 2rem;
-          }
-        }
-      `}</style>
-    </StyledNav>
+      <MobileMenu show={overlay} pathname={pathname} />
+    </>
   );
 };
 
