@@ -63,9 +63,8 @@ const Posting = ({ title, location, body }) => (
     padding={6}
     borderRadius={1}
     maxWidth="500px"
-    marginX={4}
-    marginTop={10}
-    marginBottom={0}
+    marginX={6}
+    marginTop={8}
   >
     <Row justifyContent="space-between" alignItems="center" alignSelf="stretch">
       <Text fontWeight={3} fontSize={5}>
@@ -95,16 +94,25 @@ const Careers = () => (
 
     <Nav />
 
-    <Column paddingY={10} alignItems="center">
-      <Heading>Careers</Heading>
+    <Column alignItems="center" paddingBottom={8}>
+      <Column
+        bg="black"
+        alignItems="center"
+        flex={1}
+        paddingTop={6}
+        paddingBottom={10}
+        alignSelf="stretch"
+      >
+        <Heading>Careers</Heading>
 
-      <Text maxWidth="630px" textAlign="center" fontWeight={1}>
-        Our goal is to make Deviceplane the de facto way to manage all remote
-        hardware and devices. The path to get there requires deep engagement
-        with a massive community of developers — both to maximize adoption of
-        Deviceplane, and to make sure we're building the product that fits their
-        requirements and sparks joy.
-      </Text>
+        <Text maxWidth="630px" textAlign="center" fontWeight={1}>
+          Our goal is to make Deviceplane the de facto way to manage all remote
+          hardware and devices. The path to get there requires deep engagement
+          with a massive community of developers — both to maximize adoption of
+          Deviceplane, and to make sure we're building the product that fits
+          their requirements and sparks joy.
+        </Text>
+      </Column>
 
       <Row
         justifyContent={['initial', 'initial', 'initial', 'space-between']}

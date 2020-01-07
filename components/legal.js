@@ -27,20 +27,25 @@ const Legal = ({ title, lastUpdated, children }) => {
 
       <Nav />
 
-      <main>
-        <Column alignItems="center" padding={10}>
-          <Column alignItems="center" marginBottom={10}>
-            <Heading>{title}</Heading>
-            <Text fontWeight={1} color="grays.8" marginTop={2}>
-              Last update: {lastUpdated}
-            </Text>
-          </Column>
-
-          <Box maxWidth={theme.pageWidth}>
-            <MDX>{children}</MDX>
-          </Box>
+      <Column alignItems="center">
+        <Column
+          bg="black"
+          alignItems="center"
+          flex={1}
+          paddingTop={6}
+          paddingBottom={10}
+          alignSelf="stretch"
+        >
+          <Heading>{title}</Heading>
+          <Text fontWeight={1} color="grays.8" marginTop={2}>
+            Last update: {lastUpdated}
+          </Text>
         </Column>
-      </main>
+
+        <Box maxWidth={theme.pageWidth} padding={8}>
+          <MDX>{children}</MDX>
+        </Box>
+      </Column>
 
       <Footer />
     </>

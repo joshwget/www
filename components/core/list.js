@@ -37,17 +37,17 @@ export const OrderedList = styled.ol`
 
   & > li:before {
     transform: translateY(-2px);
-    flex: 0 0 18px;
+    flex: 0 0 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     content: counter(item);
-    font-size: 10px;
+    font-size: 11px;
     background: ${theme.colors.primary};
     border-radius: 99px;
-    width: 18px;
-    height: 18px;
-    font-weight: 400;
+    width: 16px;
+    height: 16px;
+    font-weight: 500;
     margin-right: 6px;
     color: ${theme.colors.black};
   }

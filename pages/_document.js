@@ -77,7 +77,9 @@ class Document extends NextDocument {
           <Intercom />
         </Head>
         <body>
-          <Main />
+          <main>
+            <Main />
+          </main>
           <NextScript />
         </body>
       </Html>
