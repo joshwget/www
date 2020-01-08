@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import Logo from './icons/logo';
 import { Row, Column, Link, Text } from './core';
 
-const links = [
-  { href: '/docs', label: 'Documentation' },
-  //{ href: '/blog', label: 'Blog' },
-  { mailto: 'support@deviceplane.com', label: 'Support' },
-  { href: '/careers', label: 'Careers' },
-  //{ href: '/press', label: 'Press' },
-  { href: '/terms', label: 'Terms of Service' },
-  { href: '/privacy', label: 'Privacy' }
+const linkGroups = [
+  [
+    { href: '/docs', label: 'Documentation' },
+    //{ href: '/blog', label: 'Blog' },
+    { mailto: 'support@deviceplane.com', label: 'Support' },
+    { href: '/careers', label: 'Careers' }
+  ],
+  [
+    //{ href: '/press', label: 'Press' },
+    { href: '/terms', label: 'Terms of Service' },
+    { href: '/privacy', label: 'Privacy' }
+  ]
 ];
 
 const StyledFooter = styled.footer`
@@ -20,12 +24,12 @@ const StyledFooter = styled.footer`
   align-items: center;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
-  padding: 32px;
 `;
 
 const Container = styled(Column)`
   max-width: ${props => props.theme.pageWidth}px;
   width: 100%;
+  padding: 32px;
 `;
 
 const FooterLink = styled(Link)`
@@ -48,7 +52,7 @@ const FooterNav = styled.nav`
 
 const Footer = () => (
   <StyledFooter>
-    <Container alignItems={['flex-start', 'center']}>
+    <Container>
       <Column>
         <Link href="/">
           <Logo size={28} />
@@ -56,22 +60,28 @@ const Footer = () => (
       </Column>
 
       <FooterNav>
-        <Row flexDirection={['column', 'row']}>
-          {links.map(({ href, label, mailto }) => (
-            <FooterLink
-              key={label}
-              margin={['0 0 16px 0', 4]}
-              href={mailto ? `mailto:${mailto}` : href}
-            >
-              {label}
-            </FooterLink>
+        <Row>
+          {linkGroups.map(links => (
+            <Column key={links[0].label} marginRight={6}>
+              {links.map(({ href, label, mailto }) => (
+                <FooterLink
+                  key={label}
+                  marginBottom={4}
+                  href={mailto ? `mailto:${mailto}` : href}
+                >
+                  {label}
+                </FooterLink>
+              ))}
+            </Column>
           ))}
         </Row>
       </FooterNav>
 
-      <Text fontSize={0} color="grays.5">
-        © Deviceplane
-      </Text>
+      <Row alignSelf="flex-start">
+        <Text fontSize={0} color="grays.5" fontWeight={1}>
+          © Deviceplane
+        </Text>
+      </Row>
     </Container>
   </StyledFooter>
 );

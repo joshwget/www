@@ -1,6 +1,7 @@
 import {
   Column,
   Row,
+  Text,
   Input,
   Section,
   Button,
@@ -79,27 +80,30 @@ const Hero = ({ airtable }) => {
 
         <Column maxWidth="425px" width="100%" marginTop={4}>
           <Column>
-            {/* <div>
-              <span>
-                Thanks for your interest, we'll reach out as soon as we can.
-              </span>
-            </div> */}
-            <Form onSubmit={handleSubmit}>
-              <Row flexDirection={['column', 'row']}>
-                <Input
-                  required
-                  type="email"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                />
-                <Button
-                  title="Request a demo"
-                  marginTop={[2, 0]}
-                  marginLeft={[0, 2]}
-                />
+            {submitted ? (
+              <Row paddingY={3}>
+                <Text fontWeight={2} fontSize={1}>
+                  Thanks for your interest, we'll reach out as soon as we can.
+                </Text>
               </Row>
-            </Form>
+            ) : (
+              <Form onSubmit={handleSubmit}>
+                <Row flexDirection={['column', 'row']}>
+                  <Input
+                    required
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                  <Button
+                    title="Request a demo"
+                    marginTop={[2, 0]}
+                    marginLeft={[0, 2]}
+                  />
+                </Row>
+              </Form>
+            )}
           </Column>
 
           <Row flex={1} justifyContent={['center', 'initial', 'initial']}>

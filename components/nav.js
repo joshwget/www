@@ -135,6 +135,14 @@ const MobileMenu = ({ show, pathname }) => {
           </MobileNavLink>
         </MobileNavLinkContainer>
       </Column>
+
+      <style jsx global>
+        {`
+          body {
+            overflow: hidden;
+          }
+        `}
+      </style>
     </Overlay>
   );
 };

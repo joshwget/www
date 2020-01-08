@@ -58,8 +58,8 @@ const plans = [
 const PlanContainer = styled(Motion)`
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  padding: 24px;
+  justify-content: space-between;
+  border-radius: 4px;
   background: ${props => props.theme.colors.black};
   border: 1px solid ${props => props.theme.colors.white};
   border-color: ${props => props.theme.colors.white};
@@ -74,30 +74,33 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
       duration: 0.75,
       ease: 'easeIn'
     }}
+    padding={5}
     height={['auto', 'auto', '320px']}
-    margin={['32px 0 0 0', '32px 0 0 0', '0 16px', '0 32px']}
-    flex={['0 0 200px', '0 0 200px', '0 0 230px', '0 0 260px']}
+    margin={['32px 0 0 0', '32px 0 0 0', 0]}
+    flex={['0 0 200px', '0 0 200px', '0 0 230px', '0 0 270px']}
   >
     <Column>
-      <Text fontSize={5} fontWeight={3}>
-        {name}
-      </Text>
-      <Text marginTop={1} fontWeight={1} fontSize={1} color="grays.8">
-        {price}
-      </Text>
-    </Column>
+      <Column>
+        <Text fontSize={5} fontWeight={3}>
+          {name}
+        </Text>
+        <Text marginTop={1} fontWeight={1} fontSize={1} color="grays.8">
+          {price}
+        </Text>
+      </Column>
 
-    <Column>
-      {features.map(feature => (
-        <Row key={feature} marginTop={4} alignItems="center">
-          <Row>
-            <Icon icon="tick-circle" size={18} color="primary" />
+      <Column>
+        {features.map(feature => (
+          <Row key={feature} marginTop={4} alignItems="center">
+            <Row>
+              <Icon icon="tick-circle" size={18} color="primary" />
+            </Row>
+            <Text marginLeft={2} fontWeight={1}>
+              {feature}
+            </Text>
           </Row>
-          <Text marginLeft={2} fontWeight={1}>
-            {feature}
-          </Text>
-        </Row>
-      ))}
+        ))}
+      </Column>
     </Column>
 
     <Column marginTop={6}>{bottom}</Column>
@@ -148,8 +151,9 @@ const Pricing = () => {
 
         <Row
           marginTop={6}
-          justifyContent="center"
-          flexDirection={['column', 'column', 'row', 'row']}
+          alignSelf={['initial', 'initial', 'stretch']}
+          justifyContent={['initial', 'initial', 'space-between']}
+          flexDirection={['column', 'column', 'row']}
         >
           {plans.map((plan, index) => (
             <Plan key={plan.name} {...plan} index={index} animate={animate} />
