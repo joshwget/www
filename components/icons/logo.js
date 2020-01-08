@@ -3,13 +3,7 @@ import React from 'react';
 import { Row } from '../core';
 
 const Logo = ({ size = 32, color = 'white' }) => (
-  <Row
-    width={size}
-    height={size}
-    alignItems="center"
-    justifyContent="center"
-    overflow="hidden"
-  >
+  <Row width={size} height={size} alignItems="center" justifyContent="center">
     <svg
       width={175}
       height={152}

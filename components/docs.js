@@ -152,6 +152,7 @@ const Docs = ({ title, children }) => {
           padding={6}
           width="100%"
           bg="pageBackground"
+          borderRadius={1}
         >
           <Box color="white" maxWidth="800px">
             <MDX>{children}</MDX>

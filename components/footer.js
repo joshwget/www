@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Logo from './icons/logo';
-import { Row, Column, Link, Text } from './core';
+import { Box, Row, Column, Link, Text } from './core';
 
 const linkGroups = [
   [
@@ -53,11 +53,11 @@ const FooterNav = styled.nav`
 const Footer = () => (
   <StyledFooter>
     <Container>
-      <Column>
+      <Row alignSelf="flex-start">
         <Link href="/">
           <Logo size={28} />
         </Link>
-      </Column>
+      </Row>
 
       <FooterNav>
         <Row>

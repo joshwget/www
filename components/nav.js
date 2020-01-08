@@ -74,9 +74,11 @@ const MobileMenu = ({ show, pathname }) => {
 
       <Column overflow="auto">
         <Row
+          alignSelf="flex-start"
           onClick={() => setExpand(!expand)}
           marginBottom={4}
           alignItems="center"
+          style={{ cursor: 'pointer' }}
         >
           <Text
             color={isDocs ? 'primary' : 'white'}
