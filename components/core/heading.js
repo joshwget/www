@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { typography, color, space, layout } from 'styled-system';
+import { typography, color, space, layout, position } from 'styled-system';
 
 const defaultProps = {
   color: 'white',
@@ -10,7 +10,7 @@ const defaultProps = {
 const styles = css`
 word-break: break-word;
 margin: 0;
-${typography} ${color} ${space} ${layout} 
+${typography} ${color} ${space} ${layout} ${position}
 `;
 
 export const H1 = styled.h1`

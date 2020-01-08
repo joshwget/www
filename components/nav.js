@@ -62,7 +62,7 @@ const MobileMenu = ({ show, pathname }) => {
         />
 
         <Button
-          title="Sign up"
+          title="Start now"
           href="https://cloud.deviceplane.com/register"
           flex={1}
         />
@@ -139,15 +139,20 @@ const MobileMenu = ({ show, pathname }) => {
 };
 
 const StyledNav = styled.nav`
-  position: relative;
   display: flex;
   flex: 1;
-  z-index: 2;
   max-width: ${props => props.theme.pageWidth}px;
   align-self: stretch;
+  padding: 32px;
+`;
+
+const Header = styled.header`
+  display: flex;
+  z-index: 2;
+  background-color: ${props => (props.transparent ? 'transparent' : 'black')};
+  justify-content: center;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
-  padding: 32px;
 `;
 
 const Name = () => (
@@ -174,11 +179,7 @@ const Nav = ({ transparent }) => {
 
   return (
     <>
-      <Row
-        bg={transparent ? 'transparent' : 'black'}
-        justifyContent="center"
-        flex={1}
-      >
+      <Header transparent={transparent}>
         <StyledNav>
           <Row
             justifyContent="space-between"
@@ -223,7 +224,7 @@ const Nav = ({ transparent }) => {
             </Row>
           </Row>
         </StyledNav>
-      </Row>
+      </Header>
 
       <MobileMenu show={overlay} pathname={pathname} />
     </>

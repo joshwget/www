@@ -74,7 +74,7 @@ class Document extends NextDocument {
             rel="stylesheet"
           />
 
-          <Intercom />
+          {process.env['NODE_ENV'] === 'development' ? null : <Intercom />}
         </Head>
         <body>
           <main>

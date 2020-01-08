@@ -96,57 +96,6 @@ const Features = () => (
         ))}
       </Row>
     </Section>
-    <style jsx>{`
-      .desktop {
-        display: flex;
-        flex-direction: column;
-        align-self: stretch;
-        flex: 1;
-      }
-
-      .row > :global(.container):not(:last-child) {
-        margin-right: 4rem;
-      }
-
-      .row {
-        display: flex;
-        flex: 1;
-        justify-content: space-between;
-      }
-
-      .row:not(:last-child) {
-        margin-bottom: 3rem;
-      }
-
-      .tablet {
-        display: none;
-      }
-
-      @media screen and (max-width: 900px) {
-        .desktop {
-          display: none;
-        }
-        .tablet {
-          display: block;
-        }
-      }
-
-      @media screen and (max-width: 480px) {
-        section {
-          padding: 3rem 1rem 2rem 1rem;
-        }
-        .desktop {
-          display: block;
-        }
-        .row {
-          flex-direction: column;
-          margin: 0 !important;
-        }
-        .tablet {
-          display: none;
-        }
-      }
-    `}</style>
   </Column>
 );
 

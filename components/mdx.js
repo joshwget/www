@@ -1,23 +1,59 @@
+import { useState } from 'react';
 import { default as Highlighter, defaultProps } from 'prism-react-renderer';
 import { MDXProvider } from '@mdx-js/react';
 import styled from 'styled-components';
 
 import theme from '../theme';
-import { Table, Link, Code, Paragraph } from './core';
-import * as Heading from './core/heading';
+import { Table, Link, Code, Paragraph, Box, Icon } from './core';
+import * as Headings from './core/heading';
 import { OrderedList, UnorderedList } from './core/list';
 
-const H1 = styled(Heading.H1)`
-  font-size: 48px;
-`;
+const getId = str => str.toLowerCase().replace(/ /g, '-');
 
-const H2 = styled(Heading.H2)`
-  font-size: 32px;
-`;
-
-const H3 = styled(Heading.H3)`
-  font-size: 24px;
-`;
+const LinkHeading = ({ children, Heading, fontSize }) => {
+  const [linkVisible, setLinkVisible] = useState(false);
+  const id = getId(children);
+  return (
+    <Heading
+      fontSize={fontSize}
+      position="relative"
+      id={id}
+      onMouseEnter={() => setLinkVisible(true)}
+      onMouseLeave={() => setLinkVisible(false)}
+    >
+      <Link
+        href={`#${id}`}
+        position="absolute"
+        display="flex"
+        height="100%"
+        alignItems="center"
+        paddingRight={1}
+        style={{
+          transform: 'translateX(-100%)'
+        }}
+      >
+        <Icon
+          icon="link"
+          size={12}
+          color="primary"
+          style={{
+            visibility: linkVisible ? 'visible' : 'hidden'
+          }}
+        />
+      </Link>
+      {children}
+    </Heading>
+  );
+};
+const H1 = props => (
+  <LinkHeading {...props} fontSize="48px" Heading={Headings.H1} />
+);
+const H2 = props => (
+  <LinkHeading {...props} fontSize="32px" Heading={Headings.H2} />
+);
+const H3 = props => (
+  <LinkHeading {...props} fontSize="24px" Heading={Headings.H3} />
+);
 
 const syntaxTheme = {
   plain: {
@@ -88,7 +124,7 @@ const syntaxTheme = {
 };
 
 const Blockquote = styled.blockquote`
-  border: 1px solid ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.primary};
   border-radius: 4px;
   padding: 0 16px;
   margin: 16px 0;
@@ -148,7 +184,9 @@ const components = {
 };
 
 const MDX = ({ children }) => (
-  <MDXProvider components={components}>{children}</MDXProvider>
+  <MDXProvider components={components}>
+    <Box>{children}</Box>
+  </MDXProvider>
 );
 
 export default MDX;

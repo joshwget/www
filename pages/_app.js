@@ -18,7 +18,6 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-family: ${props => props.theme.fonts.default};
-    
     font-size: 16px;
     font-weight: 300;
     line-height: 1.3;
@@ -26,11 +25,17 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.colors.white};
   }
 
-  body {
-    margin: 0;
-    padding: 0;
+  html,body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  strong * {
+    font-weight: 700 !important;
   }
 `;
 

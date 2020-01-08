@@ -1,14 +1,48 @@
 import styled from 'styled-components';
 
-import { Row, Column, Text, Section, Heading } from './core';
+import { Row, Column, Text, Section, Heading, Image } from './core';
 
-const Container = styled(Column)`
-  justify-content: flex-start;
-  align-items: center;
-`;
-Container.defaultProps = {
-  margin: 6
-};
+const hardware = [
+  {
+    src: '/use-cases/single-board-computer.svg',
+    label: 'Single-board Computers'
+  },
+  {
+    src: '/use-cases/iot-gateway.svg',
+    label: 'IoT Gateways'
+  },
+  {
+    src: '/use-cases/servers.svg',
+    label: 'Edge Servers'
+  },
+  {
+    src: '/use-cases/drones.svg',
+    label: 'Drones'
+  }
+];
+
+const industries = [
+  {
+    src: '/use-cases/machine-learning.svg',
+    label: 'Machine Learning'
+  },
+  {
+    src: '/use-cases/consumer.svg',
+    label: 'Consumer'
+  },
+  {
+    src: '/use-cases/medical.svg',
+    label: 'Medical'
+  },
+  {
+    src: '/use-cases/robotics.svg',
+    label: 'Robotics'
+  },
+  {
+    src: '/use-cases/industrial.svg',
+    label: 'Industrial'
+  }
+];
 
 const Label = styled(Text)`
   text-transform: uppercase;
@@ -20,182 +54,55 @@ Label.defaultProps = {
   textAlign: 'center'
 };
 
+const Container = ({ src, label }) => (
+  <Column width="150px">
+    <Image src={src} height={80} alt={label} />
+    <Label>{label}</Label>
+  </Column>
+);
+
 const UseCases = () => (
   <Section paddingX={6}>
-    <Column alignItems="center" marginBottom="80px">
-      <Heading variant="secondary" textAlign="center">
+    <Row
+      alignItems="center"
+      marginBottom="80px"
+      justifyContent="space-between"
+      alignSelf="stretch"
+    >
+      <Row>
+        <Column marginRight={9}>
+          {hardware.slice(0, 2).map(props => (
+            <Container {...props} />
+          ))}
+        </Column>
+        <Column>
+          {hardware.slice(2, 4).map(props => (
+            <Container {...props} />
+          ))}
+        </Column>
+      </Row>
+
+      <Heading variant="secondary" maxWidth="500px">
         Support for a variety of hardware
       </Heading>
-      <Row flexDirection={['column', 'column', 'row']}>
-        <Row>
-          <Container>
-            <img
-              src="/use-cases/single-board-computer.svg"
-              height={80}
-              alt="Single-board computer"
-            />
-            <Label>Single-board Computers</Label>
-          </Container>
-
-          <Container>
-            <img
-              src="/use-cases/iot-gateway.svg"
-              height={80}
-              alt="IoT gateways"
-            />
-            <Label>IoT Gateways</Label>
-          </Container>
-        </Row>
-        <Row>
-          <Container marginBottom={8}>
-            <img src="/use-cases/servers.svg" height={80} alt="Edge servers" />
-            <Label>Edge Servers</Label>
-          </Container>
-
-          <Container>
-            <img src="/use-cases/drones.svg" height={80} alt="Drones" />
-            <Label>Drones</Label>
-          </Container>
-        </Row>
-      </Row>
-    </Column>
-
-    <Column alignItems="center">
-      <Heading variant="secondary" textAlign="center">
+    </Row>
+    <Row alignItems="center" justifyContent="space-between" alignSelf="stretch">
+      <Heading variant="secondary" maxWidth="500px">
         Ready for any industry
       </Heading>
-
-      <Row marginTop={4}>
+      <Column marginTop={4}>
         <Row>
-          <Container>
-            <img src="/use-cases/machine-learning.svg" height={80} />
-            <Label style={{ whiteSpace: 'nowrap' }}>Machine Learning</Label>
-          </Container>
-
-          <Container>
-            <img src="/use-cases/consumer.svg" height={80} />
-            <Label>Consumer</Label>
-          </Container>
-
-          <Container>
-            <img src="/use-cases/medical.svg" height={80} />
-            <Label>Medical</Label>
-          </Container>
+          {industries.slice(0, 3).map(props => (
+            <Container {...props} />
+          ))}
         </Row>
-
         <Row alignItems="flex-end">
-          <Container>
-            <img src="/use-cases/robotics.svg" height={80} />
-            <Label>Robotics</Label>
-          </Container>
-
-          <Container>
-            <img src="/use-cases/industrial.svg" height={80} />
-            <Label>Industrial</Label>
-          </Container>
+          {industries.slice(3, 5).map(props => (
+            <Container {...props} />
+          ))}
         </Row>
-      </Row>
-    </Column>
-
-    {/* <div className="tablet">
-      <div className="group">
-        <div className="container">
-          <img src="/consumer.svg" height={120} />
-          <Text>Consumer</Text>
-        </div>
-
-        <div className="container">
-          <img src="/robotics.svg" height={140} />
-          <Text>Robotics</Text>
-        </div>
-      </div>
-
-      <div className="group">
-        <div className="container">
-          <img src="/medicine.svg" height={110} />
-          <Text>Medical</Text>
-        </div>
-
-        <div className="container">
-          <img src="/machine-learning.svg" height={100} />
-          <Text>Machine Learning</Text>
-        </div>
-      </div>
-
-      <div className="container">
-        <img src="/industrial.svg" height={140} />
-        <Text>Industrial</Text>
-      </div>
-    </div> */}
-
-    <style jsx>{`
-      span {
-        text-transform: uppercase;
-        font-weight: 800;
-        font-size: 14px;
-        margin-top: 1rem;
-        text-align: center;
-      }
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 3rem;
-      }
-      .row {
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-      }
-      .group {
-        display: flex;
-        align-items: baseline;
-      }
-      .tablet {
-        display: none;
-      }
-
-      @media screen and (max-width: 1200px) {
-        .row {
-          flex-direction: column;
-          align-items: center;
-        }
-        .group:last-child {
-          margin-top: 3rem;
-        }
-      }
-      @media screen and (max-width: 800px) {
-        .desktop {
-          display: none;
-        }
-        .tablet {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .group {
-          justify-content: center;
-        }
-        .group:not(:last-child) {
-          margin-bottom: 3rem;
-        }
-        .container {
-          flex: 0 0 12rem;
-          justify-content: center;
-        }
-      }
-      @media screen and (max-width: 480px) {
-        .group {
-          flex-direction: column;
-          align-items: center;
-          margin: 0 !important;
-        }
-        .container {
-          flex: unset;
-          margin: 1.5rem 0;
-        }
-      }
-    `}</style>
+      </Column>
+    </Row>
   </Section>
 );
 

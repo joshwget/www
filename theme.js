@@ -23,6 +23,7 @@ const colors = {
   pageBackground: '#181818',
 
   grays: [
+    '#121212',
     '#141414',
     '#181818',
     '#222222',
@@ -69,7 +70,7 @@ export default {
     code: 'Menlo,Monaco,Consolas,monospace,serif'
   },
 
-  fontSizes: [12, 14, 16, 18, 22, 30, 48, 64],
+  fontSizes: [12, 14, 16, 18, 22, 32, 48, 64],
 
   fontWeights: [300, 400, 500, 700, 900],
 

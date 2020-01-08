@@ -45,7 +45,7 @@ const Tab = styled(Button)`
   color: ${props =>
     props.selected ? props.theme.colors.primary : props.theme.colors.white};
   background-color: ${props =>
-    props.selected ? props.theme.colors.black : props.theme.colors.grays[2]};
+    props.selected ? props.theme.colors.black : props.theme.colors.grays[3]};
   &:focus,
   &:hover {
     color: ${props =>

@@ -39,13 +39,19 @@ const Hero = ({ airtable }) => {
   };
 
   return (
-    <Column width="100%" paddingBottom={[0, '140px']} alignItems="center">
+    <Column
+      width="100%"
+      paddingBottom={[0, '140px']}
+      alignItems="center"
+      position="relative"
+      overflow="hidden"
+    >
       <Row
         display={['none', 'flex']}
         justifyContent="center"
         position="absolute"
-        left={[0, '-200px', '-320px']}
-        top={['90px', '60px', 0]}
+        left={[0, '-200px', '-338px']}
+        top={[0, 0, '-70px']}
         width="100%"
       >
         <img src="/hero-bg.svg" />
@@ -60,21 +66,25 @@ const Hero = ({ airtable }) => {
       >
         <Column maxWidth={14}>
           <Heading
-            maxWidth="675px"
+            maxWidth={['initial', '460px', '675px']}
             fontSize={[6, 7]}
             textAlign={['center', 'left']}
           >
             Manage your devices at the edge
           </Heading>
 
-          <Paragraph maxWidth="500px" textAlign={['center', 'left']}>
-            Update, monitor, and access remote devices and servers with ease.
-            Let us handle the hard infrastructure problems around managing
-            remote hardware so you stay focused on your business.
+          <Paragraph
+            maxWidth={['initial', '460px']}
+            textAlign={['center', 'left']}
+            fontWeight={1}
+          >
+            Deviceplane handles the hard infrastructure problems around managing
+            remote hardware. We make it easy to securely update, monitor, and
+            access remote devices.
           </Paragraph>
         </Column>
 
-        <Column maxWidth="425px" width="100%" marginTop={4}>
+        <Column maxWidth="455px" width="100%" marginTop={4}>
           <Column>
             {submitted ? (
               <Row paddingY={3}>

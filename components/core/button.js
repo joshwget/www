@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
   space,
   layout,
@@ -65,17 +65,7 @@ const variants = {
   }
 };
 
-const defaultProps = {
-  variant: 'primary',
-  fontSize: 0,
-  fontWeight: 2,
-  borderRadius: 1,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
-};
-
-const styles = css`
+export const Btn = styled.button`
 appearance: none;
 border: none;
 outline: none;
@@ -86,6 +76,7 @@ transform: translateZ(0);
 backface-visibility: hidden;
 white-space: nowrap;
 text-transform: uppercase;
+font-size: 14px;
 
 &:disabled {
   cursor: not-allowed;
@@ -96,23 +87,24 @@ text-transform: uppercase;
   outline: none;
 }
 
-padding: ${props => props.theme.sizes[1]}px;
+padding: 8px 16px;
 
 ${variant(variants)}
 
 ${space} ${layout} ${typography} ${color} ${border} ${shadow} ${flexbox}
 `;
+Btn.defaultProps = {
+  variant: 'primary',
+  fontWeight: 2,
+  borderRadius: 1,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center'
+};
 
-export const Btn = styled.button`
-  ${styles}
-`;
-
-Btn.defaultProps = defaultProps;
-
-export const LinkButton = styled.a`
-  ${styles}
-`;
-LinkButton.defaultProps = defaultProps;
+export const LinkButton = styled(Btn).attrs({
+  as: 'a'
+})``;
 
 const Button = ({ href, title, onClick, ...rest }) => {
   if (href) {

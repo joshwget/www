@@ -10,16 +10,16 @@ import {
 } from 'styled-system';
 
 const StyledInput = styled.input`
-  border: 1px solid ${props => props.theme.colors.white};
+  border: 1px solid ${props => props.theme.colors.primary};
   outline: none;
   margin: 0;
   transition: ${props => props.theme.transitions[0]};
   width: 100%;
   caret-color: ${props => props.theme.colors.primary};
+  padding: 8px;
 
   &:not(:disabled):focus {
-    border-color: ${props => props.theme.colors.pureWhite};
-    box-shadow: 0px 0px 0px 1px ${props => props.theme.colors.pureWhite} inset;
+    box-shadow: 0px 0px 0px 1px ${props => props.theme.colors.primary} inset;
   }
 
   &::placeholder {
@@ -35,6 +35,7 @@ const StyledInput = styled.input`
         props.theme.colors.grays[1]} inset !important;
   }
 
+
   ${space} ${border} ${layout} ${color} ${typography} ${shadow}
 `;
 
@@ -48,7 +49,7 @@ StyledInput.defaultProps = {
 };
 
 const Input = forwardRef((props, ref) => {
-  return <StyledInput ref={ref} padding={3} {...props} />;
+  return <StyledInput ref={ref} {...props} />;
 });
 
 export default Input;

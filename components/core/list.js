@@ -37,16 +37,16 @@ export const OrderedList = styled.ol`
 
   & > li:before {
     transform: translateY(-2px);
-    flex: 0 0 16px;
+    flex: 0 0 20px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     content: counter(item);
-    font-size: 11px;
+    font-size: 12px;
     background: ${theme.colors.primary};
     border-radius: 99px;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     font-weight: 500;
     margin-right: 6px;
     color: ${theme.colors.black};

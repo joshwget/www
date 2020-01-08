@@ -1,9 +1,11 @@
 import React from 'react';
 import { default as NextLink } from 'next/link';
 import styled from 'styled-components';
-import { space, layout, color, typography } from 'styled-system';
+import { space, layout, color, typography, position } from 'styled-system';
 
-const A = styled.a`
+import { Box } from './box';
+
+const A = styled(Box).attrs({ as: 'a' })`
   text-decoration: none;
   cursor: pointer;
   color: ${props => props.theme.colors.primary};
@@ -12,7 +14,7 @@ const A = styled.a`
     color: ${props => props.theme.colors.white};
   }
 
-  ${color} ${layout} ${space} ${typography}
+  ${color} ${layout} ${space} ${typography} ${position}
 `;
 
 A.defaultProps = {
