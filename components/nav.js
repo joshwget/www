@@ -7,13 +7,12 @@ import Logo from './icons/logo';
 import { Row, Column, Button, Text, Link, Icon } from './core';
 
 const Overlay = styled(Column)`
-  box-sizing: border-box;
   position: fixed;
   left: 0;
   top: 66px;
   padding: 32px;
   width: 100%;
-  min-height: 100%;
+  height: calc(100% - 64px);
   z-index: 1;
   background-color: ${props => props.theme.colors.black};
 `;
@@ -32,22 +31,19 @@ const NavLink = styled(Link)`
 `;
 
 const MobileNavLinkContainer = styled(Row)`
-  margin-left: ${props => (props.nested ? '32px' : 0)};
+  margin-left: ${props => (props.nested ? '16px' : 0)};
   margin-right: 0;
   margin-bottom: 16px;
   &:last-child {
     margin-bottom: 0;
   }
+  color: ${props =>
+    props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
 `;
 
 const MobileNavLink = styled(NavLink)`
   margin-right: 0;
-  color: ${props =>
-    props.active
-      ? props.theme.colors.primary
-      : props.nested
-      ? props.theme.colors.grays[8]
-      : props.theme.colors.white};
+  color: ${props => (props.active ? props.theme.colors.primary : 'inherit')};
 `;
 
 const MobileMenu = ({ show, pathname }) => {
@@ -101,7 +97,7 @@ const MobileMenu = ({ show, pathname }) => {
           <Column
             borderLeft={0}
             borderColor={isDocs ? 'primary' : 'white'}
-            paddingLeft={6}
+            paddingLeft={4}
             marginBottom={4}
           >
             {docRoutes.map(routes =>

@@ -75,7 +75,6 @@ const Features = () => (
       </Row>
 
       <Row
-        marginY={[0, 0, 6]}
         justifyContent="space-between"
         alignSelf="stretch"
         alignItems={['center', 'center', 'initial']}

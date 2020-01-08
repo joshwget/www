@@ -85,7 +85,7 @@ const DocLink = styled(Link)`
       ? props.theme.colors.grays[10]
       : props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes[1]}px;
-  margin: ${props => (props.nested ? '12px 0 0 18px' : '12px 0 0')};
+  margin: ${props => (props.nested ? '12px 0 0 16px' : '12px 0 0')};
 
   &:first-child {
     margin-top: 0;

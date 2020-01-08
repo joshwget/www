@@ -1,34 +1,37 @@
-const Logo = ({ size = 32 }) => (
-  <svg
+import React from 'react';
+
+import { Row } from '../core';
+
+const Logo = ({ size = 32, color = 'white' }) => (
+  <Row
     width={size}
-    viewBox="0 0 65 58"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+    height={size}
+    alignItems="center"
+    justifyContent="center"
+    overflow="hidden"
   >
-    <path
-      d="M31.7472 28.5007L47.6012 1.98701L62.9089 28.5L47.5873 55.0373L31.7472 28.5007Z"
-      fill="black"
-      stroke="white"
-      strokeWidth="3"
-    />
-    <path
-      d="M21.7472 28.5007L37.6012 1.98701L52.9089 28.5L37.5873 55.0373L21.7472 28.5007Z"
-      fill="black"
-      stroke="white"
-      strokeWidth="3"
-    />
-    <path
-      d="M11.7472 28.5007L27.6012 1.98701L42.9089 28.5L27.5873 55.0373L11.7472 28.5007Z"
-      fill="black"
-      stroke="white"
-      strokeWidth="3"
-    />
-    <path
-      d="M17.1718 0.756602L17.1718 0.756633L17.1757 0.75C17.3681 0.416665 17.8492 0.416666 18.0417 0.749998L33.9192 28.25C34.0085 28.4047 34.0085 28.5953 33.9192 28.75L18.0275 56.2749C17.8367 56.6054 17.3608 56.6089 17.1652 56.2812L0.735443 28.7567C0.641145 28.5987 0.641221 28.4017 0.73564 28.2438L17.1718 0.756602Z"
-      fill="white"
-      stroke="white"
-    />
-  </svg>
+    <svg
+      width={175}
+      height={152}
+      viewBox="0 0 175 152"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M119.2 39.7L159.2 108.3L134.1 151.8L94.3 83.5999H40L65.4 39.7H119.2Z"
+        fill={color}
+      />
+      <path
+        d="M127.8 145.6H46.6L6 75.3L46.6 5H127.8L167.4 73.6"
+        stroke={color}
+        strokeWidth="10"
+        strokeMiterlimit="3"
+        strokeLinecap="square"
+      />
+    </svg>
+  </Row>
 );
 
 export default Logo;
