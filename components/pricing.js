@@ -76,7 +76,7 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
     }}
     padding={5}
     height={['auto', 'auto', '320px']}
-    marginTop={[8, 8, 0]}
+    marginTop={8}
     flex={['0 0 200px', '0 0 200px', '0 0 230px', '0 0 270px']}
   >
     <Column>
