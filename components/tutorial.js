@@ -40,7 +40,7 @@ const Tab = styled(Button)`
   text-decoration: none !important;
   box-shadow: none !important;
   border-color: none !important;
-  width: 103px !important;
+  width: 96px !important;
 
   color: ${props =>
     props.selected ? props.theme.colors.primary : props.theme.colors.white};
