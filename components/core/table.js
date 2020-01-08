@@ -50,6 +50,9 @@ const Table = ({ children }) => (
         padding: 8px 24px 8px 16px;
         vertical-align: top;
       }
+      table :global(tbody tr:first-child td) {
+        border-top: none;
+      }
     `}</style>
   </table>
 );
