@@ -46,7 +46,7 @@ const content = [
 ];
 
 const Container = ({ title, body, icon }) => (
-  <Column maxWidth={12} margin={6}>
+  <Column maxWidth={12} marginTop={6} marginX={6}>
     <Icon color="primary" size={26} icon={icon} marginBottom={4} />
 
     <Heading variant="tertiary" fontSize={4}>
@@ -64,7 +64,6 @@ const Features = () => (
       </Heading>
 
       <Row
-        marginTop={6}
         justifyContent="space-between"
         alignItems={['center', 'center', 'initial']}
         alignSelf="stretch"

@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import {
   Column,
   Row,
@@ -40,29 +38,46 @@ const Hero = ({ airtable }) => {
   };
 
   return (
-    <Column width="100%" paddingBottom="160px" alignItems="center">
+    <Column
+      width="100%"
+      paddingBottom={[0, '140px', '160px']}
+      alignItems="center"
+    >
       <Row
+        display={['none', 'flex']}
         justifyContent="center"
         position="absolute"
-        left="-400px"
-        top="0px"
+        left={[0, '-200px', '-320px']}
+        top={['90px', '60px', 0]}
         width="100%"
       >
-        <img src="/bg.svg" />
+        <img src="/hero-bg.svg" />
       </Row>
 
-      <Section alignItems="flex-start" position="relative" padding={6}>
+      <Section
+        alignItems={['center', 'initial']}
+        position="relative"
+        padding={6}
+        paddingTop={[0, 6]}
+        bg={['black', 'initial']}
+      >
         <Column maxWidth={14}>
-          <Heading maxWidth="675px">Manage your devices at the edge</Heading>
+          <Heading
+            maxWidth="675px"
+            fontSize={[6, 7]}
+            textAlign={['center', 'left']}
+          >
+            Manage your devices at the edge
+          </Heading>
 
-          <Paragraph maxWidth="500px">
+          <Paragraph maxWidth="500px" textAlign={['center', 'left']}>
             Update, monitor, and access remote devices and servers with ease.
             Let us handle the hard infrastructure problems around managing
             remote hardware so you stay focused on your business.
           </Paragraph>
         </Column>
 
-        <Column maxWidth="425px" width="100%">
+        <Column maxWidth="425px" width="100%" marginTop={4}>
           <Column>
             {/* <div>
               <span>
@@ -70,7 +85,7 @@ const Hero = ({ airtable }) => {
               </span>
             </div> */}
             <Form onSubmit={handleSubmit}>
-              <Row>
+              <Row flexDirection={['column', 'row']}>
                 <Input
                   required
                   type="email"
@@ -78,16 +93,21 @@ const Hero = ({ airtable }) => {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                 />
-                <Button title="Request a demo" marginLeft={2} />
+                <Button
+                  title="Request a demo"
+                  marginTop={[2, 0]}
+                  marginLeft={[0, 2]}
+                />
               </Row>
             </Form>
           </Column>
 
-          <Row>
+          <Row flex={1} justifyContent={['center', 'initial', 'initial']}>
             <Button
-              marginTop={4}
+              marginTop={6}
               title="Chat with us"
               variant="secondary"
+              width={['100%', 'initial']}
               onClick={() => window.Intercom('show')}
             />
           </Row>

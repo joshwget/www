@@ -67,7 +67,12 @@ const Posting = ({ title, location, body }) => (
     marginX={4}
     marginTop={6}
   >
-    <Row justifyContent="space-between" alignItems="center" alignSelf="stretch">
+    <Row
+      justifyContent="space-between"
+      alignItems="center"
+      alignSelf="stretch"
+      marginBottom={2}
+    >
       <Text fontWeight={3} fontSize={5}>
         {title}
       </Text>
@@ -82,7 +87,7 @@ const Posting = ({ title, location, body }) => (
       />
     </Row>
 
-    <Row display={['flex', 'flex', 'none']}>
+    <Row display={['flex', 'flex', 'none']} marginBottom={2}>
       <Button
         variant="text"
         title="Apply"

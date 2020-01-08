@@ -74,7 +74,7 @@ const Tutorial = () => {
         How it works
       </Heading>
 
-      <Row marginTop={5}>
+      <Row marginTop={6}>
         {content.map(({ title }, i) => (
           <Tab selected={i === selection} onClick={() => setSelection(i)}>
             {title}

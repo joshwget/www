@@ -9,11 +9,11 @@ import { Row, Column, Button, Text, Link, Icon } from './core';
 const Overlay = styled(Column)`
   box-sizing: border-box;
   position: fixed;
-  top: 5rem;
   left: 0;
+  top: 66px;
+  padding: 32px;
   width: 100%;
   min-height: 100%;
-  padding: 1rem 2rem;
   z-index: 1;
   background-color: ${props => props.theme.colors.black};
 `;
@@ -31,25 +31,28 @@ const NavLink = styled(Link)`
   font-size: ${props => props.theme.fontSizes[1]}px;
 `;
 
-const MobileNavLink = styled(NavLink)`
+const MobileNavLinkContainer = styled(Row)`
   margin-left: ${props => (props.nested ? '32px' : 0)};
   margin-right: 0;
   margin-bottom: 16px;
-  font-size: ${props => props.theme.fontSizes[3]}px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const MobileNavLink = styled(NavLink)`
+  margin-right: 0;
   color: ${props =>
     props.active
       ? props.theme.colors.primary
       : props.nested
       ? props.theme.colors.grays[8]
       : props.theme.colors.white};
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 `;
 
 const MobileMenu = ({ show, pathname }) => {
-  const [expand, setExpand] = React.useState(pathname.includes('/docs'));
+  const isDocs = pathname.includes('/docs');
+  const [expand, setExpand] = React.useState(isDocs);
 
   if (!show) {
     return null;
@@ -73,44 +76,62 @@ const MobileMenu = ({ show, pathname }) => {
         />
       </Row>
 
-      <Column>
-        <Row onClick={() => setExpand(!expand)}>
-          <MobileNavLink active={expand}>Documentation</MobileNavLink>
+      <Column overflow="auto">
+        <Row
+          onClick={() => setExpand(!expand)}
+          marginBottom={4}
+          alignItems="center"
+        >
+          <MobileNavLink active={isDocs}>Documentation</MobileNavLink>
           <Icon
-            marginLeft={2}
+            marginLeft={4}
             icon={expand ? 'chevron-down' : 'chevron-right'}
-            size={20}
-            color={expand ? 'primary' : 'white'}
+            size={16}
+            color={isDocs ? 'primary' : 'white'}
           />
         </Row>
 
         {expand && (
-          <Column borderLeft={0} paddingLeft={6} marginBottom={4}>
+          <Column
+            borderLeft={0}
+            borderColor={isDocs ? 'primary' : 'white'}
+            paddingLeft={6}
+            marginBottom={4}
+          >
             {docRoutes.map(routes =>
               routes.map(({ href, title, nested }) => (
-                <MobileNavLink
-                  href={href}
-                  nested={nested}
-                  active={title !== 'Managing' && pathname === href}
-                >
-                  {title}
-                </MobileNavLink>
+                <MobileNavLinkContainer key={href} nested={nested}>
+                  <MobileNavLink
+                    href={href}
+                    active={title !== 'Managing' && pathname === href}
+                  >
+                    {title}
+                  </MobileNavLink>
+                </MobileNavLinkContainer>
               ))
             )}
           </Column>
         )}
-        <MobileNavLink href="mailto:support@deviceplane.com">
-          Support
-        </MobileNavLink>
-        <MobileNavLink href="/careers" active={pathname === '/careers'}>
-          Careers
-        </MobileNavLink>
-        <MobileNavLink href="/terms" active={pathname === '/terms'}>
-          Terms of Service
-        </MobileNavLink>
-        <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
-          Privacy Policy
-        </MobileNavLink>
+        <MobileNavLinkContainer>
+          <MobileNavLink href="mailto:support@deviceplane.com">
+            Support
+          </MobileNavLink>
+        </MobileNavLinkContainer>
+        <MobileNavLinkContainer>
+          <MobileNavLink href="/careers" active={pathname === '/careers'}>
+            Careers
+          </MobileNavLink>
+        </MobileNavLinkContainer>
+        <MobileNavLinkContainer>
+          <MobileNavLink href="/terms" active={pathname === '/terms'}>
+            Terms of Service
+          </MobileNavLink>
+        </MobileNavLinkContainer>
+        <MobileNavLinkContainer>
+          <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+            Privacy Policy
+          </MobileNavLink>
+        </MobileNavLinkContainer>
       </Column>
     </Overlay>
   );

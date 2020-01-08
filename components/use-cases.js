@@ -7,8 +7,7 @@ const Container = styled(Column)`
   align-items: center;
 `;
 Container.defaultProps = {
-  width: '130px',
-  margin: 8
+  margin: 6
 };
 
 const Label = styled(Text)`
@@ -24,8 +23,10 @@ Label.defaultProps = {
 const UseCases = () => (
   <Section>
     <Column alignItems="center" marginBottom="80px">
-      <Heading variant="secondary">Support for a variety of hardware</Heading>
-      <Row marginTop={4}>
+      <Heading variant="secondary" textAlign="center">
+        Support for a variety of hardware
+      </Heading>
+      <Row>
         <Row>
           <Container>
             <img
@@ -60,7 +61,9 @@ const UseCases = () => (
     </Column>
 
     <Column alignItems="center">
-      <Heading variant="secondary">Ready for any industry</Heading>
+      <Heading variant="secondary" textAlign="center">
+        Ready for any industry
+      </Heading>
 
       <Row marginTop={4}>
         <Row>

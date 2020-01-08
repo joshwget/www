@@ -61,7 +61,6 @@ const PlanContainer = styled(Motion)`
   flex-direction: column;
   border-radius: 8px;
   padding: 24px;
-  margin: 0 32px;
   background: ${props => props.theme.colors.black};
   border: 1px solid ${props => props.theme.colors.white};
   border-color: ${props => props.theme.colors.white};
@@ -128,7 +127,7 @@ const Pricing = () => {
     <Column position="relative" width="100%" alignItems="center" ref={ref}>
       <Background />
 
-      <Section position="relative">
+      <Section position="relative" paddingX={6}>
         <motion.div
           animate={animate && { opacity: [0, 1] }}
           transition={{ duration: 1, delay: 0.25 }}
@@ -139,7 +138,7 @@ const Pricing = () => {
         </motion.div>
 
         <Row
-          marginTop={9}
+          marginTop={6}
           justifyContent="center"
           flexDirection={['column', 'column', 'row', 'row']}
         >

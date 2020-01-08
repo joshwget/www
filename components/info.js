@@ -4,8 +4,6 @@ import { Column, Row, Heading, Section, Button, Paragraph, Icon } from './core';
 
 const Container = styled(Column)``;
 Container.defaultProps = {
-  padding: 2,
-  borderRadius: 2,
   justifyContent: 'space-between',
   alignItems: 'center',
   textAlign: 'center',
@@ -13,16 +11,13 @@ Container.defaultProps = {
 };
 
 const Info = () => (
-  <Section alignItems="center">
+  <Section alignItems="center" paddingX={6}>
     <Row
       flex={1}
-      alignItems={['center', 'center', 'flex-start']}
-      flexDirection={['column', 'column', 'row']}
-      justifyContent={['initial', 'initial', 'space-between']}
+      alignItems={['center', 'center', 'center', 'flex-start']}
+      flexDirection={['column', 'column', 'column', 'row']}
     >
-      <Container
-        margin={['0 24px 64px 24px', '0 24px 64px 24px', '0 0 0 24px', 0]}
-      >
+      <Container marginBottom={9} marginRight={[0, 0, 0, 9]}>
         <Column alignItems="center">
           <Icon size="32" icon="manual" color="primary" marginBottom={2} />
           <Button
@@ -42,14 +37,7 @@ const Info = () => (
         </Column>
       </Container>
 
-      <Container
-        margin={[
-          '0 24px 64px 24px',
-          '0 24px 64px 24px',
-          '0 24px 64px 24px',
-          '0 0 0 64px'
-        ]}
-      >
+      <Container marginBottom={9}>
         <Column alignItems="center">
           <Icon icon="git-branch" color="primary" size="32" marginBottom={2} />
           <Button
@@ -70,10 +58,7 @@ const Info = () => (
       </Container>
     </Row>
 
-    <Container
-      alignItems="center"
-      margin={['0 24px 64px 24px', '0 24px 64px 24px', '64px 24px 0 24px']}
-    >
+    <Container alignItems="center">
       <Column alignItems="center">
         <Icon color="primary" icon="lock" size="32" marginBottom={3} />
         <Heading variant="tertiary" fontSize={5}>
@@ -85,42 +70,7 @@ const Info = () => (
           variety of security features and controls that you didn't have before.
         </Paragraph>
       </Column>
-
-      {/*
-        <a href="/docs/security">
-          Learn more  <Arrow />
-        </a>
-      */}
     </Container>
-
-    <style jsx>{`
-      @keyframes shift {
-        50% {
-          transform: translateX(5px);
-        }
-      }
-
-      .container:not(:last-child) {
-        margin-right: 2rem;
-      }
-
-      @media screen and (max-width: 900px) {
-        section {
-          align-items: center;
-          justify-content: unset;
-          flex-direction: column;
-        }
-
-        .container {
-          max-width: 28rem;
-          margin: 2rem 0 !important;
-        }
-
-        .container:last-child {
-          margin-bottom: 0 !important;
-        }
-      }
-    `}</style>
   </Section>
 );
 

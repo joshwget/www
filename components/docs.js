@@ -123,7 +123,7 @@ const Docs = ({ title, children }) => {
         maxWidth={theme.pageWidth}
         width="100%"
         margin="0 auto"
-        paddingX={6}
+        paddingX={[0, 0, 6]}
       >
         <Column bg="black" minWidth="220px" display={['none', 'none', 'flex']}>
           {routeGroups.map((routes, index) => (
