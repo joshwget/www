@@ -44,7 +44,7 @@ const Legal = ({ title, lastUpdated, children }) => {
           </Text>
         </Column>
 
-        <Box width="100%" maxWidth={theme.pageWidth} padding={8} paddingTop={6}>
+        <Box width="100%" maxWidth={theme.pageWidth} padding={6} paddingY={4}>
           <MDX>{children}</MDX>
         </Box>
       </Column>

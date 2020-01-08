@@ -20,25 +20,23 @@ const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base(AIRTABLE_BASE);
 
 const Home = () => (
   <>
-    <Nav />
+    <Nav transparent />
 
-    <main>
-      <Column alignItems="center">
-        <Hero airtable={base} />
+    <Column alignItems="center">
+      <Hero airtable={base} />
 
-        <UseCases />
+      <UseCases />
 
-        <Features />
+      <Features />
 
-        <Tutorial />
+      <Tutorial />
 
-        <Info />
+      <Info />
 
-        <Pricing />
+      <Pricing />
 
-        <CTA />
-      </Column>
-    </main>
+      <CTA />
+    </Column>
 
     <Footer />
 

@@ -23,7 +23,7 @@ Label.defaultProps = {
 
 const UseCases = () => (
   <Section>
-    <Column alignItems="center" marginBottom="96px">
+    <Column alignItems="center" marginBottom="80px">
       <Heading variant="secondary">Support for a variety of hardware</Heading>
       <Row marginTop={4}>
         <Row>

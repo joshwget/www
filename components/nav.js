@@ -123,6 +123,7 @@ const StyledNav = styled.nav`
   z-index: 2;
   max-width: ${props => props.theme.pageWidth}px;
   align-self: stretch;
+  background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
   padding: ${props => props.theme.sizes[3]}px ${props => props.theme.sizes[4]}px;
 `;
@@ -145,13 +146,17 @@ const Name = () => (
   </Link>
 );
 
-const Nav = () => {
+const Nav = ({ transparent }) => {
   const [overlay, setOverlay] = React.useState(false);
   const { pathname } = useRouter();
 
   return (
     <>
-      <Row bg="black" justifyContent="center" flex={1}>
+      <Row
+        bg={transparent ? 'transparent' : 'black'}
+        justifyContent="center"
+        flex={1}
+      >
         <StyledNav>
           <Row
             justifyContent="space-between"

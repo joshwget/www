@@ -69,7 +69,7 @@ const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <Section height="400px">
+    <Section height="430px">
       <Heading variant="secondary" textAlign="center">
         How it works
       </Heading>

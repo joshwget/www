@@ -11,12 +11,6 @@ import {
   Form
 } from './core';
 
-const Background = styled.img`
-  position: absolute;
-  top: -40px;
-  right: -300px;
-`;
-
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
@@ -46,14 +40,16 @@ const Hero = ({ airtable }) => {
   };
 
   return (
-    <Column
-      width="100%"
-      paddingBottom="200px"
-      position="relative"
-      overflow="hidden"
-      alignItems="center"
-    >
-      <Background src="/bg.svg" />
+    <Column width="100%" paddingBottom="160px" alignItems="center">
+      <Row
+        justifyContent="center"
+        position="absolute"
+        left="-400px"
+        top="0px"
+        width="100%"
+      >
+        <img src="/bg.svg" />
+      </Row>
 
       <Section alignItems="flex-start" position="relative" padding={6}>
         <Column maxWidth={14}>

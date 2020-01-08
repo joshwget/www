@@ -76,7 +76,7 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
       duration: 0.75,
       ease: 'easeIn'
     }}
-    height={['auto', 'auto', '340px']}
+    height={['auto', 'auto', '320px']}
     margin={['32px 0 0 0', '32px 0 0 0', '0 16px', '0 32px']}
     flex={['0 0 200px', '0 0 200px', '0 0 230px', '0 0 260px']}
   >
@@ -111,8 +111,8 @@ const Background = styled.div`
   left: 0;
   height: 450px;
   background: linear-gradient(
-    165deg,
-    ${props => props.theme.colors.pageBackground} calc(50% - 1px),
+    174deg,
+    transparent calc(50% - 1px),
     ${props => props.theme.colors.black} 50%
   );
   width: 100vw;
@@ -125,13 +125,7 @@ const Pricing = () => {
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Column
-      position="relative"
-      width="100%"
-      alignItems="center"
-      overflow="hidden"
-      ref={ref}
-    >
+    <Column position="relative" width="100%" alignItems="center" ref={ref}>
       <Background />
 
       <Section position="relative">

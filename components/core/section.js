@@ -14,7 +14,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 width: 100%;
-padding: 48px 0;
+padding: 64px 0;
 max-width: ${props => props.theme.pageWidth}px;
   ${space} ${layout} ${color} ${border} ${typography} ${flexbox} ${position}
 `;

@@ -4,6 +4,7 @@ import theme from '../theme';
 import Nav from '../components/nav';
 import Footer from '../components/footer';
 import {
+  Box,
   Row,
   Column,
   Heading,
@@ -63,15 +64,10 @@ const Posting = ({ title, location, body }) => (
     padding={6}
     borderRadius={1}
     maxWidth="500px"
-    marginX={6}
-    marginTop={9}
+    marginX={4}
+    marginTop={6}
   >
-    <Row
-      justifyContent="space-between"
-      alignItems="center"
-      alignSelf="stretch"
-      marginBottom={4}
-    >
+    <Row justifyContent="space-between" alignItems="center" alignSelf="stretch">
       <Text fontWeight={3} fontSize={5}>
         {title}
       </Text>
@@ -86,7 +82,7 @@ const Posting = ({ title, location, body }) => (
       />
     </Row>
 
-    <Row display={['flex', 'flex', 'none']} marginBottom={4}>
+    <Row display={['flex', 'flex', 'none']}>
       <Button
         variant="text"
         title="Apply"
@@ -98,7 +94,7 @@ const Posting = ({ title, location, body }) => (
 
     {/* <Text fontWeight={2}>{location}</Text> */}
 
-    <div>{body}</div>
+    <Box>{body}</Box>
   </Column>
 );
 
@@ -110,7 +106,7 @@ const Careers = () => (
 
     <Nav />
 
-    <Column alignItems="center" paddingBottom={9}>
+    <Column alignItems="center" paddingBottom={6}>
       <Column
         bg="black"
         alignItems="center"
@@ -137,11 +133,12 @@ const Careers = () => (
       </Column>
 
       <Row
-        justifyContent={['initial', 'initial', 'initial', 'space-between']}
+        justifyContent={['initial', 'initial', 'initial', 'center']}
         alignItems={['center', 'center', 'center', 'initial']}
         width="100%"
         maxWidth={theme.pageWidth}
         flexDirection={['column', 'column', 'column', 'row']}
+        paddingX={4}
       >
         {postings.map(props => (
           <Posting {...props} />
