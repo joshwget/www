@@ -72,6 +72,7 @@ const Tutorial = () => {
         <Row marginBottom={[4, 0]}>
           {content.slice(0, 2).map(({ title }, i) => (
             <Tab
+              key={title}
               title={title}
               selected={i === selection}
               onClick={() => setSelection(i)}
@@ -83,6 +84,7 @@ const Tutorial = () => {
         <Row>
           {content.slice(2, 4).map(({ title }, i) => (
             <Tab
+              key={title}
               title={title}
               selected={i + 2 === selection}
               onClick={() => setSelection(i + 2)}

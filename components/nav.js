@@ -82,7 +82,13 @@ const MobileMenu = ({ show, pathname }) => {
           marginBottom={4}
           alignItems="center"
         >
-          <MobileNavLink active={isDocs}>Documentation</MobileNavLink>
+          <Text
+            color={isDocs ? 'primary' : 'white'}
+            fontSize={1}
+            fontWeight={2}
+          >
+            Documentation
+          </Text>
           <Icon
             marginLeft={4}
             icon={expand ? 'chevron-down' : 'chevron-right'}
@@ -100,7 +106,7 @@ const MobileMenu = ({ show, pathname }) => {
           >
             {docRoutes.map(routes =>
               routes.map(({ href, title, nested }) => (
-                <MobileNavLinkContainer key={href} nested={nested}>
+                <MobileNavLinkContainer key={title} nested={nested}>
                   <MobileNavLink
                     href={href}
                     active={title !== 'Managing' && pathname === href}

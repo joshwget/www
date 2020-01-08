@@ -59,8 +59,8 @@ const Footer = () => (
         <Row flexDirection={['column', 'row']}>
           {links.map(({ href, label, mailto }) => (
             <FooterLink
+              key={label}
               margin={['0 0 16px 0', 4]}
-              key={href}
               href={mailto ? `mailto:${mailto}` : href}
             >
               {label}
