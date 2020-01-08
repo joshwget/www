@@ -25,6 +25,7 @@ const CTA = () => {
           marginTop={6}
           flexDirection={['column', 'column', 'row']}
           alignItems="center"
+          justifyContent="center"
         >
           <Button
             title="Chat with us"
