@@ -29,7 +29,7 @@ const UseCases = () => (
         <Row>
           <Container>
             <img
-              src="/single-board-computer.svg"
+              src="/use-cases/single-board-computer.svg"
               height={80}
               alt="Single-board computer"
             />
@@ -37,18 +37,22 @@ const UseCases = () => (
           </Container>
 
           <Container>
-            <img src="/iot-gateway.svg" height={80} alt="IoT gateways" />
+            <img
+              src="/use-cases/iot-gateway.svg"
+              height={80}
+              alt="IoT gateways"
+            />
             <Label>IoT Gateways</Label>
           </Container>
         </Row>
         <Row>
           <Container marginBottom={8}>
-            <img src="/servers.svg" height={80} alt="Edge servers" />
+            <img src="/use-cases/servers.svg" height={80} alt="Edge servers" />
             <Label>Edge Servers</Label>
           </Container>
 
           <Container>
-            <img src="/drones.svg" height={80} alt="Drones" />
+            <img src="/use-cases/drones.svg" height={80} alt="Drones" />
             <Label>Drones</Label>
           </Container>
         </Row>
@@ -61,29 +65,29 @@ const UseCases = () => (
       <Row marginTop={4}>
         <Row>
           <Container>
-            <img src="/machine-learning.svg" height={80} />
+            <img src="/use-cases/machine-learning.svg" height={80} />
             <Label style={{ whiteSpace: 'nowrap' }}>Machine Learning</Label>
           </Container>
 
           <Container>
-            <img src="/consumer.svg" height={80} />
+            <img src="/use-cases/consumer.svg" height={80} />
             <Label>Consumer</Label>
           </Container>
 
           <Container>
-            <img src="/medical.svg" height={80} />
+            <img src="/use-cases/medical.svg" height={80} />
             <Label>Medical</Label>
           </Container>
         </Row>
 
         <Row alignItems="flex-end">
           <Container>
-            <img src="/robotics.svg" height={80} />
+            <img src="/use-cases/robotics.svg" height={80} />
             <Label>Robotics</Label>
           </Container>
 
           <Container>
-            <img src="/industrial.svg" height={80} />
+            <img src="/use-cases/industrial.svg" height={80} />
             <Label>Industrial</Label>
           </Container>
         </Row>

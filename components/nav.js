@@ -125,7 +125,7 @@ const StyledNav = styled.nav`
   align-self: stretch;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
-  padding: ${props => props.theme.sizes[3]}px ${props => props.theme.sizes[4]}px;
+  padding: 32px;
 `;
 
 const Name = () => (
