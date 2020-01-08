@@ -48,7 +48,6 @@ const plans = [
       <Button
         title="Contact sales"
         href="mailto:sales@deviceplane.com"
-        paddingY="8px"
         borderColor="primary"
         marginTop="auto"
       />
@@ -100,7 +99,8 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
         </Row>
       ))}
     </Column>
-    {bottom}
+
+    <Column marginTop={6}>{bottom}</Column>
   </PlanContainer>
 );
 
@@ -116,6 +116,15 @@ const Background = styled.div`
   );
   width: 100vw;
   bottom: 0;
+
+  @media (max-width: 800px) {
+    height: 1100px;
+    background: linear-gradient(
+      165deg,
+      transparent calc(50% - 1px),
+      ${props => props.theme.colors.black} 50%
+    );
+  }
 `;
 
 const Pricing = () => {

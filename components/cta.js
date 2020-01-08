@@ -31,14 +31,14 @@ const CTA = () => {
             variant="secondary"
             onClick={() => window.Intercom('show')}
             width="100%"
-            maxWidth="300px"
+            maxWidth="340px"
             marginBottom={[6, 6, 0]}
             marginRight={[0, 0, 6]}
           />
           <Button
             title="Start now"
             width="100%"
-            maxWidth="300px"
+            maxWidth="340px"
             href="https://cloud.deviceplane.com/register"
           />
         </Row>
