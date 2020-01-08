@@ -116,14 +116,9 @@ const DocNav = styled(Column).attrs({
 const getHref = str => `#${str.toLowerCase().replace(/ /g, '-')}`;
 
 const TableOfContents = ({ links }) => (
-  <DocNav
-    flex={0}
-    display={['none', 'none', 'flex']}
-    alignItems="flex-start"
-    alignSelf="flex-start"
-  >
+  <DocNav flex={0} alignItems="flex-start" alignSelf="flex-start">
     <Text
-      fontSize="10px"
+      fontSize={0}
       fontWeight={2}
       marginBottom={2}
       color="grays.6"
@@ -170,20 +165,19 @@ const Docs = ({ title, children }) => {
       <Nav />
 
       <Row
-        maxWidth={theme.pageWidth}
+        maxWidth={['initial', 'initial', theme.pageWidth]}
         marginX="auto"
         overflow="visible"
         flex={1}
         width="100%"
-        paddingX={6}
       >
-        <Column bg="black" flex={1} paddingRight={6}>
-          <DocNav
-            flex={0}
-            position="sticky"
-            top={6}
-            display={['none', 'none', 'flex']}
-          >
+        <Column
+          bg="black"
+          flex={1}
+          paddingX={6}
+          display={['none', 'none', 'flex']}
+        >
+          <DocNav flex={0} position="sticky" top={6}>
             {routeGroups.map((routes, index) => (
               <React.Fragment key={routes[0].title}>
                 {routes.map(({ href, title, nested }) => (
@@ -213,7 +207,7 @@ const Docs = ({ title, children }) => {
                 display={['flex', 'flex', 'flex', 'none']}
                 paddingTop={4}
                 paddingBottom={6}
-                marginBottom={4}
+                marginBottom={6}
                 borderBottom={0}
                 borderColor="grays.5"
               >
@@ -227,7 +221,7 @@ const Docs = ({ title, children }) => {
         {contentLinks.length > 0 && (
           <Column
             position="sticky"
-            paddingLeft={6}
+            paddingX={6}
             top={6}
             alignSelf="flex-start"
             display={['none', 'none', 'none', 'flex']}

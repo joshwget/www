@@ -64,8 +64,8 @@ const Posting = ({ title, location, body }) => (
     padding={6}
     borderRadius={1}
     maxWidth="500px"
-    marginX={4}
-    marginTop={6}
+    marginX={[4, 4, 6]}
+    marginTop={9}
   >
     <Row
       justifyContent="space-between"
@@ -111,7 +111,7 @@ const Careers = () => (
 
     <Nav />
 
-    <Column alignItems="center" paddingBottom={6}>
+    <Column alignItems="center" paddingBottom={9}>
       <Column
         bg="black"
         alignItems="center"

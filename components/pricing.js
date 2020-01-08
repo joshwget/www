@@ -76,7 +76,7 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
     }}
     padding={5}
     height={['auto', 'auto', '320px']}
-    margin={['32px 0 0 0', '32px 0 0 0', 0]}
+    marginTop={[8, 8, 0]}
     flex={['0 0 200px', '0 0 200px', '0 0 230px', '0 0 270px']}
   >
     <Column>
@@ -121,7 +121,7 @@ const Background = styled.div`
   bottom: 0;
 
   @media (max-width: 800px) {
-    height: 1100px;
+    height: 1150px;
     background: linear-gradient(
       165deg,
       transparent calc(50% - 1px),
@@ -150,7 +150,6 @@ const Pricing = () => {
         </motion.div>
 
         <Row
-          marginTop={6}
           alignSelf={['initial', 'initial', 'stretch']}
           justifyContent={['initial', 'initial', 'space-between']}
           flexDirection={['column', 'column', 'row']}

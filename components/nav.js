@@ -35,7 +35,11 @@ const MobileNavLink = styled(NavLink)`
   margin-right: 0;
   margin-bottom: 16px;
   color: ${props =>
-    props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
+    props.active
+      ? props.theme.colors.primary
+      : props.nested
+      ? props.theme.colors.grays[8]
+      : props.theme.colors.white};
 
   &:last-child {
     margin-bottom: 0;
@@ -63,7 +67,7 @@ const MobileMenu = ({ show, pathname }) => {
 
         <Button
           title="Start now"
-          href="https://cloud.deviceplane.com/register"
+          href="https://cloud.deviceplane.com/signup"
           flex={1}
         />
       </Row>
@@ -101,10 +105,16 @@ const MobileMenu = ({ show, pathname }) => {
             {docRoutes.map(routes =>
               routes.map(({ href, title, nested }) => (
                 <MobileNavLink
-                  href={href}
                   key={title}
+                  href={href}
                   nested={nested}
-                  active={title !== 'Managing' && pathname === href}
+                  active={
+                    title === 'Quick start'
+                      ? pathname === '/docs' || pathname === href
+                      : title === 'Managing'
+                      ? false
+                      : pathname === href
+                  }
                 >
                   {title}
                 </MobileNavLink>
@@ -198,7 +208,7 @@ const Nav = ({ transparent }) => {
               </NavLink>
               <Button
                 title="Sign up"
-                href="https://cloud.deviceplane.com/register"
+                href="https://cloud.deviceplane.com/signup"
               />
             </Row>
           </Row>

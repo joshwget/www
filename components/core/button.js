@@ -75,8 +75,10 @@ transition: ${props => props.theme.transitions[0]};
 transform: translateZ(0);
 backface-visibility: hidden;
 white-space: nowrap;
-text-transform: uppercase;
 font-size: 14px;
+padding: 10px 16px;
+text-transform: uppercase;
+text-renderering: geometricPercision;
 
 &:disabled {
   cursor: not-allowed;
@@ -86,8 +88,6 @@ font-size: 14px;
 &:focus {
   outline: none;
 }
-
-padding: 8px 16px;
 
 ${variant(variants)}
 
@@ -104,11 +104,17 @@ Btn.defaultProps = {
 
 export const LinkButton = styled(Btn).attrs({
   as: 'a'
-})``;
+})`
+  text-decoration: none;
+`;
 
 const Button = ({ href, title, onClick, ...rest }) => {
   if (href) {
-    return <LinkButton {...rest}>{title}</LinkButton>;
+    return (
+      <LinkButton href={href} {...rest}>
+        {title}
+      </LinkButton>
+    );
   }
 
   return (

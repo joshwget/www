@@ -22,7 +22,7 @@ const CTA = () => {
 
         <Row
           alignSelf="stretch"
-          marginTop={6}
+          marginTop={8}
           flexDirection={['column', 'column', 'row']}
           alignItems="center"
           justifyContent="center"

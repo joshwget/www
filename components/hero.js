@@ -41,7 +41,7 @@ const Hero = ({ airtable }) => {
   return (
     <Column
       width="100%"
-      paddingBottom={[0, '140px']}
+      paddingBottom={[0, '140px', '180px']}
       alignItems="center"
       position="relative"
       overflow="hidden"
@@ -50,7 +50,7 @@ const Hero = ({ airtable }) => {
         display={['none', 'flex']}
         justifyContent="center"
         position="absolute"
-        left={[0, '-200px', '-338px']}
+        left={[0, '-200px', '-280px']}
         top={[0, 0, '-70px']}
         width="100%"
       >
@@ -62,6 +62,7 @@ const Hero = ({ airtable }) => {
         position="relative"
         padding={6}
         paddingTop={[0, 6]}
+        paddingBottom={[9, 6]}
         bg={['black', 'initial']}
       >
         <Column maxWidth={14}>

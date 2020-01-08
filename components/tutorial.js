@@ -63,12 +63,12 @@ const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <Section height={['initial', '430px']} paddingX={6}>
+    <Section height={['initial', '450px']} paddingX={6}>
       <Heading variant="secondary" textAlign="center">
         How it works
       </Heading>
 
-      <Row marginTop={6} flexDirection={['column', 'row']}>
+      <Row marginTop={8} flexDirection={['column', 'row']}>
         <Row marginBottom={[4, 0]}>
           {content.slice(0, 2).map(({ title }, i) => (
             <Tab
