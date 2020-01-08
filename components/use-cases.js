@@ -116,7 +116,7 @@ const UseCases = () => (
         <Heading
           variant="secondary"
           textAlign={['center', 'center', 'center', 'left']}
-          maxWidth={['unset', 'unset', 'unset', '500px']}
+          maxWidth={['unset', 'unset', 'unset', '310px']}
         >
           Ready for any industry
         </Heading>
