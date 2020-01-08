@@ -39,11 +39,7 @@ const Hero = ({ airtable }) => {
   };
 
   return (
-    <Column
-      width="100%"
-      paddingBottom={[0, '140px', '160px']}
-      alignItems="center"
-    >
+    <Column width="100%" paddingBottom={[0, '140px']} alignItems="center">
       <Row
         display={['none', 'flex']}
         justifyContent="center"

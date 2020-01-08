@@ -21,12 +21,12 @@ Label.defaultProps = {
 };
 
 const UseCases = () => (
-  <Section>
+  <Section paddingX={6}>
     <Column alignItems="center" marginBottom="80px">
       <Heading variant="secondary" textAlign="center">
         Support for a variety of hardware
       </Heading>
-      <Row>
+      <Row flexDirection={['column', 'column', 'row']}>
         <Row>
           <Container>
             <img
