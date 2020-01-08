@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
-import { Column, Row, Heading, Section, Button, Paragraph, Icon } from './core';
+import {
+  Column,
+  Row,
+  Heading,
+  Section,
+  Button,
+  Paragraph,
+  Icon,
+  Text
+} from './core';
 
 const Container = styled(Column)``;
 Container.defaultProps = {
@@ -19,10 +28,19 @@ const Info = () => (
     >
       <Container marginBottom={9} marginRight={[0, 0, 0, 9]}>
         <Column alignItems="center">
-          <Icon size="32" icon="manual" color="primary" marginBottom={2} />
           <Button
             variant="text"
-            title="Documentation"
+            title={
+              <Column alignItems="center">
+                <Icon
+                  icon="manual"
+                  color="primary"
+                  size="32"
+                  marginBottom={2}
+                />
+                <Text color="inherit">Documentation</Text>
+              </Column>
+            }
             href="/docs"
             marginBottom={3}
           />
@@ -39,10 +57,19 @@ const Info = () => (
 
       <Container marginBottom={9}>
         <Column alignItems="center">
-          <Icon icon="git-branch" color="primary" size="32" marginBottom={2} />
           <Button
             variant="text"
-            title="Source code"
+            title={
+              <Column alignItems="center">
+                <Icon
+                  icon="git-branch"
+                  color="primary"
+                  size="32"
+                  marginBottom={2}
+                />
+                <Text color="inherit">Source code</Text>
+              </Column>
+            }
             href="https://github.com/deviceplane/deviceplane"
             marginBottom={3}
           />
