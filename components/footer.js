@@ -69,8 +69,8 @@ const Footer = () => (
         </Row>
       </FooterNav>
 
-      <Text fontSize={0} fontWeight={2} color="grays.5">
-        © deviceplane
+      <Text fontSize={0} color="grays.5">
+        © Deviceplane
       </Text>
     </Container>
   </StyledFooter>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Section, Heading, Row, Column, Text } from './core';
+import { Section, Heading, Row, Button, Text } from './core';
 
 const content = [
   {
@@ -31,37 +31,31 @@ const content = [
   }
 ];
 
-const Tab = styled.button`
-  appearance: none;
+const Tab = styled(Button)`
   border: none;
-  outline: none;
-  user-select: none;
-  border-radius: 4px;
-  transition: ${props => props.theme.transitions[0]};
-  border-radius: 4px;
   padding: 10px 14px;
   cursor: ${props => (props.selected ? 'default' : 'pointer')};
   text-transform: uppercase;
   white-space: nowrap;
-
-  &:not(:last-child) {
-    margin-right: 18px;
-  }
   text-decoration: none !important;
+  box-shadow: none !important;
+  border-color: none !important;
+  width: 100px !important;
 
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  font-weight: ${props => props.theme.fontWeights[2]};
   color: ${props =>
     props.selected ? props.theme.colors.primary : props.theme.colors.white};
   background-color: ${props =>
-    props.selected ? props.theme.colors.black : 'transparent'};
+    props.selected ? props.theme.colors.black : props.theme.colors.grays[2]};
+  &:focus,
   &:hover {
     color: ${props =>
       props.selected
         ? props.theme.colors.primary
-        : props.theme.colors.pureWhite};
+        : props.theme.colors.pureWhite} !important;
     background-color: ${props =>
-      props.selected ? props.theme.colors.black : props.theme.colors.grays[2]};
+      props.selected
+        ? props.theme.colors.black
+        : props.theme.colors.grays[0]} !important;
   }
 `;
 
@@ -69,106 +63,45 @@ const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <Section height="430px">
+    <Section height={['initial', '430px']} paddingX={6}>
       <Heading variant="secondary" textAlign="center">
         How it works
       </Heading>
 
-      <Row marginTop={6}>
-        {content.map(({ title }, i) => (
-          <Tab selected={i === selection} onClick={() => setSelection(i)}>
-            {title}
-          </Tab>
-        ))}
-      </Row>
-
-      {/* <Row>
-        <Row>
+      <Row marginTop={6} flexDirection={['column', 'row']}>
+        <Row marginBottom={[4, 0]}>
           {content.slice(0, 2).map(({ title }, i) => (
             <Tab
-              className={i === selection ? 'selected' : ''}
+              title={title}
+              selected={i === selection}
               onClick={() => setSelection(i)}
-            >
-              {title}
-            </Tab>
+              marginX={[2, 4]}
+            />
           ))}
         </Row>
 
         <Row>
           {content.slice(2, 4).map(({ title }, i) => (
             <Tab
-              className={i + 2 === selection ? 'selected' : ''}
+              title={title}
+              selected={i + 2 === selection}
               onClick={() => setSelection(i + 2)}
-            >
-              {title}
-            </Tab>
+              marginX={[2, 4]}
+            />
           ))}
         </Row>
-      </Row> */}
+      </Row>
 
       <Row
         bg="black"
         borderRadius={2}
-        padding={7}
+        padding={6}
         marginTop={4}
         maxWidth={13}
         border={0}
       >
         <Text>{content[selection].body}</Text>
       </Row>
-
-      <style jsx>{`
-        section {
-          color: var(--white);
-          align-items: center;
-          min-height: 21rem;
-        }
-
-        h4 {
-          transition: color 100ms;
-          color: var(--primary);
-        }
-
-        .container {
-          display: flex;
-          flex-direction: column;
-          border-radius: 8px;
-          padding: 2rem;
-          margin: 0 2rem;
-          background: #000;
-          border: 1px solid var(--primary);
-          max-width: 25rem;
-        }
-        .tablet {
-          display: none;
-        }
-
-        @media screen and (max-width: 700px) {
-          .tutorial {
-            min-height: unset;
-          }
-          .tablet {
-            display: flex;
-          }
-          .desktop {
-            display: none;
-          }
-          .buttons {
-            flex-direction: column;
-            align-items: center;
-            justify-content: unset;
-          }
-          .group {
-            margin-bottom: 2rem;
-          }
-          .group:last-child {
-            margin-bottom: 1rem;
-          }
-          button {
-            margin: 0 1rem;
-          }
-        }
-      `}</style>
     </Section>
   );
 };
