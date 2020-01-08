@@ -30,20 +30,16 @@ const NavLink = styled(Link)`
   font-size: ${props => props.theme.fontSizes[1]}px;
 `;
 
-const MobileNavLinkContainer = styled(Row)`
+const MobileNavLink = styled(NavLink)`
   margin-left: ${props => (props.nested ? '16px' : 0)};
   margin-right: 0;
   margin-bottom: 16px;
+  color: ${props =>
+    props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
+
   &:last-child {
     margin-bottom: 0;
   }
-  color: ${props =>
-    props.nested ? props.theme.colors.grays[8] : props.theme.colors.white};
-`;
-
-const MobileNavLink = styled(NavLink)`
-  margin-right: 0;
-  color: ${props => (props.active ? props.theme.colors.primary : 'inherit')};
 `;
 
 const MobileMenu = ({ show, pathname }) => {
@@ -72,9 +68,8 @@ const MobileMenu = ({ show, pathname }) => {
         />
       </Row>
 
-      <Column overflow="auto">
+      <Column overflow="auto" alignItems="flex-start">
         <Row
-          alignSelf="flex-start"
           onClick={() => setExpand(!expand)}
           marginBottom={4}
           alignItems="center"
@@ -101,41 +96,35 @@ const MobileMenu = ({ show, pathname }) => {
             borderColor={isDocs ? 'primary' : 'white'}
             paddingLeft={4}
             marginBottom={4}
+            alignItems="flex-start"
           >
             {docRoutes.map(routes =>
               routes.map(({ href, title, nested }) => (
-                <MobileNavLinkContainer key={title} nested={nested}>
-                  <MobileNavLink
-                    href={href}
-                    active={title !== 'Managing' && pathname === href}
-                  >
-                    {title}
-                  </MobileNavLink>
-                </MobileNavLinkContainer>
+                <MobileNavLink
+                  href={href}
+                  key={title}
+                  nested={nested}
+                  active={title !== 'Managing' && pathname === href}
+                >
+                  {title}
+                </MobileNavLink>
               ))
             )}
           </Column>
         )}
-        <MobileNavLinkContainer>
-          <MobileNavLink href="mailto:support@deviceplane.com">
-            Support
-          </MobileNavLink>
-        </MobileNavLinkContainer>
-        <MobileNavLinkContainer>
-          <MobileNavLink href="/careers" active={pathname === '/careers'}>
-            Careers
-          </MobileNavLink>
-        </MobileNavLinkContainer>
-        <MobileNavLinkContainer>
-          <MobileNavLink href="/terms" active={pathname === '/terms'}>
-            Terms of Service
-          </MobileNavLink>
-        </MobileNavLinkContainer>
-        <MobileNavLinkContainer>
-          <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
-            Privacy Policy
-          </MobileNavLink>
-        </MobileNavLinkContainer>
+
+        <MobileNavLink href="mailto:support@deviceplane.com">
+          Support
+        </MobileNavLink>
+        <MobileNavLink href="/careers" active={pathname === '/careers'}>
+          Careers
+        </MobileNavLink>
+        <MobileNavLink href="/terms" active={pathname === '/terms'}>
+          Terms of Service
+        </MobileNavLink>
+        <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+          Privacy Policy
+        </MobileNavLink>
       </Column>
 
       <style jsx global>

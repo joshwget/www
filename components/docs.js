@@ -125,12 +125,16 @@ const Docs = ({ title, children }) => {
         margin="0 auto"
         paddingX={[0, 0, 6]}
       >
-        <Column bg="black" minWidth="220px" display={['none', 'none', 'flex']}>
+        <Column
+          bg="black"
+          minWidth="220px"
+          display={['none', 'none', 'flex']}
+          alignItems="flex-start"
+        >
           {routeGroups.map((routes, index) => (
             <>
               {routes.map(({ href, title, nested }) => (
                 <DocLink
-                  key={title}
                   href={href}
                   nested={nested}
                   active={
