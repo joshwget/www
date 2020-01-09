@@ -65,7 +65,7 @@ class Document extends NextDocument {
           <meta httpEquiv="Content-Language" content="en" />
           <meta
             name="description"
-            content="Update, monitor, and access remote devices and servers with ease. Let us handle the hard infrastructure problems around managing remote hardware so you stay focused on your business."
+            content="Deviceplane handles the hard infrastructure problems around managing remote hardware. We make it easy to securely update, monitor, and access remote devices."
           />
 
           <link rel="icon" href="/favicon.ico" />
