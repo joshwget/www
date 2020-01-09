@@ -74,77 +74,79 @@ const MobileMenu = ({ show, pathname }) => {
         />
       </Row>
 
-      <Column overflow="auto" alignItems="flex-start" flex={1}>
-        <Row
-          onClick={() => setExpand(!expand)}
-          marginBottom={4}
-          alignItems="center"
-          style={{ cursor: 'pointer' }}
-        >
-          <Text
-            color={isDocs ? 'primary' : 'white'}
-            fontSize={1}
-            fontWeight={2}
-          >
-            Documentation
-          </Text>
-          <Icon
-            marginLeft={4}
-            icon={expand ? 'chevron-down' : 'chevron-right'}
-            size={16}
-            color={isDocs ? 'primary' : 'white'}
-          />
-        </Row>
-
-        {expand && (
-          <Column
-            borderLeft={0}
-            borderColor={isDocs ? 'primary' : 'white'}
-            paddingLeft={4}
+      <Column height="100%" overflow="hidden">
+        <Column alignItems="flex-start" flex={1} overflow="auto">
+          <Row
+            onClick={() => setExpand(!expand)}
             marginBottom={4}
-            alignItems="flex-start"
+            alignItems="center"
+            style={{ cursor: 'pointer' }}
           >
-            {docRoutes.map(routes =>
-              routes.map(({ href, title, nested }) => (
-                <MobileNavLink
-                  key={title}
-                  href={href}
-                  nested={nested}
-                  active={
-                    title === 'Quick start'
-                      ? pathname === '/docs' || pathname === href
-                      : title === 'Managing'
-                      ? false
-                      : pathname === href
-                  }
-                >
-                  {title}
-                </MobileNavLink>
-              ))
-            )}
-          </Column>
-        )}
+            <Text
+              color={isDocs ? 'primary' : 'white'}
+              fontSize={1}
+              fontWeight={2}
+            >
+              Documentation
+            </Text>
+            <Icon
+              marginLeft={4}
+              icon={expand ? 'chevron-down' : 'chevron-right'}
+              size={16}
+              color={isDocs ? 'primary' : 'white'}
+            />
+          </Row>
 
-        <Row marginBottom={4}>
-          <MobileNavLink href="mailto:support@deviceplane.com">
-            Support
-          </MobileNavLink>
-        </Row>
-        <Row marginBottom={4}>
-          <MobileNavLink href="/careers" active={pathname === '/careers'}>
-            Careers
-          </MobileNavLink>
-        </Row>
-        <Row marginBottom={4}>
-          <MobileNavLink href="/terms" active={pathname === '/terms'}>
-            Terms of Service
-          </MobileNavLink>
-        </Row>
-        <Row marginBottom={4}>
-          <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
-            Privacy Policy
-          </MobileNavLink>
-        </Row>
+          {expand && (
+            <Column
+              borderLeft={0}
+              borderColor={isDocs ? 'primary' : 'white'}
+              paddingLeft={4}
+              marginBottom={4}
+              alignItems="flex-start"
+            >
+              {docRoutes.map(routes =>
+                routes.map(({ href, title, nested }) => (
+                  <MobileNavLink
+                    key={title}
+                    href={href}
+                    nested={nested}
+                    active={
+                      title === 'Quick start'
+                        ? pathname === '/docs' || pathname === href
+                        : title === 'Managing'
+                        ? false
+                        : pathname === href
+                    }
+                  >
+                    {title}
+                  </MobileNavLink>
+                ))
+              )}
+            </Column>
+          )}
+
+          <Row marginBottom={4} flex={0}>
+            <MobileNavLink href="mailto:support@deviceplane.com">
+              Support
+            </MobileNavLink>
+          </Row>
+          <Row marginBottom={4} flex={0}>
+            <MobileNavLink href="/careers" active={pathname === '/careers'}>
+              Careers
+            </MobileNavLink>
+          </Row>
+          <Row marginBottom={4} flex={0}>
+            <MobileNavLink href="/terms" active={pathname === '/terms'}>
+              Terms of Service
+            </MobileNavLink>
+          </Row>
+          <Row marginBottom={4} flex={0}>
+            <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+              Privacy Policy
+            </MobileNavLink>
+          </Row>
+        </Column>
       </Column>
 
       <style jsx global>
