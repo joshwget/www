@@ -1,17 +1,20 @@
 import theme from '../../theme';
 
 const Table = ({ children }) => (
-  <table>
-    {children}
+  <div className="container">
+    <table>{children}</table>
 
     <style jsx>{`
+      .container {
+        margin: 16px 0;
+        overflow-x: auto;
+      }
       table {
         border: 1px solid ${theme.colors.white};
         border-radius: 4px;
         position: relative;
         border-spacing: 0;
         width: 100%;
-        margin: 16px 0;
       }
       table :global(thead) {
         margin-top: 4px;
@@ -54,7 +57,7 @@ const Table = ({ children }) => (
         border-top: none;
       }
     `}</style>
-  </table>
+  </div>
 );
 
 export default Table;

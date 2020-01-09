@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { routeGroups as docRoutes } from './docs';
 import Logo from './icons/logo';
-import { Row, Column, Button, Text, Link, Icon } from './core';
+import { Box, Row, Column, Button, Text, Link, Icon } from './core';
 
 const Overlay = styled(Column)`
   position: fixed;
@@ -123,18 +123,26 @@ const MobileMenu = ({ show, pathname }) => {
           </Column>
         )}
 
-        <MobileNavLink href="mailto:support@deviceplane.com">
-          Support
-        </MobileNavLink>
-        <MobileNavLink href="/careers" active={pathname === '/careers'}>
-          Careers
-        </MobileNavLink>
-        <MobileNavLink href="/terms" active={pathname === '/terms'}>
-          Terms of Service
-        </MobileNavLink>
-        <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
-          Privacy Policy
-        </MobileNavLink>
+        <Row marginBottom={4}>
+          <MobileNavLink href="mailto:support@deviceplane.com">
+            Support
+          </MobileNavLink>
+        </Row>
+        <Row marginBottom={4}>
+          <MobileNavLink href="/careers" active={pathname === '/careers'}>
+            Careers
+          </MobileNavLink>
+        </Row>
+        <Row marginBottom={4}>
+          <MobileNavLink href="/terms" active={pathname === '/terms'}>
+            Terms of Service
+          </MobileNavLink>
+        </Row>
+        <Row marginBottom={4}>
+          <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+            Privacy Policy
+          </MobileNavLink>
+        </Row>
       </Column>
 
       <style jsx global>
