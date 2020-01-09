@@ -87,12 +87,12 @@ const UseCases = () => (
         <Row marginRight={[0, 0, 0, 6]} flexDirection={['column', 'row']}>
           <Column marginRight={[0, 9]}>
             {hardware.slice(0, 2).map(props => (
-              <Container {...props} />
+              <Container key={props.label} {...props} />
             ))}
           </Column>
           <Column>
             {hardware.slice(2, 4).map(props => (
-              <Container {...props} />
+              <Container key={props.label} {...props} />
             ))}
           </Column>
         </Row>
@@ -123,12 +123,12 @@ const UseCases = () => (
         <Row flexDirection={['column', 'row']}>
           <Column marginRight={[0, 9]}>
             {industries.slice(0, 2).map(props => (
-              <Container {...props} />
+              <Container key={props.label} {...props} />
             ))}
           </Column>
           <Column alignItems="flex-end">
             {industries.slice(2, 4).map(props => (
-              <Container {...props} />
+              <Container key={props.label} {...props} />
             ))}
           </Column>
         </Row>
