@@ -40,6 +40,8 @@ const MobileNavLink = styled(NavLink)`
       : props.nested
       ? props.theme.colors.grays[8]
       : props.theme.colors.white};
+  flex: 0;
+  white-space: nowrap;
 
   &:last-child {
     margin-bottom: 0;
@@ -72,7 +74,7 @@ const MobileMenu = ({ show, pathname }) => {
         />
       </Row>
 
-      <Column overflow="auto" alignItems="flex-start" height="100%">
+      <Column overflow="auto" alignItems="flex-start" flex={1}>
         <Row
           onClick={() => setExpand(!expand)}
           marginBottom={4}
