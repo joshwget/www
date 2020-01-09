@@ -53,6 +53,7 @@ const Hero = ({ airtable }) => {
         left={[0, '-200px', '-280px']}
         top={[0, 0, '-70px']}
         width="100%"
+        height="100%"
       >
         <img src="/hero-bg.svg" />
       </Row>
