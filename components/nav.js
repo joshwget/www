@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
@@ -30,27 +30,37 @@ const NavLink = styled(Link)`
   font-size: ${props => props.theme.fontSizes[1]}px;
 `;
 
-const MobileNavLink = styled(NavLink)`
+const MobileNavLinkContainer = styled(Box)`
   margin-left: ${props => (props.nested ? '16px' : 0)};
   margin-right: 0;
   margin-bottom: 16px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  flex-shrink: 0;
+`;
+
+const MobileNavLink = styled(NavLink)`
   color: ${props =>
     props.active
       ? props.theme.colors.primary
       : props.nested
       ? props.theme.colors.grays[8]
       : props.theme.colors.white};
-  flex: 0;
   white-space: nowrap;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 `;
 
 const MobileMenu = ({ show, pathname }) => {
   const isDocs = pathname.includes('/docs');
   const [expand, setExpand] = React.useState(isDocs);
+
+  useEffect(() => {
+    if (show) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'initial';
+    }
+  }, [show]);
 
   if (!show) {
     return null;
@@ -58,7 +68,12 @@ const MobileMenu = ({ show, pathname }) => {
 
   return (
     <Overlay>
-      <Row alignSelf="stretch" justifyContent="center" marginBottom={6}>
+      <Row
+        alignSelf="stretch"
+        justifyContent="center"
+        marginBottom={6}
+        flexShrink={0}
+      >
         <Button
           title="Log in"
           variant="secondary"
@@ -74,39 +89,40 @@ const MobileMenu = ({ show, pathname }) => {
         />
       </Row>
 
-      <Column height="100%" overflow="hidden">
-        <Column alignItems="flex-start" flex={1} overflow="auto">
-          <Row
-            onClick={() => setExpand(!expand)}
-            marginBottom={4}
-            alignItems="center"
-            style={{ cursor: 'pointer' }}
+      <Column overflowY="auto">
+        <Row
+          onClick={() => setExpand(!expand)}
+          marginBottom={4}
+          alignItems="center"
+          style={{ cursor: 'pointer' }}
+          flexShrink={0}
+        >
+          <Text
+            color={isDocs ? 'primary' : 'white'}
+            fontSize={1}
+            fontWeight={2}
           >
-            <Text
-              color={isDocs ? 'primary' : 'white'}
-              fontSize={1}
-              fontWeight={2}
-            >
-              Documentation
-            </Text>
-            <Icon
-              marginLeft={4}
-              icon={expand ? 'chevron-down' : 'chevron-right'}
-              size={16}
-              color={isDocs ? 'primary' : 'white'}
-            />
-          </Row>
+            Documentation
+          </Text>
+          <Icon
+            marginLeft={4}
+            icon={expand ? 'chevron-down' : 'chevron-right'}
+            size={16}
+            color={isDocs ? 'primary' : 'white'}
+          />
+        </Row>
 
-          {expand && (
-            <Column
-              borderLeft={0}
-              borderColor={isDocs ? 'primary' : 'white'}
-              paddingLeft={4}
-              marginBottom={4}
-              alignItems="flex-start"
-            >
-              {docRoutes.map(routes =>
-                routes.map(({ href, title, nested }) => (
+        {expand && (
+          <Column
+            flexShrink={0}
+            borderLeft={0}
+            borderColor={isDocs ? 'primary' : 'white'}
+            paddingLeft={4}
+            marginBottom={4}
+          >
+            {docRoutes.map(routes =>
+              routes.map(({ href, title, nested }) => (
+                <MobileNavLinkContainer nested={nested}>
                   <MobileNavLink
                     key={title}
                     href={href}
@@ -121,41 +137,35 @@ const MobileMenu = ({ show, pathname }) => {
                   >
                     {title}
                   </MobileNavLink>
-                ))
-              )}
-            </Column>
-          )}
+                </MobileNavLinkContainer>
+              ))
+            )}
+          </Column>
+        )}
 
-          <Row marginBottom={4} flex={0}>
-            <MobileNavLink href="mailto:support@deviceplane.com">
-              Support
-            </MobileNavLink>
-          </Row>
-          <Row marginBottom={4} flex={0}>
-            <MobileNavLink href="/careers" active={pathname === '/careers'}>
-              Careers
-            </MobileNavLink>
-          </Row>
-          <Row marginBottom={4} flex={0}>
-            <MobileNavLink href="/terms" active={pathname === '/terms'}>
-              Terms of Service
-            </MobileNavLink>
-          </Row>
-          <Row marginBottom={4} flex={0}>
-            <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
-              Privacy Policy
-            </MobileNavLink>
-          </Row>
-        </Column>
+        <MobileNavLinkContainer>
+          <MobileNavLink href="mailto:support@deviceplane.com">
+            Support
+          </MobileNavLink>
+        </MobileNavLinkContainer>
+
+        <MobileNavLinkContainer>
+          <MobileNavLink href="/careers" active={pathname === '/careers'}>
+            Careers
+          </MobileNavLink>
+        </MobileNavLinkContainer>
+        <MobileNavLinkContainer>
+          <MobileNavLink href="/terms" active={pathname === '/terms'}>
+            Terms of Service
+          </MobileNavLink>
+        </MobileNavLinkContainer>
+
+        <MobileNavLinkContainer>
+          <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+            Privacy Policy
+          </MobileNavLink>
+        </MobileNavLinkContainer>
       </Column>
-
-      <style jsx global>
-        {`
-          body {
-            overflow: hidden;
-          }
-        `}
-      </style>
     </Overlay>
   );
 };
