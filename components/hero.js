@@ -1,4 +1,14 @@
-import Arrow from './icons/arrow';
+import {
+  Column,
+  Row,
+  Text,
+  Input,
+  Section,
+  Button,
+  Heading,
+  Paragraph,
+  Form
+} from './core';
 
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
@@ -29,230 +39,92 @@ const Hero = ({ airtable }) => {
   };
 
   return (
-    <div className="hero">
-      <section>
-        <img alt="Black triangle background" className="bg" src="/bg.svg" />
+    <Column
+      width="100%"
+      paddingBottom={[0, '140px', '180px']}
+      alignItems="center"
+      position="relative"
+      overflow="hidden"
+    >
+      <Row
+        display={['none', 'flex']}
+        justifyContent="center"
+        position="absolute"
+        left={[0, '-200px', '-280px']}
+        top={[0, 0, '-70px']}
+        width="100%"
+      >
+        <img src="/hero-bg.svg" />
+      </Row>
 
-        <div className="container">
-          <h1>Manage your devices at the edge</h1>
+      <Section
+        alignItems={['center', 'initial']}
+        position="relative"
+        padding={6}
+        paddingTop={[0, 6]}
+        paddingBottom={[9, 6]}
+        bg={['black', 'initial']}
+      >
+        <Column maxWidth={14}>
+          <Heading
+            maxWidth={['initial', '460px', '675px']}
+            fontSize={[6, 7]}
+            textAlign={['center', 'left']}
+          >
+            Manage your devices at the edge
+          </Heading>
 
-          <div className="content">
-            <p>
-              Update, monitor, and access remote devices and servers with ease.
-              Let us handle the hard infrastructure problems around managing
-              remote hardware so you stay focused on your business.
-            </p>
-          </div>
+          <Paragraph
+            maxWidth={['initial', '460px']}
+            textAlign={['center', 'left']}
+            fontWeight={1}
+          >
+            Deviceplane handles the hard infrastructure problems around managing
+            remote hardware. We make it easy to securely update, monitor, and
+            access remote devices.
+          </Paragraph>
+        </Column>
 
-          <div className="buttons">
-            <div className="demo-container">
-              <div className="success">
-                <span>
+        <Column maxWidth="455px" width="100%" marginTop={4}>
+          <Column>
+            {submitted ? (
+              <Row paddingY={3}>
+                <Text fontWeight={2} fontSize={1}>
                   Thanks for your interest, we'll reach out as soon as we can.
-                </span>
-              </div>
-              <form onSubmit={handleSubmit} className="demo">
-                <input
-                  required
-                  type="email"
-                  placeholder="Email address"
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                />
-                <button className="request">Request a demo</button>
-              </form>
-            </div>
+                </Text>
+              </Row>
+            ) : (
+              <Form onSubmit={handleSubmit}>
+                <Row flexDirection={['column', 'row']}>
+                  <Input
+                    required
+                    type="email"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                  />
+                  <Button
+                    title="Request a demo"
+                    marginTop={[2, 0]}
+                    marginLeft={[0, 2]}
+                  />
+                </Row>
+              </Form>
+            )}
+          </Column>
 
-            <div>
-              <button className="chat" onClick={() => window.Intercom('show')}>
-                Chat with us
-                <div className="arrow">
-                  <Arrow />
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <style jsx>{`
-        @keyframes shift {
-          50% {
-            transform: translateX(5px);
-          }
-        }
-        section {
-          position: relative;
-          color: var(--white);
-          height: 34rem;
-        }
-
-        h1 {
-          margin: 0 0 1rem 0;
-        }
-
-        .bg {
-          position: absolute;
-          left: -68rem;
-          top: 0rem;
-        }
-
-        .container {
-          position: relative;
-        }
-
-        .content {
-          max-width: 30rem;
-        }
-
-        p {
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .buttons {
-          margin-top: 1rem;
-        }
-
-        .demo-container {
-          height: 3rem;
-          margin-bottom: 1rem;
-          display: inline-flex;
-        }
-
-        .demo {
-          display: ${submitted ? 'none' : 'inline-flex'};
-          align-items: center;
-          border-radius: var(--radius);
-        }
-
-        .demo input {
-          padding: 0.6rem;
-          border-radius: var(--radius);
-          border: 1px solid #fff;
-          outline: none;
-          font-size: 1rem;
-          color: var(--white);
-          width: 16.5rem;
-          background: #000;
-        }
-
-        input::placeholder {
-          font-size: 1rem;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .request {
-          background: var(--primary);
-          color: var(--black);
-          margin-left: 0.5rem;
-          border: 1px solid var(--primary);
-        }
-
-        .request:hover {
-          background-color: var(--black);
-          color: var(--primary);
-        }
-
-        button {
-          appearance: none;
-          outline: none;
-          margin: 0;
-          font-size: 1rem;
-          cursor: pointer;
-          font-weight: 500;
-          padding: 11px 1rem;
-          border-radius: var(--radius);
-          transition: background-color 200ms, color 200ms;
-        }
-
-        .chat {
-          display: flex;
-          background: var(--white);
-          color: var(--black);
-          border: 1px solid var(--white);
-          align-items: center;
-        }
-
-        .chat:hover {
-          color: var(--white);
-          background-color: var(--black);
-        }
-
-        .chat:hover .arrow {
-          animation-name: shift;
-          animation-duration: 1.2s;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
-          animation-fill-mode: forwards;
-          animation-direction: alternate;
-        }
-        .chat:hover :global(svg) {
-          fill: var(--white);
-        }
-
-        .arrow {
-          display: flex;
-          margin-left: 0.75rem;
-        }
-
-        .arrow :global(svg) {
-          fill: var(--black);
-          transition: fill 200ms;
-        }
-
-        .success {
-          display: flex;
-          align-items: center;
-          margin-bottom: 2rem;
-          padding: 0 1.5rem;
-          height: 3rem;
-          border: 2px solid var(--primary);
-          border-radius: var(--radius);
-          color: var(--primary);
-          font-weight: 500;
-          display: ${submitted ? 'inline-flex' : 'none'};
-        }
-
-        @media screen and (max-width: 600px) {
-          section {
-            height: 40rem;
-          }
-          .bg {
-            height: 45rem;
-            left: -88rem;
-          }
-          .demo-container {
-            height: 6rem;
-          }
-          .demo {
-            display: ${submitted ? 'none' : 'flex'};
-            flex-direction: column;
-            flex: 1;
-          }
-          .success {
-            height: 5rem;
-          }
-          .demo input {
-            box-sizing: border-box;
-            width: 100%;
-          }
-          .demo-container {
-            margin-bottom: 1.5rem;
-            width: 100%;
-          }
-          .demo button {
-            margin: 0.5rem 0 0 0;
-          }
-          .demo button,
-          button {
-            width: 100%;
-            align-self: stretch;
-            justify-content: center;
-            padding: 0.8rem 1.25rem;
-          }
-        }
-      `}</style>
-    </div>
+          <Row flex={1} justifyContent={['center', 'initial', 'initial']}>
+            <Button
+              marginTop={6}
+              title="Chat with us"
+              variant="secondary"
+              width={['100%', 'initial']}
+              onClick={() => window.Intercom('show')}
+            />
+          </Row>
+        </Column>
+      </Section>
+    </Column>
   );
 };
 

@@ -1,174 +1,104 @@
-import Link from 'next/link';
+import styled from 'styled-components';
 
-import Arrow from './icons/arrow';
+import {
+  Column,
+  Row,
+  Heading,
+  Section,
+  Button,
+  Paragraph,
+  Icon,
+  Text
+} from './core';
+
+const Container = styled(Column)``;
+Container.defaultProps = {
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  textAlign: 'center',
+  maxWidth: '550px'
+};
 
 const Info = () => (
-  <section>
-    <div className="container">
-      <div>
-        <img src="/code.svg" width={32} height={32} />
-        <h4>Developer focused</h4>
-        <p>
-          Deploying to remote devices should be as easy as deploying to the
-          cloud. We're building modern and accessible tooling so developers can
-          spend less time learning and more time shipping.
-        </p>
-      </div>
+  <Section alignItems="center" paddingX={6}>
+    <Row
+      flex={1}
+      alignItems={['center', 'center', 'center', 'flex-start']}
+      flexDirection={['column', 'column', 'column', 'row']}
+    >
+      <Container marginBottom={9} marginRight={[0, 0, 0, 9]}>
+        <Column alignItems="center">
+          <Button
+            variant="text"
+            title={
+              <Column alignItems="center">
+                <Icon
+                  icon="manual"
+                  color="primary"
+                  size="32"
+                  marginBottom={2}
+                />
+                <Text color="inherit">Documentation</Text>
+              </Column>
+            }
+            href="/docs"
+            marginBottom={3}
+          />
+          <Heading variant="tertiary" fontSize={5}>
+            Developer focused
+          </Heading>
+          <Paragraph>
+            Deploying to remote devices should be as easy as deploying to the
+            cloud. We're building modern and accessible tooling so developers
+            can spend less time learning and more time shipping.
+          </Paragraph>
+        </Column>
+      </Container>
 
-      <div className="link">
-        <Link href="/docs">
-          <a>
-            View documentation
-            <div className="arrow">
-              <Arrow />
-            </div>
-          </a>
-        </Link>
-      </div>
-    </div>
+      <Container marginBottom={9}>
+        <Column alignItems="center">
+          <Button
+            variant="text"
+            title={
+              <Column alignItems="center">
+                <Icon
+                  icon="git-branch"
+                  color="primary"
+                  size="32"
+                  marginBottom={2}
+                />
+                <Text color="inherit">Source code</Text>
+              </Column>
+            }
+            href="https://github.com/deviceplane/deviceplane"
+            marginBottom={3}
+          />
+          <Heading variant="tertiary" fontSize={5}>
+            Open source
+          </Heading>
+          <Paragraph>
+            Developer infrastructure is inherently best when open source.
+            Everything we build can be found on our GitHub and is distributed
+            under a permissive open source license.
+          </Paragraph>
+        </Column>
+      </Container>
+    </Row>
 
-    <div className="container">
-      <div>
-        <img src="/github.svg" width={32} height={32} />
-        <h4>Open source</h4>
-        <p>
-          Developer infrastructure is inherently best when open source.
-          Everything we build can be found on our GitHub and is distributed
-          under a permissive open source license.
-        </p>
-      </div>
-
-      <div className="link">
-        <a href="https://github.com/deviceplane/deviceplane">
-          Source code
-          <div className="arrow">
-            <Arrow />
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div className="container">
-      <div>
-        <img src="/lock.svg" width={32} height={32} />
-        <h4>Security conscious</h4>
-        <p>
+    <Container alignItems="center">
+      <Column alignItems="center">
+        <Icon color="primary" icon="lock" size="32" marginBottom={3} />
+        <Heading variant="tertiary" fontSize={5}>
+          Security conscious
+        </Heading>
+        <Paragraph>
           We follow the best security practices across all of our systems to
           ensure your devices are secure. By using us you'll gain access to a
           variety of security features and controls that you didn't have before.
-        </p>
-      </div>
-
-      {/*
-        <a href="/docs/security">
-          Learn more  <Arrow />
-        </a>
-      */}
-    </div>
-
-    <style jsx>{`
-      @keyframes shift {
-        50% {
-          transform: translateX(5px);
-        }
-      }
-
-      section {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      p {
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      h4 {
-        margin: 1rem 0;
-      }
-
-      .container {
-        max-width: 16rem;
-        background-color: var(--black);
-        border-radius: 8px;
-        padding: 1.5rem;
-        color: var(--white);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .container:not(:last-child) {
-        margin-right: 2rem;
-      }
-
-      .row {
-        display: flex;
-      }
-
-      .link {
-        display: flex;
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        font-weight: 500;
-        color: var(--black);
-        transition: background-color 200ms, border-color 200ms, color 200ms;
-        border-radius: var(--radius);
-        padding: 8px 1rem;
-        background: var(--white);
-        cursor: pointer;
-        border-radius: var(--radius);
-        border: 1px solid var(--white);
-        margin-top: 1rem;
-      }
-      a:hover {
-        background-color: var(--black);
-        color: var(--white);
-        border-color: var(--white);
-      }
-      a:hover .arrow {
-        animation-name: shift;
-        animation-duration: 1.2s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: infinite;
-        animation-fill-mode: forwards;
-        animation-direction: alternate;
-      }
-
-      a:hover :global(svg) {
-        fill: var(--white);
-      }
-
-      .arrow {
-        display: flex;
-        margin-left: 0.5rem;
-      }
-
-      .arrow :global(svg) {
-        transition: fill 200ms;
-      }
-
-      @media screen and (max-width: 900px) {
-        section {
-          align-items: center;
-          justify-content: unset;
-          flex-direction: column;
-        }
-
-        .container {
-          max-width: 28rem;
-          margin: 2rem 0 !important;
-        }
-
-        .container:last-child {
-          margin-bottom: 0 !important;
-        }
-      }
-    `}</style>
-  </section>
+        </Paragraph>
+      </Column>
+    </Container>
+  </Section>
 );
 
 export default Info;

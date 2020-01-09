@@ -2,8 +2,6 @@ import Docs from '../../../components/docs';
 
 <Docs title="Self-hosted Local Setup">
 
-# Self-hosted Local Setup
-
 This guide will teach you how to setup a self-hosted install of Deviceplane on your local network.
 
 ## Requirements
@@ -14,7 +12,9 @@ The first node will run the Deviceplane backend. Only `x86 / amd64` is supported
 
 The second node will run the Deviceplane agent and connect to the node running the Deviceplane backend.
 
-## Steps
+## Instructions
+
+The following steps will guide you through the setup process.
 
 ### Running the backend
 
@@ -36,13 +36,13 @@ Now that you have a user and project created in your setup you're ready to add a
 
 For example, suppose the command was in the following format.
 
-```
+```shell
 curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
 ```
 
 The command should be modified to include `CONTROLLER=http://<backend_ip_address>:8080/api` as in the following command.
 
-```
+```shell
 curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=http://<backend_ip_address>:8080/api bash
 ```
 

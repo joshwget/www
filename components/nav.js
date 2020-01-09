@@ -1,410 +1,243 @@
 import React from 'react';
-import Link from 'next/link';
+import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
-import { routes as docRoutes } from './docs';
-import Arrow from './icons/arrow';
+import { routeGroups as docRoutes } from './docs';
+import Logo from './icons/logo';
+import { Row, Column, Button, Text, Link, Icon } from './core';
 
-const MobileNav = ({ show, pathname }) => {
-  const [expand, setExpand] = React.useState(pathname.includes('/docs'));
+const Overlay = styled(Column)`
+  position: fixed;
+  left: 0;
+  top: 66px;
+  padding: 32px;
+  width: 100%;
+  height: calc(100% - 64px);
+  z-index: 1;
+  background-color: ${props => props.theme.colors.black};
+`;
+
+const NavLink = styled(Link)`
+  text-decoration: none !important;
+  transition: ${props => props.theme.transitions[0]};
+  color: ${props =>
+    props.active ? props.theme.colors.primary : props.theme.colors.white};
+  &:hover {
+    color: ${props =>
+      props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
+  }
+  margin-right: 24px;
+  font-size: ${props => props.theme.fontSizes[1]}px;
+`;
+
+const MobileNavLink = styled(NavLink)`
+  margin-left: ${props => (props.nested ? '16px' : 0)};
+  margin-right: 0;
+  margin-bottom: 16px;
+  color: ${props =>
+    props.active
+      ? props.theme.colors.primary
+      : props.nested
+      ? props.theme.colors.grays[8]
+      : props.theme.colors.white};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const MobileMenu = ({ show, pathname }) => {
+  const isDocs = pathname.includes('/docs');
+  const [expand, setExpand] = React.useState(isDocs);
+
+  if (!show) {
+    return null;
+  }
 
   return (
-    <div className="overlay">
-      <div className="container">
-        <div className="row">
-          <a className="login" href="https://cloud.deviceplane.com/login">
-            <span>Log in</span>
-            <div className="arrow">
-              <Arrow />
-            </div>
-          </a>
+    <Overlay>
+      <Row alignSelf="stretch" justifyContent="center" marginBottom={6}>
+        <Button
+          title="Log in"
+          variant="secondary"
+          href="https://cloud.deviceplane.com/login"
+          marginRight={6}
+          flex={1}
+        />
 
-          <a className="signup" href="https://cloud.deviceplane.com/register">
-            Sign up
-          </a>
-        </div>
+        <Button
+          title="Start now"
+          href="https://cloud.deviceplane.com/signup"
+          flex={1}
+        />
+      </Row>
 
-        <ul>
-          <li>
-            <div className="expander" onClick={() => setExpand(!expand)}>
-              <a>Documentation</a>
-              <img className="caret" src="/caret.svg" />
-            </div>
-          </li>
-          <div className="docs">
-            <li className="doc-route">
-              <Link href="/docs/quick-start">
-                <a
-                  className={
-                    pathname === '/docs/quick-start' || pathname === '/docs'
-                      ? 'selected'
-                      : ''
+      <Column overflow="auto" alignItems="flex-start">
+        <Row
+          onClick={() => setExpand(!expand)}
+          marginBottom={4}
+          alignItems="center"
+          style={{ cursor: 'pointer' }}
+        >
+          <Text
+            color={isDocs ? 'primary' : 'white'}
+            fontSize={1}
+            fontWeight={2}
+          >
+            Documentation
+          </Text>
+          <Icon
+            marginLeft={4}
+            icon={expand ? 'chevron-down' : 'chevron-right'}
+            size={16}
+            color={isDocs ? 'primary' : 'white'}
+          />
+        </Row>
+
+        {expand && (
+          <Column
+            borderLeft={0}
+            borderColor={isDocs ? 'primary' : 'white'}
+            paddingLeft={4}
+            marginBottom={4}
+            alignItems="flex-start"
+          >
+            {docRoutes.map(routes =>
+              routes.map(({ href, title, nested }) => (
+                <MobileNavLink
+                  key={title}
+                  href={href}
+                  nested={nested}
+                  active={
+                    title === 'Quick start'
+                      ? pathname === '/docs' || pathname === href
+                      : title === 'Managing'
+                      ? false
+                      : pathname === href
                   }
                 >
-                  Quick start
-                </a>
-              </Link>
-            </li>
-            {docRoutes
-              .slice(1, docRoutes.length)
-              .map(({ href, title, nested }) => (
-                <li
-                  key={href}
-                  className={nested ? 'doc-route nested' : 'doc-route'}
-                >
-                  <Link href={href}>
-                    <a className={href === pathname ? 'selected' : ''}>
-                      {title}
-                    </a>
-                  </Link>
-                </li>
-              ))}
-          </div>
-          <li>
-            <a href="mailto:support@deviceplane.com">Support</a>
-          </li>
-          <li>
-            <Link href="/careers">
-              <a className={pathname.includes('/careers') ? 'selected' : ''}>
-                Careers
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/legal">
-              <a className={pathname.includes('/legal') ? 'selected' : ''}>
-                Legal & Privacy
-              </a>
-            </Link>
-          </li>
-        </ul>
-      </div>
+                  {title}
+                </MobileNavLink>
+              ))
+            )}
+          </Column>
+        )}
 
-      <style jsx>
+        <MobileNavLink href="mailto:support@deviceplane.com">
+          Support
+        </MobileNavLink>
+        <MobileNavLink href="/careers" active={pathname === '/careers'}>
+          Careers
+        </MobileNavLink>
+        <MobileNavLink href="/terms" active={pathname === '/terms'}>
+          Terms of Service
+        </MobileNavLink>
+        <MobileNavLink href="/privacy" active={pathname === '/privacy'}>
+          Privacy Policy
+        </MobileNavLink>
+      </Column>
+
+      <style jsx global>
         {`
-          @keyframes slideDown {
-            100% {
-              transform: translateY(0);
-            }
-          }
-          @keyframes fadeIn {
-            100% {
-              opacity: 1;
-            }
-          }
-
-          a {
-            text-decoration: none;
-            color: var(--white);
-          }
-          .overlay {
-            display: ${show ? 'block' : 'none'};
-            box-sizing: border-box;
-            position: absolute;
-            top: 5rem;
-            left: 0;
-            width: 100%;
-            height: 45rem;
-            min-height: 100%;
-            padding: 1rem 2rem;
-            background-color: var(--black);
-            z-index: 1;
-          }
-          .row {
-            display: flex;
-            margin-bottom: 2rem;
-          }
-          .login,
-          .signup {
-            display: flex;
-            flex: 1;
-            height: 2.5rem;
-            justify-content: center;
-            align-items: center;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: var(--radius);
-          }
-          .login {
-            color: var(--white);
-            border: 1px solid var(--white);
-            margin-right: 1rem;
-          }
-          .signup {
-            color: var(--black);
-            background-color: var(--primary);
-            border: 2px solid var(--primary);
-          }
-          .arrow {
-            display: flex;
-            margin-left: 0.75rem;
-          }
-          .arrow :global(svg) {
-            fill: var(--white);
-          }
-          ul {
-            margin: 0;
-            padding: 0;
-            list-style-type: none;
-          }
-          li a {
-            border-bottom: 2px solid var(--black);
-          }
-          li a.selected {
-            border-color: var(--primary);
-          }
-          li:not(:last-child) {
-            margin-bottom: 1.25rem;
-          }
-          .docs {
-            border-left: 2px solid var(--primary);
-            margin-bottom: 1.25rem;
-            display: ${expand ? 'block' : 'none'};
-            user-select: none;
-          }
-          .doc-route {
-            margin-left: 1rem;
-          }
-          .doc-route.nested {
-            margin-left: 2rem;
-          }
-          .expander {
-            display: flex;
-            align-items: start;
-          }
-          .expander a {
-            color: ${expand ? 'var(--primary)' : 'var(--white)'};
-          }
-          .caret {
-            width: 0.8rem;
-            margin-left: 0.5rem;
-            transform: rotate(${expand ? 0 : -90}deg);
-            padding-top: 0.25rem;
+          body {
+            overflow: hidden;
           }
         `}
       </style>
-    </div>
+    </Overlay>
   );
 };
 
-const Nav = () => {
+const StyledNav = styled.nav`
+  display: flex;
+  flex: 1;
+  max-width: ${props => props.theme.pageWidth}px;
+  align-self: stretch;
+  padding: 32px;
+`;
+
+const Header = styled.header`
+  display: flex;
+  z-index: 2;
+  background-color: ${props => (props.transparent ? 'transparent' : 'black')};
+  justify-content: center;
+  background-color: ${props => props.theme.colors.black};
+  color: ${props => props.theme.colors.white};
+`;
+
+const Name = () => (
+  <Link href="/">
+    <Row marginRight={6} alignItems="center">
+      <Logo />
+
+      <Text
+        fontWeight={2}
+        fontSize="26px"
+        color="#fff"
+        marginLeft="8px"
+        style={{ textTransform: 'none' }}
+      >
+        deviceplane
+      </Text>
+    </Row>
+  </Link>
+);
+
+const Nav = ({ transparent }) => {
   const [overlay, setOverlay] = React.useState(false);
   const { pathname } = useRouter();
 
   return (
-    <nav>
-      <div className="container desktop">
-        <div className="left">
-          <Link href="/">
-            <div className="logo">
-              <img src="/logo-white.svg" />
+    <>
+      <Header transparent={transparent}>
+        <StyledNav>
+          <Row
+            justifyContent="space-between"
+            flex={1}
+            alignItems="center"
+            display={['none', 'none', 'flex']}
+          >
+            <Name />
+            <Row justifyContent="flex-end" alignItems="center">
+              <NavLink href="/docs" active={pathname.includes('docs')}>
+                Documentation
+              </NavLink>
+              <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
+              <NavLink href="https://cloud.deviceplane.com/login">
+                Log in
+              </NavLink>
+              <Button
+                title="Sign up"
+                href="https://cloud.deviceplane.com/signup"
+              />
+            </Row>
+          </Row>
 
-              <a className="name">deviceplane</a>
-            </div>
-          </Link>
-          <ul>
-            <li className="link">
-              <Link href="/docs">
-                <a className={pathname.includes('/docs') ? 'selected' : ''}>
-                  Documentation
-                </a>
-              </Link>
-            </li>
-            <li className="link">
-              <a href="mailto:support@deviceplane.com">Support</a>
-            </li>
-          </ul>
-        </div>
-        <div className="right">
-          <a href="https://cloud.deviceplane.com/login" className="login">
-            Log in
-          </a>
-          <a href="https://cloud.deviceplane.com/register" className="signup">
-            Sign up
-          </a>
-        </div>
-      </div>
+          <Row
+            flex={1}
+            justifyContent="space-between"
+            display={['flex', 'flex', 'none']}
+          >
+            <Name />
+            <Row>
+              <Button
+                variant="icon"
+                title={
+                  <Icon
+                    icon={overlay ? 'cross' : 'menu'}
+                    size={24}
+                    color="white"
+                  />
+                }
+                onClick={() => setOverlay(!overlay)}
+              />
+            </Row>
+          </Row>
+        </StyledNav>
+      </Header>
 
-      <MobileNav show={overlay} pathname={pathname} />
-
-      <div className="mobile">
-        <div className="container">
-          <div className="left">
-            <Link href="/">
-              <div className="logo">
-                <img src="/logo-white.svg" />
-
-                <a className="name">deviceplane</a>
-              </div>
-            </Link>
-          </div>
-          <div className="right">
-            <button onClick={() => setOverlay(!overlay)}>
-              <img className="cancel" src="/cancel.svg" />
-              <img className="hamburger" src="/hamburger.svg" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          100% {
-            opacity: 1;
-          }
-        }
-        nav {
-          display: flex;
-          justify-content: center;
-          background-color: var(--black);
-          color: var(--white);
-        }
-        .container {
-          max-width: var(--page-width);
-          padding: 2rem 2rem;
-          display: flex;
-          flex: 1;
-          justify-content: space-between;
-          align-items: center;
-        }
-        ul {
-          margin: 0;
-          padding: 0;
-          display: flex;
-        }
-        li {
-          display: flex;
-        }
-        a {
-          text-decoration: none;
-          user-select: none;
-        }
-
-        .link {
-          margin: 0 1rem;
-        }
-        .link a {
-          font-size: 18px;
-          color: var(--white);
-          margin-top: 4px;
-          padding-bottom: 4px;
-          border-bottom: 2px solid var(--black);
-          transition: border-color 200ms, color 200ms;
-        }
-        .link a:not(.selected):hover {
-          border-color: var(--primary);
-        }
-        .link a.selected {
-          color: var(--primary);
-        }
-
-        .name {
-          font-size: 28px;
-          font-weight: 300;
-          margin-right: 1rem;
-        }
-        .login {
-          font-size: 18px;
-          margin-top: 4px;
-          padding-bottom: 4px;
-          margin-right: 2rem;
-          color: var(--white);
-          border-bottom: 2px solid var(--black);
-          transition: border-color 200ms;
-        }
-        .login:hover {
-          border-color: var(--primary);
-        }
-        .signup {
-          background: var(--primary);
-          border: 1px solid var(--primary);
-          border-radius: var(--radius);
-          padding: 11px 1rem;
-          color: var(--black);
-          font-weight: 500;
-          transition: background 200ms, color 200ms;
-        }
-        .signup:hover {
-          background-color: var(--black);
-          color: var(--primary);
-        }
-        .left,
-        .right {
-          display: flex;
-          align-items: center;
-        }
-        .logo {
-          display: flex;
-          align-items: center;
-          cursor: pointer;
-          margin-right: 1rem;
-          margin-bottom: 0.55rem;
-        }
-        img {
-          width: 3rem;
-          height: 3rem;
-        }
-
-        .mobile {
-          position: relative;
-          display: none;
-          flex: 1;
-          background-color: var(--black);
-          z-index: 2;
-          height: 5rem;
-        }
-
-        .mobile button {
-          padding: 0;
-          margin: 0;
-          background: none;
-          border: none;
-          outline: none;
-          appearance: none;
-        }
-
-        .hamburger,
-        .cancel {
-          opacity: 0;
-          animation: fadeIn 200ms;
-          animation-fill-mode: forwards;
-        }
-
-        .hamburger {
-          display: ${overlay ? 'none' : 'block'};
-          width: 1.5rem;
-        }
-        .cancel {
-          display: ${overlay ? 'block' : 'none'};
-          width: 1.25rem;
-        }
-
-        @media screen and (max-width: 760px) {
-          .logo {
-            margin-right: 0.5rem;
-          }
-          .name {
-            display: none;
-          }
-        }
-
-        @media screen and (max-width: 600px) {
-          .mobile {
-            display: flex;
-            align-items: center;
-          }
-          .name {
-            display: flex;
-          }
-          .desktop {
-            display: none;
-          }
-          .container {
-            padding: 1rem 2rem;
-          }
-        }
-      `}</style>
-    </nav>
+      <MobileMenu show={overlay} pathname={pathname} />
+    </>
   );
 };
 

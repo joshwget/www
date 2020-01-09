@@ -1,9 +1,17 @@
-import React from 'react';
+import Head from 'next/head';
 
-import Page from '../components/page';
-import Head from '../components/head';
+import theme from '../theme';
 import Nav from '../components/nav';
 import Footer from '../components/footer';
+import {
+  Box,
+  Row,
+  Column,
+  Heading,
+  Paragraph,
+  Text,
+  Button
+} from '../components/core';
 
 const postings = [
   {
@@ -11,19 +19,19 @@ const postings = [
     location: 'San Francisco, CA',
     body: (
       <>
-        <p>
+        <Paragraph>
           As a software engineer, you'll own projects both big and small and be
           responsible for complete ownership and delivery of these projects. Our
           philosophy is that all engineers should be both product-minded and
-          involved in product decisions day to day. This means that all engineers
-          will be responsible for everything from product design to technical
-          architecture and implementation.
-        </p>
-        <p>
+          involved in product decisions day to day. This means that all
+          engineers will be responsible for everything from product design to
+          technical architecture and implementation.
+        </Paragraph>
+        <Paragraph>
           If you're excited by open source, working on a highly technical
-          products, and tackling the hardest engineering problems then we'd
-          like to talk to you!
-        </p>
+          products, and tackling the hardest engineering problems then we'd like
+          to talk to you!
+        </Paragraph>
       </>
     )
   },
@@ -32,133 +40,119 @@ const postings = [
     location: 'San Francisco, CA',
     body: (
       <>
-        <p>
+        <Paragraph>
           As a developer advocate, you’ll spread awareness of Deviceplane
-          through a wide variety of online and in-person mediums including forums,
-          meetups, and conferences. You'll create content such as blog posts,
-          sample applications, and video demos that serve to teach both how to use
-          Deviceplane and the technical details of its internals.
-        </p>
-        <p>
+          through a wide variety of online and in-person mediums including
+          forums, meetups, and conferences. You'll create content such as blog
+          posts, sample applications, and video demos that serve to teach both
+          how to use Deviceplane and the technical details of its internals.
+        </Paragraph>
+        <Paragraph>
           If you’re excited by engaging with developers, telling stories, and
           creating technical content, please reach out!
-        </p>
+        </Paragraph>
       </>
     )
   }
 ];
 
+const Posting = ({ title, location, body }) => (
+  <Column
+    border={0}
+    borderColor="white"
+    bg="black"
+    padding={6}
+    borderRadius={1}
+    maxWidth="500px"
+    marginX={[4, 4, 6]}
+    marginTop={9}
+  >
+    <Row
+      justifyContent="space-between"
+      alignItems="center"
+      alignSelf="stretch"
+      marginBottom={2}
+    >
+      <Text fontWeight={3} fontSize={5}>
+        {title}
+      </Text>
+      <Button
+        display={['none', 'none', 'flex']}
+        marginLeft={2}
+        variant="text"
+        title="Apply"
+        rel="noopener noreferrer"
+        target="_blank"
+        href={`mailto:careers@deviceplane.com?subject=${title}`}
+      />
+    </Row>
+
+    <Row display={['flex', 'flex', 'none']} marginBottom={2}>
+      <Button
+        variant="text"
+        title="Apply"
+        rel="noopener noreferrer"
+        target="_blank"
+        href={`mailto:careers@deviceplane.com?subject=${title}`}
+      />
+    </Row>
+
+    {/* <Text fontWeight={2}>{location}</Text> */}
+
+    <Box>{body}</Box>
+  </Column>
+);
+
 const Careers = () => (
-  <Page>
-    <Head title="Careers" />
+  <>
+    <Head>
+      <title>Careers</title>
+    </Head>
 
     <Nav />
 
-    <main>
-      <div className="container">
-        <h1>Careers</h1>
+    <Column alignItems="center" paddingBottom={9}>
+      <Column
+        bg="black"
+        alignItems="center"
+        flex={1}
+        paddingTop={6}
+        paddingBottom={9}
+        alignSelf="stretch"
+      >
+        <Heading>Careers</Heading>
 
-        {/* <div className="intro">
-          <p>
-            Our goal is to make Deviceplane the de facto way to manage all
-            remote hardware and devices. The path to get there requires deep
-            engagement with a massive community of developers — both to maximize
-            adoption of Deviceplane, and to make sure we're building the product
-            that fits their requirements and sparks joy.
-          </p>
-        </div> */}
+        <Text
+          maxWidth="630px"
+          marginX={6}
+          marginTop={4}
+          textAlign="center"
+          fontWeight={1}
+        >
+          Our goal is to make Deviceplane the de facto way to manage all remote
+          hardware and devices. The path to get there requires deep engagement
+          with a massive community of developers — both to maximize adoption of
+          Deviceplane, and to make sure we're building the product that fits
+          their requirements and sparks joy.
+        </Text>
+      </Column>
 
-        <div className="content">
-          {postings.map(({ title, location, body }) => (
-            <div className="posting">
-              <div className="header">
-                <div className="title">{title}</div>
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href={`mailto:careers@deviceplane.com?subject=${title}`}
-                >
-                  Apply
-                </a>
-              </div>
-              <div>{location}</div>
-
-              {body}
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
+      <Row
+        justifyContent={['initial', 'initial', 'initial', 'center']}
+        alignItems={['center', 'center', 'center', 'initial']}
+        width="100%"
+        maxWidth={theme.pageWidth}
+        flexDirection={['column', 'column', 'column', 'row']}
+        paddingX={4}
+      >
+        {postings.map(props => (
+          <Posting {...props} />
+        ))}
+      </Row>
+    </Column>
 
     <Footer />
-
-    <style global jsx>
-      {`
-        html {
-          color: var(--white);
-          background-color: var(--black) !important;
-        }
-
-        h1 {
-          margin: 0 0 2rem 0;
-          font-size: 48px;
-        }
-
-        p {
-          color: rgba(255, 255, 255, 0.9);
-        }
-      `}
-    </style>
-
-    <style jsx>
-      {`
-        .container {
-          max-width: var(--page-width);
-          margin: 0 auto;
-          padding: 1rem 2rem;
-        }
-
-        .posting {
-          max-width: 36rem;
-          border: 1px solid var(--primary);
-          padding: 2rem;
-          border-radius: 8px;
-        }
-
-        .intro {
-          max-width: 38rem;
-          margin-bottom: 2rem;
-        }
-
-        .posting:not(:last-child) {
-          margin-bottom: 4rem;
-        }
-
-        .header {
-          display: flex;
-          align-self: stretch;
-          align-items: flex-start;
-          justify-content: space-between;
-        }
-
-        .header a {
-          text-decoration: none;
-          transition: color 200ms;
-          color: var(--primary);
-          font-weight: 500;
-        }
-
-        .header a:hover {
-          color: var(--white);
-        }
-
-        .title {
-          font-size: 1.5rem;
-          font-weight: 500;
-        }
-      `}
-    </style>
-  </Page>
+  </>
 );
 
 export default Careers;

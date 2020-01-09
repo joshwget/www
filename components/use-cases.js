@@ -1,137 +1,140 @@
+import styled, { css } from 'styled-components';
+
+import { Row, Column, Text, Section, Heading, Image } from './core';
+
+const hardware = [
+  {
+    src: '/use-cases/single-board-computer.svg',
+    label: 'Single-board Computers'
+  },
+  {
+    src: '/use-cases/iot-gateway.svg',
+    label: 'IoT Gateways',
+    height: 120
+  },
+  {
+    src: '/use-cases/servers.svg',
+    label: 'Edge Servers'
+  },
+  {
+    src: '/use-cases/drones.svg',
+    label: 'Drones'
+  }
+];
+
+const industries = [
+  // {
+  //   src: '/use-cases/machine-learning.svg',
+  //   label: 'Machine Learning'
+  // },
+  {
+    src: '/use-cases/consumer.svg',
+    label: 'Consumer',
+    height: 120
+  },
+  {
+    src: '/use-cases/robotics.svg',
+    label: 'Robotics',
+    height: 130
+  },
+  {
+    src: '/use-cases/industrial.svg',
+    label: 'Industrial',
+    height: 130
+  },
+  {
+    src: '/use-cases/medical.svg',
+    label: 'Medical'
+  }
+];
+
+const Label = styled(Text)`
+  text-transform: uppercase;
+`;
+Label.defaultProps = {
+  fontWeight: 2,
+  fontSize: 2,
+  marginTop: 4,
+  textAlign: 'center'
+};
+
+const Container = ({ src, label, height = 90 }) => (
+  <Column
+    height={['initial', '224px']}
+    width="200px"
+    justifyContent="flex-end"
+    marginTop={[9, 0]}
+  >
+    <Image src={src} height={height} alt={label} />
+    <Label>{label}</Label>
+  </Column>
+);
+
 const UseCases = () => (
-  <section>
-    <h2>Ready for any industry</h2>
+  <>
+    <Section paddingX={6}>
+      <Row
+        alignItems="center"
+        justifyContent="space-between"
+        alignSelf="stretch"
+        flexDirection={[
+          'column-reverse',
+          'column-reverse',
+          'column-reverse',
+          'row'
+        ]}
+      >
+        <Row marginRight={[0, 0, 0, 6]} flexDirection={['column', 'row']}>
+          <Column marginRight={[0, 9]}>
+            {hardware.slice(0, 2).map(props => (
+              <Container {...props} />
+            ))}
+          </Column>
+          <Column>
+            {hardware.slice(2, 4).map(props => (
+              <Container {...props} />
+            ))}
+          </Column>
+        </Row>
 
-    <div className="desktop row">
-      <div className="group">
-        <div className="container">
-          <img src="/consumer.svg" height={120} />
-          <span>Consumer</span>
-        </div>
-
-        <div className="container">
-          <img src="/robotics.svg" height={140} />
-          <span>Robotics</span>
-        </div>
-        <div className="container">
-          <img src="/machine-learning.svg" height={100} />
-          <span>Machine Learning</span>
-        </div>
-      </div>
-
-      <div className="group">
-        <div className="container">
-          <img src="/medicine.svg" height={110} />
-          <span>Medicine</span>
-        </div>
-
-        <div className="container">
-          <img src="/industrial.svg" height={140} />
-          <span>Industrial</span>
-        </div>
-      </div>
-    </div>
-
-    <div className="tablet">
-      <div className="group">
-        <div className="container">
-          <img src="/consumer.svg" height={120} />
-          <span>Consumer</span>
-        </div>
-
-        <div className="container">
-          <img src="/robotics.svg" height={140} />
-          <span>Robotics</span>
-        </div>
-      </div>
-
-      <div className="group">
-        <div className="container">
-          <img src="/medicine.svg" height={110} />
-          <span>Medicine</span>
-        </div>
-
-        <div className="container">
-          <img src="/machine-learning.svg" height={100} />
-          <span>Machine Learning</span>
-        </div>
-      </div>
-
-      <div className="container">
-        <img src="/industrial.svg" height={140} />
-        <span>Industrial</span>
-      </div>
-    </div>
-
-    <style jsx>{`
-      span {
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 0.85rem;
-        margin-top: 1rem;
-        text-align: center;
-      }
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0 3rem;
-      }
-      .row {
-        display: flex;
-        align-items: baseline;
-        justify-content: center;
-      }
-      .group {
-        display: flex;
-        align-items: baseline;
-      }
-      .tablet {
-        display: none;
-      }
-
-      @media screen and (max-width: 1200px) {
-        .row {
-          flex-direction: column;
-          align-items: center;
-        }
-        .group:last-child {
-          margin-top: 3rem;
-        }
-      }
-      @media screen and (max-width: 700px) {
-        .desktop {
-          display: none;
-        }
-        .tablet {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .group {
-          justify-content: center;
-        }
-        .group:not(:last-child) {
-          margin-bottom: 3rem;
-        }
-        .container {
-          flex: 0 0 12rem;
-          justify-content: center;
-        }
-      }
-      @media screen and (max-width: 480px) {
-        .group {
-          flex-direction: column;
-          align-items: center;
-          margin: 0 !important;
-        }
-        .container {
-          flex: unset;
-          margin: 1.5rem 0;
-        }
-      }
-    `}</style>
-  </section>
+        <Heading
+          variant="secondary"
+          textAlign={['center', 'center', 'center', 'left']}
+          maxWidth={['550px', '550px', '550px', '300px']}
+        >
+          Support for a variety of hardware
+        </Heading>
+      </Row>
+    </Section>
+    <Section paddingX={6} paddingTop={[8, 8, 8, 0]}>
+      <Row
+        alignItems="center"
+        justifyContent="space-between"
+        alignSelf="stretch"
+        flexDirection={['column', 'column', 'column', 'row']}
+      >
+        <Heading
+          variant="secondary"
+          textAlign={['center', 'center', 'center', 'left']}
+          maxWidth={['unset', 'unset', 'unset', '310px']}
+        >
+          Ready for any industry
+        </Heading>
+        <Row flexDirection={['column', 'row']}>
+          <Column marginRight={[0, 9]}>
+            {industries.slice(0, 2).map(props => (
+              <Container {...props} />
+            ))}
+          </Column>
+          <Column alignItems="flex-end">
+            {industries.slice(2, 4).map(props => (
+              <Container {...props} />
+            ))}
+          </Column>
+        </Row>
+      </Row>
+    </Section>
+  </>
 );
 
 export default UseCases;

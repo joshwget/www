@@ -1,3 +1,7 @@
+import styled from 'styled-components';
+
+import { Section, Heading, Row, Button, Text } from './core';
+
 const content = [
   {
     title: 'Register',
@@ -27,159 +31,80 @@ const content = [
   }
 ];
 
+const Tab = styled(Button)`
+  border: none;
+  padding: 10px 14px;
+  cursor: ${props => (props.selected ? 'default' : 'pointer')};
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border-color: none !important;
+  width: 96px !important;
+
+  color: ${props =>
+    props.selected ? props.theme.colors.primary : props.theme.colors.white};
+  background-color: ${props =>
+    props.selected ? props.theme.colors.black : props.theme.colors.grays[3]};
+  &:focus,
+  &:hover {
+    color: ${props =>
+      props.selected
+        ? props.theme.colors.primary
+        : props.theme.colors.pureWhite} !important;
+    background-color: ${props =>
+      props.selected
+        ? props.theme.colors.black
+        : props.theme.colors.grays[0]} !important;
+  }
+`;
+
 const Tutorial = () => {
   const [selection, setSelection] = React.useState(0);
 
   return (
-    <div className="tutorial">
-      <section>
-        <h2>How it works</h2>
+    <Section height={['initial', '450px']} paddingX={6}>
+      <Heading variant="secondary" textAlign="center">
+        How it works
+      </Heading>
 
-        <div className="desktop buttons">
-          {content.map(({ title }, i) => (
-            <button
-              className={i === selection ? 'selected' : ''}
+      <Row marginTop={8} flexDirection={['column', 'row']}>
+        <Row marginBottom={[4, 0]}>
+          {content.slice(0, 2).map(({ title }, i) => (
+            <Tab
+              key={title}
+              title={title}
+              selected={i === selection}
               onClick={() => setSelection(i)}
-            >
-              {title}
-            </button>
+              marginX={[2, 4]}
+            />
           ))}
-        </div>
+        </Row>
 
-        <div className="tablet buttons">
-          <div className="group">
-            {content.slice(0, 2).map(({ title }, i) => (
-              <button
-                className={i === selection ? 'selected' : ''}
-                onClick={() => setSelection(i)}
-              >
-                {title}
-              </button>
-            ))}
-          </div>
+        <Row>
+          {content.slice(2, 4).map(({ title }, i) => (
+            <Tab
+              key={title}
+              title={title}
+              selected={i + 2 === selection}
+              onClick={() => setSelection(i + 2)}
+              marginX={[2, 4]}
+            />
+          ))}
+        </Row>
+      </Row>
 
-          <div className="group">
-            {content.slice(2, 4).map(({ title }, i) => (
-              <button
-                className={i + 2 === selection ? 'selected' : ''}
-                onClick={() => setSelection(i + 2)}
-              >
-                {title}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="container">
-          <p>{content[selection].body}</p>
-        </div>
-      </section>
-
-      <style jsx>{`
-        section {
-          color: var(--white);
-          align-items: center;
-        }
-
-        .tutorial {
-          min-height: 32rem;
-          background: var(--black);
-        }
-
-        h4 {
-          transition: color 100ms;
-          color: var(--primary);
-        }
-
-        .container {
-          display: flex;
-          flex-direction: column;
-          border-radius: 8px;
-          padding: 2rem;
-          margin: 0 2rem;
-          background: #000;
-          border: 1px solid var(--primary);
-          max-width: 25rem;
-        }
-
-        p {
-          margin: 0;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .group {
-          display: flex;
-          flex: 1;
-        }
-
-        .buttons {
-          display: flex;
-          justify-content: space-between;
-          width: 29rem;
-          margin-bottom: 1rem;
-        }
-
-        .tablet {
-          display: none;
-        }
-
-        button {
-          max-width: 5.5rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          appearance: none;
-          outline: none;
-          border: 1px solid var(--primary);
-          background: none;
-          color: var(--primary);
-          padding: 0.7rem 1rem;
-          font-size: 1rem;
-          font-weight: 500;
-          border-radius: var(--radius);
-          transition: color 200ms, border-color 200ms;
-          cursor: pointer;
-        }
-
-        button:not(.selected):hover {
-          color: var(--white);
-          border-color: var(--white);
-        }
-
-        .selected {
-          background: var(--white);
-          color: var(--black);
-          border-color: var(--white);
-          cursor: auto;
-        }
-
-        @media screen and (max-width: 700px) {
-          .tutorial {
-            min-height: unset;
-          }
-          .tablet {
-            display: flex;
-          }
-          .desktop {
-            display: none;
-          }
-          .buttons {
-            flex-direction: column;
-            align-items: center;
-            justify-content: unset;
-          }
-          .group {
-            margin-bottom: 2rem;
-          }
-          .group:last-child {
-            margin-bottom: 1rem;
-          }
-          button {
-            margin: 0 1rem;
-          }
-        }
-      `}</style>
-    </div>
+      <Row
+        bg="black"
+        borderRadius={2}
+        padding={6}
+        marginTop={4}
+        maxWidth={13}
+        border={0}
+      >
+        <Text>{content[selection].body}</Text>
+      </Row>
+    </Section>
   );
 };
 

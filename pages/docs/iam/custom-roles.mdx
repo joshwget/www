@@ -1,15 +1,14 @@
 import Docs from '../../../components/docs';
-import Table from '../../../components/table';
 
 <Docs title="Custom Roles">
-
-# Custom Roles
 
 There are three default roles packaged within each project. You can create your own custom roles for other use cases that require only specific levels of access to Deviceplane. These custom roles can be used to determine the level of access of resources for either members or service accounts.
 
 For each resource type, you can provide access with the default actions (i.e. `admin`, `write`, or `read`). Those actions are an umbrella to individual actions for the resource.
 
-## Example Custom Roles
+## Example custom roles
+
+The following are examples of role configurations.
 
 ### Access to only deploy releases
 
@@ -31,11 +30,9 @@ rules:
       - read, write
 ```
 
-## Resource and Action Reference
+## Resource and action reference
 
 Besides using the default roles, you may want to create your own custom roles, using the reference table, you would select what resources to provide access to and the action level. For the action, you can either use a parent action (`read`, `write`, `admin`) or an individual action.
-
-<Table height="70rem">
 
 | Resource               | Parent Action | Individual Action                                                            |
 | ---------------------- | ------------- | ---------------------------------------------------------------------------- |
@@ -59,7 +56,5 @@ Besides using the default roles, you may want to create your own custom roles, u
 | serviceaccount         | read          | GetServiceAccount <br /> ListServiceAccounts                                 |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
 | serviceaccount         | admin         | CreateServiceAccount <br /> UpdateServiceAccount <br /> DeleteServiceAccount |
-
-</Table>
 
 </Docs>

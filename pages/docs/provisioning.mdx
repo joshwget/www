@@ -2,13 +2,11 @@ import Docs from '../../components/docs';
 
 <Docs title="Provisioning">
 
-# Provisioning
-
 ## Adding a new device
 
 Adding a device is done by running the command from the "Add Device" page. For each device that you want to add, a device registration token must be used as part of the installation. By default, the registration token displayed in the "Add Device" page is the "default" registration token.
 
-## Registration Tokens
+## Registration tokens
 
 Registration tokens are used to authenticate the registration of devices and are required anytime you're trying to add a new device. By default every new project will get a "default" registration token. This is the token that is used when adding a device through the "Add Device" button on the "Devices" page.
 
@@ -16,8 +14,8 @@ A registration token can have a "maximum device registrations" set. This is an o
 
 For many basic use cases and security requirements using the default registration should be sufficient. There are two main use cases for creating and using registration tokens other than the default registration token.
 
-1. Labels - Labels can be attached to registration tokens which are then automatically added to provisioned devices.
-2. Security - The default security token can be reused to register an unlimited number of devices. This means that if a bad actor were to discover this token then they'd be able to register any number of devices in your project.
+- **Labels** Labels can be attached to registration tokens which are then automatically added to provisioned devices.
+- **Security** The default security token can be reused to register an unlimited number of devices. This means that if a bad actor were to discover this token then they'd be able to register any number of devices in your project.
 
 These two use cases are documented more below.
 
@@ -47,8 +45,8 @@ Registration tokens can be used to improve security in cases where devices are p
 
 There are two ways registration tokens could be used to address this threat.
 
-1. Limit the number of max registrations for all of the registration tokens you're using. Select a high number you're unlikely to hit in a short time frame. This number can be raised at a later point in time. Be careful not to hit this limit as once a device registration token hits the maximum it can no longer be used to register new devices.
-2. Generate a new registration tokens for _each_ new anticipated device registration.
+- Limit the number of max registrations for all of the registration tokens you're using. Select a high number you're unlikely to hit in a short time frame. This number can be raised at a later point in time. Be careful not to hit this limit as once a device registration token hits the maximum it can no longer be used to register new devices.
+- Generate a new registration tokens for _each_ new anticipated device registration.
 
 Using a registration token with no limit on registrations is the most convenient option. Option (1) is slightly more inconvenient, and option (2) is the most inconvenient. Choose between these options depending on your specific security requirements. If you trust the people or organizations who have physical access to your devices then not setting limits on your registration tokens is likely safe. In cases where you aren't as trusting of the owners of your physical devices (perhaps a consumer product) then option (2) is a better choice.
 
