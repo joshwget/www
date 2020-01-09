@@ -72,7 +72,7 @@ const MobileMenu = ({ show, pathname }) => {
         />
       </Row>
 
-      <Column overflow="auto" alignItems="flex-start">
+      <Column overflow="auto" alignItems="flex-start" height="100%">
         <Row
           onClick={() => setExpand(!expand)}
           marginBottom={4}
