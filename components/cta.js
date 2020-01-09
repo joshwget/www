@@ -40,7 +40,7 @@ const CTA = () => {
             title="Start now"
             width="100%"
             maxWidth="340px"
-            href="https://cloud.deviceplane.com/register"
+            href="https://cloud.deviceplane.com/signup"
           />
         </Row>
       </Section>
