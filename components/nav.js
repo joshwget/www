@@ -41,12 +41,6 @@ const MobileNavLinkContainer = styled(Box)`
 `;
 
 const MobileNavLink = styled(NavLink)`
-  color: ${props =>
-    props.active
-      ? props.theme.colors.primary
-      : props.nested
-      ? props.theme.colors.grays[8]
-      : props.theme.colors.white};
   white-space: nowrap;
 `;
 

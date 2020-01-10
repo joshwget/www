@@ -79,11 +79,7 @@ export const routeGroups = [
 const DocLink = styled(Link)`
   text-decoration: none !important;
   color: ${props =>
-    props.active
-      ? props.theme.colors.primary
-      : props.nested
-      ? props.theme.colors.grays[8]
-      : props.theme.colors.white};
+    props.active ? props.theme.colors.primary : props.theme.colors.white};
   font-size: ${props => props.theme.fontSizes[1]}px;
   margin: ${props => (props.nested ? '12px 0 0 16px' : '12px 0 0')};
 
