@@ -5,9 +5,9 @@ import { Section, Heading, Row, Button, Text } from './core';
 const content = [
   {
     title: 'Register',
-    body: `Register devices with a single command. Our agent is under 10MB,
-    consumes minimal resources, and runs as a container. We support any device
-    running Linux regardless of distribution, architecture, and hardware.`
+    body: `Register devices with a single command. Our agent is under 10MB
+    and consumes minimal resources. We support any device running Linux
+    regardless of distribution, architecture, and hardware.`
   },
   {
     title: 'Deploy',
