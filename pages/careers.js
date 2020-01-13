@@ -106,7 +106,7 @@ const Posting = ({ title, location, body }) => (
 const Careers = () => (
   <>
     <Head>
-      <title>Careers</title>
+      <title>Careers | Deviceplane</title>
     </Head>
 
     <Nav />

@@ -10,7 +10,7 @@ const hardware = [
   {
     src: '/use-cases/iot-gateway.svg',
     label: 'IoT Gateways',
-    height: 120
+    height: 110
   },
   {
     src: '/use-cases/servers.svg',
@@ -30,17 +30,17 @@ const industries = [
   {
     src: '/use-cases/consumer.svg',
     label: 'Consumer',
-    height: 120
+    height: 110
   },
   {
     src: '/use-cases/robotics.svg',
     label: 'Robotics',
-    height: 130
+    height: 120
   },
   {
     src: '/use-cases/industrial.svg',
-    label: 'Industrial',
-    height: 130
+    label: 'Manufacturing',
+    height: 120
   },
   {
     src: '/use-cases/medical.svg',
@@ -58,12 +58,12 @@ Label.defaultProps = {
   textAlign: 'center'
 };
 
-const Container = ({ src, label, height = 90 }) => (
+const Container = ({ src, label, height = 80 }) => (
   <Column
-    height={['initial', '224px']}
+    height={['initial', '160px']}
     width="200px"
     justifyContent="flex-end"
-    marginTop={[9, 0]}
+    marginY={6}
   >
     <Image src={src} height={height} alt={label} />
     <Label>{label}</Label>
@@ -99,8 +99,9 @@ const UseCases = () => (
 
         <Heading
           variant="secondary"
-          textAlign={['center', 'center', 'center', 'left']}
-          maxWidth={['550px', '550px', '550px', '300px']}
+          textAlign="center"
+          marginLeft={[0, 0, 0, 9]}
+          marginBottom={[4, 4, 4, 0]}
         >
           Support for a variety of hardware
         </Heading>
@@ -115,10 +116,11 @@ const UseCases = () => (
       >
         <Heading
           variant="secondary"
-          textAlign={['center', 'center', 'center', 'left']}
-          maxWidth={['unset', 'unset', 'unset', '310px']}
+          textAlign="center"
+          marginRight={[0, 0, 0, 9]}
+          marginBottom={[4, 4, 4, 0]}
         >
-          Ready for any industry
+          Ready for any use case
         </Heading>
         <Row flexDirection={['column', 'row']}>
           <Column marginRight={[0, 9]}>

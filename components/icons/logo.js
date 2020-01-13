@@ -3,10 +3,10 @@ import React from 'react';
 import { Row } from '../core';
 
 const Logo = ({ size = 32, color = 'white' }) => (
-  <Row width={size} height={size} alignItems="center" justifyContent="center">
+  <Row alignItems="center" justifyContent="center">
     <svg
-      width={175}
-      height={152}
+      width={size}
+      height={size}
       viewBox="0 0 175 152"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

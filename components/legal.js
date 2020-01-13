@@ -22,7 +22,7 @@ const Legal = ({ title, lastUpdated, children }) => {
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title} | Deviceplane</title>
       </Head>
 
       <Nav />

@@ -57,6 +57,7 @@ class Document extends NextDocument {
     return (
       <Html>
         <Head>
+          <title>Deviceplane | Manage your devices at the edge</title>
           <meta charSet="utf-8" />
           <meta
             name="viewport"
@@ -67,6 +68,16 @@ class Document extends NextDocument {
             name="description"
             content="Deviceplane handles the hard infrastructure problems around managing remote hardware. We make it easy to securely update, monitor, and access remote devices."
           />
+          <meta property="og:url" content="https://deviceplane.com" />
+          <meta
+            property="og:title"
+            content="Deviceplane | Manage your devices at the edge"
+          />
+          <meta
+            property="og:description"
+            content="Deviceplane handles the hard infrastructure problems around managing remote hardware. We make it easy to securely update, monitor, and access remote devices."
+          />
+          <meta property="og:site_name" content="Deviceplane" />
 
           <link rel="icon" href="/favicon.ico" />
           <link

@@ -70,7 +70,7 @@ export default {
     code: 'Menlo,Monaco,Consolas,monospace,serif'
   },
 
-  fontSizes: [12, 14, 16, 18, 22, 32, 48, 64],
+  fontSizes: [12, 14, 16, 18, 24, 32, 48, 64],
 
   fontWeights: [300, 400, 500, 700, 900],
 
@@ -103,9 +103,7 @@ export default {
 
   transitions: ['all 200ms ease'],
 
-  pageWidth: 1080,
-
-  navWidth: 1080
+  pageWidth: 1200
 };
 
 export const labelColors = [

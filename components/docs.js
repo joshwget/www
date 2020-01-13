@@ -153,7 +153,9 @@ const Docs = ({ title, children }) => {
     <Column bg="black" minHeight="100vh">
       <Head>
         <title>
-          {title ? `${title} - Documentation - Deviceplane` : 'Documentation'}
+          {title
+            ? `${title} | Documentation | Deviceplane`
+            : 'Documentation | Deviceplane'}
         </title>
       </Head>
 
@@ -195,8 +197,8 @@ const Docs = ({ title, children }) => {
         </Column>
 
         <Column padding={6} bg="pageBackground" borderRadius={1} width="100%">
-          <Box maxWidth="700px">
-            <Heading>{title}</Heading>
+          <Box maxWidth="750px">
+            <Heading fontSize={[6, 7]}>{title}</Heading>
             {contentLinks.length > 0 && (
               <Column
                 display={['flex', 'flex', 'flex', 'none']}

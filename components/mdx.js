@@ -5,18 +5,19 @@ import styled from 'styled-components';
 
 import theme from '../theme';
 import { Table, Link, Code, Paragraph, Box, Icon } from './core';
-import * as Headings from './core/heading';
+import Heading from './core/heading';
 import { OrderedList, UnorderedList } from './core/list';
 
 const getId = str => str.toLowerCase().replace(/ /g, '-');
 
-const LinkHeading = ({ children, Heading, fontSize }) => {
+const LinkHeading = ({ children, fontSize, variant }) => {
   const [linkVisible, setLinkVisible] = useState(false);
   const id = getId(children);
   return (
     <Heading
-      fontSize={fontSize}
       position="relative"
+      variant={variant}
+      fontSize={fontSize}
       id={id}
       onMouseEnter={() => setLinkVisible(true)}
       onMouseLeave={() => setLinkVisible(false)}
@@ -45,14 +46,15 @@ const LinkHeading = ({ children, Heading, fontSize }) => {
     </Heading>
   );
 };
+
 const H1 = props => (
-  <LinkHeading {...props} fontSize="48px" Heading={Headings.H1} />
+  <LinkHeading {...props} fontSize={[6, 7]} variant="primary" />
 );
 const H2 = props => (
-  <LinkHeading {...props} fontSize="32px" Heading={Headings.H2} />
+  <LinkHeading {...props} fontSize={[5, 6]} variant="secondary" />
 );
 const H3 = props => (
-  <LinkHeading {...props} fontSize="24px" Heading={Headings.H3} />
+  <LinkHeading {...props} fontSize={[4, 5]} variant="tertiary" />
 );
 
 const syntaxTheme = {

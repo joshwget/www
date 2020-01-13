@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
   html,body {
     text-rendering: optimizelegibility;
-    shape-rendering: crispEdges;
+    shape-rendering: geometricprecision;
     -webkit-font-smoothing: antialiased;
   }
 
