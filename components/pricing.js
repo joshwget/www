@@ -145,7 +145,7 @@ const Pricing = () => {
           transition={{ duration: 1, delay: 0.25 }}
         >
           <Heading variant="secondary" textAlign="center">
-            Flexible plans that scale
+            Flexible pricing
           </Heading>
         </motion.div>
 

@@ -51,7 +51,7 @@ const Hero = ({ airtable }) => {
         justifyContent="center"
         position="absolute"
         left={[0, '-200px', '-340px']}
-        top={-12}
+        top={-16}
         width="100%"
         height="100%"
       >

@@ -33,7 +33,7 @@ const NavLink = styled(Link)`
 const MobileNavLinkContainer = styled(Box)`
   margin-left: ${props => (props.nested ? '16px' : 0)};
   margin-right: 0;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   &:last-child {
     margin-bottom: 0;
   }
@@ -42,6 +42,7 @@ const MobileNavLinkContainer = styled(Box)`
 
 const MobileNavLink = styled(NavLink)`
   white-space: nowrap;
+  font-size: ${props => props.theme.fontSizes[2]}px;
 `;
 
 const MobileMenu = ({ show, pathname }) => {
@@ -86,14 +87,14 @@ const MobileMenu = ({ show, pathname }) => {
       <Column overflowY="auto">
         <Row
           onClick={() => setExpand(!expand)}
-          marginBottom={4}
+          marginBottom={5}
           alignItems="center"
           style={{ cursor: 'pointer' }}
           flexShrink={0}
         >
           <Text
             color={isDocs ? 'primary' : 'white'}
-            fontSize={1}
+            fontSize={2}
             fontWeight={2}
           >
             Documentation
@@ -112,7 +113,7 @@ const MobileMenu = ({ show, pathname }) => {
             borderLeft={0}
             borderColor={isDocs ? 'primary' : 'white'}
             paddingLeft={4}
-            marginBottom={4}
+            marginBottom={5}
           >
             {docRoutes.map(routes =>
               routes.map(({ href, title, nested }) => (
