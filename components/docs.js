@@ -211,7 +211,7 @@ const Docs = ({ title, children }) => {
                 <TableOfContents links={contentLinks} />
               </Column>
             )}
-            <MDX>{children}</MDX>
+            <MDX linkHeaders>{children}</MDX>
           </Box>
         </Column>
 

@@ -47,15 +47,21 @@ const LinkHeading = ({ children, fontSize, variant }) => {
   );
 };
 
-const H1 = props => (
-  <LinkHeading {...props} fontSize={[6, 7]} variant="primary" />
+const LinkedH1 = props => (
+  <LinkHeading {...props} fontSize={[5, 6]} variant="primary" />
 );
+const LinkedH2 = props => (
+  <LinkHeading {...props} fontSize={[4, 5]} variant="secondary" />
+);
+const LinkedH3 = props => (
+  <LinkHeading {...props} fontSize={[3, 4]} variant="tertiary" />
+);
+
+const H1 = props => <Heading {...props} fontSize={[5, 6]} variant="primary" />;
 const H2 = props => (
-  <LinkHeading {...props} fontSize={[5, 6]} variant="secondary" />
+  <Heading {...props} fontSize={[4, 5]} variant="secondary" />
 );
-const H3 = props => (
-  <LinkHeading {...props} fontSize={[4, 5]} variant="tertiary" />
-);
+const H3 = props => <Heading {...props} fontSize={[3, 4]} variant="tertiary" />;
 
 const syntaxTheme = {
   plain: {
@@ -170,23 +176,23 @@ const HighlightedCode = ({ children, className }) => {
   );
 };
 
-const components = {
+const components = linkHeaders => ({
   p: Paragraph,
   pre: props => <div {...props} />,
   code: HighlightedCode,
   inlineCode: Code,
-  h1: H1,
-  h2: H2,
-  h3: H3,
+  h1: linkHeaders ? LinkedH1 : H1,
+  h2: linkHeaders ? LinkedH2 : H2,
+  h3: linkHeaders ? LinkedH3 : H3,
   table: Table,
   a: Link,
   blockquote: Blockquote,
   ol: OrderedList,
   ul: UnorderedList
-};
+});
 
-const MDX = ({ children }) => (
-  <MDXProvider components={components}>
+const MDX = ({ children, linkHeaders }) => (
+  <MDXProvider components={components(linkHeaders)}>
     <Box>{children}</Box>
   </MDXProvider>
 );
