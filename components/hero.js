@@ -71,6 +71,7 @@ const Hero = ({ airtable }) => {
             maxWidth={['initial', '460px', '675px']}
             textAlign={['center', 'left']}
             paddingTop={[6, 0]}
+            fontSize={[6, 7]}
           >
             Manage your devices at the edge
           </Heading>

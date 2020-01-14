@@ -97,14 +97,16 @@ const UseCases = () => (
           </Column>
         </Row>
 
-        <Heading
-          variant="secondary"
-          textAlign="center"
-          marginLeft={[0, 0, 0, 9]}
-          marginBottom={[4, 4, 4, 0]}
-        >
-          Support for a variety of hardware
-        </Heading>
+        <Row justifyContent="center" flex={1}>
+          <Heading
+            variant="secondary"
+            textAlign="center"
+            marginLeft={[0, 0, 0, 9]}
+            marginBottom={[4, 4, 4, 0]}
+          >
+            Support for a variety of hardware
+          </Heading>
+        </Row>
       </Row>
     </Section>
     <Section paddingX={6} paddingTop={[8, 8, 8, 0]}>
@@ -114,14 +116,18 @@ const UseCases = () => (
         alignSelf="stretch"
         flexDirection={['column', 'column', 'column', 'row']}
       >
-        <Heading
-          variant="secondary"
-          textAlign="center"
-          marginRight={[0, 0, 0, 9]}
-          marginBottom={[4, 4, 4, 0]}
-        >
-          Ready for any use case
-        </Heading>
+        <Row justifyContent="center" flex={1}>
+          <Heading
+            variant="secondary"
+            textAlign="center"
+            marginRight={[0, 0, 0, 9]}
+            marginBottom={[4, 4, 4, 0]}
+            maxWidth={['unset', 'unset', 'unset', '340px']}
+          >
+            Ready for any use case
+          </Heading>
+        </Row>
+
         <Row flexDirection={['column', 'row']}>
           <Column marginRight={[0, 9]}>
             {industries.slice(0, 2).map(props => (

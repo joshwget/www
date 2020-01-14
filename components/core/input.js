@@ -16,7 +16,7 @@ const StyledInput = styled.input`
   transition: ${props => props.theme.transitions[0]};
   width: 100%;
   caret-color: ${props => props.theme.colors.primary};
-  padding: 8px;
+  padding: 12px;
 
   &:not(:disabled):focus {
     box-shadow: 0px 0px 0px 1px ${props => props.theme.colors.primary} inset;
