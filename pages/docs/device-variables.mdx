@@ -14,8 +14,6 @@ The `authorized-ssh-keys` variable sets the list of allowed keys for SSH access 
 
 Adding this variable fundamentally changes how SSH authorization works. Normally authorization for SSH occurs in the Deviceplane backend as all other API requests are. After adding this variable the agent will begin also authorizing using SSH keys.
 
-SSH via CLI is currently the only supported method when using this variable. SSH via the UI is not yet supported when using this variable.
-
 Here is a list of implications with this change.
 
 - If a bad actor gets access to a Deviceplane access key then they won't be able to SSH to any devices without also having an authorized SSH key
