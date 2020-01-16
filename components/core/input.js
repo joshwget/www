@@ -16,7 +16,8 @@ const StyledInput = styled.input`
   transition: ${props => props.theme.transitions[0]};
   width: 100%;
   caret-color: ${props => props.theme.colors.primary};
-  padding: 12px;
+  padding: 10px 12px;
+  background-color: ${props => props.theme.colors.pageBackground};
 
   &:not(:disabled):focus {
     box-shadow: 0px 0px 0px 1px ${props => props.theme.colors.primary} inset;
@@ -24,7 +25,7 @@ const StyledInput = styled.input`
 
   &::placeholder {
     font-size: 16px;
-    color: ${props => props.theme.colors.grays[8]};
+    color: ${props => props.theme.colors.grays[11]};
   }
 
   -webkit-autofill,
@@ -41,10 +42,8 @@ const StyledInput = styled.input`
 
 StyledInput.defaultProps = {
   color: 'white',
-  bg: 'transparent',
   borderRadius: 1,
-  fontWeight: 1,
-  boxShadow: 0,
+  fontWeight: 2,
   fontSize: 2
 };
 

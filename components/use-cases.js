@@ -72,7 +72,7 @@ const Container = ({ src, label, height = 80 }) => (
 
 const UseCases = () => (
   <>
-    <Section paddingX={6}>
+    <Section>
       <Row
         alignItems="center"
         justifyContent="space-between"
@@ -85,27 +85,12 @@ const UseCases = () => (
         ]}
       >
         <Row marginRight={[0, 0, 0, 6]} flexDirection={['column', 'row']}>
-          <Column marginRight={[0, 9]}>
-            {hardware.slice(0, 2).map(props => (
-              <Container key={props.label} {...props} />
-            ))}
-          </Column>
-          <Column>
-            {hardware.slice(2, 4).map(props => (
-              <Container key={props.label} {...props} />
-            ))}
-          </Column>
-        </Row>
-
-        <Row justifyContent="center" flex={1}>
-          <Heading
-            variant="secondary"
-            textAlign="center"
-            marginLeft={[0, 0, 0, 9]}
-            marginBottom={[4, 4, 4, 0]}
-          >
-            Support for a variety of hardware
-          </Heading>
+          {hardware.slice(0, 2).map(props => (
+            <Container key={props.label} {...props} />
+          ))}
+          {hardware.slice(2, 4).map(props => (
+            <Container key={props.label} {...props} />
+          ))}
         </Row>
       </Row>
     </Section>

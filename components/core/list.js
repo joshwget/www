@@ -6,6 +6,7 @@ const listStyles = css`
   margin: 16px 0;
   list-style-type: none;
   padding: 0 0 0 24px;
+  color: ${props => props.theme.colors.grays[11]};
 `;
 
 const itemStyles = css`

@@ -31,17 +31,19 @@ const variants = {
       }
     },
     secondary: {
-      color: 'white',
+      color: 'black',
       border: 0,
-      bg: 'transparent',
+      bg: 'white',
       borderColor: 'white',
       '&:not(:disabled):hover': {
         color: 'pureWhite',
+        bg: 'transparent',
         borderColor: 'pureWhite',
         boxShadow: `0px 0px 0px 1px ${theme.colors.pureWhite} inset`
       },
       '&:not(:disabled):focus': {
         color: 'pureWhite',
+        bg: 'transparent',
         borderColor: 'pureWhite',
         boxShadow: `0px 0px 0px 1px ${theme.colors.pureWhite} inset`
       }

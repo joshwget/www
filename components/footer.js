@@ -13,7 +13,7 @@ const linkGroups = [
   [
     //{ href: '/press', label: 'Press' },
     { href: '/terms', label: 'Terms of Service' },
-    { href: '/privacy', label: 'Privacy' }
+    { href: '/privacy', label: 'Privacy Policy' }
   ]
 ];
 
@@ -29,7 +29,7 @@ const StyledFooter = styled.footer`
 const Container = styled(Column)`
   max-width: ${props => props.theme.pageWidth}px;
   width: 100%;
-  padding: 32px;
+  padding: 96px 32px 32px;
 `;
 
 const FooterLink = styled(Link)`
@@ -39,7 +39,7 @@ const FooterLink = styled(Link)`
   &:hover {
     color: ${props => props.theme.colors.pureWhite};
   }
-  font-size: ${props => props.theme.fontSizes[0]}px;
+  font-size: ${props => props.theme.fontSizes[1]}px;
 `;
 
 FooterLink.defaultProps = {
@@ -55,14 +55,14 @@ const Footer = () => (
     <Container>
       <Row alignSelf="flex-start">
         <Link href="/">
-          <Logo size={28} />
+          <Logo size={36} />
         </Link>
       </Row>
 
       <FooterNav>
         <Row>
           {linkGroups.map(links => (
-            <Column key={links[0].label} marginRight={6}>
+            <Column key={links[0].label} marginRight={8}>
               {links.map(({ href, label, mailto }) => (
                 <FooterLink
                   key={label}

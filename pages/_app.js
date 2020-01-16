@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { default as NextApp } from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
@@ -19,8 +20,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: ${props => props.theme.fonts.default};
     font-size: 16px;
-    font-weight: 300;
-    line-height: 1.3;
+    font-weight: 400;
     background-color: ${props => props.theme.colors.pageBackground};
     color: ${props => props.theme.colors.white};
   }
@@ -56,11 +56,16 @@ class App extends NextApp {
   render() {
     const { Component, pageProps } = this.props;
     return (
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <RouteListener />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <>
+        <Head>
+          <title>Deviceplane | Manage your devices at the edge</title>
+        </Head>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <RouteListener />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </>
     );
   }
 }

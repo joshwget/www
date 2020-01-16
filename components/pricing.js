@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import {
-  Box,
   Column,
   Row,
   Motion,
@@ -19,18 +18,20 @@ const plans = [
     name: 'Developer',
     features: ['25 device limit', 'Single user'],
     price: 'Free',
+    icon: 'person',
     bottom: (
-      <Text marginTop="auto" color="grays.8" fontWeight={1}>
-        Scale to another plan seamlessly as you grow.
+      <Text marginTop="auto" color="grays.11" fontWeight={1}>
+        Scale to another plan as you grow.
       </Text>
     )
   },
   {
     name: 'Team',
+    icon: 'people',
     features: ['50 devices included', '3 users included', 'Support'],
     price: 'Starts at $250/month',
     bottom: (
-      <Text marginTop="auto" color="grays.8" fontWeight={1}>
+      <Text marginTop="auto" color="grays.11" fontWeight={1}>
         Cost based on each additional device or user.
       </Text>
     )
@@ -43,12 +44,13 @@ const plans = [
       'Dedicated support',
       'Onboarding'
     ],
+    icon: 'office',
     price: 'Custom pricing',
     bottom: (
       <Button
+        variant="secondary"
         title="Contact sales"
         href="mailto:sales@deviceplane.com"
-        borderColor="primary"
         marginTop="auto"
       />
     )
@@ -59,13 +61,12 @@ const PlanContainer = styled(Motion)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 4px;
-  background: ${props => props.theme.colors.black};
-  border: 1px solid ${props => props.theme.colors.white};
-  border-color: ${props => props.theme.colors.white};
+  border-radius: 6px;
+  background: ${props => props.theme.colors.pageBackground};
+  //border: 1px solid ${props => props.theme.colors.primary};
 `;
 
-const Plan = ({ name, features, price, bottom, index, animate }) => (
+const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
   <PlanContainer
     key={name}
     animate={animate && { opacity: [0, 1], y: [-50, 0] }}
@@ -75,21 +76,30 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
       ease: 'easeIn'
     }}
     padding={5}
-    height={['initial', 'initial', '320px']}
-    marginTop={8}
-    flex={[1, 1, '0 0 230px', '0 0 270px']}
+    height={['initial', 'initial', '340px']}
+    marginY={8}
+    marginX={[0, 0, 4, 6]}
+    width="100%"
+    maxWidth="280px"
   >
     <Column>
       <Column>
-        <Text fontSize={5} fontWeight={3}>
+        <Icon icon={icon} size={28} color="primary" marginBottom={2} />
+        <Text fontSize={4} fontWeight={2}>
           {name}
         </Text>
-        <Text marginTop={1} fontWeight={1} fontSize={1} color="grays.8">
+        <Text
+          marginTop={1}
+          fontWeight={2}
+          fontSize={0}
+          color="grays.11"
+          style={{ textTransform: 'uppercase' }}
+        >
           {price}
         </Text>
       </Column>
 
-      <Column>
+      <Column marginTop={1}>
         {features.map(feature => (
           <Row key={feature} marginTop={4} alignItems="center">
             <Row>
@@ -107,59 +117,32 @@ const Plan = ({ name, features, price, bottom, index, animate }) => (
   </PlanContainer>
 );
 
-const Background = styled.div`
-  position: absolute;
-  z-index: 0;
-  left: 0;
-  height: 450px;
-  background: linear-gradient(
-    174deg,
-    transparent calc(50% - 1px),
-    ${props => props.theme.colors.black} 50%
-  );
-  width: 100vw;
-  bottom: 0;
-
-  @media (max-width: 800px) {
-    height: 1150px;
-    background: linear-gradient(
-      165deg,
-      transparent calc(50% - 1px),
-      ${props => props.theme.colors.black} 50%
-    );
-  }
-`;
-
 const Pricing = () => {
   const [ref, entry] = useInView();
 
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Column position="relative" width="100%" alignItems="center" ref={ref}>
-      <Background />
+    <Section bg="black">
+      <motion.div
+        animate={animate && { opacity: [0, 1] }}
+        transition={{ duration: 1, delay: 0.25 }}
+      >
+        <Heading variant="secondary" textAlign="center">
+          Flexible Pricing
+        </Heading>
+      </motion.div>
 
-      <Section position="relative" paddingX={6}>
-        <motion.div
-          animate={animate && { opacity: [0, 1] }}
-          transition={{ duration: 1, delay: 0.25 }}
-        >
-          <Heading variant="secondary" textAlign="center">
-            Flexible pricing
-          </Heading>
-        </motion.div>
-
-        <Row
-          alignSelf={['initial', 'initial', 'stretch']}
-          justifyContent={['initial', 'initial', 'space-between']}
-          flexDirection={['column', 'column', 'row']}
-        >
-          {plans.map((plan, index) => (
-            <Plan key={plan.name} {...plan} index={index} animate={animate} />
-          ))}
-        </Row>
-      </Section>
-    </Column>
+      <Row
+        alignSelf={['initial', 'initial', 'stretch']}
+        justifyContent="center"
+        flexDirection={['column', 'column', 'row']}
+      >
+        {plans.map((plan, index) => (
+          <Plan key={plan.name} {...plan} index={index} animate={animate} />
+        ))}
+      </Row>
+    </Section>
   );
 };
 

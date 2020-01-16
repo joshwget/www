@@ -10,13 +10,15 @@ import {
   Heading,
   Paragraph,
   Text,
-  Button
+  Button,
+  Icon
 } from '../components/core';
 
 const postings = [
   {
     title: 'Software Engineer',
     location: 'San Francisco, CA',
+    icon: 'code',
     body: (
       <>
         <Paragraph>
@@ -37,6 +39,7 @@ const postings = [
   },
   {
     title: 'Developer Advocate',
+    icon: 'learning',
     location: 'San Francisco, CA',
     body: (
       <>
@@ -56,15 +59,13 @@ const postings = [
   }
 ];
 
-const Posting = ({ title, location, body }) => (
+const Posting = ({ title, location, body, icon }) => (
   <Column
-    border={0}
-    borderColor="white"
-    bg="black"
+    bg="pageBackground"
     padding={6}
-    borderRadius={1}
-    maxWidth="500px"
-    marginX={[4, 4, 6]}
+    borderRadius={2}
+    maxWidth="540px"
+    marginX={6}
     marginTop={9}
   >
     <Row
@@ -73,9 +74,8 @@ const Posting = ({ title, location, body }) => (
       alignSelf="stretch"
       marginBottom={2}
     >
-      <Text fontWeight={3} fontSize={5}>
-        {title}
-      </Text>
+      <Icon icon={icon} size={30} color="primary" />
+
       <Button
         display={['none', 'none', 'flex']}
         marginLeft={2}
@@ -87,7 +87,20 @@ const Posting = ({ title, location, body }) => (
       />
     </Row>
 
-    <Row display={['flex', 'flex', 'none']} marginBottom={2}>
+    <Text fontWeight={2} fontSize={5}>
+      {title}
+    </Text>
+
+    <Text
+      fontWeight={2}
+      fontSize={1}
+      style={{ textTransform: 'uppercase' }}
+      color="grays.8"
+    >
+      {location}
+    </Text>
+
+    <Row display={['flex', 'flex', 'none']} marginTop={2}>
       <Button
         variant="text"
         title="Apply"
@@ -97,9 +110,7 @@ const Posting = ({ title, location, body }) => (
       />
     </Row>
 
-    {/* <Text fontWeight={2}>{location}</Text> */}
-
-    <Box>{body}</Box>
+    <Box marginTop={4}>{body}</Box>
   </Column>
 );
 
@@ -111,39 +122,38 @@ const Careers = () => (
 
     <Nav />
 
-    <Column alignItems="center" paddingBottom={9}>
+    <Column alignItems="center" paddingBottom={9} bg="black">
       <Column
         bg="black"
         alignItems="center"
         flex={1}
-        paddingTop={6}
-        paddingBottom={9}
+        paddingY={9}
         alignSelf="stretch"
       >
         <Heading>Careers</Heading>
 
-        <Text
-          maxWidth="630px"
+        <Paragraph
+          maxWidth="800px"
           marginX={6}
           marginTop={4}
           textAlign="center"
           fontWeight={1}
+          fontSize={'20px'}
         >
           Our goal is to make Deviceplane the de facto way to manage all remote
           hardware and devices. The path to get there requires deep engagement
           with a massive community of developers — both to maximize adoption of
           Deviceplane, and to make sure we're building the product that fits
           their requirements and sparks joy.
-        </Text>
+        </Paragraph>
       </Column>
 
       <Row
-        justifyContent={['initial', 'initial', 'initial', 'center']}
+        justifyContent={['initial', 'initial', 'initial', 'space-between']}
         alignItems={['center', 'center', 'center', 'initial']}
         width="100%"
         maxWidth={theme.pageWidth}
         flexDirection={['column', 'column', 'column', 'row']}
-        paddingX={4}
       >
         {postings.map(props => (
           <Posting {...props} />

@@ -26,8 +26,8 @@ const NavLink = styled(Link)`
     color: ${props =>
       props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
   }
-  margin-right: 24px;
-  font-size: ${props => props.theme.fontSizes[1]}px;
+  margin-right: 32px;
+  font-size: ${props => props.theme.fontSizes[2]}px;
 `;
 
 const MobileNavLinkContainer = styled(Box)`
@@ -174,6 +174,8 @@ const StyledNav = styled.nav`
 `;
 
 const Header = styled.header`
+  position: sticky;
+  top: 0;
   display: flex;
   z-index: 2;
   background-color: ${props => (props.transparent ? 'transparent' : 'black')};
@@ -184,14 +186,14 @@ const Header = styled.header`
 
 const Name = () => (
   <Link href="/">
-    <Row marginRight={6} alignItems="center">
+    <Row alignItems="center">
       <Logo />
 
       <Text
         fontWeight={2}
         fontSize="26px"
         color="#fff"
-        marginLeft="8px"
+        marginLeft="6px"
         style={{ textTransform: 'none' }}
       >
         deviceplane

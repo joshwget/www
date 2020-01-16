@@ -57,7 +57,6 @@ class Document extends NextDocument {
     return (
       <Html>
         <Head>
-          <title>Deviceplane | Manage your devices at the edge</title>
           <meta charSet="utf-8" />
           <meta
             name="viewport"

@@ -4,12 +4,11 @@ import Nav from '../components/nav';
 import Hero from '../components/hero';
 import Features from '../components/features';
 import Tutorial from '../components/tutorial';
-import UseCases from '../components/use-cases';
+import Intro from '../components/intro';
 import Info from '../components/info';
 import Pricing from '../components/pricing';
 import CTA from '../components/cta';
 import Footer from '../components/footer';
-import { Column } from '../components/core';
 
 const Airtable = require('airtable');
 
@@ -22,33 +21,21 @@ const Home = () => (
   <>
     <Nav transparent />
 
-    <Column alignItems="center">
-      <Hero airtable={base} />
+    <Hero airtable={base} />
 
-      <UseCases />
+    <Intro />
 
-      <Features />
+    <Features />
 
-      <Tutorial />
+    {/* <Tutorial /> */}
 
-      <Info />
+    <Info />
 
-      <Pricing />
+    <Pricing />
 
-      <CTA />
-    </Column>
+    <CTA />
 
     <Footer />
-
-    <style global jsx>
-      {`
-        @media screen and (max-width: 480px) {
-          section {
-            padding: 2rem;
-          }
-        }
-      `}
-    </style>
   </>
 );
 

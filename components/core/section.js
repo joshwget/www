@@ -1,22 +1,26 @@
 import styled from 'styled-components';
-import {
-  space,
-  layout,
-  color,
-  border,
-  flexbox,
-  typography,
-  position
-} from 'styled-system';
 
-export const Section = styled.section`
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
-padding: 64px 0;
-max-width: ${props => props.theme.pageWidth}px;
-  ${space} ${layout} ${color} ${border} ${typography} ${flexbox} ${position}
+import theme from '../../theme';
+import { Column, Box } from './box';
+
+export const StyledSection = styled(Box).attrs({ as: 'section' })`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
+
+const Section = ({ children, ...props }) => (
+  <StyledSection paddingY={10} {...props}>
+    <Column
+      maxWidth={theme.pageWidth}
+      width="100%"
+      paddingX={6}
+      alignItems="center"
+    >
+      {children}
+    </Column>
+  </StyledSection>
+);
 
 export default Section;
