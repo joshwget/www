@@ -78,7 +78,7 @@ const MobileMenu = ({ show, pathname }) => {
         />
 
         <Button
-          title="Start now"
+          title="Sign up"
           href="https://cloud.deviceplane.com/signup"
           flex={1}
         />

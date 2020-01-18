@@ -54,7 +54,7 @@ const Container = styled(Column)`
 `;
 
 const Feature = ({ title, body, icon }) => (
-  <Container maxWidth={13} marginTop={8}>
+  <Container maxWidth={13} marginTop={8} width="100%">
     <Icon color="primary" size={24} icon={icon} marginBottom={2} />
 
     <Heading variant="tertiary">{title}</Heading>
