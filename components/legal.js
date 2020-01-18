@@ -32,8 +32,7 @@ const Legal = ({ title, lastUpdated, children }) => {
           bg="black"
           alignItems="center"
           flex={1}
-          padding={6}
-          paddingBottom={9}
+          paddingY={9}
           alignSelf="stretch"
         >
           <Heading textAlign="center" fontSize={[6, 7]}>

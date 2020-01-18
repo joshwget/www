@@ -116,7 +116,7 @@ const TableOfContents = ({ links }) => (
       fontSize={0}
       fontWeight={2}
       marginBottom={2}
-      color="grays.6"
+      color="grays.8"
       style={{ whiteSpace: 'nowrap', textTransform: 'uppercase' }}
     >
       Table of Contents

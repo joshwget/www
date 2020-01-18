@@ -10,7 +10,7 @@ import { OrderedList, UnorderedList } from './core/list';
 
 const getId = str => str.toLowerCase().replace(/ /g, '-');
 
-const LinkHeading = ({ children, fontSize, variant }) => {
+const LinkHeading = ({ children, fontSize, marginTop, variant }) => {
   const [linkVisible, setLinkVisible] = useState(false);
   const id = getId(children);
   return (
@@ -18,6 +18,7 @@ const LinkHeading = ({ children, fontSize, variant }) => {
       position="relative"
       variant={variant}
       fontSize={fontSize}
+      marginTop={marginTop}
       id={id}
       onMouseEnter={() => setLinkVisible(true)}
       onMouseLeave={() => setLinkVisible(false)}
@@ -51,10 +52,10 @@ const LinkedH1 = props => (
   <LinkHeading {...props} fontSize={[5, 6]} variant="primary" />
 );
 const LinkedH2 = props => (
-  <LinkHeading {...props} fontSize={[4, 5]} variant="secondary" />
+  <LinkHeading {...props} fontSize={[4, 5]} marginTop={8} variant="secondary" />
 );
 const LinkedH3 = props => (
-  <LinkHeading {...props} fontSize={[3, 4]} variant="tertiary" />
+  <LinkHeading {...props} fontSize={[3, 4]} marginTop={6} variant="tertiary" />
 );
 
 const H1 = props => <Heading {...props} fontSize={[5, 6]} variant="primary" />;
@@ -139,6 +140,11 @@ const Blockquote = styled.blockquote`
   font-weight: 400;
 `;
 
+const Strong = styled.strong`
+  font-weight: 700;
+  color: ${props => props.theme.colors.white};
+`;
+
 const HighlightedCode = ({ children, className }) => {
   const language = className ? className.replace(/language-/, '') : '';
 
@@ -188,7 +194,8 @@ const components = linkHeaders => ({
   a: Link,
   blockquote: Blockquote,
   ol: OrderedList,
-  ul: UnorderedList
+  ul: UnorderedList,
+  strong: Strong
 });
 
 const MDX = ({ children, linkHeaders }) => (

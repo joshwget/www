@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import { Section, Heading, Column, Row, Button } from './core';
+import { Section, Text, Column, Row, Button } from './core';
 
 const CTA = () => {
   const [ref, entry] = useInView();
@@ -9,42 +9,41 @@ const CTA = () => {
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Column width="100%" alignItems="center" bg="black" ref={ref}>
-      <Section alignItems="center" paddingX={6}>
-        <motion.div
-          animate={animate && { opacity: [0, 1] }}
-          transition={{ duration: 4, delay: 0.25 }}
-        >
-          <Heading variant="secondary" textAlign="center">
-            Ready to get started?
-          </Heading>
-        </motion.div>
+    <Section ref={ref}>
+      <Row
+        alignItems="center"
+        bg={['none', 'black']}
+        padding={[0, 8]}
+        borderRadius={2}
+        border={['none', 1]}
+        flexDirection={['column', 'column', 'row']}
+      >
+        <Text fontSize={5} textAlign="center" fontWeight={1} color="primary">
+          Get started today
+        </Text>
 
         <Row
           alignSelf="stretch"
-          marginTop={8}
-          flexDirection={['column', 'column', 'row']}
           alignItems="center"
-          justifyContent="center"
+          flexDirection={['column', 'column', 'row']}
+          justifyContent={['unset', 'unset', 'center']}
+          marginLeft={[0, 0, 8]}
+          marginTop={[6, 6, 0]}
         >
           <Button
             title="Chat with us"
             variant="secondary"
             onClick={() => window.Intercom('show')}
-            width="100%"
-            maxWidth="340px"
-            marginBottom={[6, 6, 0]}
-            marginRight={[0, 0, 6]}
+            marginRight={[0, 0, 4]}
           />
           <Button
-            title="Start now"
-            width="100%"
-            maxWidth="340px"
+            title="Create free account"
             href="https://cloud.deviceplane.com/signup"
+            marginTop={[4, 4, 0]}
           />
         </Row>
-      </Section>
-    </Column>
+      </Row>
+    </Section>
   );
 };
 

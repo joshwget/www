@@ -4,14 +4,14 @@ import { Section, Heading, Row, Column, Paragraph, Icon } from './core';
 
 const content = [
   {
-    title: 'Remote updates',
+    title: 'Remote Updates',
     body: `Deploy reliably and with confidence. We make it easy to gradually
     ship updates, test new versions on a subset of your devices,
     and rollback when things don't go as expected.`,
     icon: 'automatic-updates'
   },
   {
-    title: 'SSH access',
+    title: 'SSH Access',
     body: `Access your device via SSH even when it's not on the same network.
     Flexible policies allow you to enable and disable this feature
     from the device for security reasons.`,
@@ -31,7 +31,7 @@ const content = [
     icon: 'document-share'
   },
   {
-    title: 'Access control',
+    title: 'Access Control',
     body: `Fine-grained roles and policies allow you to control exactly
     how your devices should be accessed.`,
     icon: 'key'
@@ -41,17 +41,15 @@ const content = [
     body: `All of our functionality is exposed by an easy to use API
     making it simple to programmatically interact with your
     devices.`,
-    icon: 'code'
+    icon: 'wrench'
   }
 ];
 
-const Container = ({ title, body, icon }) => (
+const Feature = ({ title, body, icon }) => (
   <Column maxWidth={12} marginTop={8} marginX={6}>
-    <Icon color="primary" size={26} icon={icon} marginBottom={4} />
+    <Icon color="primary" size={24} icon={icon} marginBottom={2} />
 
-    <Heading variant="tertiary" fontSize={4}>
-      {title}
-    </Heading>
+    <Heading variant="tertiary">{title}</Heading>
     <Paragraph>{body}</Paragraph>
   </Column>
 );
@@ -59,8 +57,8 @@ const Container = ({ title, body, icon }) => (
 const Features = () => (
   <Column flex={1} bg="black" alignSelf="stretch" alignItems="center">
     <Section alignItems="center">
-      <Heading variant="secondary" textAlign="center" marginX={6}>
-        Powerful features
+      <Heading variant="secondary" textAlign="center">
+        Powerful Features
       </Heading>
 
       <Row
@@ -70,7 +68,7 @@ const Features = () => (
         flexDirection={['column', 'column', 'row']}
       >
         {content.slice(0, 2).map(p => (
-          <Container {...p} key={p.title} />
+          <Feature {...p} key={p.title} />
         ))}
       </Row>
 
@@ -81,7 +79,7 @@ const Features = () => (
         flexDirection={['column', 'column', 'row']}
       >
         {content.slice(2, 4).map(p => (
-          <Container {...p} key={p.title} />
+          <Feature {...p} key={p.title} />
         ))}
       </Row>
 
@@ -92,7 +90,7 @@ const Features = () => (
         flexDirection={['column', 'column', 'row']}
       >
         {content.slice(4, 6).map(p => (
-          <Container {...p} key={p.title} />
+          <Feature {...p} key={p.title} />
         ))}
       </Row>
     </Section>
