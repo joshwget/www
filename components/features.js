@@ -45,56 +45,62 @@ const content = [
   }
 ];
 
+const Container = styled(Column)`
+  @media screen and (min-width: 800px) {
+    &:first-child {
+      margin-right: 64px;
+    }
+  }
+`;
+
 const Feature = ({ title, body, icon }) => (
-  <Column maxWidth={12} marginTop={8} marginX={6}>
+  <Container maxWidth={13} marginTop={8}>
     <Icon color="primary" size={24} icon={icon} marginBottom={2} />
 
     <Heading variant="tertiary">{title}</Heading>
     <Paragraph>{body}</Paragraph>
-  </Column>
+  </Container>
 );
 
 const Features = () => (
-  <Column flex={1} bg="black" alignSelf="stretch" alignItems="center">
-    <Section alignItems="center">
-      <Heading variant="secondary" textAlign="center">
-        Powerful Features
-      </Heading>
+  <Section alignItems="center" bg="black">
+    <Heading variant="secondary" textAlign="center">
+      Powerful Features
+    </Heading>
 
-      <Row
-        justifyContent="space-between"
-        alignItems={['center', 'center', 'initial']}
-        alignSelf="stretch"
-        flexDirection={['column', 'column', 'row']}
-      >
-        {content.slice(0, 2).map(p => (
-          <Feature {...p} key={p.title} />
-        ))}
-      </Row>
+    <Row
+      justifyContent={['unset', 'unset', 'space-between']}
+      alignItems={['center', 'center', 'unset']}
+      alignSelf="stretch"
+      flexDirection={['column', 'column', 'row']}
+    >
+      {content.slice(0, 2).map(p => (
+        <Feature {...p} key={p.title} />
+      ))}
+    </Row>
 
-      <Row
-        justifyContent="space-between"
-        alignSelf="stretch"
-        alignItems={['center', 'center', 'initial']}
-        flexDirection={['column', 'column', 'row']}
-      >
-        {content.slice(2, 4).map(p => (
-          <Feature {...p} key={p.title} />
-        ))}
-      </Row>
+    <Row
+      justifyContent={['unset', 'unset', 'space-between']}
+      alignItems={['center', 'center', 'unset']}
+      alignSelf="stretch"
+      flexDirection={['column', 'column', 'row']}
+    >
+      {content.slice(2, 4).map(p => (
+        <Feature {...p} key={p.title} />
+      ))}
+    </Row>
 
-      <Row
-        justifyContent="space-between"
-        alignSelf="stretch"
-        alignItems={['center', 'center', 'initial']}
-        flexDirection={['column', 'column', 'row']}
-      >
-        {content.slice(4, 6).map(p => (
-          <Feature {...p} key={p.title} />
-        ))}
-      </Row>
-    </Section>
-  </Column>
+    <Row
+      justifyContent={['unset', 'unset', 'space-between']}
+      alignItems={['center', 'center', 'unset']}
+      alignSelf="stretch"
+      flexDirection={['column', 'column', 'row']}
+    >
+      {content.slice(4, 6).map(p => (
+        <Feature {...p} key={p.title} />
+      ))}
+    </Row>
+  </Section>
 );
 
 export default Features;
