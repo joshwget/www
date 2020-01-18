@@ -60,12 +60,14 @@ class Document extends NextDocument {
           <meta charSet="utf-8" />
           <meta
             name="viewport"
-            content="initial-scale=1.0, width=device-width"
+            content="initial-scale=1, minimum-scale=1, width=device-width"
           />
           <meta httpEquiv="Content-Language" content="en" />
           <meta
             name="description"
-            content="Deviceplane handles the hard infrastructure problems around managing remote hardware. We make it easy to securely update, monitor, and access remote devices."
+            content="Deviceplane is a management tool for embedded systems and edge
+        computing. We make it easy to securely update, monitor, and access your
+        devices."
           />
           <meta property="og:url" content="https://deviceplane.com" />
           <meta
@@ -74,7 +76,9 @@ class Document extends NextDocument {
           />
           <meta
             property="og:description"
-            content="Deviceplane handles the hard infrastructure problems around managing remote hardware. We make it easy to securely update, monitor, and access remote devices."
+            content="Deviceplane is a management tool for embedded systems and edge
+        computing. We make it easy to securely update, monitor, and access your
+        devices."
           />
           <meta property="og:site_name" content="Deviceplane" />
 

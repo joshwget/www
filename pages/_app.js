@@ -8,7 +8,7 @@ import theme from '../theme';
 
 const GlobalStyle = createGlobalStyle`
   * {
-      box-sizing: inherit;
+    box-sizing: inherit;
   }
 
   ::selection {
