@@ -10,7 +10,7 @@ const Info = () => (
     >
       <Column
         maxWidth={13}
-        marginRight={[0, 0, 8]}
+        marginRight={[0, 0, 10]}
         marginBottom={[10, 10, 0]}
         alignItems={['center', 'center', 'unset']}
       >

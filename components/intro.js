@@ -10,8 +10,23 @@ const Info = () => (
     >
       <Column
         maxWidth={[13, 13, '460px']}
-        marginRight={[0, 0, 8]}
+        marginRight={[0, 0, 10]}
         marginBottom={[10, 10, 0]}
+        alignItems={['center', 'center', 'unset']}
+      >
+        <Image height={48} width={48} src="/linux.svg" marginBottom={2} />
+        <Heading variant="secondary" textAlign={['center', 'center', 'left']}>
+          Linux Based
+        </Heading>
+        <Paragraph fontSize={3} textAlign={['center', 'center', 'left']}>
+          We support any device running Linux regardless of distribution,
+          architecture, or hardware. Our agent is a static binary that can be
+          installed in a single command.
+        </Paragraph>
+      </Column>
+
+      <Column
+        maxWidth={[13, 13, '460px']}
         alignItems={['center', 'center', 'unset']}
       >
         <Image height={48} width={48} src="/github.svg" marginBottom={2} />
@@ -23,21 +38,6 @@ const Info = () => (
           can be found on our{' '}
           <Link href="https://github.com/deviceplane/deviceplane">GitHub</Link>{' '}
           and is distributed under a permissive open source license.
-        </Paragraph>
-      </Column>
-
-      <Column
-        maxWidth={[13, 13, '460px']}
-        alignItems={['center', 'center', 'unset']}
-      >
-        <Image height={48} width={48} src="/linux.svg" marginBottom={2} />
-        <Heading variant="secondary" textAlign={['center', 'center', 'left']}>
-          Linux Based
-        </Heading>
-        <Paragraph fontSize={3} textAlign={['center', 'center', 'left']}>
-          We support any device running Linux regardless of distribution,
-          architecture, or hardware. Our agent is a static binary that can be
-          installed in a single command.
         </Paragraph>
       </Column>
     </Row>
