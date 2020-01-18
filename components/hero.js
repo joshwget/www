@@ -101,11 +101,7 @@ const Hero = ({ airtable }) => {
 
   return (
     <Section bg="black" position="relative" paddingTop={9} borderTop="none">
-      <Heading
-        paddingTop={[6, 0]}
-        fontSize={['42px', '52px', '64px', '78px']}
-        textAlign="center"
-      >
+      <Heading fontSize={['42px', '52px', '64px', '78px']} textAlign="center">
         Manage your devices
         <br /> at the edge
       </Heading>
