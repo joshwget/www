@@ -1,0 +1,76 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Service Metrics">
+
+Service metrics are custom metrics that _you_ expose from your services. When you create an application with a list of services, any number of those services can expose metrics.
+
+## Setup
+
+Service metrics require one additional step compared to project and device metrics. To configure service metrics, you should:
+
+1. Expose a metrics endpoint on your service
+1. Add metrics you'd like to expose in Deviceplane
+
+### Exposing a Metrics Endpoint
+
+To expose a metrics endpoint, simply expose a handler in [Prometheus-style text format](https://prometheus.io/docs/instrumenting/exposition_formats/#text-format-example). Examples of how to do so can be found here [in Golang](https://github.com/deviceplane/demo-go) and here [in Node.js](https://github.com/deviceplane/demo-service).
+
+By default, we check port 2112 and path "/metrics" of the service's container (this can be reconfigured). This port does **not** need to be bind mounted in your application's config.
+
+### Adding Metrics
+
+Go to user. Type in the application and service name, and add each metric you'd like to forward.
+
+Note that you can use the wildcard character "`*`" as the metric name, to expose all metrics that haven't been explicitly exposed. This match takes the lowest precedence. This can be useful if you want to expose all metrics, and are fine having all metrics tagged the same way.
+
+## Why you'd want this
+
+Say you manage a line of vending machines. Knowing immediately when a machine is broken matters a lot to you. You also want to know more higher-level aggregate information.
+
+Let's see how you might get this information, without having to resort to manual physical inventory logs.
+
+### Service Metrics Endpoint
+
+Your vending machine application has a service with an endpoint that hosts the some metrics. It uses a [Prometheus client library](https://prometheus.io/docs/instrumenting/clientlibs/) to easily handle HTTP requests on port 2112.
+
+A response from that HTTP handler could look like this:
+
+```
+# HELP temperature The current temperature, internally and externally, in celcius.
+# TYPE temperature gauge
+temperature{location="internal"} 45.523
+temperature{location="external"} 44.239
+# HELP customer_transactions Total number of customer transactions by status.
+# TYPE customer_transactions counter
+customer_transactions{status="success"} 2768
+customer_transactions{status="failure"} 0
+customer_transactions{status="timeout"} 0
+```
+
+### Device Tags
+
+You've also tagged your devices based on their location, (e.g. "location:b0b930b4e161"), where the value of the location tag is your internal ID of the store or venue where you've deployed the device.
+
+### Service Metric Configuration
+
+Then, you can:
+
+1. Expose all metrics from this service using the wildcard character "`*`" as the metric name
+1. Tag metrics with the device name, to help narrow down which devices are giving the most errors.
+1. Tag metrics with the location label, to help see if a high temperature reading is displayed across all devices in the same venue.
+
+### Results
+
+Now, with only this information, you can:
+
+1. Monitor when frequency of orders decreases, per machine
+    * Maybe one of your machines has a jammed coin slot. You might not have the hardware to track this, but you can observe anomalies caused by it in your stats!
+1. Observe locations with the highest purchase rates
+    * Useful for deciding where to place future vending machines
+1. Proactively order fixes machines with broken coolant
+    * This probably isn't something customers would call to report, but getting a warm soft drink would definitely decrease their chances of coming back
+
+And even more! Most importantly, all of these alerts are realtime and no longer rely on manual checks to determine machine status.
+
+</Docs>
+

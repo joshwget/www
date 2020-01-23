@@ -1,0 +1,48 @@
+import Docs from '../../components/docs';
+
+<Docs title="Monitoring">
+
+Monitoring is the key to swift triage during an incident. Monitoring is what allows you to make informed, data-driven decisions. It lets you know when devices go offline, near their disk capacity, have errors within their applications, and more.
+
+Deviceplane is built with monitoring in mind because we know how important it is to have a full view of what's going on. And we think it should be effortless to set up.
+
+## What does this make easier?
+
+### Free project and device metrics
+
+Zero-cost setup of [project metrics](/docs/monitoring/project-metrics) and [device metrics](/docs/monitoring/device-metrics), and dead-simple integration with [Datadog](https://www.datadoghq.com/product/). We provide metrics on the state of all of your devices, as well as the state of your devices in our project.
+
+You don't need to source these metrics. If you want to set up an alert on Datadog when a device has less than 10% disk space left, don't worry about how to scrape and export the relevant metrics. We already export them, and others. Just write the alert.
+
+### Easy custom metrics
+
+In order to [export custom service metrics](/docs/monitoring/service-metrics), you just expose them as an HTTP endpoint on your service. Then go in the Monitoring tab and tell us which metrics you want to forward and tag. We'll handle the rest.
+
+### Built-in metric tagging
+
+Deviceplane automatically tags metrics by which source has emitted them. This allows you to later view and narrow down metrics based on the device, application, and even customer (imagine adding a device label with the customer ID that you've sent it to), in the metric host you use.
+
+You can tag metrics with:
+
+* Project name
+* Device name
+* Custom device labels
+* Application and service name (for custom metrics)
+
+This is configurable on the Monitoring sidebar.
+
+### Authentication of every device
+
+Our monitoring is integrated with device identity and authentication. Removing a device from your project will also prevent that device from submitting further metrics.
+
+API keys for monitoring systems such as Datadog allow submitting any metric, at any quantity, with any quantity of tags, which can quickly hit your [cardinality limit](https://docs.datadoghq.com/account_management/billing/custom_metrics/?tab=countrategauge#counting-custom-metrics) and cause important metrics to be dropped. Deviceplane adds a layer of security between potentially untrusted devices and your monitoring system.
+
+### Full CLI and UI integration
+
+View metrics is just a click of a button in our UI, or a single command in our CLI. You can manually query project, device, and service metrics, even if you haven't set up configuration with a metrics host. These metrics are fetched from the device in realtime, so you don't need to wait for your metrics host to process them.
+
+### Low resource utilization
+
+Don't worry about additional CPU usage on resource-constrained devices. You don't have to install and run a separate agent on each device. We handle monitoring, without needing significant resources to fetch your metrics.
+
+</Docs>

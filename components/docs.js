@@ -41,6 +41,30 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/monitoring',
+      title: 'Monitoring',
+    },
+    {
+      href: '/docs/monitoring/setup',
+      title: 'Setup',
+      nested: true
+    },
+    {
+      href: '/docs/monitoring/project-metrics',
+      title: 'Project Metrics',
+      nested: true
+    },
+    {
+      href: '/docs/monitoring/device-metrics',
+      title: 'Device Metrics',
+      nested: true
+    },
+    {
+      href: '/docs/monitoring/service-metrics',
+      title: 'Service Metrics',
+      nested: true
+    },
+    {
       href: '/docs/iam',
       title: 'IAM'
     },

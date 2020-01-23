@@ -1,0 +1,124 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Built-in Metrics">
+
+Device metrics contain information about the host device on which the Deviceplane agent runs. These metrics come out-of-the box, and only need to be configured in the UI.
+
+## An Example
+
+Two useful metrics to expose might be "Filesystem Free Bytes" and "Filesystem Size Bytes". These metrics give you information on disk capacity and disk usage on your devices, on a per-disk basis.
+
+To expose these two metrics:
+
+1. Open Device Metrics (Monitoring > Device Metrics)
+1. Click "add device metrics"
+1. Select "Filesystem Free Bytes" and "Filesystem Size Bytes" from Metrics, and "device" from Properties
+
+Now, you can make an alert in Datadog that notifies you when you have low amounts of disk space left!
+
+To do so, go to the [create monitor page in Datadog](https://app.datadoghq.com/monitors#create/metric), scroll to the second section, "Define the metric", select the "Source" tab, and paste the following formula in:
+```
+avg:deviceplane.device.filesystem_free_bytes{*} by {deviceplane.device} / avg:deviceplane.device.filesystem_size_bytes{*} by {deviceplane.device}
+```
+
+Now, you can define your alert conditions. Here we've set an alert when 10% storage is left, and a warning when 30% is left. This is what it looks like:
+
+<img width="100%" src="https://i.imgur.com/LhbLpov.png"></img>
+
+Now you can receive Datadog alerts when your devices are low on disk space!
+
+## Full List
+
+The full list of Device metrics we provide:
+
+| Metric Name | Description | Metric Type | Added Tags |
+| --- | --- | --- | --- |
+| cpu_guest_seconds_total | Seconds the cpus spent in guests (VMs) for each mode. | counter | cpu, mode |
+| cpu_seconds_total | Seconds the cpus spent in each mode. | counter | cpu, mode |
+| disk_discard_time_seconds_total | This is the total number of seconds spent by all discards. | counter | device |
+| disk_discarded_sectors_total | The total number of sectors discarded successfully. | counter | device |
+| disk_discards_completed_total | The total number of discards completed successfully. | counter | device |
+| disk_discards_merged_total | The total number of discards merged. | counter | device |
+| disk_io_now | The number of I/Os currently in progress. | gauge | device |
+| disk_io_time_seconds_total | Total seconds spent doing I/Os. | counter | device |
+| disk_io_time_weighted_seconds_total | The weighted # of seconds spent doing I/Os. | counter | device |
+| disk_read_bytes_total | The total number of bytes read successfully. | counter | device |
+| disk_read_time_seconds_total | The total number of seconds spent by all reads. | counter | device |
+| disk_reads_completed_total | The total number of reads completed successfully. | counter | device |
+| disk_reads_merged_total | The total number of reads merged. | counter | device |
+| disk_write_time_seconds_total | This is the total number of seconds spent by all writes. | counter | device |
+| disk_writes_completed_total | The total number of writes completed successfully. | counter | device |
+| disk_writes_merged_total | The number of writes merged. | counter | device |
+| disk_written_bytes_total | The total number of bytes written successfully. | counter | device |
+| filesystem_avail_bytes | Filesystem space available to non-root users in bytes. | gauge | device, fstype, mountpoint |
+| filesystem_device_error | Whether an error occurred while getting statistics for the given device. | gauge | device, fstype, mountpoint |
+| filesystem_files | Filesystem total file nodes. | gauge | device, fstype, mountpoint |
+| filesystem_files_free | Filesystem total free file nodes. | gauge | device, fstype, mountpoint |
+| filesystem_free_bytes | Filesystem free space in bytes. | gauge | device, fstype, mountpoint |
+| filesystem_readonly | Filesystem read-only status. | gauge | device, fstype, mountpoint |
+| filesystem_size_bytes | Filesystem size in bytes. | gauge | device, fstype, mountpoint |
+| load1 | 1m load average. | gauge | |
+| load15 | 15m load average. | gauge | |
+| load5 | 5m load average. | gauge | |
+| memory_Active_anon_bytes | Memory information field Active_anon_bytes. | gauge | |
+| memory_Active_bytes | Memory information field Active_bytes. | gauge | |
+| memory_Active_file_bytes | Memory information field Active_file_bytes. | gauge | |
+| memory_AnonPages_bytes | Memory information field AnonPages_bytes. | gauge | |
+| memory_Bounce_bytes | Memory information field Bounce_bytes. | gauge | |
+| memory_Buffers_bytes | Memory information field Buffers_bytes. | gauge | |
+| memory_Cached_bytes | Memory information field Cached_bytes. | gauge | |
+| memory_CmaFree_bytes | Memory information field CmaFree_bytes. | gauge | |
+| memory_CmaTotal_bytes | Memory information field CmaTotal_bytes. | gauge | |
+| memory_CommitLimit_bytes | Memory information field CommitLimit_bytes. | gauge | |
+| memory_Committed_AS_bytes | Memory information field Committed_AS_bytes. | gauge | |
+| memory_Dirty_bytes | Memory information field Dirty_bytes. | gauge | |
+| memory_Inactive_anon_bytes | Memory information field Inactive_anon_bytes. | gauge | |
+| memory_Inactive_bytes | Memory information field Inactive_bytes. | gauge | |
+| memory_Inactive_file_bytes | Memory information field Inactive_file_bytes. | gauge | |
+| memory_KernelStack_bytes | Memory information field KernelStack_bytes. | gauge | |
+| memory_Mapped_bytes | Memory information field Mapped_bytes. | gauge | |
+| memory_MemAvailable_bytes | Memory information field MemAvailable_bytes. | gauge | |
+| memory_MemFree_bytes | Memory information field MemFree_bytes. | gauge | |
+| memory_MemTotal_bytes | Memory information field MemTotal_bytes. | gauge | |
+| memory_Mlocked_bytes | Memory information field Mlocked_bytes. | gauge | |
+| memory_NFS_Unstable_bytes | Memory information field NFS_Unstable_bytes. | gauge | |
+| memory_PageTables_bytes | Memory information field PageTables_bytes. | gauge | |
+| memory_Percpu_bytes | Memory information field Percpu_bytes. | gauge | |
+| memory_SReclaimable_bytes | Memory information field SReclaimable_bytes. | gauge | |
+| memory_SUnreclaim_bytes | Memory information field SUnreclaim_bytes. | gauge | |
+| memory_Shmem_bytes | Memory information field Shmem_bytes. | gauge | |
+| memory_Slab_bytes | Memory information field Slab_bytes. | gauge | |
+| memory_SwapCached_bytes | Memory information field SwapCached_bytes. | gauge | |
+| memory_SwapFree_bytes | Memory information field SwapFree_bytes. | gauge | |
+| memory_SwapTotal_bytes | Memory information field SwapTotal_bytes. | gauge | |
+| memory_Unevictable_bytes | Memory information field Unevictable_bytes. | gauge | |
+| memory_VmallocChunk_bytes | Memory information field VmallocChunk_bytes. | gauge | |
+| memory_VmallocTotal_bytes | Memory information field VmallocTotal_bytes. | gauge | |
+| memory_VmallocUsed_bytes | Memory information field VmallocUsed_bytes. | gauge | |
+| memory_WritebackTmp_bytes | Memory information field WritebackTmp_bytes. | gauge | |
+| memory_Writeback_bytes | Memory information field Writeback_bytes. | gauge | |
+| network_receive_bytes_total | Network device statistic receive_bytes. | counter | device |
+| network_receive_compressed_total | Network device statistic receive_compressed. | counter | device |
+| network_receive_drop_total | Network device statistic receive_drop. | counter | device |
+| network_receive_errs_total | Network device statistic receive_errs. | counter | device |
+| network_receive_fifo_total | Network device statistic receive_fifo. | counter | device |
+| network_receive_frame_total | Network device statistic receive_frame. | counter | device |
+| network_receive_multicast_total | Network device statistic receive_multicast. | counter | device |
+| network_receive_packets_total | Network device statistic receive_packets. | counter | device |
+| network_transmit_bytes_total | Network device statistic transmit_bytes. | counter | device |
+| network_transmit_carrier_total | Network device statistic transmit_carrier. | counter | device |
+| network_transmit_colls_total | Network device statistic transmit_colls. | counter | device |
+| network_transmit_compressed_total | Network device statistic transmit_compressed. | counter | device |
+| network_transmit_drop_total | Network device statistic transmit_drop. | counter | device |
+| network_transmit_errs_total | Network device statistic transmit_errs. | counter | device |
+| network_transmit_fifo_total | Network device statistic transmit_fifo. | counter | device |
+| network_transmit_packets_total | Network device statistic transmit_packets. | counter | device |
+| scrape_collector_duration_seconds | Duration of a collector scrape. | gauge | collector |
+| scrape_collector_success | Whether a collector succeeded. | gauge | collector |
+| textfile_scrape_error | 1 if there was an error opening or reading a file, 0 otherwise | gauge | |
+| time_seconds | System time in seconds since epoch (1970). | gauge | |
+| promhttp_metric_handler_errors_total | Total number of internal errors encountered by the promhttp metric handler. | counter | cause |
+| promhttp_metric_handler_requests_in_flight | Current number of scrapes being served. | gauge | |
+| promhttp_metric_handler_requests_total | Total number of scrapes by HTTP status code. | counter | code
+
+</Docs>

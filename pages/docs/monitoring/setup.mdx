@@ -1,0 +1,42 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Setup">
+
+## Supported Metric Hosts
+
+When you integrate an end-to-end monitoring setup, you need somewhere to store your metrics data. There are a few popular cloud-hosted and self-hosted options.
+
+We support [Datadog](https://www.datadoghq.com/product/). Datadog is a hosted service that provides you with metric aggregation, logs, dashboards, and alert integrations.
+
+_We plan to soon have support for [Prometheus](https://prometheus.io/)._ Prometheus is a time-series database that provides you with metric aggregation. It can be self-hosted (frequently in conjunction with [Grafana](https://grafana.com/) for visualization), or [hosted as a service](https://grafana.com/products/cloud/) which can come with logs, dashboards, and alerts, for a fully-featured setup.
+
+## Initial Setup
+
+Initial setup is done once, to integrate Deviceplane with your metrics host.
+
+In order to integrate with [Datadog](https://www.datadoghq.com/):
+
+1. [Create](https://app.datadoghq.com/signup) or [log into](https://app.datadoghq.com/account/login?next=%2F) your Datadog account
+1. Create a [Datadog API Key](https://app.datadoghq.com/account/settings#api) and add it on Deviceplane _(Monitoring > Integrations)_
+
+Next, configure metrics to pick which metrics/tags are sent to your metrics host.
+
+## Metrics Configuration
+
+The more metrics and tags you have, the higher the cardinality of your metric data. This increases the amount of data needed to store your metrics, and usually increases the amount you have to pay to have your metrics hosted. For that reason, we use a whitelist to determine which metrics and tags to expose.
+
+To configure metrics, log in to Deviceplane and select Monitoring sidebar. Under there, you can whitelist and tag [project](/docs/monitoring/project-metrics), [device](/docs/monitoring/device-metrics), and [service](/docs/monitoring/service-metrics) metrics.
+
+### Whitelisting Metrics
+
+* For project metrics, all available metrics are listed, simply select whether you want them enabled or not
+* For device metrics, click "add device metrics". Then select or type the names of the metrics you want
+* For service metrics, select the application/service in the dropdown, and click "add service metrics". Enter the names of the metrics you want to whitelist. You can use the "`*`" character to whitelist all metrics.
+
+### Tagging Metrics
+
+* You can optionally add the "device" and "application" tags to be forwarded. Note that the project name will always be a forwarded tag.
+* You can also enter a list of device labels that you wish to be forwarded on metric tags
+    * For example, if you've tagged each device with a "customer" label, you could use this to view your metrics on a per-customer basis
+
+</Docs>
