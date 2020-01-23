@@ -27,6 +27,16 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/deploying/release-pinning',
+      title: 'Release Pinning',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/filters',
+      title: 'Filters',
+      nested: true
+    },
+    {
       href: '/docs/managing/ssh-access',
       title: 'Managing'
     },

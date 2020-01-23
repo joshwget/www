@@ -1,0 +1,42 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Filters reference">
+
+Filters can be used for querying devices on the devices page, as well as for conditional scheduling using scheduling rules. In order to explain how filters could be for complex device selection, let's first define some terminology.
+
+ - A *query* is a set of filters that control which devices an application should be deployed to
+ - A *filter* is a set of conditions
+ - A *condition* is a statement about labels on a device such as `customer=stark-industries` or `customer!=stark-industries`.
+
+To evaluate if a device meets the requirement of the query, one of the conditions of each filter must be met. In other words, all the filters are joined together by an AND and all the conditions of a filter are joined together by an OR. Another way to think about this is that the scheduling rule is evaluated as follows.
+
+```
+filter1 AND filter2 AND ...
+```
+
+This expression could be expanded to the following since filters have multiple inner conditions.
+
+```
+(condition1 OR condition2 OR condition3 OR ...) AND (condition4 OR condition5 OR condition6 OR ...) AND ...
+```
+
+Some example evaluations are provided below. Suppose we have the following devices in our project:
+
+| Devices | Labels |
+| --- | --- |
+| device1 | customer=customer1, generation=3 |
+| device2 | customer=customer2 |
+| device3 | customer=customer3 |
+| device4 | customer=customer1 |
+| device5 | *[No labels set]* |
+
+Then, with the following queries, we can select the following devices. In the context of scheduling rules, we can use these queries to schedule an application onto those devices:
+
+| Query | Matching device(s) |
+| --- | --- |
+| **filter 1:** condition(customer=customer1) | device1, device4 |
+| **filter 1:** condition(customer=customer1), condition(customer=customer3) | device1, device4, device3 |
+| **filter 1:** condition(customer!=customer1) | device2, device3, device5 |
+| **filter 1:** condition(customer=customer1) <br/>**filter 2:** condition(generation=3) | device1 |
+
+</Docs>
