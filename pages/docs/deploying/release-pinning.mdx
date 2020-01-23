@@ -1,0 +1,24 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Release Pinning">
+
+Release pinning allows for tiered deployments of your applications. This is useful for scheduling less-stable builds on testing devices, and more-stable builds on critical infrastructure.
+
+In order to pin a release, we use release selectors (just like [conditional scheduling rules](/docs/deploying/scheduling/#conditional-scheduling)), which are built from [filters](/docs/deploying/filters), to select a group of devices to be pinned to a certain release. You can add multiple selectors to select multiple groups of devices, and give each group a different pinned release.
+
+Devices that an application is deployed on will be assigned an application version based on the first release selector that matches them. In the event that a device has the application deployed to it, but isn't selected by any release selector, the device has the default application version deployed to it.
+
+Release pinning can be used in conjunction with [conditional scheduling](/docs/deploying/scheduling/#conditional-scheduling) for maximum control over which devices have which releases scheduled on them.
+
+## Use cases
+
+Here are some situations where you may want to use release pinning, as well as a method which you could use to do so:
+
+| Use case | Method |
+| --- | --- |
+| To make sure live builds work on development devices before you ship them to the rest of your fleet | Set the default selector to the most recent working build, and use a release selector to select development devices to run the "latest" release. |
+| To make sure your more critical devices get your most stable and infrequently-updated builds | Organize releases on devices however you'd like. Simply make sure to make the first release selector select these critical devices, and pin a stable build on them. Only update the tagged release manually after verifying it works. |
+| To do incremental releases, starting with less-critical devices, in order to catch bugs before they hit more-critical devices | Use tiered release selectors, starting with most critical devices, and ending with least critical devices. Set all tiers of devices, as well as the default release, to use the most recent working build. When a new build is deployed, go down the list of selectors, setting each release to the latest build, testing/waiting the appropriate amount of time, and moving on to the next selector/group of devices. |
+| To lock certain devices to a certain application version | Create a selector for these devices. Make sure that they're not selected by any previous selector. Pin this selector to the application release you want these devices to be locked to. |
+
+</Docs>
