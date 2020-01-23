@@ -4,7 +4,7 @@ import Nav from '../components/nav';
 import Hero from '../components/hero';
 import Features from '../components/features';
 import Tutorial from '../components/tutorial';
-import Intro from '../components/intro';
+import Linux from '../components/linux';
 import Info from '../components/info';
 import Pricing from '../components/pricing';
 import CTA from '../components/cta';
@@ -23,11 +23,11 @@ const Home = () => (
 
     <Hero airtable={base} />
 
-    <Intro />
-
     <Features />
 
     {/* <Tutorial /> */}
+
+    <Linux />
 
     <Info />
 

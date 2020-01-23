@@ -11,18 +11,18 @@ const content = [
     icon: 'automatic-updates'
   },
   {
-    title: 'SSH Access',
-    body: `Access your device via SSH even when it's not on the same network.
-    Flexible policies allow you to enable and disable this feature
-    from the device for security reasons.`,
-    icon: 'console'
-  },
-  {
     title: 'Monitoring',
     body: `Seamlessly collect host and application metrics from your
     devices without the need for additional agents. Integrate
     with popular monitoring tools including Datadog and Prometheus.`,
     icon: 'pulse'
+  },
+  {
+    title: 'SSH Access',
+    body: `Access your device via SSH even when it's not on the same network.
+    Flexible policies allow you to enable and disable this feature
+    from the device for security reasons.`,
+    icon: 'console'
   },
   {
     title: 'Logging',
@@ -46,59 +46,46 @@ const content = [
 ];
 
 const Container = styled(Column)`
-  @media screen and (min-width: 800px) {
-    &:first-child {
-      margin-right: 64px;
-    }
+  &:first-child {
+    margin-top: 0;
   }
 `;
 
 const Feature = ({ title, body, icon }) => (
-  <Container maxWidth={13} marginTop={8} width="100%">
-    <Icon color="primary" size={24} icon={icon} marginBottom={2} />
+  <Container
+    maxWidth={13}
+    marginTop={10}
+    width="100%"
+    bg="pageBackground"
+    padding={6}
+    borderRadius={1}
+    border={0}
+  >
+    <Icon color="primary" size={24} icon={icon} marginBottom={4} />
 
-    <Heading variant="tertiary">{title}</Heading>
-    <Paragraph>{body}</Paragraph>
+    <Heading variant="tertiary" fontSize="20px">
+      {title}
+    </Heading>
+    <Paragraph marginBottom={0}>{body}</Paragraph>
   </Container>
 );
 
 const Features = () => (
-  <Section alignItems="center" bg="black">
-    <Heading variant="secondary" textAlign="center">
-      Powerful Features
-    </Heading>
-
+  <Section alignItems="center">
     <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
+      alignItems="flex-start"
+      justifyContent="space-between"
       alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
     >
-      {content.slice(0, 2).map(p => (
-        <Feature {...p} key={p.title} />
-      ))}
-    </Row>
+      <Heading position="sticky" top="128px" variant="secondary">
+        Powerful features
+      </Heading>
 
-    <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
-      alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
-    >
-      {content.slice(2, 4).map(p => (
-        <Feature {...p} key={p.title} />
-      ))}
-    </Row>
-
-    <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
-      alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
-    >
-      {content.slice(4, 6).map(p => (
-        <Feature {...p} key={p.title} />
-      ))}
+      <Column alignItems="flex-end">
+        {content.map(p => (
+          <Feature {...p} key={p.title} />
+        ))}
+      </Column>
     </Row>
   </Section>
 );

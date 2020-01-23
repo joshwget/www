@@ -20,7 +20,7 @@ const plans = [
     price: 'Free',
     icon: 'person',
     bottom: (
-      <Text marginTop="auto" color="grays.11" fontWeight={1}>
+      <Text textAlign="center" fontSize={3} maxWidth="200px">
         Scale to another plan as you grow.
       </Text>
     )
@@ -29,25 +29,26 @@ const plans = [
     name: 'Team',
     icon: 'people',
     features: ['50 devices included', '3 users included', 'Support'],
-    price: 'Starts at $250/month',
+    price: '$250/month base',
     bottom: (
-      <Text marginTop="auto" color="grays.11" fontWeight={1}>
-        Cost based on each additional device or user.
+      <Text textAlign="center" fontSize={3}>
+        Pricing based on each additional device or user.
       </Text>
     )
   },
   {
     name: 'Enterprise',
     features: [
-      'Custom solutions',
+      'Unique solutions',
       'Unlimited users',
       'Dedicated support',
       'Onboarding'
     ],
     icon: 'office',
-    price: 'Custom pricing',
+    price: 'Custom',
     bottom: (
       <Button
+        width="100%"
         variant="secondary"
         title="Contact sales"
         href="mailto:sales@deviceplane.com"
@@ -63,7 +64,6 @@ const PlanContainer = styled(Motion)`
   justify-content: space-between;
   border-radius: 6px;
   background: ${props => props.theme.colors.pageBackground};
-  //border: 1px solid ${props => props.theme.colors.primary};
 `;
 
 const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
@@ -75,31 +75,29 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
       duration: 0.75,
       ease: 'easeIn'
     }}
-    padding={5}
-    height={['initial', 'initial', '340px']}
+    padding={6}
+    height={['initial', 'initial', '400px']}
     marginY={8}
     marginX={[0, 0, 4, 6]}
     width="100%"
     maxWidth="280px"
+    border={0}
   >
     <Column>
-      <Column>
-        <Icon icon={icon} size={28} color="primary" marginBottom={2} />
-        <Text fontSize={4} fontWeight={2}>
-          {name}
-        </Text>
-        <Text
-          marginTop={1}
-          fontWeight={2}
-          fontSize={0}
-          color="grays.11"
-          style={{ textTransform: 'uppercase' }}
-        >
-          {price}
-        </Text>
-      </Column>
+      <Icon icon={icon} size={32} color="primary" marginBottom={4} />
+      <Text fontSize={5} fontWeight={2} color="pureWhite" marginBottom={2}>
+        {name}
+      </Text>
+      <Text
+        style={{ textTransform: 'uppercase' }}
+        fontWeight={2}
+        fontSize={0}
+        color="grays.11"
+      >
+        {price}
+      </Text>
 
-      <Column marginTop={1}>
+      <Column marginTop={2}>
         {features.map(feature => (
           <Row key={feature} marginTop={4} alignItems="center">
             <Row>
@@ -113,7 +111,9 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
       </Column>
     </Column>
 
-    <Column marginTop={6}>{bottom}</Column>
+    <Column marginTop={6} alignItems="center">
+      {bottom}
+    </Column>
   </PlanContainer>
 );
 
@@ -123,7 +123,7 @@ const Pricing = () => {
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Section bg="black">
+    <Section paddingTop={12}>
       <motion.div
         animate={animate && { opacity: [0, 1] }}
         transition={{ duration: 1, delay: 0.25 }}

@@ -151,7 +151,7 @@ const Hero = ({ airtable }) => {
 
       <Row
         justifyContent="space-between"
-        marginTop={9}
+        marginTop={10}
         display={['none', 'flex']}
         flexDirection={['column', 'column', 'column', 'column', 'row']}
       >

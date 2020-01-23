@@ -12,10 +12,10 @@ const CTA = () => {
     <Section ref={ref}>
       <Row
         alignItems="center"
-        bg={['none', 'black']}
-        padding={[0, 8]}
+        bg={['none', 'pageBackground']}
+        padding={[0, 8, 9]}
         borderRadius={2}
-        border={['none', 1]}
+        border={['none', 0]}
         flexDirection={['column', 'column', 'row']}
       >
         <Text fontSize={5} textAlign="center" fontWeight={1} color="primary">
@@ -27,7 +27,7 @@ const CTA = () => {
           alignItems="center"
           flexDirection={['column', 'column', 'row']}
           justifyContent={['unset', 'unset', 'center']}
-          marginLeft={[0, 0, 8]}
+          marginLeft={[0, 0, 10]}
           marginTop={[6, 6, 0]}
         >
           <Button
