@@ -2,41 +2,95 @@ import Docs from '../../components/docs';
 
 <Docs title="Quick Start">
 
-This quick start guide will teach you how to provision a device and then deploy to it. 
+This guide will get you up and running with several core Deviceplane features.
 
-The only prerequisite is having access to a device ready to be managed by Deviceplane and running a recent version of Docker.
+In three minutes, we'll show you how to register a device with Deviceplane, create and schedule an application, start receiving project metrics, and use the CLI to SSH into a device.
 
-## Creating a project
+[video]
 
-A project is our way of organizing your devices. Within each project, you can specify which users are allowed access to the project who can deploy applications.
+## Signing up
 
-From the homepage of the Deviceplane app click on "Create Project". Enter a project name and then click on submit.
+[Sign up](https://cloud.deviceplane.com/signup) or [log in](https://cloud.deviceplane.com/login) to Deviceplane. If it's your first time, create a new project. Otherwise, select the project you'd like to register a device on.
 
-## Provisioning a device
+## Registering a device
 
-Now that we have an empty project, our next step is to add a device. From the "Devices" page click on "Add Device". You'll see a comand that should be run on your device. Running this command will download and start the Deviceplane agent.
+You don't have any devices registered yet, let's add one!
 
-Once the agent is successfully running you should see your device on the "Devices" page.
+In order to register a device, we first need to install [Docker](https://www.docker.com/products/container-runtime) on the device. An easy cross platform-way to do that is using the install script provided by Docker at [get.docker.com](https://get.docker.com/) on the device you want to register:
 
-## Creating an application
-
-An application is a set of services (container specifications) that are created and updated together. Go to the "Applications" tab and click on "Create Application". Enter "quickstart" as the application name and then click on submit.
-
-Once your application is created you'll be brought to its overview page. Both the scheduling rule and current config sections will be empty. Not having a scheduling rule set means that the services in this application will be deployed to all devices in your project. We'll create an initial config in the next step.
-
-## Creating an initial release
-
-Changes to applications are tracked in releases. This allows you to see the history of your application and revert to older versions. Our application currently does not currently have a release, so let's create one.
-
-Clicking on "Create New Release" will bring you to a YAML editor which expects an application config to entered. For the purpose of this quickstart you can use the following config which contains a single service running an nginx server. Click on submit after entering this config.
-
-```yaml
-quickstart:
-  image: nginx
-  ports:
-    - 80:80
+```bash
+curl -fsSL https://get.docker.com | sh
 ```
 
-You'll be brought back to the application overview page. At the bottom you'll now see a release with a device count of 0. Once the nginx image is pulled on your device and the container started you'll see the device count raise to 1. After this you should be able to run `curl localhost` on your device and see the standard nginx output.
+After doing that, navigate to _Devices_ on the sidebar, and click on "register device". It should give you a registration command that you can run on your device:
+
+<img width="100%" src="https://i.imgur.com/zAzjM8i.png"></img>
+
+After your agent installs, you should be able to navigate back and see a device in your _Devices_ sidebar tab!
+
+Next, we'll create an application that will run on this device.
+
+## Creating and scheduling applications
+
+Navigate to the _Applications_ tab on the sidebar. Create an application, and name it "demo-go". We're going to be installing a simple application that mostly just provides metrics, and hosts a simple HTTP server on the device.
+
+Let's create a release and add the following application config:
+
+```yaml
+demo-go:
+  image: deviceplane/demo-go:latest
+  ports:
+  - 8080:8080
+```
+
+> Note: this is based off of the [demo-go image](https://hub.docker.com/r/deviceplane/demo-go/tags), for which the source code can be found [on Github](https://github.com/deviceplane/demo-go)!
+
+Now, let's schedule it onto our device. Go to the scheduling tab and select the "All Devices" option to schedule to all devices. This will schedule it to all devices that we add to our project. If we wanted to only schedule it to specific devices, we could add [build a scheduling rule](/docs/deploying/scheduling).
+
+Now, take a look at our device. If we click on the device overview page, and scroll down to the _Services_ section, we can see that our application's service is currently running on our device, with the release ID that we just created.
+
+Click on the monitoring icon on that services row, and we can view the current metrics from that service. Next, let's see how we can forward these metrics.
+
+## Forwarding Metrics
+
+Navigate to _Monitoring_ on the sidebar. We need a [Datadog API key](https://docs.datadoghq.com/account_management/api-app-keys/#add-a-key) for this part. If you don't plan to forward metrics to a metrics host, you can skip this part.
+
+We'll get our API key and enter it in the _Integrations_ tab.
+
+Now, we can switch to the _Service Metrics_ tab, and select the application/service we created in the last section. Click the "Add service metrics" button, and type in the wildcard character "`*`" in the metric name section to add all metrics. Then select the "Device" checkbox in the _Properties_ section, and submit.
+
+Switch to the _Project Metrics_ tab, and enable the "Devices" metric with the "Device" checkbox checked.
+
+And then switch to the _Device Metrics_ tab, and add a couple device metrics. Add "Fileystem Size Bytes" and "Filesystem Free Bytes". These are useful for figuring out if our devices are running out of disk space.
+
+Now that we've added all these metrics, let's switch into Datadog's [metrics explorer](https://app.datadoghq.com/metric/explorer?live=true). We should be able to type in "deviceplane" and have all of the metrics available via autocomplete. If you can't see the metrics populate, try refreshing the page.
+
+This guide won't go into it, but you can also [set alerts](https://app.datadoghq.com/monitors#create/metric) in Datadog, and use their [Slack](https://docs.datadoghq.com/integrations/slack/) or [Pagerduty](https://docs.datadoghq.com/integrations/pagerduty/) integrations to get alerted.
+
+## SSH via CLI
+
+The CLI enables you to perform most actions available in UI, so you can quickly deploy, troubleshoot, and dig into issues via your terminal. It also offers output in JSON and YAML, so you can use it to write scriptable workflows. In this tutorial, we'll just show you how to SSH into a device using it. Note that you can also SSH into a device via the web UI.
+
+<img width="100%" src="https://i.imgur.com/XijArxG.png"></img>
+
+First, let's download the CLI on your computer. If you click your user icon in the top right, you should see a dropdown that has "Download CLI" as one of the listed options. Click it, and select your OS.
+
+Then, move the CLI to a [folder in your `$PATH`](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7). This will let you run the `deviceplane` command anywhere, without needing the absolute file path. Afterwards, if you're on a UNIX-based system `chmod +x [path to deviceplane]`, which will allow you to run the `deviceplane` command.
+
+Now, you should be able to run `deviceplane`, and see the help output.
+
+<img width="100%" src="https://i.imgur.com/OEpEqrc.png"></img>
+
+Let's generate a access key, so we can use the CLI to access our project.
+
+Go to back to your browser, and in the same menu where you found "Download CLI", there should be an option to "Manage Access Keys". Click it, then create an access key. Copy the generated access key.
+
+<img width="100%" src="https://i.imgur.com/1kQzP2q.png"></img>
+
+Go back to your CLI, run `deviceplane configure`, and enter your project name and your access key! You should now be able to run `deviceplane device list` to see the list of devices you have, as well as `deviceplane ssh [device]` to SSH into a device!
+
+<img width="100%" src="https://i.imgur.com/rWD7KKU.png"></img>
+
+You're all set! Play around with the UI/CLI, or take a look at the rest of the docs to learn more.
 
 </Docs>
