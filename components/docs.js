@@ -42,6 +42,11 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/deploying/private-image-repositories',
+      title: 'Private Image Repositories',
+      nested: true
+    },
+    {
       href: '/docs/managing/ssh-access',
       title: 'Managing'
     },
