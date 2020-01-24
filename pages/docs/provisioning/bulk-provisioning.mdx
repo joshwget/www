@@ -1,0 +1,78 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Bulk Provisioning">
+
+To provision multiple freshly-imaged devices with Deviceplane, a common method is to add a script to [systemd](https://wiki.archlinux.org/index.php/systemd) which will [run on boot after networking](https://unix.stackexchange.com/questions/126009/cause-a-script-to-execute-after-networking-has-started).
+
+Each device needs to have its own device ID, which is set on initial install, so it's important that we install Deviceplane on the first boot, and not pre-install it before cloning the disk. Read on for an example of how to do so.
+
+## Usage
+
+If you're unfamiliar with bulk provisioning, we've created a workflow you can use to get yourself set up. It involves:
+
+1. Downloading and booting into your chosen Linux installation
+2. Filesystem changes to set up your devices on their first boot
+3. Cloning the modified disk to multiple drives
+
+After we're done, you'll be able to simply boot the devices to register them!
+
+### Booting a Linux install
+
+To boot a Linux install, pick your distribution of choice, download the image, and write it to your SD card or other medium of choice. [Here is how](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) you might do this to install Raspbian, a common Linux distribution meant for Raspberry Pis.
+
+Next, plug your disk into your device. For a Rasberry Pi, this would just mean slotting the SD card into the SD card reader. You may also want to attach some peripherals for the following step, such as a keyboard and monitor, so you can interact with the system.
+
+### Filesystem changes
+
+#### Install Script
+
+We'll want to create a one-off script to install Deviceplane on the device's first boot.
+
+Let's edit this script to use your install variables (from https://cloud.deviceplane.com/$YOUR_PROJECT/devices/register), then place this script in. Then place this script in `/opt/install-deviceplane.sh`. Remember to `chmod +x` the script so that it can execute.
+
+```bash
+#!/bin/bash
+set -e
+
+# Installs Deviceplane
+curl --retry 10 --retry-delay 60 --retry-connrefused https://install.deviceplane.com | PROJECT=$YOUR_PROJECT REGISTRATION_TOKEN=$YOUR_REGISTRATION_TOKEN bash
+
+# Stops the service only if the previous command was successful!
+systemctl disable install-deviceplane.service
+```
+
+#### Running on boot
+
+Here's a systemd unit file that we can use to run our one-off script. Let's place this script in `/etc/systemd/system/install-deviceplane.service`.
+
+```
+[Unit]
+Description=Installs Deviceplane
+Wants=network-online.target
+After=network-online.target
+
+
+[Service]
+Type=oneshot
+ExecStart=/opt/install-deviceplane.sh
+RemainAfterExit=true
+StandardOutput=journal
+```
+
+Then let's run `sudo systemctl enable install-deviceplane.service` to enable our new service to run on boot!
+
+#### Additional Changes
+
+If you're relying on Wifi during initial configuration (as opposed to ethernet), you may also want to edit the [wpa-supplicant](https://wiki.archlinux.org/index.php/WPA_supplicant#Connecting_with_wpa_passphrase) file to [configure wireless access](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md) to allow devices to connect to a Wifi network on boot.
+
+After you're done, we can save our changes, safely `shutdown` the device, and we can move on to cloning its disk across multiple drives.
+
+### Disk Imaging
+
+Now, the entire point of bulk provisioning is to provision multiple devices, so you'll want to clone this image across the storage drives that your devices will boot off of. You can use many [disk cloning utilities](https://wiki.archlinux.org/index.php/Disk_cloning) to do so. One option is to use [Clonezilla](https://en.wikipedia.org/wiki/Clonezilla), which can be [installed onto a USB stick](https://clonezilla.org/clonezilla-live.php), then used to [clone one drive to multiple drives](https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/03_One_image_to_multiple_disks) for a very fast provisioning workflow.
+
+Once your disks are cloned and installed, they're ready to go! Place them in your devices, boot them, and you should see the new devices added to your project in Deviceplane.
+
+> Note: If you're not using the default [registration token](/docs/provisioning/#registration-tokens), make sure the number of devices you're registering doesn't exceed the limit set on the registration token. If the device count does exceed the registration limit, simply increase the limit to account for the additional devices, then reboot the devices to retry.
+
+</Docs>
