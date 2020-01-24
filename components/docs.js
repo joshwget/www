@@ -18,6 +18,11 @@ export const routeGroups = [
       title: 'Provisioning'
     },
     {
+      href: '/docs/provisioning/bulk-provisioning',
+      title: 'Bulk Provisioning',
+      nested: true
+    },
+    {
       href: '/docs/deploying',
       title: 'Deploying'
     },
