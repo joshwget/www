@@ -23,6 +23,25 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/operating',
+      title: 'Operating',
+    },
+    {
+      href: '/docs/operating/ssh',
+      title: 'SSH Access',
+      nested: true
+    },
+    {
+      href: '/docs/operating/cli',
+      title: 'CLI',
+      nested: true
+    },
+    {
+      href: '/docs/operating/command-scripting',
+      title: 'Command Scripting',
+      nested: true
+    },
+    {
       href: '/docs/deploying',
       title: 'Deploying'
     },
@@ -37,22 +56,22 @@ export const routeGroups = [
       nested: true
     },
     {
-      href: '/docs/deploying/filters',
+      href: '/docs/managing',
+      title: 'Managing'
+    },
+    {
+      href: '/docs/managing/labels',
+      title: 'Labels',
+      nested: true
+    },
+    {
+      href: '/docs/managing/filters',
       title: 'Filters',
       nested: true
     },
     {
-      href: '/docs/managing/ssh-access',
-      title: 'Managing'
-    },
-    {
-      href: '/docs/managing/ssh-access',
-      title: 'SSH access',
-      nested: true
-    },
-    {
-      href: '/docs/managing/device-labels',
-      title: 'Device labels',
+      href: '/docs/managing/status',
+      title: 'Device Status',
       nested: true
     },
     {
@@ -88,14 +107,13 @@ export const routeGroups = [
       title: 'Custom roles',
       nested: true
     },
+  ],
+  [
     {
-      href: '/docs/device-variables',
-      title: 'Device Variables'
+      href: '/docs/managing/variables',
+      title: 'Agent Variables',
+      nested: true
     },
-    {
-      href: '/docs/cli',
-      title: 'CLI'
-    }
   ],
   [
     {
@@ -222,7 +240,7 @@ const Docs = ({ title, children }) => {
                     href={href}
                     nested={nested}
                     active={
-                      (title !== 'Managing' && pathname === href) ||
+                      (pathname === href) ||
                       (pathname === '/docs' && href === '/docs/quick-start')
                     }
                   >
