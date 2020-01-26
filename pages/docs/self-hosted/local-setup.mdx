@@ -6,7 +6,7 @@ This guide will teach you how to setup a self-hosted install of Deviceplane on y
 
 ## Requirements
 
-Two nodes on the same network are required to complete the quick start. Both nodes must be running Linux and have a recent version of Docker installed. Reference the [standard quick start guide](../quick-start) for information on how to install Docker.
+Two nodes on the same network are required to complete the quick start. Both nodes must be running Linux and have a recent version of Docker installed. Reference the [standard quick start guide](../../quick-start) for information on how to install Docker.
 
 The first node will run the Deviceplane backend. Only `x86 / amd64` is supported for this node. Docker for Mac can also be used as the backend node. You'll need to have the IP addess of this node handy for the remainder of this guide. We'll refer to this IP address as `backend_ip_address`.
 
@@ -18,7 +18,7 @@ The following steps will guide you through the setup process.
 
 ### Running the backend
 
-You can start Deviceplane on the backend node with the following command. View [self-hosted overview](./self-hosted) for more information on the Deviceplane Docker image and what components are contained in it.
+You can start Deviceplane on the backend node with the following command. View [self-hosted overview](../self-hosted) for more information on the Deviceplane Docker image and what components are contained in it.
 
 ```
 docker run -d --restart=unless-stopped -p 8080:8080 deviceplane/deviceplane
@@ -28,7 +28,7 @@ You'll be able to see the Deviceplane UI within a few minutes at `http://<backen
 
 ### Setting up a new user and project
 
-Follow along with the standard [quick start](./quick-start) guide to register and create a project. Note that you will not need to validate your email as you would with the managed version of Deviceplane.
+Follow along with the standard [quick start](../../quick-start) guide to register and create a project. Note that you will not need to validate your email as you would with the managed version of Deviceplane.
 
 ### Registering a device
 
