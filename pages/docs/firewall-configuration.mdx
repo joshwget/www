@@ -6,10 +6,10 @@ If you're managing devices in an enterprise or corporate environment, there's a 
 
 The following table shows the whitelist requirements that will need to be made.
 
-| Domain | IP addresses | Additional requirements |
-| --- | --- |
-| scloud.deviceplane.com | 75.2.126.40, 99.83.169.232 | WebSockets |
-| downloads.deviceplane.com | 13.248.208.54, 76.223.78.246 | - |
+| Domain | Ports | IP addresses | Additional requirements |
+| --- | --- | --- | --- |
+| scloud.deviceplane.com | 443 | 75.2.126.40, 99.83.169.232 | WebSockets |
+| downloads.deviceplane.com | 443 |13.248.208.54, 76.223.78.246 | - |
 
 Note that the domain is `scloud.deviceplane.com` and not `cloud.deviceplane.com`. Normally the Deviceplane agent makes requests to `cloud.deviceplane.com`, but this domain does not resolve to static IP addresses yet. This is something we aim to fix soon, but for now `scloud.deviceplane.com` must be used.
 
