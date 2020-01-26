@@ -73,8 +73,8 @@ transition: ${props => props.theme.transitions[0]};
 transform: translateZ(0);
 backface-visibility: hidden;
 white-space: nowrap;
-font-size: 14px;
-padding: 10px 16px;
+font-size: 12px;
+padding: 10px 12px;
 text-transform: uppercase;
 text-renderering: geometricPercision;
 

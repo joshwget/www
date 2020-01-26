@@ -15,11 +15,11 @@ const CTA = () => {
         bg={['none', 'pageBackground']}
         padding={[0, 8, 9]}
         borderRadius={2}
-        border={['none', 0]}
+        border={['none', 1]}
         flexDirection={['column', 'column', 'row']}
       >
         <Text fontSize={5} textAlign="center" fontWeight={1} color="primary">
-          Get started today
+          Get started now
         </Text>
 
         <Row

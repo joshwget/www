@@ -17,23 +17,35 @@ const plans = [
   {
     name: 'Developer',
     features: ['25 device limit', 'Single user'],
-    price: 'Free',
-    icon: 'person',
-    bottom: (
-      <Text textAlign="center" fontSize={3} maxWidth="200px">
-        Scale to another plan as you grow.
-      </Text>
-    )
+    price: (
+      <Row height="36px" alignItems="center">
+        <Text
+          style={{ textTransform: 'uppercase' }}
+          fontWeight={2}
+          fontSize={1}
+          color="grays.11"
+        >
+          $0 Forever
+        </Text>
+      </Row>
+    ),
+    icon: 'person'
   },
   {
     name: 'Team',
     icon: 'people',
     features: ['50 devices included', '3 users included', 'Support'],
-    price: '$250/month base',
-    bottom: (
-      <Text textAlign="center" fontSize={3}>
-        Pricing based on each additional device or user.
-      </Text>
+    price: (
+      <Row height="36px" alignItems="center">
+        <Text
+          style={{ textTransform: 'uppercase' }}
+          fontWeight={2}
+          fontSize={1}
+          color="grays.11"
+        >
+          $250/month base
+        </Text>
+      </Row>
     )
   },
   {
@@ -45,8 +57,7 @@ const plans = [
       'Onboarding'
     ],
     icon: 'office',
-    price: 'Custom',
-    bottom: (
+    price: (
       <Button
         width="100%"
         variant="secondary"
@@ -76,28 +87,28 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
       ease: 'easeIn'
     }}
     padding={6}
-    height={['initial', 'initial', '400px']}
-    marginY={8}
     marginX={[0, 0, 4, 6]}
     width="100%"
     maxWidth="280px"
-    border={0}
+    border={1}
   >
     <Column>
-      <Icon icon={icon} size={32} color="primary" marginBottom={4} />
-      <Text fontSize={5} fontWeight={2} color="pureWhite" marginBottom={2}>
-        {name}
-      </Text>
-      <Text
-        style={{ textTransform: 'uppercase' }}
-        fontWeight={2}
-        fontSize={0}
-        color="grays.11"
-      >
+      <Row alignItems="center">
+        <Icon
+          icon={icon}
+          size={name === 'Team' ? 40 : 32}
+          color="primary"
+          marginRight={4}
+        />
+        <Text fontSize={5} fontWeight={2} color="pureWhite">
+          {name}
+        </Text>
+      </Row>
+      <Row marginTop={4} marginBottom={2}>
         {price}
-      </Text>
+      </Row>
 
-      <Column marginTop={2}>
+      <Column>
         {features.map(feature => (
           <Row key={feature} marginTop={4} alignItems="center">
             <Row>
@@ -110,10 +121,6 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
         ))}
       </Column>
     </Column>
-
-    <Column marginTop={6} alignItems="center">
-      {bottom}
-    </Column>
   </PlanContainer>
 );
 
@@ -123,17 +130,18 @@ const Pricing = () => {
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Section paddingTop={12}>
+    <Section>
       <motion.div
         animate={animate && { opacity: [0, 1] }}
         transition={{ duration: 1, delay: 0.25 }}
       >
         <Heading variant="secondary" textAlign="center">
-          Flexible Pricing
+          Flexible pricing that scales
         </Heading>
       </motion.div>
 
       <Row
+        marginTop={8}
         alignSelf={['initial', 'initial', 'stretch']}
         justifyContent="center"
         flexDirection={['column', 'column', 'row']}

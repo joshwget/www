@@ -24,8 +24,7 @@ const NavLink = styled(Link)`
   color: ${props =>
     props.active ? props.theme.colors.primary : props.theme.colors.white};
   &:hover {
-    color: ${props =>
-      props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
+    color: ${props => props.theme.colors.primary};
   }
   margin-right: 32px;
   font-size: ${props => props.theme.fontSizes[2]}px;

@@ -29,7 +29,7 @@ const StyledFooter = styled.footer`
 const Container = styled(Column)`
   max-width: ${props => props.theme.pageWidth}px;
   width: 100%;
-  padding: 128px 32px 32px;
+  padding: 96px 32px 32px;
 `;
 
 const FooterLink = styled(Link)`

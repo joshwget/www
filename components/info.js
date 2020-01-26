@@ -10,7 +10,7 @@ import {
 } from './core';
 
 const Info = () => (
-  <Section bg="pageBackground" borderY={0}>
+  <Section bg="pageBackground" borderY={0} marginY={10}>
     <Row alignItems="space-between">
       <Column>
         <Image height={36} width={36} src="/github.svg" marginBottom={4} />

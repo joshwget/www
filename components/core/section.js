@@ -11,7 +11,7 @@ export const StyledSection = styled(Box).attrs({ as: 'section' })`
 `;
 
 const Section = ({ children, ...props }) => (
-  <StyledSection paddingY={11} {...props}>
+  <StyledSection paddingY={10} {...props}>
     <Column
       maxWidth={theme.pageWidth}
       width="100%"
