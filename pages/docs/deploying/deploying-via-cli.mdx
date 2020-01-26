@@ -1,6 +1,6 @@
 import Docs from '../../../components/docs';
 
-<Docs title="CLI">
+<Docs title="Deploying via CLI">
 
 In addition to deploying via the UI, Deviceplane includes deployment features in its [CLI](./cli). These docs describe how to use the CLI to deploy manually, but the same commands can be used to setup [deployment pipelines](./deploying/pipelines).
 
@@ -8,32 +8,30 @@ These docs assume you have the CLI installed and configured. If you haven't done
 
 ## Deploying releases
 
-The most common use case of using the CLI is to deploy a new release for your application. Deploying a new release is simply passing in a yaml file that specifies the config of the release. The project and application needs to be specified in order to create a new release. The project and application can be set as environment variables or passed in as options in the command to determine which project and application the new release will apply to.
+The most common use case of using the CLI is to deploy a new release for your application. Deploying a new release is simply passing in a yaml file that specifies the config of the application. The project and application needs to be specified in order to create a new release. The project can be set as environment variable or passed in as a flag.
 
-**Option 1: Using Environment variables**
+**Option 1: Using environment variables**
 
-If a single application is constantly being updated, Deviceplane recommends setting up environment variables so the project and application do not have to be passed in as same options in the command.
+Environment variables can be used to set the access key and project. This is particularly useful for CI systems where secrets can be injected as environment variables.
 
-| Environment Variable    | Value                              | Description                                                  |
-| ----------------------- | ---------------------------------- | ------------------------------------------------------------ |
-| `$DEVICEPLANE_ACCESS_KEY`  | User or Service Account Access Key | Access Key to access the project/application                 |
-| `$DEVICEPLANE_PROJECT`     | Project ID or Name                 | Define which project your application is in                  |
-| `$DEVICEPLANE_APPLICATION` | Application ID or Name             | Define which application you want to deploy a new release to |
+| Environment Variable    | Value                              |
+| ----------------------- | ---------------------------------- |
+| `$DEVICEPLANE_ACCESS_KEY`  | User or service account access key |
+| `$DEVICEPLANE_PROJECT`     | Project ID or name                 |
 
 ```shell
-# Set environment variables for access key, project and application
+# Environment variables are set for access key and project
 
 $ printenv
 DEVICEPLANE_ACCESS_KEY=<ACCESS_KEY>
-DEVICEPLANE_PROJECT=<PROJECT_ID_OR_NAME>
-DEVICEPLANE_APPLICATION=<APPLICATION_ID_OR_NAME>
+DEVICEPLANE_PROJECT=<PROJECT>
 
-$ deviceplane deploy <CONFIG_YML>
+$ deviceplane deploy <APPLICATION> <APPLICATION_CONFIG_FILE>
 ```
 
-**Option 2: Passing in options in the command**
+**Option 2: Passing in options as flags**
 
-If you don't want to set environment variables, the project and application can always be passed as the options for each command. Whenever these options are passed in a command, it overrides any environment variables so that the option passed in is used.
+If you don't want to set environment variables, the project can also be passed in as a flag. If a flag is set it will override the project environment variable.
 
 ```shell
 # Set only the access key as an environment variable
@@ -43,8 +41,7 @@ DEVICEPLANE_ACCESS_KEY=<ACCESS_KEY>
 
 # Deploy by specifying the project and application in the command
 
-$ deviceplane deploy --project <PROJECT_ID_OR_NAME>
-  <APPLICATION_ID_OR_NAME> <CONFIG_YML>
+$ deviceplane deploy --project <PROJECT> <APPLICATION> <APPLICATION_CONFIG_FILE>
 ```
 
 ### Environment interpolation
@@ -61,7 +58,7 @@ service1:
   command: '${COMMAND}'
 ```
 
-Putting `$$` in front of any word prevents any interpolation to occur.
+Putting `$$` prevents interpolation from occuring and inserts `$` instead.
 
 ```yaml
 service1:
@@ -73,19 +70,18 @@ service1:
 
 ## Editing existing releases
 
-An easy way to update an existing release is to edit it using the CLI. Similar to deploying releases, the project and application can be set as environment variables or as options in the command.
+An easy way to update an existing release is to edit it using the CLI. Similar to deploying releases, the project can be set as an environment variable or as a flag.
 
 When running `deviceplane edit`, the CLI pulls up the current config of the application into an editor. After the config is saved and exited, it is **automatically deployed** into the application.
 
 ```shell
-# Environment variables are set for access key, project and application
+# Environment variables are set for access key and project
 
 $ printenv
 DEVICEPLANE_ACCESS_KEY=<ACCESS_KEY>
-DEVICEPLANE_PROJECT=<PROJECT_ID_OR_NAME>
-DEVICEPLANE_APPLICATION=<APPLICATION_ID_OR_NAME>
+DEVICEPLANE_PROJECT=<PROJECT>
 
-$ deviceplane edit
+$ deviceplane edit <APPLICATION>
 ```
 
 </Docs>
