@@ -42,6 +42,11 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/deploying/deploying-via-cli',
+      title: 'Deploying via CLI',
+      nested: true
+    },
+    {
       href: '/docs/managing/ssh-access',
       title: 'Managing'
     },
