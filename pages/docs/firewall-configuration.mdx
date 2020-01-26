@@ -1,0 +1,30 @@
+import Docs from '../../components/docs';
+
+<Docs title="Firewall Configuration">
+
+If you're managing devices in an enterprise or corporate environment, there's a good chance of a firewall preventing non-whitelisted connections. Deviceplane will require certain amendments to this whitelist to allow operating behind the firewall.
+
+The following table shows the whitelist requirements that will need to be made.
+
+| Domain | IP addresses | Additional requirements
+| --- | --- |
+| scloud.deviceplane.com | 75.2.126.40, 99.83.169.232 | WebSockets |
+| downloads.deviceplane.com | 13.248.208.54, 76.223.78.246 | - |
+
+Note that the domain is `scloud.deviceplane.com` and not `cloud.deviceplane.com`. Normally the Deviceplane agent makes requests to `cloud.deviceplane.com`, but this domain does not resolve to static IP addresses yet. This is something we aim to fix soon, but for now `scloud.deviceplane.com` must be used.
+
+There is one additional step to make the Deviceplane agent connect to `scloud.deviceplane.com`. An extra environment variable, `CONTROLLER=https://scloud.deviceplane.com/api`, needs to be added to the installation command.
+
+For example, suppose your installation command as given in the UI is the following.
+
+```
+curl https://downloads.deviceplane.com/install.sh | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
+```
+
+The resulting command including the extra environment variable would be the following.
+
+```
+curl https://downloads.deviceplane.com/install.sh | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=https://scloud.deviceplane.com/api bash
+```
+
+</Docs>

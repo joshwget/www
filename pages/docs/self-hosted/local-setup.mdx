@@ -37,13 +37,13 @@ Now that you have a user and project created in your setup you're ready to add a
 For example, suppose the command was in the following format.
 
 ```shell
-curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
+curl https://downloads.deviceplane.com/install.sh | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
 ```
 
 The command should be modified to include `CONTROLLER=http://<backend_ip_address>:8080/api` as in the following command.
 
 ```shell
-curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=http://<backend_ip_address>:8080/api bash
+curl https://downloads.deviceplane.com/install.sh | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=http://<backend_ip_address>:8080/api bash
 ```
 
 You should see a new device come online in the dashboard after running the command. From here you can follow along with the remainder of steps in the [standard quick start](./quick-start) to deploy your first application to your device.

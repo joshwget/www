@@ -95,6 +95,10 @@ export const routeGroups = [
     {
       href: '/docs/cli',
       title: 'CLI'
+    },
+    {
+      href: '/docs/firewall-configuration',
+      title: 'Firewall Configuration'
     }
   ],
   [
