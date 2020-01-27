@@ -71,9 +71,9 @@ const Info = () => {
 
   useLayoutEffect(() => {
     if (window.innerWidth > 600) {
-      window.addEventListener('onscroll', scrollUpdate);
+      window.addEventListener('scroll', scrollUpdate);
     }
-    return () => window.removeEventListener('onscroll', scrollUpdate);
+    return () => window.removeEventListener('scroll', scrollUpdate);
   }, []);
 
   return (
