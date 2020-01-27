@@ -18,16 +18,22 @@ const plans = [
     name: 'Developer',
     features: ['25 device limit', 'Single user'],
     price: (
-      <Row height="36px" alignItems="center">
-        <Text
-          style={{ textTransform: 'uppercase' }}
-          fontWeight={2}
-          fontSize={1}
-          color="grays.11"
-        >
-          $0 Forever
+      <Column alignItems="center" flex={1}>
+        <Text fontWeight={2} fontSize={1} color="primary">
+          $0{' '}
+          <Text style={{ textTransform: 'uppercase' }} color="grays.11">
+            / month
+          </Text>
         </Text>
-      </Row>
+
+        <Button
+          marginTop={2}
+          width="100%"
+          variant="secondary"
+          title="Start now"
+          href="https://cloud.deviceplane.com/signup"
+        />
+      </Column>
     ),
     icon: 'person'
   },
@@ -36,35 +42,51 @@ const plans = [
     icon: 'people',
     features: ['50 devices included', '3 users included', 'Support'],
     price: (
-      <Row height="36px" alignItems="center">
-        <Text
-          style={{ textTransform: 'uppercase' }}
-          fontWeight={2}
-          fontSize={1}
-          color="grays.11"
-        >
-          $250/month base
+      <Column alignItems="center" flex={1}>
+        <Text fontWeight={2} fontSize={1} color="primary">
+          $250{' '}
+          <Text style={{ textTransform: 'uppercase' }} color="grays.11">
+            / month base
+          </Text>
         </Text>
-      </Row>
+
+        <Button
+          marginTop={2}
+          width="100%"
+          variant="secondary"
+          title="Try for free"
+          href="https://cloud.deviceplane.com/signup"
+        />
+      </Column>
     )
   },
   {
     name: 'Enterprise',
     features: [
-      'Unique solutions',
+      'Custom solutions',
       'Unlimited users',
       'Dedicated support',
       'Onboarding'
     ],
     icon: 'office',
     price: (
-      <Button
-        width="100%"
-        variant="secondary"
-        title="Contact sales"
-        href="mailto:sales@deviceplane.com"
-        marginTop="auto"
-      />
+      <Column flex={1} alignItems="center">
+        <Text
+          fontWeight={2}
+          fontSize={1}
+          color="primary"
+          style={{ textTransform: 'uppercase' }}
+        >
+          Custom Pricing
+        </Text>
+        <Button
+          marginTop={2}
+          width="100%"
+          variant="secondary"
+          title="Contact sales"
+          href="mailto:sales@deviceplane.com"
+        />
+      </Column>
     )
   }
 ];
@@ -77,33 +99,31 @@ const PlanContainer = styled(Column)`
 
 const Plan = ({ name, features, price, index, animate, icon }) => (
   <PlanContainer key={name} padding={6} border={1}>
-    <Column>
+    <Column position="relative">
       <Icon
+        position="absolute"
+        top={name === 'Team' ? '-6px' : 0}
         icon={icon}
-        size={name === 'Team' ? 40 : 32}
+        size={name === 'Team' ? 42 : 32}
         color="primary"
         marginBottom={2}
       />
-      <Text fontSize={5} fontWeight={2} color="pureWhite">
+      <Text fontSize={5} fontWeight={2} color="pureWhite" marginTop={7}>
         {name}
       </Text>
-      <Row marginTop={4} marginBottom={2}>
-        {price}
-      </Row>
 
-      <Column>
-        {features.map(feature => (
-          <Row key={feature} marginTop={4} alignItems="center">
-            <Row>
-              <Icon icon="tick-circle" size={18} color="primary" />
-            </Row>
-            <Text marginLeft={2} fontWeight={1}>
-              {feature}
-            </Text>
+      {features.map(feature => (
+        <Row key={feature} marginTop={4} alignItems="center">
+          <Row>
+            <Icon icon="tick-circle" size={18} color="primary" />
           </Row>
-        ))}
-      </Column>
+          <Text marginLeft={2} fontWeight={1}>
+            {feature}
+          </Text>
+        </Row>
+      ))}
     </Column>
+    <Row marginTop={6}>{price}</Row>
   </PlanContainer>
 );
 
@@ -127,10 +147,10 @@ const Pricing = () => {
         gridGap={8}
         alignContent="center"
         gridTemplateColumns={[
-          'repeat(1, 250px)',
-          'repeat(1, 250px)',
-          'repeat(1, 250px)',
-          'repeat(3, 250px)'
+          'repeat(1, 260px)',
+          'repeat(1, 260px)',
+          'repeat(1, 260px)',
+          'repeat(3, 260px)'
         ]}
       >
         {plans.map((plan, index) => (

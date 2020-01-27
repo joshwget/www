@@ -116,7 +116,7 @@ const Hero = ({ airtable }) => {
       </Heading>
 
       <Paragraph
-        maxWidth={['initial', '600px', '680px', '760px']}
+        maxWidth={['initial', '620px', '700px', '760px']}
         textAlign="center"
         fontSize={['16px', '16px', '18px', '20px']}
       >
