@@ -1,5 +1,4 @@
-import { useViewportScroll, transform } from 'framer-motion';
-import { useState, useLayoutEffect } from 'react';
+import { css, keyframes } from 'styled-components';
 
 import {
   Box,
@@ -24,6 +23,24 @@ const distros = [
 
 const degree = 360 / distros.length;
 
+const frames = distros.map(
+  (_, i) =>
+    keyframes`
+    0% {
+      transform: rotate(${degree *
+        i}deg) translate3d(80px, 80px, 0) rotate(-${degree * i}deg);
+    }
+    50% {
+      transform: rotate(${degree * i +
+        360}deg) translate3d(140px, 140px, 0) rotate(-${degree * i + 360}deg);
+    }
+  100% {
+    transform: rotate(${degree * i +
+      720}deg) translate3d(80px, 80px, 0) rotate(-${degree * i + 720}deg);
+  }
+`
+);
+
 const Icon = ({ src, index, ...props }) => (
   <Column
     width={54}
@@ -33,10 +50,12 @@ const Icon = ({ src, index, ...props }) => (
     alignItems="center"
     justifyContent="center"
     position="absolute"
-    style={{
-      transform: `rotate(${index *
-        degree}deg) translate(120px) rotate(-${index * degree}deg)`
-    }}
+    flex={0}
+    css={`
+      backface-visibility: hidden;
+      perspective: 1000;
+      animation: 60s ${frames[index]} linear infinite;
+    `}
     {...props}
   >
     <Image height={32} width={32} src={src} />

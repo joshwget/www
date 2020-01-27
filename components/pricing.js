@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import {
@@ -70,26 +69,14 @@ const plans = [
   }
 ];
 
-const PlanContainer = styled(Motion)`
-  display: flex;
-  flex-direction: column;
+const PlanContainer = styled(Column)`
   justify-content: space-between;
   border-radius: 4px;
   background: ${props => props.theme.colors.pageBackground};
 `;
 
 const Plan = ({ name, features, price, index, animate, icon }) => (
-  <PlanContainer
-    key={name}
-    animate={animate && { opacity: [0, 1], y: [-50, 0] }}
-    transition={{
-      delay: index / 3,
-      duration: 0.75,
-      ease: 'easeIn'
-    }}
-    padding={6}
-    border={1}
-  >
+  <PlanContainer key={name} padding={6} border={1}>
     <Column>
       <Icon
         icon={icon}
@@ -127,18 +114,13 @@ const Pricing = () => {
 
   return (
     <Section>
-      <motion.div
-        animate={animate && { opacity: [0, 1] }}
-        transition={{ duration: 1, delay: 0.25 }}
+      <Heading
+        variant="secondary"
+        textAlign="center"
+        maxWidth={['400px', '400px', '400px', 'unset']}
       >
-        <Heading
-          variant="secondary"
-          textAlign="center"
-          maxWidth={['400px', '400px', '400px', 'unset']}
-        >
-          Flexible pricing that scales
-        </Heading>
-      </motion.div>
+        Flexible pricing that scales
+      </Heading>
 
       <Grid
         marginTop={8}

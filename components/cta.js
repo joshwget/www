@@ -1,16 +1,11 @@
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import theme from '../theme';
 import { Section, Text, Column, Row, Button } from './core';
 
 const CTA = () => {
-  const [ref, entry] = useInView();
-
-  const animate = entry && entry.isIntersecting;
-
   return (
-    <Section ref={ref}>
+    <Section>
       <Row
         alignItems="center"
         bg={['none', 'pageBackground']}
