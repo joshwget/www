@@ -220,11 +220,12 @@ const Docs = ({ title, children }) => {
         overflow="visible"
         flex={1}
         width="100%"
+        paddingX={6}
       >
         <Column
           bg="black"
           flex="0 0 180px"
-          paddingX={6}
+          paddingRight={6}
           display={['none', 'none', 'flex']}
           position="sticky"
           top={6}
