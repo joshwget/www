@@ -107,9 +107,12 @@ const Hero = ({ airtable }) => {
 
   return (
     <Section bg="black" position="relative" paddingTop={9} borderTop="none">
-      <Heading fontSize={['42px', '52px', '64px', '78px']} textAlign="center">
-        Manage your devices
-        <br /> at the edge
+      <Heading
+        fontSize={['42px', '52px', '64px', '78px']}
+        textAlign="center"
+        maxWidth={['450px', '550px', '700px', '800px']}
+      >
+        Manage your devices at the edge
       </Heading>
 
       <Paragraph
@@ -117,9 +120,9 @@ const Hero = ({ airtable }) => {
         textAlign="center"
         fontSize={['16px', '16px', '18px', '20px']}
       >
-        Deviceplane is a management tool for embedded systems and edge
-        computing. We make it easy to securely update, monitor, and access your
-        devices.
+        Deviceplane is an open source management tool for embedded systems and
+        edge computing. We make it easy to securely update, monitor, and access
+        your devices.
       </Paragraph>
 
       <Column alignSelf="stretch" marginTop={4} alignItems="center">

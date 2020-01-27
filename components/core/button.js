@@ -48,6 +48,7 @@ const variants = {
       color: 'primary',
       border: 'none',
       padding: 0,
+      fontSize: 1,
       '&:not(:disabled):hover': {
         color: 'white'
       },

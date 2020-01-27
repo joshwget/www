@@ -92,9 +92,10 @@ const Features = () => {
           top="40%"
           variant="secondary"
           textAlign={['center', 'center', 'center', 'center', 'left']}
-          maxWidth={['unset', '450px', '450px', '600px', 'unset']}
+          maxWidth={['unset', '600px', '600px', '750px', 'unset']}
+          marginRight={[0, 0, 0, 0, 8]}
         >
-          Everything you need to take control
+          Infrastucture that includes everything you need
         </Heading>
 
         <Grid
@@ -103,9 +104,9 @@ const Features = () => {
           gridTemplateColumns={[
             'minmax(250px, 1fr)',
             '500px',
-            'repeat(2, 350px)',
-            'repeat(3, 280px)',
-            'repeat(2, 350px)'
+            'repeat(2, 1fr)',
+            'repeat(3, 1fr)',
+            'repeat(2, 1fr)'
           ]}
         >
           {content.map((props, i) => (

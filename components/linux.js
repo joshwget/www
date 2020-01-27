@@ -1,5 +1,5 @@
 import { useViewportScroll, transform } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 import {
   Box,
@@ -13,13 +13,13 @@ import {
 } from './core';
 
 const distros = [
-  'debian',
-  'ubuntu',
-  'pi',
   'alpine',
   'arch',
   'fedora',
-  'opensuse'
+  'opensuse',
+  'debian',
+  'ubuntu',
+  'pi'
 ];
 
 const degree = 360 / distros.length;
@@ -34,9 +34,8 @@ const Icon = ({ src, index, degOffset, translateOffset, ...props }) => (
     justifyContent="center"
     position="absolute"
     style={{
-      transform: `rotate(${index * degree + degOffset}deg) translate(${
-        window.innerWidth < 600 ? 100 : 120 + translateOffset
-      }px) rotate(-${index * degree + degOffset}deg)`
+      transform: `rotate(${index * degree + degOffset}deg) translate(${120 +
+        translateOffset}px) rotate(-${index * degree + degOffset}deg)`
     }}
     {...props}
   >
@@ -53,23 +52,28 @@ const Info = () => {
   const translateInputRange = [0.36, 0.42, 0.42, 0.48, 0.48, 0.54, 0.6, 0.64];
   const translateOutputRange = [0, 30, 30, 0, 0, 30, 30, 0];
 
-  useEffect(() => {
-    window.onscroll = () => {
-      requestAnimationFrame(() => {
-        if (scrollYProgress.current > 0.36 && scrollYProgress.current < 0.65) {
-          setDegOffset(
-            transform(scrollYProgress.current, degInputRange, degOutputRange)
-          );
-          setTranslateOffset(
-            transform(
-              scrollYProgress.current,
-              translateInputRange,
-              translateOutputRange
-            )
-          );
-        }
-      });
-    };
+  const scrollUpdate = () => {
+    requestAnimationFrame(() => {
+      if (scrollYProgress.current > 0.36 && scrollYProgress.current < 0.65) {
+        setDegOffset(
+          transform(scrollYProgress.current, degInputRange, degOutputRange)
+        );
+        setTranslateOffset(
+          transform(
+            scrollYProgress.current,
+            translateInputRange,
+            translateOutputRange
+          )
+        );
+      }
+    });
+  };
+
+  useLayoutEffect(() => {
+    if (window.innerWidth > 600) {
+      window.addEventListener('onscroll', scrollUpdate);
+    }
+    return () => window.removeEventListener('onscroll', scrollUpdate);
   }, []);
 
   return (

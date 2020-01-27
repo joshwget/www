@@ -67,6 +67,7 @@ const Posting = ({ title, location, body, icon }) => (
     maxWidth="540px"
     marginX={6}
     marginTop={9}
+    border={1}
   >
     <Row
       justifyContent="space-between"
@@ -87,12 +88,12 @@ const Posting = ({ title, location, body, icon }) => (
       />
     </Row>
 
-    <Text fontWeight={2} fontSize={5}>
+    <Text fontWeight={2} fontSize={5} marginBottom={2}>
       {title}
     </Text>
 
     <Text
-      fontWeight={2}
+      fontWeight={1}
       fontSize={1}
       style={{ textTransform: 'uppercase' }}
       color="grays.8"
@@ -100,9 +101,8 @@ const Posting = ({ title, location, body, icon }) => (
       {location}
     </Text>
 
-    <Row display={['flex', 'flex', 'none']} marginTop={2}>
+    <Row display={['flex', 'flex', 'none']} marginTop={6}>
       <Button
-        variant="text"
         title="Apply"
         rel="noopener noreferrer"
         target="_blank"
@@ -142,9 +142,9 @@ const Careers = () => (
         >
           Our goal is to make Deviceplane the de facto way to manage all remote
           hardware and devices. The path to get there requires deep engagement
-          with a massive community of developers — both to maximize adoption of
-          Deviceplane, and to make sure we're building the product that fits
-          their requirements and sparks joy.
+          with a massive community of developers. Together we'll work towards
+          maximizing the adoption of Deviceplane, while making sure we're
+          building a product that sparks joy.
         </Paragraph>
       </Column>
 

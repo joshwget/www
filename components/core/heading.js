@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 import { typography, color, space, layout, position } from 'styled-system';
 
 const styles = css`
-word-break: break-word;
 margin: 0;
 font-weight: 500;
 color: ${props => props.theme.colors.pureWhite};
