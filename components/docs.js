@@ -230,7 +230,7 @@ const Docs = ({ title, children }) => {
           position="sticky"
           top={6}
           overflowY="scroll"
-          height="calc(100vh - 64px)"
+          height="calc(100vh - 128px)"
         >
           <DocNav flex={0}>
             {routeGroups.map((routes, index) => (
