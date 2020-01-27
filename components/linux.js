@@ -48,7 +48,7 @@ const Info = () => {
   const [translateOffset, setTranslateOffset] = useState(0);
   const { scrollYProgress } = useViewportScroll();
   const degInputRange = [0.36, 0.65];
-  const degOutputRange = [0, 360];
+  const degOutputRange = [0, 180];
   const translateInputRange = [0.36, 0.42, 0.42, 0.48, 0.48, 0.54, 0.6, 0.64];
   const translateOutputRange = [0, 30, 30, 0, 0, 30, 30, 0];
 
