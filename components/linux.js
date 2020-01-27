@@ -24,7 +24,7 @@ const distros = [
 
 const degree = 360 / distros.length;
 
-const Icon = ({ src, index, degOffset, translateOffset, ...props }) => (
+const Icon = ({ src, index, ...props }) => (
   <Column
     width={54}
     height={54}
@@ -34,8 +34,8 @@ const Icon = ({ src, index, degOffset, translateOffset, ...props }) => (
     justifyContent="center"
     position="absolute"
     style={{
-      transform: `rotate(${index * degree + degOffset}deg) translate(${120 +
-        translateOffset}px) rotate(-${index * degree + degOffset}deg)`
+      transform: `rotate(${index *
+        degree}deg) translate(120px) rotate(-${index * degree}deg)`
     }}
     {...props}
   >
@@ -44,38 +44,6 @@ const Icon = ({ src, index, degOffset, translateOffset, ...props }) => (
 );
 
 const Info = () => {
-  const [degOffset, setDegOffset] = useState(0);
-  const [translateOffset, setTranslateOffset] = useState(0);
-  const { scrollYProgress } = useViewportScroll();
-  const degInputRange = [0.36, 0.65];
-  const degOutputRange = [0, 180];
-  const translateInputRange = [0.36, 0.42, 0.42, 0.48, 0.48, 0.54, 0.6, 0.64];
-  const translateOutputRange = [0, 30, 30, 0, 0, 30, 30, 0];
-
-  const scrollUpdate = () => {
-    requestAnimationFrame(() => {
-      if (scrollYProgress.current > 0.36 && scrollYProgress.current < 0.65) {
-        setDegOffset(
-          transform(scrollYProgress.current, degInputRange, degOutputRange)
-        );
-        setTranslateOffset(
-          transform(
-            scrollYProgress.current,
-            translateInputRange,
-            translateOutputRange
-          )
-        );
-      }
-    });
-  };
-
-  useLayoutEffect(() => {
-    if (window.innerWidth > 600) {
-      window.addEventListener('scroll', scrollUpdate);
-    }
-    return () => window.removeEventListener('scroll', scrollUpdate);
-  }, []);
-
   return (
     <Section>
       <Row
@@ -99,12 +67,7 @@ const Info = () => {
           >
             <Image height={70} width={70} src="/linux.svg" marginBottom={2} />
             {distros.map((distro, index) => (
-              <Icon
-                src={`/distros/${distro}.svg`}
-                index={index}
-                degOffset={degOffset}
-                translateOffset={translateOffset}
-              />
+              <Icon src={`/distros/${distro}.svg`} index={index} />
             ))}
           </Column>
         </Column>
