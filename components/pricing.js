@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import {
+  Grid,
   Column,
   Row,
   Motion,
@@ -17,37 +18,49 @@ const plans = [
   {
     name: 'Developer',
     features: ['25 device limit', 'Single user'],
-    price: 'Free',
-    icon: 'person',
-    bottom: (
-      <Text marginTop="auto" color="grays.11" fontWeight={1}>
-        Scale to another plan as you grow.
-      </Text>
-    )
+    price: (
+      <Row height="36px" alignItems="center">
+        <Text
+          style={{ textTransform: 'uppercase' }}
+          fontWeight={2}
+          fontSize={1}
+          color="grays.11"
+        >
+          $0 Forever
+        </Text>
+      </Row>
+    ),
+    icon: 'person'
   },
   {
     name: 'Team',
     icon: 'people',
     features: ['50 devices included', '3 users included', 'Support'],
-    price: 'Starts at $250/month',
-    bottom: (
-      <Text marginTop="auto" color="grays.11" fontWeight={1}>
-        Cost based on each additional device or user.
-      </Text>
+    price: (
+      <Row height="36px" alignItems="center">
+        <Text
+          style={{ textTransform: 'uppercase' }}
+          fontWeight={2}
+          fontSize={1}
+          color="grays.11"
+        >
+          $250/month base
+        </Text>
+      </Row>
     )
   },
   {
     name: 'Enterprise',
     features: [
-      'Custom solutions',
+      'Unique solutions',
       'Unlimited users',
       'Dedicated support',
       'Onboarding'
     ],
     icon: 'office',
-    price: 'Custom pricing',
-    bottom: (
+    price: (
       <Button
+        width="100%"
         variant="secondary"
         title="Contact sales"
         href="mailto:sales@deviceplane.com"
@@ -61,12 +74,11 @@ const PlanContainer = styled(Motion)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 6px;
+  border-radius: 4px;
   background: ${props => props.theme.colors.pageBackground};
-  //border: 1px solid ${props => props.theme.colors.primary};
 `;
 
-const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
+const Plan = ({ name, features, price, index, animate, icon }) => (
   <PlanContainer
     key={name}
     animate={animate && { opacity: [0, 1], y: [-50, 0] }}
@@ -75,31 +87,24 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
       duration: 0.75,
       ease: 'easeIn'
     }}
-    padding={5}
-    height={['initial', 'initial', '340px']}
-    marginY={8}
-    marginX={[0, 0, 4, 6]}
-    width="100%"
-    maxWidth="280px"
+    padding={6}
+    border={1}
   >
     <Column>
-      <Column>
-        <Icon icon={icon} size={28} color="primary" marginBottom={2} />
-        <Text fontSize={4} fontWeight={2}>
-          {name}
-        </Text>
-        <Text
-          marginTop={1}
-          fontWeight={2}
-          fontSize={0}
-          color="grays.11"
-          style={{ textTransform: 'uppercase' }}
-        >
-          {price}
-        </Text>
-      </Column>
+      <Icon
+        icon={icon}
+        size={name === 'Team' ? 40 : 32}
+        color="primary"
+        marginBottom={2}
+      />
+      <Text fontSize={5} fontWeight={2} color="pureWhite">
+        {name}
+      </Text>
+      <Row marginTop={4} marginBottom={2}>
+        {price}
+      </Row>
 
-      <Column marginTop={1}>
+      <Column>
         {features.map(feature => (
           <Row key={feature} marginTop={4} alignItems="center">
             <Row>
@@ -112,8 +117,6 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
         ))}
       </Column>
     </Column>
-
-    <Column marginTop={6}>{bottom}</Column>
   </PlanContainer>
 );
 
@@ -123,25 +126,35 @@ const Pricing = () => {
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Section bg="black">
+    <Section>
       <motion.div
         animate={animate && { opacity: [0, 1] }}
         transition={{ duration: 1, delay: 0.25 }}
       >
-        <Heading variant="secondary" textAlign="center">
-          Flexible Pricing
+        <Heading
+          variant="secondary"
+          textAlign="center"
+          maxWidth={['400px', '400px', '400px', 'unset']}
+        >
+          Flexible pricing that scales
         </Heading>
       </motion.div>
 
-      <Row
-        alignSelf={['initial', 'initial', 'stretch']}
-        justifyContent="center"
-        flexDirection={['column', 'column', 'row']}
+      <Grid
+        marginTop={8}
+        gridGap={8}
+        alignContent="center"
+        gridTemplateColumns={[
+          'repeat(1, 250px)',
+          'repeat(1, 250px)',
+          'repeat(1, 250px)',
+          'repeat(3, 250px)'
+        ]}
       >
         {plans.map((plan, index) => (
           <Plan key={plan.name} {...plan} index={index} animate={animate} />
         ))}
-      </Row>
+      </Grid>
     </Section>
   );
 };

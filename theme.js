@@ -8,7 +8,7 @@ const colors = {
   primary: '#6fccff',
 
   black: '#000',
-  white: '#E6E6E6',
+  white: '#fff',
   success: '#06D6A0',
   danger: '#D7263D',
   purple: '#7189FF',
@@ -70,7 +70,7 @@ export default {
     code: 'Menlo,Monaco,Consolas,monospace,serif'
   },
 
-  fontSizes: [12, 14, 16, 18, 24, 36, 42, 64],
+  fontSizes: [12, 14, 16, 18, 24, 32, 42, 64],
 
   fontWeights: [300, 400, 500, 700, 900],
 

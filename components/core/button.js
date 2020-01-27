@@ -21,13 +21,11 @@ const variants = {
       border: 0,
       '&:not(:disabled):hover': {
         bg: 'transparent',
-        color: theme.colors.primary,
-        boxShadow: `0px 0px 0px 1px ${theme.colors.primary} inset`
+        color: theme.colors.primary
       },
       '&:not(:disabled):focus': {
         bg: 'transparent',
-        color: theme.colors.primary,
-        boxShadow: `0px 0px 0px 1px ${theme.colors.primary} inset`
+        color: theme.colors.primary
       }
     },
     secondary: {
@@ -38,14 +36,12 @@ const variants = {
       '&:not(:disabled):hover': {
         color: 'pureWhite',
         bg: 'transparent',
-        borderColor: 'pureWhite',
-        boxShadow: `0px 0px 0px 1px ${theme.colors.pureWhite} inset`
+        borderColor: 'pureWhite'
       },
       '&:not(:disabled):focus': {
         color: 'pureWhite',
         bg: 'transparent',
-        borderColor: 'pureWhite',
-        boxShadow: `0px 0px 0px 1px ${theme.colors.pureWhite} inset`
+        borderColor: 'pureWhite'
       }
     },
     text: {
@@ -77,8 +73,8 @@ transition: ${props => props.theme.transitions[0]};
 transform: translateZ(0);
 backface-visibility: hidden;
 white-space: nowrap;
-font-size: 14px;
-padding: 10px 16px;
+font-size: 12px;
+padding: 10px 12px;
 text-transform: uppercase;
 text-renderering: geometricPercision;
 
