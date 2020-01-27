@@ -27,7 +27,7 @@ const plans = [
         </Text>
 
         <Button
-          marginTop={2}
+          marginTop={3}
           width="100%"
           variant="secondary"
           title="Start now"
@@ -51,7 +51,7 @@ const plans = [
         </Text>
 
         <Button
-          marginTop={2}
+          marginTop={3}
           width="100%"
           variant="secondary"
           title="Try for free"
@@ -80,7 +80,7 @@ const plans = [
           Custom Pricing
         </Text>
         <Button
-          marginTop={2}
+          marginTop={3}
           width="100%"
           variant="secondary"
           title="Contact sales"
