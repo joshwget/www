@@ -64,8 +64,7 @@ const Feature = ({ title, body, icon }) => (
       padding: '32px',
       border: `3px solid ${theme.colors.primary}`,
       borderRadius: '4px',
-      background: theme.colors.pageBackground,
-      maxWidth: '452px'
+      background: theme.colors.pageBackground
     }}
   >
     <Column>
@@ -83,15 +82,32 @@ const Features = () => {
   return (
     <Section alignItems="center">
       <Row
-        alignItems="flex-start"
+        alignItems={['center', 'center', 'center', 'center', 'flex-start']}
         justifyContent="space-between"
         alignSelf="stretch"
+        flexDirection={['column', 'column', 'column', 'column', 'row']}
       >
-        <Heading position="sticky" top="40%" variant="secondary">
-          Powerful features
+        <Heading
+          position={['static', 'static', 'static', 'static', 'sticky']}
+          top="40%"
+          variant="secondary"
+          textAlign={['center', 'center', 'center', 'center', 'left']}
+          maxWidth={['unset', '450px', '450px', '600px', 'unset']}
+        >
+          Everything you need to take control
         </Heading>
 
-        <Grid gridGap={8} gridTemplateColumns="1fr 1fr">
+        <Grid
+          gridGap={8}
+          marginTop={[8, 8, 8, 8, 0]}
+          gridTemplateColumns={[
+            'minmax(250px, 1fr)',
+            '500px',
+            'repeat(2, 350px)',
+            'repeat(3, 280px)',
+            'repeat(2, 350px)'
+          ]}
+        >
           {content.map((props, i) => (
             <Feature {...props} key={props.title} />
           ))}

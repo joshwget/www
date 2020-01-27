@@ -16,17 +16,20 @@ export const Box = styled.div`
   ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox} ${grid}
 `;
 
-export const Row = styled(Box)`
-  display: flex;
-`;
+export const Row = styled(Box)``;
+Row.defaultProps = {
+  display: 'flex'
+};
 
-export const Column = styled(Row)`
-  flex-direction: column;
-`;
+export const Column = styled(Row)``;
+Column.defaultProps = {
+  flexDirection: 'column'
+};
 
-export const Grid = styled(Box)`
-  display: grid;
-`;
+export const Grid = styled(Box)``;
+Grid.defaultProps = {
+  display: 'grid'
+};
 
 export const Motion = styled(motion.div)`
   ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox} ${grid}

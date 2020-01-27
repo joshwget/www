@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import theme from '../theme';
 import { Section, Text, Column, Row, Button } from './core';
 
 const CTA = () => {
@@ -13,9 +14,9 @@ const CTA = () => {
       <Row
         alignItems="center"
         bg={['none', 'pageBackground']}
-        padding={[0, 8, 9]}
+        padding={[0, 8]}
         borderRadius={2}
-        border={['none', 1]}
+        border={['none', `6px solid ${theme.colors.primary}`]}
         flexDirection={['column', 'column', 'row']}
       >
         <Text fontSize={5} textAlign="center" fontWeight={1} color="primary">
@@ -28,7 +29,7 @@ const CTA = () => {
           flexDirection={['column', 'column', 'row']}
           justifyContent={['unset', 'unset', 'center']}
           marginLeft={[0, 0, 10]}
-          marginTop={[6, 6, 0]}
+          marginTop={[8, 8, 0]}
         >
           <Button
             title="Chat with us"

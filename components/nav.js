@@ -95,14 +95,14 @@ const MobileMenu = ({ show, pathname }) => {
           <Text
             color={isDocs ? 'primary' : 'white'}
             fontSize={2}
-            fontWeight={2}
+            fontWeight={1}
           >
             Documentation
           </Text>
           <Icon
             marginLeft={4}
             icon={expand ? 'chevron-down' : 'chevron-right'}
-            size={16}
+            size={20}
             color={isDocs ? 'primary' : 'white'}
           />
         </Row>

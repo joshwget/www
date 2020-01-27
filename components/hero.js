@@ -1,4 +1,5 @@
 import {
+  Grid,
   Column,
   Row,
   Text,
@@ -47,12 +48,10 @@ const useCases = ['smart locks', 'delivery robots', 'WiFi hubs', 'drones'];
 const Device = ({ src, label, height = 90 }) => (
   <Column
     height={['initial', '160px']}
-    width={['unset', '200px']}
-    maxWidth="100%"
     justifyContent="flex-end"
     alignItems="center"
   >
-    <Image src={src} alt={label} height={[height - 20, height]} />
+    <Image src={src} alt={label} height={[height, height - 20, height]} />
 
     <Text
       textAlign="center"
@@ -156,29 +155,21 @@ const Hero = ({ airtable }) => {
         )}
       </Column>
 
-      <Row
-        justifyContent="space-between"
+      <Grid
         marginTop={10}
-        display={['none', 'flex']}
-        flexDirection={['column', 'column', 'column', 'column', 'row']}
+        gridGap={[9, 2, 6, 8, 4]}
+        gridTemplateColumns={[
+          'repeat(1, 200px)',
+          'repeat(3, 200px)',
+          'repeat(3, 200px)',
+          'repeat(3, 200px)',
+          'repeat(6, 190px)'
+        ]}
       >
-        <Row>
-          {devices.slice(0, 3).map(props => (
-            <Device key={props.label} {...props} />
-          ))}
-        </Row>
-        <Row>
-          {devices.slice(3, 6).map(props => (
-            <Device key={props.label} {...props} />
-          ))}
-        </Row>
-      </Row>
-
-      <Column alignSelf="stretch" marginTop={9} display={['flex', 'none']}>
         {devices.map(props => (
           <Device key={props.label} {...props} />
         ))}
-      </Column>
+      </Grid>
     </Section>
   );
 };

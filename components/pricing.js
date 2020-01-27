@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import {
+  Grid,
   Column,
   Row,
   Motion,
@@ -73,11 +74,11 @@ const PlanContainer = styled(Motion)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 6px;
+  border-radius: 4px;
   background: ${props => props.theme.colors.pageBackground};
 `;
 
-const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
+const Plan = ({ name, features, price, index, animate, icon }) => (
   <PlanContainer
     key={name}
     animate={animate && { opacity: [0, 1], y: [-50, 0] }}
@@ -87,23 +88,18 @@ const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
       ease: 'easeIn'
     }}
     padding={6}
-    marginX={[0, 0, 4, 6]}
-    width="100%"
-    maxWidth="280px"
     border={1}
   >
     <Column>
-      <Row alignItems="center">
-        <Icon
-          icon={icon}
-          size={name === 'Team' ? 40 : 32}
-          color="primary"
-          marginRight={4}
-        />
-        <Text fontSize={5} fontWeight={2} color="pureWhite">
-          {name}
-        </Text>
-      </Row>
+      <Icon
+        icon={icon}
+        size={name === 'Team' ? 40 : 32}
+        color="primary"
+        marginBottom={2}
+      />
+      <Text fontSize={5} fontWeight={2} color="pureWhite">
+        {name}
+      </Text>
       <Row marginTop={4} marginBottom={2}>
         {price}
       </Row>
@@ -135,21 +131,30 @@ const Pricing = () => {
         animate={animate && { opacity: [0, 1] }}
         transition={{ duration: 1, delay: 0.25 }}
       >
-        <Heading variant="secondary" textAlign="center">
+        <Heading
+          variant="secondary"
+          textAlign="center"
+          maxWidth={['400px', '400px', '400px', 'unset']}
+        >
           Flexible pricing that scales
         </Heading>
       </motion.div>
 
-      <Row
+      <Grid
         marginTop={8}
-        alignSelf={['initial', 'initial', 'stretch']}
-        justifyContent="center"
-        flexDirection={['column', 'column', 'row']}
+        gridGap={8}
+        alignContent="center"
+        gridTemplateColumns={[
+          'repeat(1, 250px)',
+          'repeat(1, 250px)',
+          'repeat(1, 250px)',
+          'repeat(3, 250px)'
+        ]}
       >
         {plans.map((plan, index) => (
           <Plan key={plan.name} {...plan} index={index} animate={animate} />
         ))}
-      </Row>
+      </Grid>
     </Section>
   );
 };

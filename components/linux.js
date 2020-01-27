@@ -34,8 +34,9 @@ const Icon = ({ src, index, degOffset, translateOffset, ...props }) => (
     justifyContent="center"
     position="absolute"
     style={{
-      transform: `rotate(${index * degree + degOffset}deg) translate(${120 +
-        translateOffset}px) rotate(-${index * degree + degOffset}deg)`
+      transform: `rotate(${index * degree + degOffset}deg) translate(${
+        window.innerWidth < 600 ? 100 : 120 + translateOffset
+      }px) rotate(-${index * degree + degOffset}deg)`
     }}
     {...props}
   >
@@ -51,6 +52,7 @@ const Info = () => {
   const degOutputRange = [0, 360];
   const translateInputRange = [0.36, 0.42, 0.42, 0.48, 0.48, 0.54, 0.6, 0.64];
   const translateOutputRange = [0, 30, 30, 0, 0, 30, 30, 0];
+
   useEffect(() => {
     window.onscroll = () => {
       requestAnimationFrame(() => {
@@ -72,12 +74,22 @@ const Info = () => {
 
   return (
     <Section>
-      <Row justifyContent="space-between" alignSelf="stretch">
-        <Column alignItems="center" justifyContent="center" flex={1}>
+      <Row
+        justifyContent="space-between"
+        alignSelf="stretch"
+        alignItems={['center', 'center', 'center', 'unset']}
+        flexDirection={[
+          'column-reverse',
+          'column-reverse',
+          'column-reverse',
+          'row'
+        ]}
+      >
+        <Column justifyContent="center" flex={1} marginTop={[8, 8, 8, 0]}>
           <Column
             position="relative"
-            width={140}
-            height={140}
+            width={350}
+            height={350}
             alignItems="center"
             justifyContent="center"
           >
@@ -92,12 +104,23 @@ const Info = () => {
             ))}
           </Column>
         </Column>
-        <Column maxWidth="550px">
-          <Heading variant="secondary">
-            Easy to setup on any Linux device
+        <Column
+          maxWidth={['500px', '500px', '500px', '550px']}
+          alignItems={['center', 'center', 'center', 'unset']}
+          justifyContent="center"
+        >
+          <Heading
+            variant="secondary"
+            textAlign={['center', 'center', 'center', 'left']}
+            maxWidth={['400px', '400px', '400px', 'unset']}
+          >
+            Easily setup any Linux device
           </Heading>
-          <Paragraph fontSize={3}>
-            We support any device running Linux regardless of distribution,
+          <Paragraph
+            fontSize={3}
+            textAlign={['center', 'center', 'center', 'left']}
+          >
+            We support any device running Linux regardless of distro,
             architecture, or hardware. Our agent is a static binary that can be
             installed in a single command.
           </Paragraph>

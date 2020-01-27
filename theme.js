@@ -8,7 +8,7 @@ const colors = {
   primary: '#6fccff',
 
   black: '#000',
-  white: '#E6E6E6',
+  white: '#fff',
   success: '#06D6A0',
   danger: '#D7263D',
   purple: '#7189FF',

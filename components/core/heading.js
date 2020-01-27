@@ -25,9 +25,9 @@ export const H3 = styled.h3`
 const Heading = ({ variant, ...rest }) => {
   switch (variant) {
     case 'secondary':
-      return <H2 fontSize={[5, 5, 6, '54px']} {...rest} />;
+      return <H2 fontSize={[6, 6, 6, '54px']} {...rest} />;
     case 'tertiary':
-      return <H3 fontSize={[3, 3, 4, 5]} {...rest} />;
+      return <H3 fontSize={[4, 4, 4, 5]} {...rest} />;
     case 'primary':
     default:
       return <H1 fontSize={7} {...rest} />;
