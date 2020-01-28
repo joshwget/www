@@ -1,42 +1,72 @@
-import { Column, Row, Heading, Section, Icon, Paragraph } from './core';
+import {
+  Grid,
+  Column,
+  Row,
+  Heading,
+  Section,
+  Icon,
+  Paragraph,
+  Image,
+  Link
+} from './core';
 
 const Info = () => (
-  <Section>
-    <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
-      alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
+  <Section bg="pageBackground" borderY={0} marginY={10}>
+    <Grid
+      gridGap={[8, 8, 8, 9, 11]}
+      gridTemplateColumns={[
+        'repeat(1, minmax(150px, 1fr))',
+        'repeat(1, 500px)',
+        'repeat(1, 500px)',
+        'repeat(3, 300px)'
+      ]}
     >
-      <Column
-        maxWidth={13}
-        marginRight={[0, 0, 10]}
-        marginBottom={[10, 10, 0]}
-        alignItems={['center', 'center', 'unset']}
-      >
-        <Icon icon="code" size={48} color="primary" marginBottom={2} />
-        <Heading variant="secondary" textAlign={['center', 'center', 'left']}>
+      <Column alignItems={['center', 'center', 'center', 'unset']}>
+        <Image height={40} width={40} src="/github.svg" marginBottom={4} />
+        <Heading
+          variant="tertiary"
+          textAlign={['center', 'center', 'center', 'left']}
+        >
+          Open Source
+        </Heading>
+        <Paragraph textAlign={['center', 'center', 'center', 'left']}>
+          Developer infrastructure is best when open source. Everything we build
+          can be found on our{' '}
+          <Link href="https://github.com/deviceplane/deviceplane">GitHub</Link>{' '}
+          and is distributed under a permissive open source license.
+        </Paragraph>
+      </Column>
+
+      <Column alignItems={['center', 'center', 'center', 'unset']}>
+        <Icon icon="lock" size={40} color="primary" marginBottom={4} />
+        <Heading
+          variant="tertiary"
+          textAlign={['center', 'center', 'center', 'left']}
+        >
+          Security Conscious
+        </Heading>
+        <Paragraph textAlign={['center', 'center', 'center', 'left']}>
+          We follow the best security practices across our systems. You will
+          gain access to a variety of security features and controls that you
+          didn't have before.
+        </Paragraph>
+      </Column>
+
+      <Column alignItems={['center', 'center', 'center', 'unset']}>
+        <Icon icon="code" size={40} color="primary" marginBottom={4} />
+        <Heading
+          variant="tertiary"
+          textAlign={['center', 'center', 'center', 'left']}
+        >
           Developer Focused
         </Heading>
-        <Paragraph fontSize={3} textAlign={['center', 'center', 'left']}>
+        <Paragraph textAlign={['center', 'center', 'center', 'left']}>
           Deploying to remote devices should be as easy as deploying to the
           cloud. We're building modern and accessible tooling so you can spend
           less time learning and more time shipping.
         </Paragraph>
       </Column>
-
-      <Column maxWidth={13} alignItems={['center', 'center', 'unset']}>
-        <Icon icon="lock" size={48} color="primary" marginBottom={2} />
-        <Heading variant="secondary" textAlign={['center', 'center', 'left']}>
-          Security Conscious
-        </Heading>
-        <Paragraph fontSize={3} textAlign={['center', 'center', 'left']}>
-          We follow the best security practices across all of our systems. By
-          using us, you'll gain access to a variety of security features and
-          controls that you didn't have before.
-        </Paragraph>
-      </Column>
-    </Row>
+    </Grid>
   </Section>
 );
 

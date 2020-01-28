@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import {
+  Grid,
   Column,
   Row,
   Motion,
@@ -17,23 +17,47 @@ const plans = [
   {
     name: 'Developer',
     features: ['25 device limit', 'Single user'],
-    price: 'Free',
-    icon: 'person',
-    bottom: (
-      <Text marginTop="auto" color="grays.11" fontWeight={1}>
-        Scale to another plan as you grow.
-      </Text>
-    )
+    price: (
+      <Column alignItems="center" flex={1}>
+        <Text fontWeight={2} fontSize={1} color="primary">
+          $0{' '}
+          <Text style={{ textTransform: 'uppercase' }} color="grays.11">
+            / month
+          </Text>
+        </Text>
+
+        <Button
+          marginTop={3}
+          width="100%"
+          variant="secondary"
+          title="Start now"
+          href="https://cloud.deviceplane.com/signup"
+        />
+      </Column>
+    ),
+    icon: 'person'
   },
   {
     name: 'Team',
     icon: 'people',
     features: ['50 devices included', '3 users included', 'Support'],
-    price: 'Starts at $250/month',
-    bottom: (
-      <Text marginTop="auto" color="grays.11" fontWeight={1}>
-        Cost based on each additional device or user.
-      </Text>
+    price: (
+      <Column alignItems="center" flex={1}>
+        <Text fontWeight={2} fontSize={1} color="primary">
+          $250{' '}
+          <Text style={{ textTransform: 'uppercase' }} color="grays.11">
+            / month base
+          </Text>
+        </Text>
+
+        <Button
+          marginTop={3}
+          width="100%"
+          variant="secondary"
+          title="Try for free"
+          href="https://cloud.deviceplane.com/signup"
+        />
+      </Column>
     )
   },
   {
@@ -45,75 +69,61 @@ const plans = [
       'Onboarding'
     ],
     icon: 'office',
-    price: 'Custom pricing',
-    bottom: (
-      <Button
-        variant="secondary"
-        title="Contact sales"
-        href="mailto:sales@deviceplane.com"
-        marginTop="auto"
-      />
+    price: (
+      <Column flex={1} alignItems="center">
+        <Text
+          fontWeight={2}
+          fontSize={1}
+          color="primary"
+          style={{ textTransform: 'uppercase' }}
+        >
+          Custom Pricing
+        </Text>
+        <Button
+          marginTop={3}
+          width="100%"
+          variant="secondary"
+          title="Contact sales"
+          href="mailto:sales@deviceplane.com"
+        />
+      </Column>
     )
   }
 ];
 
-const PlanContainer = styled(Motion)`
-  display: flex;
-  flex-direction: column;
+const PlanContainer = styled(Column)`
   justify-content: space-between;
-  border-radius: 6px;
+  border-radius: 4px;
   background: ${props => props.theme.colors.pageBackground};
-  //border: 1px solid ${props => props.theme.colors.primary};
 `;
 
-const Plan = ({ name, features, price, bottom, index, animate, icon }) => (
-  <PlanContainer
-    key={name}
-    animate={animate && { opacity: [0, 1], y: [-50, 0] }}
-    transition={{
-      delay: index / 3,
-      duration: 0.75,
-      ease: 'easeIn'
-    }}
-    padding={5}
-    height={['initial', 'initial', '340px']}
-    marginY={8}
-    marginX={[0, 0, 4, 6]}
-    width="100%"
-    maxWidth="280px"
-  >
-    <Column>
-      <Column>
-        <Icon icon={icon} size={28} color="primary" marginBottom={2} />
-        <Text fontSize={4} fontWeight={2}>
-          {name}
-        </Text>
-        <Text
-          marginTop={1}
-          fontWeight={2}
-          fontSize={0}
-          color="grays.11"
-          style={{ textTransform: 'uppercase' }}
-        >
-          {price}
-        </Text>
-      </Column>
+const Plan = ({ name, features, price, index, animate, icon }) => (
+  <PlanContainer key={name} padding={6} border={1}>
+    <Column position="relative">
+      <Icon
+        position="absolute"
+        top={name === 'Team' ? '-6px' : 0}
+        icon={icon}
+        size={name === 'Team' ? 42 : 32}
+        color="primary"
+        marginBottom={2}
+      />
+      <Text fontSize={5} fontWeight={2} color="pureWhite" marginTop={7}>
+        {name}
+      </Text>
 
-      <Column marginTop={1}>
-        {features.map(feature => (
-          <Row key={feature} marginTop={4} alignItems="center">
-            <Row>
-              <Icon icon="tick-circle" size={18} color="primary" />
-            </Row>
-            <Text marginLeft={2} fontWeight={1}>
-              {feature}
-            </Text>
+      {features.map(feature => (
+        <Row key={feature} marginTop={4} alignItems="center">
+          <Row>
+            <Icon icon="tick-circle" size={18} color="primary" />
           </Row>
-        ))}
-      </Column>
+          <Text marginLeft={2} fontWeight={1}>
+            {feature}
+          </Text>
+        </Row>
+      ))}
     </Column>
-
-    <Column marginTop={6}>{bottom}</Column>
+    <Row marginTop={6}>{price}</Row>
   </PlanContainer>
 );
 
@@ -123,25 +133,30 @@ const Pricing = () => {
   const animate = entry && entry.isIntersecting;
 
   return (
-    <Section bg="black">
-      <motion.div
-        animate={animate && { opacity: [0, 1] }}
-        transition={{ duration: 1, delay: 0.25 }}
+    <Section>
+      <Heading
+        variant="secondary"
+        textAlign="center"
+        maxWidth={['400px', '400px', '400px', 'unset']}
       >
-        <Heading variant="secondary" textAlign="center">
-          Flexible Pricing
-        </Heading>
-      </motion.div>
+        Flexible pricing that scales
+      </Heading>
 
-      <Row
-        alignSelf={['initial', 'initial', 'stretch']}
-        justifyContent="center"
-        flexDirection={['column', 'column', 'row']}
+      <Grid
+        marginTop={8}
+        gridGap={8}
+        alignContent="center"
+        gridTemplateColumns={[
+          'repeat(1, 260px)',
+          'repeat(1, 260px)',
+          'repeat(1, 260px)',
+          'repeat(3, 260px)'
+        ]}
       >
         {plans.map((plan, index) => (
           <Plan key={plan.name} {...plan} index={index} animate={animate} />
         ))}
-      </Row>
+      </Grid>
     </Section>
   );
 };

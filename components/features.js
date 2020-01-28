@@ -1,27 +1,39 @@
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import Tilt from 'react-tilt';
 
-import { Section, Heading, Row, Column, Paragraph, Icon } from './core';
+import theme from '../theme';
+import {
+  Box,
+  Section,
+  Heading,
+  Row,
+  Column,
+  Grid,
+  Paragraph,
+  Icon,
+  Text
+} from './core';
 
 const content = [
   {
     title: 'Remote Updates',
-    body: `Deploy reliably and with confidence. We make it easy to gradually
-    ship updates, test new versions on a subset of your devices,
+    body: `Deploy reliably and with confidence. Gradually
+    ship updates, test new versions on a subset of devices,
     and rollback when things don't go as expected.`,
     icon: 'automatic-updates'
   },
   {
     title: 'SSH Access',
-    body: `Access your device via SSH even when it's not on the same network.
+    body: `Access a device via SSH even when it's not on the same network.
     Flexible policies allow you to enable and disable this feature
     from the device for security reasons.`,
     icon: 'console'
   },
   {
     title: 'Monitoring',
-    body: `Seamlessly collect host and application metrics from your
-    devices without the need for additional agents. Integrate
-    with popular monitoring tools including Datadog and Prometheus.`,
+    body: `Collect host and application metrics from your
+    devices without additional agents. Integrate
+    with tools like Datadog and Prometheus.`,
     icon: 'pulse'
   },
   {
@@ -38,69 +50,72 @@ const content = [
   },
   {
     title: 'Developer API',
-    body: `All of our functionality is exposed by an easy to use API
-    making it simple to programmatically interact with your
+    body: `All functionality is exposed by an easy to use API
+    that makes it simple to programmatically interact with your
     devices.`,
     icon: 'wrench'
   }
 ];
 
-const Container = styled(Column)`
-  @media screen and (min-width: 800px) {
-    &:first-child {
-      margin-right: 64px;
-    }
-  }
-`;
-
 const Feature = ({ title, body, icon }) => (
-  <Container maxWidth={13} marginTop={8} width="100%">
-    <Icon color="primary" size={24} icon={icon} marginBottom={2} />
+  <Tilt
+    options={{ scale: 1.03, speed: 1000, max: 15, perspective: 1500 }}
+    style={{
+      padding: '32px',
+      border: `3px solid ${theme.colors.primary}`,
+      borderRadius: '4px',
+      background: theme.colors.pageBackground
+    }}
+  >
+    <Column>
+      <Icon color="primary" size={24} icon={icon} marginBottom={4} />
 
-    <Heading variant="tertiary">{title}</Heading>
-    <Paragraph>{body}</Paragraph>
-  </Container>
+      <Heading variant="tertiary" fontSize="20px">
+        {title}
+      </Heading>
+      <Paragraph marginBottom={0}>{body}</Paragraph>
+    </Column>
+  </Tilt>
 );
 
-const Features = () => (
-  <Section alignItems="center" bg="black">
-    <Heading variant="secondary" textAlign="center">
-      Powerful Features
-    </Heading>
+const Features = () => {
+  return (
+    <Section alignItems="center">
+      <Row
+        alignItems={['center', 'center', 'center', 'center', 'flex-start']}
+        justifyContent="space-between"
+        alignSelf="stretch"
+        flexDirection={['column', 'column', 'column', 'column', 'row']}
+      >
+        <Heading
+          position={['static', 'static', 'static', 'static', 'sticky']}
+          top="40%"
+          variant="secondary"
+          textAlign={['center', 'center', 'center', 'center', 'left']}
+          maxWidth={['unset', '600px', '600px', '750px', 'unset']}
+          marginRight={[0, 0, 0, 0, 8]}
+        >
+          Infrastucture that includes everything you need
+        </Heading>
 
-    <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
-      alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
-    >
-      {content.slice(0, 2).map(p => (
-        <Feature {...p} key={p.title} />
-      ))}
-    </Row>
-
-    <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
-      alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
-    >
-      {content.slice(2, 4).map(p => (
-        <Feature {...p} key={p.title} />
-      ))}
-    </Row>
-
-    <Row
-      justifyContent={['unset', 'unset', 'space-between']}
-      alignItems={['center', 'center', 'unset']}
-      alignSelf="stretch"
-      flexDirection={['column', 'column', 'row']}
-    >
-      {content.slice(4, 6).map(p => (
-        <Feature {...p} key={p.title} />
-      ))}
-    </Row>
-  </Section>
-);
+        <Grid
+          gridGap={8}
+          marginTop={[8, 8, 8, 8, 0]}
+          gridTemplateColumns={[
+            'minmax(250px, 1fr)',
+            '500px',
+            'repeat(2, 1fr)',
+            'repeat(3, 1fr)',
+            'repeat(2, 1fr)'
+          ]}
+        >
+          {content.map((props, i) => (
+            <Feature {...props} key={props.title} />
+          ))}
+        </Grid>
+      </Row>
+    </Section>
+  );
+};
 
 export default Features;

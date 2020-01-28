@@ -35,7 +35,7 @@ Let's edit this script to use your install variables (from https://cloud.devicep
 set -e
 
 # Installs Deviceplane
-curl --retry 10 --retry-delay 60 --retry-connrefused https://install.deviceplane.com | PROJECT=$YOUR_PROJECT REGISTRATION_TOKEN=$YOUR_REGISTRATION_TOKEN bash
+curl --retry 10 --retry-delay 60 --retry-connrefused https://downloads.deviceplane.com/install.sh | PROJECT=$YOUR_PROJECT REGISTRATION_TOKEN=$YOUR_REGISTRATION_TOKEN bash
 
 # Stops the service only if the previous command was successful!
 systemctl disable install-deviceplane.service

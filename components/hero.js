@@ -1,6 +1,5 @@
-import styled from 'styled-components';
-
 import {
+  Grid,
   Column,
   Row,
   Text,
@@ -44,16 +43,16 @@ const devices = [
   }
 ];
 
+const useCases = ['smart locks', 'delivery robots', 'WiFi hubs', 'drones'];
+
 const Device = ({ src, label, height = 90 }) => (
   <Column
     height={['initial', '160px']}
-    width={['unset', '200px']}
-    maxWidth="100%"
     justifyContent="flex-end"
-    marginY={6}
     alignItems="center"
   >
-    <Image src={src} alt={label} height={[height - 20, height]} />
+    <Image src={src} alt={label} height={[height, height - 20, height]} />
+
     <Text
       textAlign="center"
       borderRadius={2}
@@ -74,6 +73,13 @@ const Device = ({ src, label, height = 90 }) => (
 const Hero = ({ airtable }) => {
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+
+  // const [useCaseIndex, setUseCaseIndex] = useState(0);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     setUseCaseIndex(useCaseIndex => (useCaseIndex + 1) % useCases.length);
+  //   }, 2000);
+  // }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -101,19 +107,22 @@ const Hero = ({ airtable }) => {
 
   return (
     <Section bg="black" position="relative" paddingTop={9} borderTop="none">
-      <Heading fontSize={['42px', '52px', '64px', '78px']} textAlign="center">
-        Manage your devices
-        <br /> at the edge
+      <Heading
+        fontSize={['42px', '52px', '64px', '78px']}
+        textAlign="center"
+        maxWidth={['450px', '550px', '700px', '800px']}
+      >
+        Manage your devices at the edge
       </Heading>
 
       <Paragraph
-        maxWidth={['initial', '600px', '680px', '760px']}
+        maxWidth={['initial', '620px', '700px', '760px']}
         textAlign="center"
         fontSize={['16px', '16px', '18px', '20px']}
       >
-        Deviceplane is a management tool for embedded systems and edge
-        computing. We make it easy to securely update, monitor, and access your
-        devices.
+        Deviceplane is an open source management tool for embedded systems and
+        edge computing. We make it easy to securely update, monitor, and access
+        your devices.
       </Paragraph>
 
       <Column alignSelf="stretch" marginTop={4} alignItems="center">
@@ -149,29 +158,21 @@ const Hero = ({ airtable }) => {
         )}
       </Column>
 
-      <Row
-        justifyContent="space-between"
-        marginTop={9}
-        display={['none', 'flex']}
-        flexDirection={['column', 'column', 'column', 'column', 'row']}
+      <Grid
+        marginTop={10}
+        gridGap={[9, 2, 6, 8, 4]}
+        gridTemplateColumns={[
+          'repeat(1, 200px)',
+          'repeat(3, 200px)',
+          'repeat(3, 200px)',
+          'repeat(3, 200px)',
+          'repeat(6, 190px)'
+        ]}
       >
-        <Row>
-          {devices.slice(0, 3).map(props => (
-            <Device key={props.label} {...props} />
-          ))}
-        </Row>
-        <Row>
-          {devices.slice(3, 6).map(props => (
-            <Device key={props.label} {...props} />
-          ))}
-        </Row>
-      </Row>
-
-      <Column alignSelf="stretch" marginTop={9} display={['flex', 'none']}>
         {devices.map(props => (
           <Device key={props.label} {...props} />
         ))}
-      </Column>
+      </Grid>
     </Section>
   );
 };

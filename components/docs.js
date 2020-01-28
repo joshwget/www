@@ -56,6 +56,11 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/deploying/pipelines',
+      title: 'CI/CD Pipelines',
+      nested: true
+    },
+    {
       href: '/docs/managing',
       title: 'Managing'
     },
@@ -76,7 +81,7 @@ export const routeGroups = [
     },
     {
       href: '/docs/monitoring',
-      title: 'Monitoring',
+      title: 'Monitoring'
     },
     {
       href: '/docs/monitoring/setup',
@@ -112,8 +117,11 @@ export const routeGroups = [
     {
       href: '/docs/variables',
       title: 'Agent Variables',
-      nested: true
     },
+    {
+      href: '/docs/firewall-configuration',
+      title: 'Firewall Configuration'
+    }
   ],
   [
     {
@@ -136,6 +144,7 @@ export const routeGroups = [
 const DocLink = styled(Link)`
   text-decoration: none;
   color: ${props => props.active ? props.theme.colors.primary : props.theme.colors.white};
+  font-weight: 400;
   font-size: ${props => props.theme.fontSizes[1]}px;
   margin: ${props => (props.nested ? '12px 0 0 16px' : '12px 0 0')};
 
@@ -144,7 +153,7 @@ const DocLink = styled(Link)`
   }
 
   &:hover {
-    color: ${props => props.theme.colors.primary}
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
@@ -222,14 +231,19 @@ const Docs = ({ title, children }) => {
         overflow="visible"
         flex={1}
         width="100%"
+        paddingX={6}
       >
         <Column
           bg="black"
           flex="0 0 180px"
-          paddingX={6}
+          paddingRight={6}
           display={['none', 'none', 'flex']}
+          position="sticky"
+          top={6}
+          overflowY="scroll"
+          height="calc(100vh - 128px)"
         >
-          <DocNav flex={0} position="sticky" top={6}>
+          <DocNav flex={0}>
             {routeGroups.map((routes, index) => (
               <React.Fragment key={routes[0].title}>
                 {routes.map(({ href, title, nested }) => (
