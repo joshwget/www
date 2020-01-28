@@ -58,6 +58,8 @@ const Icon = ({ src, index, ...props }) => (
 
       @media screen and (max-width: 600px) {
         animation: none;
+        transform: rotate(${degree * index}deg) translate3d(80px, 80px, 0)
+          rotate(-${degree * index}deg);
       }
     `}
     {...props}
