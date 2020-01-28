@@ -4,7 +4,7 @@ import Docs from '../../../components/docs';
 
 Release pinning allows for tiered deployments of your applications. This is useful for scheduling less-stable builds on testing devices, and more-stable builds on critical infrastructure.
 
-In order to pin a release, we use release selectors (just like [conditional scheduling rules](/docs/deploying/scheduling/#conditional-scheduling)), which are built from [filters](/docs/deploying/filters), to select a group of devices to be pinned to a certain release. You can add multiple selectors to select multiple groups of devices, and give each group a different pinned release.
+In order to pin a release, we use release selectors (just like [conditional scheduling rules](/docs/deploying/scheduling/#conditional-scheduling)), which are built from [filters](/docs/managing/filters), to select a group of devices to be pinned to a certain release. You can add multiple selectors to select multiple groups of devices, and give each group a different pinned release.
 
 Devices that an application is deployed on will be assigned an application version based on the first release selector that matches them. In the event that a device has the application deployed to it, but isn't selected by any release selector, the device has the default application version deployed to it.
 
