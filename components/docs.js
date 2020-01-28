@@ -232,7 +232,7 @@ const Docs = ({ title, children }) => {
         overflow="visible"
         flex={1}
         width="100%"
-        paddingX={6}
+        paddingX={[0, 6]}
       >
         <Column
           bg="black"
