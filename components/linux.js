@@ -92,7 +92,7 @@ const Info = () => {
           >
             <Image height={70} width={70} src="/linux.svg" marginBottom={2} />
             {distros.map((distro, index) => (
-              <Icon src={`/distros/${distro}.svg`} index={index} />
+              <Icon key={distro} src={`/distros/${distro}.svg`} index={index} />
             ))}
           </Column>
         </Column>
