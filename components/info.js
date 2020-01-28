@@ -22,7 +22,13 @@ const Info = () => (
       ]}
     >
       <Column alignItems={['center', 'center', 'center', 'unset']}>
-        <Image height={40} width={40} src="/github.svg" marginBottom={4} />
+        <Image
+          height={40}
+          width={40}
+          src="/github.svg"
+          marginBottom={4}
+          alt="Github"
+        />
         <Heading
           variant="tertiary"
           textAlign={['center', 'center', 'center', 'left']}

@@ -41,7 +41,7 @@ const frames = distros.map(
 `
 );
 
-const Icon = ({ src, index, ...props }) => (
+const Icon = ({ src, index, alt, ...props }) => (
   <Column
     width={54}
     height={54}
@@ -64,7 +64,7 @@ const Icon = ({ src, index, ...props }) => (
     `}
     {...props}
   >
-    <Image height={32} width={32} src={src} />
+    <Image height={32} width={32} src={src} alt={alt} />
   </Column>
 );
 
@@ -90,9 +90,20 @@ const Info = () => {
             alignItems="center"
             justifyContent="center"
           >
-            <Image height={70} width={70} src="/linux.svg" marginBottom={2} />
+            <Image
+              height={70}
+              width={70}
+              src="/linux.svg"
+              marginBottom={2}
+              alt="Linux"
+            />
             {distros.map((distro, index) => (
-              <Icon key={distro} src={`/distros/${distro}.svg`} index={index} />
+              <Icon
+                key={distro}
+                src={`/distros/${distro}.svg`}
+                index={index}
+                alt={distro}
+              />
             ))}
           </Column>
         </Column>
