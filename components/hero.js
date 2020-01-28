@@ -127,7 +127,7 @@ const Hero = ({ airtable }) => {
 
       <Column alignSelf="stretch" marginTop={4} alignItems="center">
         {submitted ? (
-          <Row height="40px" alignItems="center">
+          <Row height="36px" alignItems="center">
             <Text fontWeight={3} fontSize={3} color="primary">
               Thanks for your interest, we'll reach out as soon as we can.
             </Text>
