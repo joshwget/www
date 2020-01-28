@@ -95,7 +95,7 @@ const Features = () => {
           maxWidth={['unset', '600px', '600px', '750px', 'unset']}
           marginRight={[0, 0, 0, 0, 8]}
         >
-          Infrastucture that includes everything you need
+          Infrastructure that includes everything you need
         </Heading>
 
         <Grid
