@@ -95,7 +95,7 @@ const PlanContainer = styled(Column)`
   background: ${props => props.theme.colors.pageBackground};
 `;
 
-const Plan = ({ name, features, price, index, animate, icon }) => (
+const Plan = ({ name, features, price, index, icon }) => (
   <PlanContainer key={name} padding={6} border={1}>
     <Column position="relative">
       <Icon
@@ -148,7 +148,7 @@ const Pricing = () => {
         ]}
       >
         {plans.map((plan, index) => (
-          <Plan key={plan.name} {...plan} index={index} animate={animate} />
+          <Plan key={plan.name} {...plan} index={index} />
         ))}
       </Grid>
     </Section>
