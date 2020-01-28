@@ -9,7 +9,7 @@ import { Box, Row, Column, Button, Text, Link, Icon } from './core';
 const Overlay = styled(Column)`
   position: fixed;
   left: 0;
-  top: 66px;
+  top: 62px;
   padding: 32px;
   width: 100%;
   height: calc(100% - 64px);

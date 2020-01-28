@@ -24,7 +24,7 @@ export const routeGroups = [
     },
     {
       href: '/docs/operating',
-      title: 'Operating',
+      title: 'Operating'
     },
     {
       href: '/docs/operating/ssh',
@@ -111,12 +111,12 @@ export const routeGroups = [
       href: '/docs/iam/custom-roles',
       title: 'Custom roles',
       nested: true
-    },
+    }
   ],
   [
     {
       href: '/docs/variables',
-      title: 'Agent Variables',
+      title: 'Agent Variables'
     },
     {
       href: '/docs/firewall-configuration',
@@ -143,10 +143,11 @@ export const routeGroups = [
 
 const DocLink = styled(Link)`
   text-decoration: none;
-  color: ${props => props.active ? props.theme.colors.primary : props.theme.colors.white};
+  color: ${props =>
+    props.active ? props.theme.colors.primary : props.theme.colors.white};
   font-weight: 400;
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  margin: ${props => (props.nested ? '12px 0 0 16px' : '12px 0 0')};
+  font-size: ${props => props.theme.fontSizes[0]}px;
+  margin: ${props => (props.nested ? '8px 0 0 16px' : '8px 0 0')};
 
   &:first-child {
     margin-top: 0;
@@ -164,7 +165,7 @@ const ContentLink = styled(DocLink)`
 const Divider = styled.div`
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.grays[5]};
-  margin-top: 24px;
+  margin-top: 16px;
   margin-bottom: 8px;
 `;
 
@@ -252,7 +253,7 @@ const Docs = ({ title, children }) => {
                     href={href}
                     nested={nested}
                     active={
-                      (pathname === href) ||
+                      pathname === href ||
                       (pathname === '/docs' && href === '/docs/quick-start')
                     }
                   >
