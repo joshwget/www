@@ -103,11 +103,7 @@ class Document extends NextDocument {
             href="https://fonts.gstatic.com/"
             crossOrigin="true"
           />
-          <link
-            rel="preconnect"
-            href="https://www.google-analytics.com"
-            crossOrigin="true"
-          />
+          <link rel="preconnect" href="https://www.google-analytics.com" />
 
           <link
             href="https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap"
