@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { useInView } from 'react-intersection-observer';
 
 import {
   Grid,
   Column,
   Row,
-  Motion,
   Heading,
   Section,
   Text,
@@ -128,10 +126,6 @@ const Plan = ({ name, features, price, index, animate, icon }) => (
 );
 
 const Pricing = () => {
-  const [ref, entry] = useInView();
-
-  const animate = entry && entry.isIntersecting;
-
   return (
     <Section>
       <Heading

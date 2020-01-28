@@ -183,7 +183,7 @@ const Header = styled.header`
 
   @media screen and (max-width: 600px) {
     position: sticky;
-    top: 0;
+    top: 16px;
   }
 `;
 

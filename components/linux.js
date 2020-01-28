@@ -55,6 +55,10 @@ const Icon = ({ src, index, ...props }) => (
       backface-visibility: hidden;
       perspective: 1000;
       animation: 60s ${frames[index]} linear infinite;
+
+      @media screen and (max-width: 600px) {
+        animation: none;
+      }
     `}
     {...props}
   >
