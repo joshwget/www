@@ -1,0 +1,21 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Deployment Pipelines">
+
+While deploying via the UI or CLI manually is a good start and okay for some uses cases, deploying via an automated pipeline is usually best for developer productivity. How you setup your pipeline depends on your specific workflows, but most of them will follow a similar pattern.
+
+1. A commit is pushed to a repo containing your application, its associated Dockerfile, and Deviceplane application config.
+1. A step in your CI system builds your application from the Dockerfile and then pushes the built image to a container registry.
+1. A step in your CI system uses the Deviceplane CLI to create a new release for an application.
+
+After such a pipeline is setup developers can simply `git push` and have their application update across their devices. [Release pinning](/docs/deploying/release-pinning) can be used in conjunction with pipelines to safely rollout changes after the release is created.
+
+## Example pipeline
+
+Deviceplane maintains a full example repo at [https://github.com/deviceplane/demo-service](https://github.com/deviceplane/demo-service). Although the application itself is trivial, it demonstrates how a pipeline could be setup for a more substantial application.
+
+- Node.js application
+- Designed to be built on x86 CI servers but run on ARM devices (cross-building)
+- Uses CircleCI as the CI system
+
+</Docs>

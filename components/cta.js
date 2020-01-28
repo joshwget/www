@@ -1,25 +1,21 @@
-import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+import theme from '../theme';
 import { Section, Text, Column, Row, Button } from './core';
 
 const CTA = () => {
-  const [ref, entry] = useInView();
-
-  const animate = entry && entry.isIntersecting;
-
   return (
-    <Section ref={ref}>
+    <Section>
       <Row
         alignItems="center"
-        bg={['none', 'black']}
+        bg={['none', 'pageBackground']}
         padding={[0, 8]}
         borderRadius={2}
-        border={['none', 1]}
+        border={['none', `6px solid ${theme.colors.primary}`]}
         flexDirection={['column', 'column', 'row']}
       >
         <Text fontSize={5} textAlign="center" fontWeight={1} color="primary">
-          Get started today
+          Get started now
         </Text>
 
         <Row
@@ -27,8 +23,8 @@ const CTA = () => {
           alignItems="center"
           flexDirection={['column', 'column', 'row']}
           justifyContent={['unset', 'unset', 'center']}
-          marginLeft={[0, 0, 8]}
-          marginTop={[6, 6, 0]}
+          marginLeft={[0, 0, 10]}
+          marginTop={[8, 8, 0]}
         >
           <Button
             title="Chat with us"

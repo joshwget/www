@@ -10,11 +10,11 @@ Deviceplane offers both a simple provisioning flow, as well as a more complex an
 
 Adding a device is done by running the command from the "Add Device" page. For each device that you want to add, a device registration token must be used as part of the installation. By default, the registration token displayed in the "Add Device" page is the "default" registration token.
 
-For provisioning processes that need more complexity, you can create and use a registration token.
+For provisioning processes that need more complexity, you can create and use registration tokens.
 
 ## Registration tokens
 
-Registration tokens are used to authenticate the registration of devices and are required anytime you're trying to add a new device. By default every new project will get a "default" registration token. This is the token that is used when adding a device through the "Add Device" button on the "Devices" page.
+Registration tokens are used to authenticate the registration of devices and are required anytime you're trying to add a new device. By default every new project will get a "default" registration token. This is the token initially selected when adding a device through the "Add Device" button on the "Devices" page.
 
 A registration token can have a "maximum device registrations" set. This is an optional positive integer that represents the total number of times a registration token can be used. Registration with this token will no longer be possible once the maximum is reached. The "default" registration token does not have a maximum set which means it can be used an unlimited number of times. The maximum of a registration token can be updated anytime. More information on this feature and its security implications can be found in the "Security" section below.
 
@@ -27,7 +27,7 @@ These two use cases are documented more below.
 
 ### Labels
 
-> It's helpful to have knowledge of [device labels](/docs/managing/device-labels) and [scheduling rules](/docs/deploying/scheduling) before reading this documentation.
+> It's helpful to have knowledge of [device labels](/docs/managing/labels) and [scheduling rules](/docs/deploying/scheduling) before reading this documentation.
 
 To best explain how to use registration token labels, let's consider a user who has multiple "types" of devices in their project and applications that are set to run on only one type of device. Device labels and scheduling rules are used to accomplish this. Specifically suppose they have the following two devices and applications.
 

@@ -9,7 +9,7 @@ import { Box, Row, Column, Button, Text, Link, Icon } from './core';
 const Overlay = styled(Column)`
   position: fixed;
   left: 0;
-  top: 66px;
+  top: 62px;
   padding: 32px;
   width: 100%;
   height: calc(100% - 64px);
@@ -19,12 +19,12 @@ const Overlay = styled(Column)`
 
 const NavLink = styled(Link)`
   text-decoration: none !important;
+  font-weight: 400;
   transition: ${props => props.theme.transitions[0]};
   color: ${props =>
     props.active ? props.theme.colors.primary : props.theme.colors.white};
   &:hover {
-    color: ${props =>
-      props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
+    color: ${props => props.theme.colors.primary};
   }
   margin-right: 32px;
   font-size: ${props => props.theme.fontSizes[2]}px;
@@ -95,14 +95,14 @@ const MobileMenu = ({ show, pathname }) => {
           <Text
             color={isDocs ? 'primary' : 'white'}
             fontSize={2}
-            fontWeight={2}
+            fontWeight={1}
           >
             Documentation
           </Text>
           <Icon
             marginLeft={4}
             icon={expand ? 'chevron-down' : 'chevron-right'}
-            size={16}
+            size={20}
             color={isDocs ? 'primary' : 'white'}
           />
         </Row>
@@ -171,17 +171,24 @@ const StyledNav = styled.nav`
   max-width: ${props => props.theme.pageWidth}px;
   align-self: stretch;
   padding: 32px;
+
+  @media screen and (max-width: 600px) {
+    padding: 16px 32px;
+  }
 `;
 
 const Header = styled.header`
-  position: sticky;
-  top: 0;
   display: flex;
   z-index: 2;
   background-color: ${props => (props.transparent ? 'transparent' : 'black')};
   justify-content: center;
   background-color: ${props => props.theme.colors.black};
   color: ${props => props.theme.colors.white};
+
+  @media screen and (max-width: 600px) {
+    position: sticky;
+    top: 0;
+  }
 `;
 
 const Name = () => (

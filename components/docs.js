@@ -23,6 +23,25 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/operating',
+      title: 'Operating'
+    },
+    {
+      href: '/docs/operating/ssh',
+      title: 'SSH Access',
+      nested: true
+    },
+    {
+      href: '/docs/operating/cli',
+      title: 'CLI',
+      nested: true
+    },
+    {
+      href: '/docs/operating/command-scripting',
+      title: 'Command Scripting',
+      nested: true
+    },
+    {
       href: '/docs/deploying',
       title: 'Deploying'
     },
@@ -37,32 +56,38 @@ export const routeGroups = [
       nested: true
     },
     {
-      href: '/docs/deploying/filters',
-      title: 'Filters',
-      nested: true
-    },
-    {
       href: '/docs/deploying/private-image-repositories',
       title: 'Private Image Repositories',
       nested: true
     },
     {
-      href: '/docs/managing/ssh-access',
-      title: 'Managing'
-    },
-    {
-      href: '/docs/managing/ssh-access',
-      title: 'SSH access',
+      href: '/docs/deploying/pipelines',
+      title: 'CI/CD Pipelines',
       nested: true
     },
     {
-      href: '/docs/managing/device-labels',
-      title: 'Device labels',
+      href: '/docs/managing/ssh-access',
+      href: '/docs/managing',
+      title: 'Managing'
+    },
+    {
+      href: '/docs/managing/labels',
+      title: 'Labels',
+      nested: true
+    },
+    {
+      href: '/docs/managing/filters',
+      title: 'Filters',
+      nested: true
+    },
+    {
+      href: '/docs/managing/status',
+      title: 'Device Status',
       nested: true
     },
     {
       href: '/docs/monitoring',
-      title: 'Monitoring',
+      title: 'Monitoring'
     },
     {
       href: '/docs/monitoring/setup',
@@ -92,14 +117,16 @@ export const routeGroups = [
       href: '/docs/iam/custom-roles',
       title: 'Custom roles',
       nested: true
+    }
+  ],
+  [
+    {
+      href: '/docs/variables',
+      title: 'Agent Variables'
     },
     {
-      href: '/docs/device-variables',
-      title: 'Device Variables'
-    },
-    {
-      href: '/docs/cli',
-      title: 'CLI'
+      href: '/docs/firewall-configuration',
+      title: 'Firewall Configuration'
     }
   ],
   [
@@ -121,19 +148,19 @@ export const routeGroups = [
 ];
 
 const DocLink = styled(Link)`
-  text-decoration: none !important;
+  text-decoration: none;
   color: ${props =>
     props.active ? props.theme.colors.primary : props.theme.colors.white};
-  font-size: ${props => props.theme.fontSizes[1]}px;
-  margin: ${props => (props.nested ? '12px 0 0 16px' : '12px 0 0')};
+  font-weight: 400;
+  font-size: ${props => props.theme.fontSizes[0]}px;
+  margin: ${props => (props.nested ? '8px 0 0 16px' : '8px 0 0')};
 
   &:first-child {
     margin-top: 0;
   }
 
   &:hover {
-    color: ${props =>
-      props.active ? props.theme.colors.primary : props.theme.colors.pureWhite};
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
@@ -144,7 +171,7 @@ const ContentLink = styled(DocLink)`
 const Divider = styled.div`
   width: 100%;
   border-top: 1px solid ${props => props.theme.colors.grays[5]};
-  margin-top: 24px;
+  margin-top: 16px;
   margin-bottom: 8px;
 `;
 
@@ -211,14 +238,19 @@ const Docs = ({ title, children }) => {
         overflow="visible"
         flex={1}
         width="100%"
+        paddingX={[0, 6]}
       >
         <Column
           bg="black"
           flex="0 0 180px"
-          paddingX={6}
+          paddingRight={6}
           display={['none', 'none', 'flex']}
+          position="sticky"
+          top={6}
+          overflowY="scroll"
+          height="calc(100vh - 128px)"
         >
-          <DocNav flex={0} position="sticky" top={6}>
+          <DocNav flex={0}>
             {routeGroups.map((routes, index) => (
               <React.Fragment key={routes[0].title}>
                 {routes.map(({ href, title, nested }) => (
@@ -227,7 +259,7 @@ const Docs = ({ title, children }) => {
                     href={href}
                     nested={nested}
                     active={
-                      (title !== 'Managing' && pathname === href) ||
+                      pathname === href ||
                       (pathname === '/docs' && href === '/docs/quick-start')
                     }
                   >
@@ -242,7 +274,7 @@ const Docs = ({ title, children }) => {
 
         <Column padding={6} bg="pageBackground" borderRadius={1} width="100%">
           <Box maxWidth="750px">
-            <Heading fontSize={[6, 7]}>{title}</Heading>
+            <Heading fontSize={[5, 6]}>{title}</Heading>
             {contentLinks.length > 0 && (
               <Column
                 display={['flex', 'flex', 'flex', 'none']}
@@ -262,7 +294,7 @@ const Docs = ({ title, children }) => {
         {contentLinks.length > 0 && (
           <Column
             position="sticky"
-            paddingX={6}
+            paddingLeft={6}
             top={6}
             alignSelf="flex-start"
             display={['none', 'none', 'none', 'flex']}

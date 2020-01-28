@@ -34,6 +34,7 @@ const Container = styled(Column)`
 
 const FooterLink = styled(Link)`
   text-decoration: none !important;
+  font-weight: 400;
   transition: ${props => props.theme.transitions[0]};
   color: ${props => props.theme.colors.grays[8]};
   &:hover {

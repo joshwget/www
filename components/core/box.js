@@ -7,12 +7,12 @@ import {
   flexbox,
   typography,
   shadow,
-  position
+  position,
+  grid
 } from 'styled-system';
-import { motion } from 'framer-motion';
 
 export const Box = styled.div`
-  ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox}
+  ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox} ${grid}
 `;
 
 export const Row = styled(Box)``;
@@ -25,6 +25,7 @@ Column.defaultProps = {
   flexDirection: 'column'
 };
 
-export const Motion = styled(motion.div)`
-  ${space} ${layout} ${color} ${border} ${typography} ${shadow} ${position} ${flexbox}
-`;
+export const Grid = styled(Box)``;
+Grid.defaultProps = {
+  display: 'grid'
+};

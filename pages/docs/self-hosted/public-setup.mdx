@@ -23,9 +23,9 @@ Once the droplet is created we need to perform two actions to provision it.
 1. Install Docker
 1. Run Deviceplane via Docker
 
-Reference the [standard quick start guide](../../quick-start) for information on how to install Docker. Alternately, the DigitalOcean marketplace includes [a Docker app](https://marketplace.digitalocean.com/apps/docker) that provides a convenient way to launch droplets with Docker included.
+Reference the [standard quick start guide](/docs/quick-start) for information on how to install Docker. Alternately, the DigitalOcean marketplace includes [a Docker app](https://marketplace.digitalocean.com/apps/docker) that provides a convenient way to launch droplets with Docker included.
 
-Once Docker is installed and running you can start Deviceplane with the following command. View [self-hosted overview](../self-hosted) for more information on the Deviceplane Docker image and what components are contained in it.
+Once Docker is installed and running you can start Deviceplane with the following command. View [self-hosted overview](/docs/self-hosted) for more information on the Deviceplane Docker image and what components are contained in it.
 
 ```
 docker run -d --restart=unless-stopped -p 8080:8080 deviceplane/deviceplane
@@ -54,7 +54,7 @@ It might take up to an hour for the DNS settings to propagate, but afterwards yo
 
 ### Setting up a new user and project
 
-Follow along with the standard [quick start](./quick-start) guide to register and create a project. Note that you will not need to validate your email as you would with the managed version of Deviceplane.
+Follow along with the standard [quick start](/docs/quick-start) guide to register and create a project. Note that you will not need to validate your email as you would with the managed version of Deviceplane.
 
 ### Registering a device
 
@@ -63,15 +63,15 @@ Now that you have a user and project created in your setup you're ready to add a
 For example, suppose the command was in the following format.
 
 ```shell
-curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
+curl https://downloads.deviceplane.com/install.sh | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> bash
 ```
 
 The command should be modified to include `CONTROLLER=https://mydomain.com/api` as in the following command.
 
 ```shell
-curl https://install.deviceplane.com | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=https://mydomain.com/api bash
+curl https://downloads.deviceplane.com/install.sh | VERSION=<version> PROJECT=<project> REGISTRATION_TOKEN=<registration_token> CONTROLLER=https://mydomain.com/api bash
 ```
 
-You should see a new device come online in the dashboard after running the command. From here you can follow along with the remainder of steps in the [standard quick start](./quick-start) to deploy your first application to your device.
+You should see a new device come online in the dashboard after running the command. From here you can follow along with the remainder of steps in the [standard quick start](/docs/quick-start) to deploy your first application to your device.
 
 </Docs>
