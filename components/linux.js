@@ -32,7 +32,7 @@ const frames = distros.map(
     }
     50% {
       transform: rotate(${degree * i +
-        360}deg) translate3d(140px, 140px, 0) rotate(-${degree * i + 360}deg);
+        360}deg) translate3d(120px, 120px, 0) rotate(-${degree * i + 360}deg);
     }
   100% {
     transform: rotate(${degree * i +
@@ -84,9 +84,10 @@ const Info = () => {
       >
         <Column justifyContent="center" flex={1} marginTop={[8, 8, 8, 0]}>
           <Column
+            marginLeft={[0, 0, 0, 8]}
             position="relative"
-            width={350}
-            height={350}
+            width={320}
+            height={320}
             alignItems="center"
             justifyContent="center"
           >
@@ -108,7 +109,7 @@ const Info = () => {
           </Column>
         </Column>
         <Column
-          maxWidth={['500px', '500px', '500px', '550px']}
+          maxWidth="500px"
           alignItems={['center', 'center', 'center', 'unset']}
           justifyContent="center"
         >
