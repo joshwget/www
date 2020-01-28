@@ -288,7 +288,7 @@ const Docs = ({ title, children }) => {
         {contentLinks.length > 0 && (
           <Column
             position="sticky"
-            paddingX={6}
+            paddingLeft={6}
             top={6}
             alignSelf="flex-start"
             display={['none', 'none', 'none', 'flex']}
