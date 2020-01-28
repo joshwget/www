@@ -1,0 +1,139 @@
+import Docs from '../../../components/docs';
+
+<Docs title="CLI">
+
+The Deviceplane CLI can be used to manage the releases in applications, SSH into devices in a project and used to help manage your projects and applications.
+
+The Deviceplane CLI enables you to perform most actions available in the UI. With the CLI, you can quickly deploy, troubleshoot, and dig into issues via your terminal. It also offers output in JSON and YAML, so you can use it to write [scripted workflows](/docs/operating/command-scripting).
+
+A great example of CLI usage is integrating it with your existing CI/CD system, to deploy new releases directly into Deviceplane.
+
+## Usage
+
+The CLI can be used to manage the following:
+
+- **Projects**:
+  - **List** projects
+  - **Create** a new project
+- **Applications**:
+  - **List** applications
+  - **Inspect** an application
+  - **Create** a new application
+  - **Manually modify** an application's config
+  - **Deploy** an application's config from a file
+- **Devices**:
+  - **List** devices
+  - **SSH** into a device
+  - **Inspect** a device's properties and labels
+  - **Reboot** a device
+- **Metrics**:
+  - Get **device metrics** from a device
+  - Get **service metrics** from a device
+
+## Installation
+
+To download the CLI, log in to Deviceplane, and click your user icon on the top right of the screen. You should see a dropdown that has "Download CLI" as one of the listed options. Click it, and select your OS.
+
+<img width="100%" src="https://i.imgur.com/XijArxG.png"></img>
+
+Then, move the CLI to a folder in your `$PATH`, such as `/usr/local/bin`. This will let you run the `deviceplane` command anywhere, without needing the absolute file path. Afterwards, if you're on a UNIX-based system `chmod +x [path to deviceplane]`, which will allow you to run the `deviceplane` command.
+
+Now, you should be able to run `deviceplane`, and see the help output.
+
+<img width="100%" src="https://i.imgur.com/OEpEqrc.png"></img>
+
+## Access keys
+
+When using the CLI, an access key must be provided. Without this access key, Deviceplane will not be able to authenticate the request. Each user or service account can create access keys to use for the CLI. User access keys are scoped to a specific user and will have the same role as a user. Service account access keys are great to use when a service is being set up to make changes into Deviceplane. For example, it's best to use a service account access key instead of a user access key for CI/CD systems.
+
+An access key and project name can be set with the `deviceplane configure` command, or by using the `DEVICEPLANE_ACCESS_KEY` and `DEVICEPLANE_PROJECT` environment variables, or the `--access-key` and `--project` flags. It's recommended to use `deviceplane configure` on your developer machine, and use the environment variables on CI systems.
+
+## Deploying releases
+
+The CLI is often used to deploy new application releases. Deploying a release involves passing in a yaml file that specifies release's configuration, using the following command:
+
+```
+deviceplane application deploy $APPLICATION $RELEASE_FILE
+```
+
+This follows the normal [scheduling rules](/docs/deploying/scheduling) that you've set for the application you're deploying.
+
+### Environment interpolation
+
+When creating the yaml file for the release, your configuration options can contain environment variables so that the file will be use the variable values from the shell environment running the `deviceplane deploy` command. Environment interpolation is only supported in the CLI and not supported in config file the UI.
+
+During deployment, if there are missing environment variables, the CLI will error out and list which variables are missing.
+
+Only `$VALUE` and `${VALUE}` syntax are supported. Other typical shell syntax options are not supported. If your configuration needs a dollar sign, you must use a `$$` so that it is not attempted to be interpolated.
+
+```yaml
+service1:
+  image: '$IMAGE_NAME_AND_TAG'
+  command: '${COMMAND}'
+```
+
+Putting `$$` in front of any word prevents any interpolation to occur.
+
+```yaml
+service1:
+  image: '$IMAGE_NAME_AND_TAG'
+  command: '${COMMAND}'
+  labels:
+    key: '$${NOT_INTERPOLATED}'
+```
+
+## Editing existing releases
+
+An easy way to update an existing release is to edit it using the CLI. Similar to deploying releases, the project and application can be set as environment variables or as options in the command.
+
+When running `deviceplane edit`, the CLI pulls up the current config of the application into an editor. After the config is saved and exited, it is **automatically deployed** into the application.
+
+## SSHing into devices
+
+To SSH into a device, simply run `deviceplane ssh $DEVICE_NAME`. For more information, look at the [SSH docs](/docs/operating/ssh), or look at [command scripting docs](/docs/operating/command-scripting) to see examples of using this in custom scripts.
+
+## Listing and inspecting resources
+
+Listing resources can also be done in the CLI using `deviceplane $RESOURCE_TYPE list`. Here, we list all devices in our project:
+
+<img width="100%" src="https://i.imgur.com/xzEj2ax.png"></img>
+
+In the case of devices specifically, filters can also be applied with the `--filter` flag (more info with `deviceplane device list help`):
+
+<img width="100%" src="https://i.imgur.com/KDHB6nl.png"></img>
+
+Resources can also be inspected, to show their inner config, using `deviceplane $RESOURCE_TYPE inspect $RESOURCE_INSTANCE`. Here we inspect a single device:
+
+<img width="100%" src="https://i.imgur.com/qyf8fsR.png"></img>
+
+## Output formatting
+
+Note that for [command scripting](/docs/operating/command-scripting) and other use cases, the output of the CLI can be configured using the `-o` or `--output` flag.
+
+For listing resource instances, the CLI supports `table` (the human-readable default), `yaml`, `json`, and `json-stream` output. Here, we use `json-stream` output on our device list:
+
+<img width="100%" src="https://i.imgur.com/2Mzqbes.png"></img>
+
+For inspecting individual resources, the CLI supports `yaml` and `json` output. Here, we use `json-stream` output on our device list:
+
+<img width="100%" src="https://i.imgur.com/XyfPSdR.png"></img>
+
+## Metrics
+
+The CLI can also view raw metrics in realtime from the device of your choice. To view [device metrics](/docs/monitoring/device-metrics), run `deviceplane metrics device $DEVICE_NAME`, like so:
+
+<img width="100%" src="https://i.imgur.com/ScSmQwq.png"></img>
+
+And to view [service metrics](/docs/monitoring/service-metrics) on an application's service running on a device, run `deviceplane metrics service $APPLICATION_NAME $SERVICE_NAME $DEVICE_NAME`. We're inspecting the `demo` application's `demo` service, on device `elegant-lamarr` in this example:
+
+<img width="100%" src="https://i.imgur.com/BiBVi5O.png"></img>
+
+These metrics are raw metrics fetched in realtime, without filtering, shown in Prometheus format. To learn more, see the [monitoring docs](/docs/monitoring).
+
+## Autocompletion
+
+To get CLI autocompletion, add `eval "$(deviceplane --completion-script-bash)"` to your bashrc file. If you're using zsh, add `eval "$(deviceplane --completion-script-zsh)"` to your zshrc.
+
+This allows you to autocomplete commands, as well as application, service, and device names, by pressing the tab key.
+
+</Docs>

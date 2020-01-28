@@ -1,0 +1,180 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Command Scripting">
+
+In this section we make use of Deviceplane's features to write custom scripts to manage your devices however you decide!
+
+We'll go over (in order of complexity):
+
+- **Printing out the names** of offline devices - Useful for piping to other commands
+- Running a **command** on multiple devices - And printing the output of each run in STDOUT
+- Running a full **bash script** on multiple devices - With a workflow for saving the output of each run to a separate file
+
+After reading this page, you should know where to start if you want to run batch scripts to get the output of files on your devices, perform [package upgrades](https://manpages.ubuntu.com/manpages/disco/en/man8/apt.8.html) or install kernel updates on your entire fleet, or simply create a local script to periodically log a list of offline devices, which you could show [in your menu bar](https://github.com/matryer/bitbar).
+
+## Prerequisites
+
+For ease of use, these examples use `jq`, a simple CLI utility for parsing JSON. It's available on [most package managers](https://stedolan.github.io/jq/download/) and can also be downloaded [as a binary](https://stedolan.github.io/jq/download/).
+
+## Commands
+
+### Printing out the names all offline devices
+
+To print out all information on devices, we can use the `deviceplane device list` command. Pass in a filter argument, `--filter status=offline`, and we can select only the offline devices. Output json with `-o json` and pipe into `jq`, then select the `name` attribute of each object.
+
+Our final command is:
+
+```bash
+deviceplane device list --filter status=offline -o json | jq '.[] | .name'
+```
+
+And should list the names of all offline devices. Currently, there's only one device offline in our demo project, so our output looks like this:
+
+```
+"condescending-feynman"
+```
+
+### Reading the output of a command on all devices
+
+In order to read the output of a command run on a device, we'll have to SSH into the device, and run the command. However, we can't SSH into devices that are offline, so let's first grab the list of all devices that are online. We can use the same command as in the last section, just remember to filter status to be online instead of offline: `deviceplane device list --filter status=online -o json | jq '.[] | .name'`
+
+We can pipe this into `xargs -n1 -I {} echo "The device {} is online"` to echo for each line of output we get, replacing `{}` with the contents of each line. Next, we'll replace `echo` with our ssh command.
+
+Our ssh command will look like `deviceplane ssh $DEVICE_NAME $COMMAND`, for each device, substituting `$COMMAND` with the command that we want to run on the device. Let's say we need every device's bound IP addresses. We can use the `hostname -i` command to get the IP addresses, so our command will be `deviceplane ssh $DEVICE_NAME hostname -i`, and if we'd like, we can prefix it with an `echo` command to echo out the device name before printing the IPs.
+
+Now, putting it all together, we get:
+
+```
+deviceplane device list --filter status=online -o json | jq '.[] | .name' | xargs -n1 -I {} deviceplane ssh {} "echo {}\'s IPs: && hostname -I"
+```
+
+Which gives us the output:
+```
+elegant-lamarr's IPs:
+10.0.0.135 172.17.0.1 169.254.73.24 169.254.249.211 2601:645:8400:9760::dcff 2601:645:8400:9760:7ff2:b063:4c20:1bf9
+condescending-jones's IPs:
+10.0.0.208 172.17.0.1 169.254.120.233 169.254.28.194 2601:645:8400:9760::c13e 2601:645:8400:9760:c1a8:d7c3:2285:64a3
+pedantic-mcnulty's IPs:
+64.227.52.167 10.46.0.6 172.17.0.1
+competent-bohr's IPs:
+10.0.0.187 172.17.0.1 2601:645:8400:9760:4ddb:c01d:c7b9:f801 2601:645:8400:9760:9ed:313:6b5:739e 2601:645:8400:9760:20ce:500e:ef1c:b81 2601:645:8400:9760:114d:839f:c601:96eb 2601:645:8400:9760:11b3:1009:165:3f8d 2601:645:8400:9760:e90a:fa6:79f:5df6 2601:645:8400:9760:3dd1:e263:35d5:f8dd 2601:645:8400:9760:d4e3:4c1:5240:446d
+```
+
+### Running a bash script on multiple devices
+
+For more complicated workflows, just a single command isn't enough. You might want an entire script to be run, and its output saved separately for each device.
+
+The following script takes in a second file, and runs it on all online devices, storing the output for each device in a separate text file:
+
+```bash
+#!/bin/bash
+set -e
+
+# Get all devices, and split them into online and offline devices
+# Note, doing it this way ensures that we don't have devices missing from a list. For example, if a device changes state between two queries, we might miss it in our list.
+ALL_DEVICES=$(deviceplane device list -o json)
+ONLINE_DEVICES=$(echo $ALL_DEVICES | jq -r '.[] | select(.status == "online") | .name')
+OFFLINE_DEVICES=$(echo $ALL_DEVICES | jq -r '.[] | select(.status == "offline") | .name')
+
+echo "Online Devices:" $ONLINE_DEVICES
+echo "Offline Devices (will not run commands on):" $OFFLINE_DEVICES
+
+total=$(($(echo "$ONLINE_DEVICES" | wc -l )))
+i=0
+
+for DEVICE in $ONLINE_DEVICES
+do
+    ((i++))
+    echo "($i of $total) running on $DEVICE"
+    # Get our input file, and execute it on the device, then save that output into a file
+    echo "$(deviceplane ssh "$DEVICE" "$(cat $1)")" > "$DEVICE"_output.txt
+done
+```
+
+So, if our second file were the following:
+
+```bash
+#!/bin/bash
+set -e
+
+echo "My current host name is:"
+hostname
+echo "\n"
+
+echo "My IPs are:"
+hostname -i
+echo "\n"
+
+echo "Creating and deleting a new file:"
+touch newfile.txt
+ls
+rm newfile.txt
+```
+
+We could name our files `batch-execute.sh` and `command.sh`, and run the following (after `chmod +x batch-execute.sh`):
+
+```bash
+./batch-execute.sh command.sh
+```
+
+Which would output the following:
+
+```bash
+Online Devices: elegant-lamarr condescending-jones pedantic-mcnulty competent-bohr
+Offline Devices (will not run commands on): condescending-feynman
+(1 of 4) running on elegant-lamarr
+(2 of 4) running on condescending-jones
+(3 of 4) running on pedantic-mcnulty
+(4 of 4) running on competent-bohr
+```
+
+And leave the following files:
+```bash
+ls -l
+total 48
+-rwxr-xr-x  1 cyrusroshan  staff  574 Jan 27 23:24 batch-execute.sh
+-rw-r--r--  1 cyrusroshan  staff  190 Jan 27 23:24 command.sh
+-rw-r--r--  1 cyrusroshan  staff  213 Jan 27 23:32 competent-bohr_output.txt
+-rw-r--r--  1 cyrusroshan  staff  199 Jan 27 23:32 condescending-jones_output.txt
+-rw-r--r--  1 cyrusroshan  staff  199 Jan 27 23:32 elegant-lamarr_output.txt
+-rw-r--r--  1 cyrusroshan  staff  271 Jan 27 23:32 pedantic-mcnulty_output.txt
+```
+
+To look at the output for the device elegant-lamarr, read the file elegant-lamarr_output.txt to find:
+
+```
+My current host name is:
+raspberrypi
+
+
+My IPs are:
+127.0.1.1
+
+
+Creating and deleting a new file:
+bin
+boot
+dev
+etc
+home
+lib
+lost+found
+media
+mnt
+newfile.txt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+tmp
+usr
+var
+
+```
+
+
+
+</Docs>

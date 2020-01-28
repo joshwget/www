@@ -23,6 +23,25 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/operating',
+      title: 'Operating',
+    },
+    {
+      href: '/docs/operating/ssh',
+      title: 'SSH Access',
+      nested: true
+    },
+    {
+      href: '/docs/operating/cli',
+      title: 'CLI',
+      nested: true
+    },
+    {
+      href: '/docs/operating/command-scripting',
+      title: 'Command Scripting',
+      nested: true
+    },
+    {
       href: '/docs/deploying',
       title: 'Deploying'
     },
@@ -37,32 +56,27 @@ export const routeGroups = [
       nested: true
     },
     {
-      href: '/docs/deploying/filters',
+      href: '/docs/deploying/pipelines',
+      title: 'CI/CD Pipelines',
+      nested: true
+    },
+    {
+      href: '/docs/managing',
+      title: 'Managing'
+    },
+    {
+      href: '/docs/managing/labels',
+      title: 'Labels',
+      nested: true
+    },
+    {
+      href: '/docs/managing/filters',
       title: 'Filters',
       nested: true
     },
     {
-      href: '/docs/deploying/deploying-via-cli',
-      title: 'Deploying via CLI',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/pipelines',
-      title: 'Pipelines',
-      nested: true
-    },
-    {
-      href: '/docs/managing/ssh-access',
-      title: 'Managing'
-    },
-    {
-      href: '/docs/managing/ssh-access',
-      title: 'SSH access',
-      nested: true
-    },
-    {
-      href: '/docs/managing/device-labels',
-      title: 'Device labels',
+      href: '/docs/managing/status',
+      title: 'Device Status',
       nested: true
     },
     {
@@ -98,13 +112,11 @@ export const routeGroups = [
       title: 'Custom roles',
       nested: true
     },
+  ],
+  [
     {
-      href: '/docs/device-variables',
-      title: 'Device Variables'
-    },
-    {
-      href: '/docs/cli',
-      title: 'CLI'
+      href: '/docs/variables',
+      title: 'Agent Variables',
     },
     {
       href: '/docs/firewall-configuration',
@@ -130,9 +142,8 @@ export const routeGroups = [
 ];
 
 const DocLink = styled(Link)`
-  text-decoration: none !important;
-  color: ${props =>
-    props.active ? props.theme.colors.primary : props.theme.colors.white};
+  text-decoration: none;
+  color: ${props => props.active ? props.theme.colors.primary : props.theme.colors.white};
   font-weight: 400;
   font-size: ${props => props.theme.fontSizes[1]}px;
   margin: ${props => (props.nested ? '12px 0 0 16px' : '12px 0 0')};
@@ -241,7 +252,7 @@ const Docs = ({ title, children }) => {
                     href={href}
                     nested={nested}
                     active={
-                      (title !== 'Managing' && pathname === href) ||
+                      (pathname === href) ||
                       (pathname === '/docs' && href === '/docs/quick-start')
                     }
                   >

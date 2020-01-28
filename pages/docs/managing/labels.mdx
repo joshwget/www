@@ -1,0 +1,21 @@
+import Docs from '../../../components/docs';
+
+<Docs title="Device Labels">
+
+Device labels are the main unit of organization for devices. Labels are simply user-defined key value pairs that are assignable to devices individually, or in bulk, as part of [a provisioning workflow](#).
+
+## Organization
+
+The primary use of labels is to model the organization your devices. Each differentiating feature of your devices can be labeled, some common examples may be:
+
+| Key | Example Values | Usage |
+| --- | --- | --- |
+| `device-type` for the type of a device | `device-type=raspberry-pi` or `device-type=dell-precision-7920` | Can be used for scheduling different application builds to different types of devices (e.g. thin clients vs edge servers) |
+| `customer` for the customer a device was sent to | `customer=NASA` or `customer=SpaceX` | To allow specific customers to run a specific application version, or to separate metrics based on a customer, for easier debugging during incidents |
+| `canary` for canary devices | `canary=true` or `canary=false` | To always run the latest application build on selected "canary" devices, while letting other devices run more stable application builds |
+
+## Usage
+
+By themselves, labels are informational, and only moderately useful. However, labels are heavily incorporated into various Deviceplane features. Now, using your labels, you can [query devices](#), from the UI and CLI, as well as [conditionally scheduling applications](#) and [pinning application releases](#).
+
+</Docs>
