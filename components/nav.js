@@ -171,6 +171,10 @@ const StyledNav = styled.nav`
   max-width: ${props => props.theme.pageWidth}px;
   align-self: stretch;
   padding: 32px;
+
+  @media screen and (max-width: 600px) {
+    padding: 16px 32px;
+  }
 `;
 
 const Header = styled.header`
@@ -183,7 +187,7 @@ const Header = styled.header`
 
   @media screen and (max-width: 600px) {
     position: sticky;
-    top: 16px;
+    top: 0;
   }
 `;
 
