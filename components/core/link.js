@@ -24,7 +24,7 @@ A.defaultProps = {
 const Link = ({ children, href, ...rest }) => {
   if (href.charAt(0) === '/') {
     return (
-      <NextLink href={href}>
+      <NextLink href={href} passHref>
         <A {...rest}>{children}</A>
       </NextLink>
     );
