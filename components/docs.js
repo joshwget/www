@@ -73,32 +73,6 @@ export const routeGroups = [
   ],
   [
     {
-      href: '/docs/deploying',
-      title: 'Deploying'
-    },
-    {
-      href: '/docs/deploying/scheduling',
-      title: 'Scheduling',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/release-pinning',
-      title: 'Release Pinning',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/private-image-repositories',
-      title: 'Private Image Repositories',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/pipelines',
-      title: 'CI/CD Pipelines',
-      nested: true
-    }
-  ],
-  [
-    {
       href: '/docs/monitoring',
       title: 'Monitoring'
     },
@@ -120,6 +94,32 @@ export const routeGroups = [
     {
       href: '/docs/monitoring/service-metrics',
       title: 'Service Metrics',
+      nested: true
+    }
+  ],
+  [
+    {
+      href: '/docs/deploying',
+      title: 'Deploying'
+    },
+    {
+      href: '/docs/deploying/scheduling',
+      title: 'Scheduling',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/release-pinning',
+      title: 'Release Pinning',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/private-image-repositories',
+      title: 'Private Image Repositories',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/pipelines',
+      title: 'CI/CD Pipelines',
       nested: true
     }
   ],
