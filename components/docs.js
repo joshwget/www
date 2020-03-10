@@ -14,15 +14,6 @@ export const routeGroups = [
       title: 'Quick start'
     },
     {
-      href: '/docs/provisioning',
-      title: 'Provisioning'
-    },
-    {
-      href: '/docs/provisioning/bulk-provisioning',
-      title: 'Bulk Provisioning',
-      nested: true
-    },
-    {
       href: '/docs/operating',
       title: 'Operating'
     },
@@ -39,30 +30,6 @@ export const routeGroups = [
     {
       href: '/docs/operating/command-scripting',
       title: 'Command Scripting',
-      nested: true
-    },
-    {
-      href: '/docs/deploying',
-      title: 'Deploying'
-    },
-    {
-      href: '/docs/deploying/scheduling',
-      title: 'Scheduling',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/release-pinning',
-      title: 'Release Pinning',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/private-image-repositories',
-      title: 'Private Image Repositories',
-      nested: true
-    },
-    {
-      href: '/docs/deploying/pipelines',
-      title: 'CI/CD Pipelines',
       nested: true
     },
     {
@@ -86,6 +53,52 @@ export const routeGroups = [
       nested: true
     },
     {
+      href: '/docs/provisioning',
+      title: 'Provisioning'
+    },
+    {
+      href: '/docs/provisioning/bulk-provisioning',
+      title: 'Bulk Provisioning',
+      nested: true
+    },
+    {
+      href: '/docs/iam',
+      title: 'IAM'
+    },
+    {
+      href: '/docs/iam/custom-roles',
+      title: 'Custom roles',
+      nested: true
+    }
+  ],
+  [
+    {
+      href: '/docs/deploying',
+      title: 'Deploying'
+    },
+    {
+      href: '/docs/deploying/scheduling',
+      title: 'Scheduling',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/release-pinning',
+      title: 'Release Pinning',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/private-image-repositories',
+      title: 'Private Image Repositories',
+      nested: true
+    },
+    {
+      href: '/docs/deploying/pipelines',
+      title: 'CI/CD Pipelines',
+      nested: true
+    }
+  ],
+  [
+    {
       href: '/docs/monitoring',
       title: 'Monitoring'
     },
@@ -107,15 +120,6 @@ export const routeGroups = [
     {
       href: '/docs/monitoring/service-metrics',
       title: 'Service Metrics',
-      nested: true
-    },
-    {
-      href: '/docs/iam',
-      title: 'IAM'
-    },
-    {
-      href: '/docs/iam/custom-roles',
-      title: 'Custom roles',
       nested: true
     }
   ],
