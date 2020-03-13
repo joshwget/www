@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Logo from './icons/logo';
-import { Box, Row, Column, Link, Text } from './core';
+import { Row, Column, Link, Text } from './core';
 
 const linkGroups = [
   [
@@ -28,8 +28,9 @@ const StyledFooter = styled.footer`
 
 const Container = styled(Column)`
   max-width: ${props => props.theme.pageWidth}px;
+  align-items: center;
   width: 100%;
-  padding: 96px 32px 32px;
+  padding: 64px 32px 32px;
 `;
 
 const FooterLink = styled(Link)`
@@ -54,28 +55,25 @@ const FooterNav = styled.nav`
 const Footer = () => (
   <StyledFooter>
     <Container>
-      <Row alignSelf="flex-start">
+      <Row marginBottom={6}>
         <Link href="/">
           <Logo size={36} />
         </Link>
       </Row>
 
       <FooterNav>
-        <Row>
-          {linkGroups.map(links => (
-            <Column key={links[0].label} marginRight={8}>
-              {links.map(({ href, label, mailto }) => (
-                <FooterLink
-                  key={label}
-                  marginBottom={4}
-                  href={mailto ? `mailto:${mailto}` : href}
-                >
-                  {label}
-                </FooterLink>
-              ))}
-            </Column>
-          ))}
-        </Row>
+        {linkGroups.map(links =>
+          links.map(({ href, label, mailto }) => (
+            <FooterLink
+              key={label}
+              marginBottom={4}
+              marginX={4}
+              href={mailto ? `mailto:${mailto}` : href}
+            >
+              {label}
+            </FooterLink>
+          ))
+        )}
       </FooterNav>
 
       <Row alignSelf="flex-start">

@@ -11,8 +11,10 @@ const colors = {
   white: '#fff',
   success: '#06D6A0',
   danger: '#D7263D',
-  purple: '#7189FF',
-  green: '#90FFDC',
+  purple: '#6f84ff',
+  green: '#46e7b1',
+  orange: '#ffa26f',
+  pink: '#ff6fcc',
 
   pureWhite: '#fff',
 
@@ -20,7 +22,7 @@ const colors = {
 
   overlay: 'rgba(0,0,0,.8)',
 
-  pageBackground: '#181818',
+  pageBackground: '#0b1419',
 
   grays: [
     '#121212',
@@ -74,7 +76,7 @@ export default {
 
   fontWeights: [300, 400, 500, 700, 900],
 
-  radii: [0, 4, 6, 8, 12, 16, 9999, '100%'],
+  radii: [0, 2, 6, 8, 12, 16, 9999, '100%'],
 
   sizes: [
     8,
@@ -95,7 +97,7 @@ export default {
     1024
   ],
 
-  borders: [`1px solid ${colors.primary}`, `3px solid ${colors.primary}`],
+  borders: [`2px solid ${colors.primary}`, `3px solid ${colors.primary}`],
 
   shadows: [`0 2px 4px black`, `0 3px 6px black`],
 
@@ -103,7 +105,7 @@ export default {
 
   transitions: ['all 200ms ease'],
 
-  pageWidth: 1200
+  pageWidth: 1000
 };
 
 export const labelColors = [

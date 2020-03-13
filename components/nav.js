@@ -168,7 +168,7 @@ const MobileMenu = ({ show, pathname }) => {
 const StyledNav = styled.nav`
   display: flex;
   flex: 1;
-  max-width: ${props => props.theme.pageWidth}px;
+  max-width: 1200px;
   align-self: stretch;
   padding: 32px;
 
@@ -233,6 +233,7 @@ const Nav = ({ transparent }) => {
                 Log in
               </NavLink>
               <Button
+                variant="green"
                 title="Sign up"
                 href="https://cloud.deviceplane.com/signup"
               />

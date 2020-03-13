@@ -30,22 +30,18 @@ const frames = distros.map(
       transform: rotate(${degree *
         i}deg) translate3d(80px, 80px, 0) rotate(-${degree * i}deg);
     }
-    50% {
+    100% {
       transform: rotate(${degree * i +
-        360}deg) translate3d(120px, 120px, 0) rotate(-${degree * i + 360}deg);
+        720}deg) translate3d(80px, 80px, 0) rotate(-${degree * i + 720}deg);
     }
-  100% {
-    transform: rotate(${degree * i +
-      720}deg) translate3d(80px, 80px, 0) rotate(-${degree * i + 720}deg);
-  }
 `
 );
 
 const Icon = ({ src, index, alt, ...props }) => (
   <Column
-    width={54}
-    height={54}
-    bg="white"
+    width={60}
+    height={60}
+    bg="black"
     borderRadius="99px"
     alignItems="center"
     justifyContent="center"
@@ -54,7 +50,7 @@ const Icon = ({ src, index, alt, ...props }) => (
     css={`
       backface-visibility: hidden;
       perspective: 1000;
-      animation: 60s ${frames[index]} linear infinite;
+      animation: 80s ${frames[index]} linear infinite;
 
       @media screen and (max-width: 600px) {
         animation: none;
@@ -68,36 +64,40 @@ const Icon = ({ src, index, alt, ...props }) => (
   </Column>
 );
 
-const Info = () => {
+const Linux = () => {
   return (
     <Section>
       <Row
         justifyContent="space-between"
         alignSelf="stretch"
         alignItems={['center', 'center', 'center', 'unset']}
-        flexDirection={[
-          'column-reverse',
-          'column-reverse',
-          'column-reverse',
-          'row'
-        ]}
+        flexDirection={['column', 'column', 'column', 'row']}
       >
-        <Column justifyContent="center" flex={1} marginTop={[8, 8, 8, 0]}>
+        <Column justifyContent="center" flex={1}>
           <Column
-            marginLeft={[0, 0, 0, 8]}
             position="relative"
-            width={320}
-            height={320}
+            width={300}
+            height={300}
             alignItems="center"
             justifyContent="center"
           >
-            <Image
-              height={70}
-              width={70}
-              src="/linux.svg"
-              marginBottom={2}
-              alt="Linux"
-            />
+            <Column
+              alignItems="center"
+              justifyContent="center"
+              width={90}
+              height={90}
+              borderRadius={7}
+              bg="black"
+            >
+              <Image
+                height={55}
+                width={55}
+                src="/linux.svg"
+                marginBottom={2}
+                alt="Linux"
+              />
+            </Column>
+
             {distros.map((distro, index) => (
               <Icon
                 key={distro}
@@ -109,6 +109,7 @@ const Info = () => {
           </Column>
         </Column>
         <Column
+          marginTop={[6, 6, 6, 0]}
           maxWidth="500px"
           alignItems={['center', 'center', 'center', 'unset']}
           justifyContent="center"
@@ -118,7 +119,7 @@ const Info = () => {
             textAlign={['center', 'center', 'center', 'left']}
             maxWidth={['400px', '400px', '400px', 'unset']}
           >
-            Easily setup any Linux device
+            Support for any Linux device
           </Heading>
           <Paragraph
             fontSize={3}
@@ -134,4 +135,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default Linux;

@@ -1,109 +1,101 @@
-import styled from 'styled-components';
-
-import { Section, Heading, Row, Button, Text } from './core';
+import {
+  Grid,
+  Section,
+  Heading,
+  Icon,
+  Text,
+  Row,
+  Column,
+  Paragraph
+} from './core';
 
 const content = [
   {
     title: 'Register',
-    body: `Register devices with a single command. Our agent is under 10MB
-    and consumes minimal resources. We support any device running Linux
-    regardless of distribution, architecture, and hardware.`
-  },
-  {
-    title: 'Deploy',
-    body: `Package your applications as containers and then let us deploy
-    and manage those containers to your devices. Start with manual
-    deployments through the web console or CLI and then progress to setting
-    up automated git-based deployment workflows.`
-  },
-  {
-    title: 'Monitor',
-    body: `Instrument your applications to expose the metrics most critical for
-    your business. We then handle metric collection, enrichment, and
-    propagation to the metrics tooling of your choice. From there setup
-    dashboards, visualizations, and alerts to make sure your devices and
-    applications are operating as expected.`
+    icon: 'add',
+    body: `Registering a device is as simple as running an installation script that sets up a single static binary. You're first
+    device will be connected within minutes.`,
+    color: 'primary'
   },
   {
     title: 'Access',
-    body: `Directly access your devices via SSH when required. Run one-off
-    or recurring scripts on one device or a group of devices.`
+    icon: 'console',
+    body: `Immediately after registration you'll have secure connection to your device. SSH is available via both the UI and CLI
+    and authenticated with your identity provider rather than through static keys.`,
+    color: 'purple'
   }
 ];
 
-const Tab = styled(Button)`
-  border: none;
-  padding: 10px 14px;
-  cursor: ${props => (props.selected ? 'default' : 'pointer')};
-  text-transform: uppercase;
-  white-space: nowrap;
-  text-decoration: none !important;
-  box-shadow: none !important;
-  border-color: none !important;
-  width: 96px !important;
+// const Tutorial = () => {
+//   return (
+//     <Section paddingTop={10}>
+//       <Heading variant="secondary" textAlign="center" marginBottom={8}>
+//         How it works
+//       </Heading>
 
-  color: ${props =>
-    props.selected ? props.theme.colors.primary : props.theme.colors.white};
-  background-color: ${props =>
-    props.selected ? props.theme.colors.black : props.theme.colors.grays[3]};
-  &:focus,
-  &:hover {
-    color: ${props =>
-      props.selected
-        ? props.theme.colors.primary
-        : props.theme.colors.pureWhite} !important;
-    background-color: ${props =>
-      props.selected
-        ? props.theme.colors.black
-        : props.theme.colors.grays[0]} !important;
-  }
-`;
+//       <Row alignSelf="stretch" alignItems="center">
+//         <Column marginRight={8}>
+//           <Column
+//             bg="black"
+//             width="600px"
+//             height="400px"
+//             border={0}
+//             borderRadius={1}
+//             borderColor="primary"
+//           ></Column>
+//         </Column>
+
+//         <Column justifyContent="center">
+//           {content.map(({ title, body, color, icon }, i) => (
+//             <Column marginTop={i === 0 ? 0 : 5}>
+//               <Row alignItems="center">
+//                 <Icon icon={icon} size={24} color={color} />
+//                 <Text marginLeft={3} fontSize={4} fontWeight={2}>
+//                   {title}
+//                 </Text>
+//               </Row>
+
+//               <Paragraph>{body}</Paragraph>
+//             </Column>
+//           ))}
+//         </Column>
+//       </Row>
+//     </Section>
+//   );
+// };
+
+const Feature = ({ title, body, icon, color }) => (
+  <Column bg="black" padding={6} borderRadius={1}>
+    <Icon color={color} size={28} icon={icon} marginBottom={4} />
+
+    <Heading variant="tertiary" fontSize="20px">
+      {title}
+    </Heading>
+    <Paragraph marginBottom={0}>{body}</Paragraph>
+  </Column>
+);
 
 const Tutorial = () => {
-  const [selection, setSelection] = React.useState(0);
-
   return (
-    <Section height={['initial', '450px']} paddingX={6}>
-      <Heading variant="secondary" textAlign="center">
+    <Section paddingTop={10}>
+      <Heading variant="secondary" textAlign="center" marginBottom={8}>
         How it works
       </Heading>
 
-      <Row marginTop={8} flexDirection={['column', 'row']}>
-        <Row marginBottom={[4, 0]}>
-          {content.slice(0, 2).map(({ title }, i) => (
-            <Tab
-              key={title}
-              title={title}
-              selected={i === selection}
-              onClick={() => setSelection(i)}
-              marginX={[2, 4]}
-            />
-          ))}
-        </Row>
-
-        <Row>
-          {content.slice(2, 4).map(({ title }, i) => (
-            <Tab
-              key={title}
-              title={title}
-              selected={i + 2 === selection}
-              onClick={() => setSelection(i + 2)}
-              marginX={[2, 4]}
-            />
-          ))}
-        </Row>
-      </Row>
-
-      <Row
-        bg="black"
-        borderRadius={2}
-        padding={6}
-        marginTop={4}
-        maxWidth={13}
-        border={0}
+      <Grid
+        gridGap={8}
+        gridTemplateColumns={[
+          'minmax(250px, 1fr)',
+          '500px',
+          'repeat(2, 1fr)',
+          'repeat(3, 1fr)',
+          'repeat(2, 1fr)'
+        ]}
       >
-        <Text>{content[selection].body}</Text>
-      </Row>
+        {content.map((props, i) => (
+          <Feature {...props} key={props.title} />
+        ))}
+      </Grid>
     </Section>
   );
 };

@@ -19,6 +19,7 @@ const postings = [
     title: 'Software Engineer',
     location: 'San Francisco, CA',
     icon: 'code',
+    color: 'orange',
     body: (
       <>
         <Paragraph>
@@ -41,6 +42,7 @@ const postings = [
     title: 'Developer Advocate',
     icon: 'learning',
     location: 'San Francisco, CA',
+    color: 'purple',
     body: (
       <>
         <Paragraph>
@@ -59,7 +61,7 @@ const postings = [
   }
 ];
 
-const Posting = ({ title, location, body, icon }) => (
+const Posting = ({ title, location, body, icon, color }) => (
   <Column
     bg="pageBackground"
     padding={6}
@@ -67,7 +69,6 @@ const Posting = ({ title, location, body, icon }) => (
     maxWidth="540px"
     marginX={6}
     marginTop={9}
-    border={1}
   >
     <Row
       justifyContent="space-between"
@@ -75,12 +76,13 @@ const Posting = ({ title, location, body, icon }) => (
       alignSelf="stretch"
       marginBottom={2}
     >
-      <Icon icon={icon} size={30} color="primary" />
+      <Icon icon={icon} size={30} color={color} />
 
       <Button
         display={['none', 'none', 'flex']}
         marginLeft={2}
         variant="text"
+        color={color}
         title="Apply"
         rel="noopener noreferrer"
         target="_blank"

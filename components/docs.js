@@ -237,7 +237,7 @@ const Docs = ({ title, children }) => {
       <Nav />
 
       <Row
-        maxWidth={['initial', 'initial', theme.pageWidth]}
+        maxWidth={['initial', 'initial', 1200]}
         marginX="auto"
         overflow="visible"
         flex={1}

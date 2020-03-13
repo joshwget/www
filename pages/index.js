@@ -4,7 +4,8 @@ import Nav from '../components/nav';
 import Hero from '../components/hero';
 import Features from '../components/features';
 import Tutorial from '../components/tutorial';
-import Info from '../components/info';
+import OpenSource from '../components/open-source';
+import Security from '../components/security';
 import Pricing from '../components/pricing';
 import CTA from '../components/cta';
 import Footer from '../components/footer';
@@ -24,13 +25,15 @@ const Home = () => (
 
     <Hero airtable={base} />
 
-    <Features />
+    <Tutorial />
 
-    {/* <Tutorial /> */}
+    <Features />
 
     <Linux />
 
-    <Info />
+    <OpenSource />
+
+    <Security />
 
     <Pricing />
 

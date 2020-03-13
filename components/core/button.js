@@ -44,6 +44,54 @@ const variants = {
         borderColor: 'pureWhite'
       }
     },
+    green: {
+      color: 'black',
+      border: 0,
+      bg: 'green',
+      borderColor: 'green',
+      '&:not(:disabled):hover': {
+        color: 'green',
+        bg: 'transparent',
+        borderColor: 'green'
+      },
+      '&:not(:disabled):focus': {
+        color: 'green',
+        bg: 'transparent',
+        borderColor: 'green'
+      }
+    },
+    purple: {
+      color: 'black',
+      border: 0,
+      bg: 'purple',
+      borderColor: 'purple',
+      '&:not(:disabled):hover': {
+        color: 'purple',
+        bg: 'transparent',
+        borderColor: 'purple'
+      },
+      '&:not(:disabled):focus': {
+        color: 'purple',
+        bg: 'transparent',
+        borderColor: 'purple'
+      }
+    },
+    orange: {
+      color: 'black',
+      border: 0,
+      bg: 'orange',
+      borderColor: 'orange',
+      '&:not(:disabled):hover': {
+        color: 'orange',
+        bg: 'transparent',
+        borderColor: 'orange'
+      },
+      '&:not(:disabled):focus': {
+        color: 'orange',
+        bg: 'transparent',
+        borderColor: 'orange'
+      }
+    },
     text: {
       color: 'primary',
       border: 'none',

@@ -43,8 +43,6 @@ const devices = [
   }
 ];
 
-const useCases = ['smart locks', 'delivery robots', 'WiFi hubs', 'drones'];
-
 const Device = ({ src, label, height = 90 }) => (
   <Column
     height={['initial', '160px']}
@@ -56,14 +54,14 @@ const Device = ({ src, label, height = 90 }) => (
     <Text
       textAlign="center"
       borderRadius={2}
-      bg="white"
+      bg="pageBackground"
       paddingY={1}
       paddingX={2}
       fontSize={0}
       fontWeight={2}
       style={{ textTransform: 'uppercase' }}
       marginTop={4}
-      color="black"
+      color="white"
     >
       {label}
     </Text>
@@ -108,11 +106,11 @@ const Hero = ({ airtable }) => {
   return (
     <Section bg="black" position="relative" paddingTop={9} borderTop="none">
       <Heading
-        fontSize={['42px', '52px', '64px', '78px']}
+        fontSize={['42px', '52px', '60px']}
         textAlign="center"
-        maxWidth={['450px', '550px', '700px', '800px']}
+        maxWidth={['450px', '550px', '700px', '900px']}
       >
-        Manage your devices at the edge
+        Securely access remote devices and servers
       </Heading>
 
       <Paragraph
@@ -120,9 +118,7 @@ const Hero = ({ airtable }) => {
         textAlign="center"
         fontSize={['16px', '16px', '18px', '20px']}
       >
-        Deviceplane is an open source management tool for embedded systems and
-        edge computing. We make it easy to securely update, monitor, and access
-        your devices.
+        Deviceplane is the simplest way to access and manage remote fleets.
       </Paragraph>
 
       <Column alignSelf="stretch" marginTop={4} alignItems="center">
