@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Logo from './icons/logo';
-import { Row, Column, Link, Text } from './core';
+import { Box, Row, Column, Link, Text } from './core';
 
 const linkGroups = [
   [
@@ -36,32 +36,38 @@ const Container = styled(Column)`
 const FooterLink = styled(Link)`
   text-decoration: none !important;
   font-weight: 400;
+  white-space: nowrap;
   transition: ${props => props.theme.transitions[0]};
   color: ${props => props.theme.colors.grays[8]};
   &:hover {
     color: ${props => props.theme.colors.pureWhite};
   }
   font-size: ${props => props.theme.fontSizes[1]}px;
+  margin: 12px 0;
 `;
 
 FooterLink.defaultProps = {
   color: 'grays.8'
 };
 
-const FooterNav = styled.nav`
+const FooterNav = styled(Box).attrs({ as: 'nav' })`
+  display: flex;
   margin: 32px 0;
 `;
 
 const Footer = () => (
   <StyledFooter>
     <Container>
-      <Row marginBottom={6}>
+      <Row marginBottom={4}>
         <Link href="/">
           <Logo size={36} />
         </Link>
       </Row>
 
-      <FooterNav>
+      <FooterNav
+        flexDirection={['column', 'row']}
+        alignItems={['center', 'unset']}
+      >
         {linkGroups.map(links =>
           links.map(({ href, label, mailto }) => (
             <FooterLink
