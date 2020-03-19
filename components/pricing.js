@@ -25,7 +25,12 @@ const plans = [
     name: 'Enterprise',
     color: 'purple',
     button: (
-      <Button variant="purple" title="Contact sales" alignSelf="stretch" />
+      <Button
+        variant="purple"
+        title="Contact sales"
+        alignSelf="stretch"
+        href="mailto:sales@deviceplane.com"
+      />
     ),
     features: [
       'Custom pricing',
