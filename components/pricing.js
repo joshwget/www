@@ -18,7 +18,12 @@ const plans = [
     features: ['Free forever', 'Up to 50 devices', 'Single user'],
     icon: 'person',
     button: (
-      <Button variant="green" title="Create free account" alignSelf="stretch" />
+      <Button
+        variant="green"
+        title="Create free account"
+        alignSelf="stretch"
+        href="https://cloud.deviceplane.com/signup"
+      />
     )
   },
   {
