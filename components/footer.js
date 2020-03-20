@@ -43,7 +43,7 @@ const FooterLink = styled(Link)`
     color: ${props => props.theme.colors.pureWhite};
   }
   font-size: ${props => props.theme.fontSizes[1]}px;
-  margin: 12px 0;
+  margin: 12px;
 `;
 
 FooterLink.defaultProps = {
