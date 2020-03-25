@@ -38,7 +38,7 @@ const Feature = ({ title, body, icon, color }) => (
   </Column>
 );
 
-const Features = () => {
+const Features = ({ pi }) => {
   return (
     <Section alignItems="center">
       <Heading
@@ -47,7 +47,9 @@ const Features = () => {
         maxWidth={['unset', '600px', '600px', '750px']}
         marginBottom={8}
       >
-        Infrastructure that includes everything you need
+        {pi
+          ? `Everything you need for your Raspberry Pi`
+          : `Infrastructure that includes everything you need`}
       </Heading>
 
       <Grid

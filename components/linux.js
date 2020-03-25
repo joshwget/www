@@ -1,15 +1,6 @@
-import { css, keyframes } from 'styled-components';
+import { keyframes } from 'styled-components';
 
-import {
-  Box,
-  Column,
-  Row,
-  Heading,
-  Section,
-  Paragraph,
-  Image,
-  Link
-} from './core';
+import { Column, Row, Heading, Section, Paragraph, Image } from './core';
 
 const distros = [
   'alpine',
@@ -64,7 +55,7 @@ const Icon = ({ src, index, alt, ...props }) => (
   </Column>
 );
 
-const Linux = () => {
+const Linux = ({ pi }) => {
   return (
     <Section>
       <Row
@@ -119,15 +110,18 @@ const Linux = () => {
             textAlign={['center', 'center', 'center', 'left']}
             maxWidth={['400px', '400px', '400px', 'unset']}
           >
-            Support for any Linux device
+            Support for any Linux {pi ? 'distro' : 'device'}
           </Heading>
           <Paragraph
             fontSize={3}
             textAlign={['center', 'center', 'center', 'left']}
           >
-            We support any device running Linux regardless of distro,
+            {pi
+              ? `We support any Linux distro. Our agent is a static binary that can be
+              installed in a single command. The agent uses minimal memory and CPU making it the perfect choice for your Raspberry Pi.`
+              : `We support any device running Linux regardless of distro,
             architecture, or hardware. Our agent is a static binary that can be
-            installed in a single command.
+            installed in a single command.`}
           </Paragraph>
         </Column>
       </Row>

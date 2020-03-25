@@ -12,7 +12,7 @@ import {
   Image
 } from './core';
 
-const devices = [
+const devices = pi => [
   {
     src: '/use-cases/iot-gateway.svg',
     label: 'IoT Gateways',
@@ -30,7 +30,7 @@ const devices = [
   },
   {
     src: '/use-cases/single-board-computer.svg',
-    label: 'Single-board Computers'
+    label: pi ? `Raspberry Pi's` : 'Single-board Computers'
   },
   {
     src: '/use-cases/drones.svg',
@@ -68,16 +68,9 @@ const Device = ({ src, label, height = 90 }) => (
   </Column>
 );
 
-const Hero = ({ airtable }) => {
+const Hero = ({ airtable, pi }) => {
   const [email, setEmail] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
-
-  // const [useCaseIndex, setUseCaseIndex] = useState(0);
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     setUseCaseIndex(useCaseIndex => (useCaseIndex + 1) % useCases.length);
-  //   }, 2000);
-  // }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -110,7 +103,9 @@ const Hero = ({ airtable }) => {
         textAlign="center"
         maxWidth={['450px', '550px', '700px', '900px']}
       >
-        Securely access remote devices and servers
+        {pi
+          ? 'Securely access your Raspberry Pi'
+          : 'Securey access remote devices and servers'}
       </Heading>
 
       <Paragraph
@@ -118,7 +113,8 @@ const Hero = ({ airtable }) => {
         textAlign="center"
         fontSize={['16px', '16px', '18px', '20px']}
       >
-        Deviceplane is the simplest way to access and manage remote fleets.
+        Deviceplane is the simplest way to access and manage{' '}
+        {pi ? `your Raspberry Pi` : 'remote fleets'}.
       </Paragraph>
 
       <Column alignSelf="stretch" marginTop={4} alignItems="center">
@@ -165,7 +161,7 @@ const Hero = ({ airtable }) => {
           'repeat(6, 190px)'
         ]}
       >
-        {devices.map(props => (
+        {devices(pi).map(props => (
           <Device key={props.label} {...props} />
         ))}
       </Grid>
