@@ -105,7 +105,7 @@ const Hero = ({ airtable, pi }) => {
       >
         {pi
           ? 'Securely access your Raspberry Pi'
-          : 'Securey access remote devices and servers'}
+          : 'Securely access remote devices and servers'}
       </Heading>
 
       <Paragraph
