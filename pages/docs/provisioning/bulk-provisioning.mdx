@@ -35,7 +35,7 @@ Let's edit this script to use your install variables (from https://cloud.devicep
 set -e
 
 # Installs Deviceplane
-curl --retry 10 --retry-delay 60 --retry-connrefused https://downloads.deviceplane.com/install.sh | PROJECT=$YOUR_PROJECT REGISTRATION_TOKEN=$YOUR_REGISTRATION_TOKEN bash
+curl --retry 10 --retry-delay 60 --retry-connrefused https://downloads.deviceplane.com/install.sh | VERSION=$DESIRED_VERSION PROJECT=$YOUR_PROJECT REGISTRATION_TOKEN=$YOUR_REGISTRATION_TOKEN bash
 
 # Stops the service only if the previous command was successful!
 systemctl disable install-deviceplane.service
@@ -46,6 +46,9 @@ systemctl disable install-deviceplane.service
 Here's a systemd unit file that we can use to run our one-off script. Let's place this script in `/etc/systemd/system/install-deviceplane.service`.
 
 ```
+[Install]
+WantedBy=multi-user.target
+
 [Unit]
 Description=Installs Deviceplane
 Wants=network-online.target
