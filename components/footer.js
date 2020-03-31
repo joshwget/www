@@ -6,7 +6,7 @@ import { Box, Row, Column, Link, Text } from './core';
 const linkGroups = [
   [
     { href: '/docs', label: 'Documentation' },
-    //{ href: '/blog', label: 'Blog' },
+    { href: '/blog', label: 'Blog' },
     { mailto: 'support@deviceplane.com', label: 'Support' },
     { href: '/careers', label: 'Careers' }
   ],
