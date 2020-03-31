@@ -82,7 +82,7 @@ const Footer = () => (
         )}
       </FooterNav>
 
-      <Row alignSelf="flex-start">
+      <Row>
         <Text fontSize={0} color="grays.5" fontWeight={1}>
           © Deviceplane
         </Text>

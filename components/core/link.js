@@ -18,7 +18,7 @@ const A = styled(Box).attrs({ as: 'a' })`
 `;
 
 A.defaultProps = {
-  fontWeight: 2
+  fontWeight: 1
 };
 
 const Link = ({ children, href, ...rest }) => {

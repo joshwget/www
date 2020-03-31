@@ -2,23 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 
 import theme from '../theme';
-import Nav from '../components/nav';
-import Footer from '../components/footer';
-import MDX from '../components/mdx';
-import { Box, Row, Text, Column, Heading } from '../components/core';
+import Nav from './nav';
+import Footer from './footer';
+import MDX from './mdx';
+import { Box, Row, Text, Column, Heading, Link } from './core';
 
-const legalTabs = [
-  {
-    title: 'User Agreement',
-    href: '/legal/terms'
-  },
-  {
-    title: 'Privacy Policy',
-    href: '/legal/privacy'
-  }
-];
-
-const Legal = ({ title, lastUpdated, children }) => {
+const Blog = ({ type, title, date, authors, children }) => {
   return (
     <>
       <Head>
@@ -35,18 +24,28 @@ const Legal = ({ title, lastUpdated, children }) => {
           paddingY={8}
           alignSelf="stretch"
         >
-          <Heading textAlign="center" fontSize={[6, 7]}>
+          <Text marginBottom={4} fontWeight={2} color="purple">
+            {type}
+          </Text>
+          <Heading textAlign="center" fontSize={[5, 6]} marginBottom={4}>
             {title}
           </Heading>
           <Row
+            fontSize={1}
             fontWeight={1}
             color="grays.8"
-            marginTop={4}
+            marginBottom={5}
             flexWrap="wrap"
             justifyContent="center"
           >
-            <Text color="inherit">Last update:&nbsp;</Text>
-            <Text color="inherit">{lastUpdated}</Text>
+            {date}
+          </Row>
+          <Row flexWrap="wrap" justifyContent="center">
+            {authors.map(({ name, href }) => (
+              <Link key={name} href={href} fontWeight={1}>
+                {name}
+              </Link>
+            ))}
           </Row>
         </Column>
 
@@ -60,4 +59,4 @@ const Legal = ({ title, lastUpdated, children }) => {
   );
 };
 
-export default Legal;
+export default Blog;
