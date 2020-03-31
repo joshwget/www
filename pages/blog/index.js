@@ -11,14 +11,13 @@ import {
   Column,
   Heading,
   Link,
-  Paragraph
+  Paragraph,
+  Image
 } from '../../components/core';
 
 /* Example blog types: Infrastructure, Open Source, Insights, Guide. Separate color for each type */
 
 const posts = [require('./raspberry-pi-ssh.mdx')];
-
-console.log(posts);
 
 const Post = styled(Box)`
   transition: all 150ms ease;
@@ -72,15 +71,24 @@ const Blog = () => {
                     fontSize={1}
                     fontWeight={1}
                   >
-                    {authors.map(({ name, href }) => (
-                      <Link
-                        key={name}
-                        href={href}
-                        fontSize="inherit"
-                        fontWeight="inherit"
-                      >
-                        {name}
-                      </Link>
+                    {authors.map(({ name, href, avatar }) => (
+                      <Row alignItems="center">
+                        <Image
+                          src={avatar}
+                          width={4}
+                          height={4}
+                          borderRadius={7}
+                          marginRight={2}
+                        />
+                        <Link
+                          key={name}
+                          href={href}
+                          fontSize="inherit"
+                          fontWeight="inherit"
+                        >
+                          {name}
+                        </Link>
+                      </Row>
                     ))}
                     &nbsp;
                     <Text

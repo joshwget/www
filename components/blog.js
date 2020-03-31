@@ -5,7 +5,7 @@ import theme from '../theme';
 import Nav from './nav';
 import Footer from './footer';
 import MDX from './mdx';
-import { Box, Row, Text, Column, Heading, Link } from './core';
+import { Box, Row, Text, Column, Heading, Link, Image } from './core';
 
 const Blog = ({ type, title, date, authors, children }) => {
   return (
@@ -34,17 +34,26 @@ const Blog = ({ type, title, date, authors, children }) => {
             fontSize={1}
             fontWeight={1}
             color="grays.8"
-            marginBottom={5}
+            marginBottom={6}
             flexWrap="wrap"
             justifyContent="center"
           >
             {date}
           </Row>
           <Row flexWrap="wrap" justifyContent="center">
-            {authors.map(({ name, href }) => (
-              <Link key={name} href={href} fontWeight={1}>
-                {name}
-              </Link>
+            {authors.map(({ name, href, avatar }) => (
+              <Row alignItems="center">
+                <Image
+                  src={avatar}
+                  width={4}
+                  height={4}
+                  borderRadius={7}
+                  marginRight={2}
+                />
+                <Link key={name} href={href} fontWeight={1}>
+                  {name}
+                </Link>
+              </Row>
             ))}
           </Row>
         </Column>
