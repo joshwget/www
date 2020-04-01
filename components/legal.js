@@ -27,12 +27,12 @@ const Legal = ({ title, lastUpdated, children }) => {
 
       <Nav />
 
-      <Column alignItems="center">
+      <Column alignItems="center" bg="pageBackground">
         <Column
           bg="black"
           alignItems="center"
           flex={1}
-          paddingY={9}
+          paddingY={8}
           alignSelf="stretch"
         >
           <Heading textAlign="center" fontSize={[6, 7]}>
@@ -45,12 +45,12 @@ const Legal = ({ title, lastUpdated, children }) => {
             flexWrap="wrap"
             justifyContent="center"
           >
-            <Text>Last update:&nbsp;</Text>
-            <Text>{lastUpdated}</Text>
+            <Text color="inherit">Last update:&nbsp;</Text>
+            <Text color="inherit">{lastUpdated}</Text>
           </Row>
         </Column>
 
-        <Box width="100%" maxWidth={theme.pageWidth} padding={6} paddingY={4}>
+        <Box width="100%" maxWidth={theme.pageWidth} padding={6}>
           <MDX>{children}</MDX>
         </Box>
       </Column>

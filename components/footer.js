@@ -6,7 +6,7 @@ import { Box, Row, Column, Link, Text } from './core';
 const linkGroups = [
   [
     { href: '/docs', label: 'Documentation' },
-    //{ href: '/blog', label: 'Blog' },
+    { href: '/blog', label: 'Blog' },
     { mailto: 'support@deviceplane.com', label: 'Support' },
     { href: '/careers', label: 'Careers' }
   ],
@@ -82,7 +82,7 @@ const Footer = () => (
         )}
       </FooterNav>
 
-      <Row alignSelf="flex-start">
+      <Row>
         <Text fontSize={0} color="grays.5" fontWeight={1}>
           © Deviceplane
         </Text>

@@ -228,6 +228,9 @@ const Nav = ({ transparent }) => {
               <NavLink href="/docs" active={pathname.includes('docs')}>
                 Documentation
               </NavLink>
+              <NavLink href="/blog" active={pathname.includes('blog')}>
+                Blog
+              </NavLink>
               <NavLink href="mailto:support@deviceplane.com">Support</NavLink>
               <NavLink href="https://cloud.deviceplane.com/login">
                 Log in

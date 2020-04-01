@@ -1,0 +1,38 @@
+import Blog from '../../components/blog'
+
+export const title = "Easily SSH to a Raspberry Pi"
+export const authors = [{ name: "Cyrus Roshan", href: 'https://cyrusroshan.com/', avatar: 'http://1.gravatar.com/avatar/fd7168da4eaa68424c8405439aeba57d' }]
+export const date = "March 16th 2020"
+export const intro = "A quick guide to the most convenient way to set up a Raspberry Pi with SSH."
+export const type = "Guide"
+export const href = '/blog/raspberry-pi-ssh'
+
+<Blog type={type} title={title} authors={authors} date={date}>
+
+Sometimes you need a Raspberry Pi for a project. And sometimes you just need to SSH into a Pi.
+
+While working on Deviceplane agent code--the code that runs on a device--I need to test builds during development. Even though I often test builds on AWS instances, I think it's important to make sure things run smoothly on the hardware our customers use.
+
+So, if you want a simple, quick, and minimal setup, I'll get right to the point. This is most convenient way I've found to set up a Raspberry Pi with SSH.
+
+## The two-cable SSH
+
+That's right. Only two cables throughout this entire process: ethernet, and microUSB (and possibly adapters for both).
+
+This setup even lets you take your Pi on the commuter train, or develop on the plane, since the power can be delivered from your laptop, and there's no need for WiFi. If you do have WiFi on your laptop, though, your Pi gets it as well.
+
+Here's how to set it up on macOS:
+
+1. Start with a copy of Raspbian on your SD card. You can install the [Raspberry Pi imager](https://www.raspberrypi.org/documentation/installation/installing-images/), which makes it a painless process.
+2. Re-insert the SD Card, then create an empty file named "ssh" into its boot partition. This should be the partition that auto-mounts, so you can simply `cd` into it, then `touch ssh`.
+3. Insert the SD card into your Pi, and connect the ethernet and microUSB cables to your laptop.
+4. _`(System Preferences > Sharing)`_ [Enable internet sharing](https://apple.stackexchange.com/a/143519) through your ethernet port. If you're using an adapter, your ethernet port may be called by the adapter name, such as "USB 10/100 LAN".
+5. _`(System Preferences > Network)`_ Enable DHCP or DHCP with manual address on your ethernet port. Wait for it to get connected.
+6. In your terminal, run `ifconfig`, then find your bridge interface, `bridge100` in my case, and get its network address under `inet`.
+7. Usually, you can just assume the Pi's IP address will be allocated to the next IP bridge interface's IP + 1. In my case, this is 192.168.2.1 + 1, so 192.168.2.2.
+8. Or to be really sure, you can find the Pi's IP by scanning the range of IP addresses in your [subnet](https://en.wikipedia.org/wiki/Subnetwork).
+   - In my case, my bridge interface address is 192.168.2.1 and mask is 0xffffff00, which is a /24 block.
+   - So `sudo nmap -sS -p 22 192.168.2.1/24` will list out all devices under this block.
+9. Simply SSH in! In my case, `ssh pi@192.168.2.2`, with default password `raspberry`.
+
+</Blog>

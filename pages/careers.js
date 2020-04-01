@@ -68,7 +68,7 @@ const Posting = ({ title, location, body, icon, color }) => (
     borderRadius={2}
     maxWidth="540px"
     marginX={6}
-    marginTop={9}
+    marginTop={8}
   >
     <Row
       justifyContent="space-between"
@@ -129,7 +129,7 @@ const Careers = () => (
         bg="black"
         alignItems="center"
         flex={1}
-        paddingY={9}
+        paddingY={8}
         alignSelf="stretch"
       >
         <Heading>Careers</Heading>
@@ -140,7 +140,7 @@ const Careers = () => (
           marginTop={4}
           textAlign="center"
           fontWeight={1}
-          fontSize={'20px'}
+          fontSize={'18px'}
         >
           Our goal is to make Deviceplane the de facto way to manage all remote
           hardware and devices. The path to get there requires deep engagement
